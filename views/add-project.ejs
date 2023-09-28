@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Project Management - makeMybiz Admin</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" type="text/css" href="../css/adminx.css" media="screen" />
+   </head>
+   <body>
+      <div class="adminx-container">
+         <%- include("../partials/header.ejs")%>
+         <!-- expand-hover push -->
+         <!-- Sidebar -->
+         <!-- Sidebar End -->
+         <%- include("../partials/dashboard.ejs")%>
+         <!-- Sidebar -->
+         <!-- Sidebar End -->
+         <!-- Main Content -->
+         <div class="adminx-content">
+            <div class="adminx-main-content">
+               <div class="container-fluid">
+                  <!-- BreadCrumb -->
+                  <nav aria-label="breadcrumb" role="navigation">
+                     <ol class="breadcrumb adminx-page-breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Project</a></li>
+                        <li class="breadcrumb-item active  aria-current=" page">Add Project </li>
+                     </ol>
+                  </nav>
+                  <div class="pb-3">
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="card mb-grid">
+                           <div class="card-header d-flex justify-content-between align-items-center">
+                              <div class="card-header-title">Add New Project</div>
+                              <nav class="card-header-actions">
+                                 <a class="card-header-action" data-toggle="collapse" href="#card1"
+                                    aria-expanded="false" aria-controls="card1">
+                                 <i data-feather="minus-circle"></i>
+                                 </a>
+                              </nav>
+                           </div>
+                           <div class="card-body collapse show" id="card1">
+                              <form action="/addProject" method="post" id="form"
+                                 enctype="multipart/form-data">
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <h3>For Customer</h3>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="mb-3">
+                                                <label for="exampleInputEmail1"
+                                                   class="form-label">Choose Project Name</label>
+                                                <select name="projectName" id=""
+                                                   class="form-control" required>
+                                                   <option value="">Select Project</option>
+                                                   <%projectName.forEach((result)=>{ %>
+                                                   <option value=" <%=result.id%>"
+                                                      class="form-control">
+                                                      <%=result.projectName%>
+                                                   </option>
+                                                   <% })%>
+                                                </select>
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="mb-3">
+                                                <label for="exampleInputEmail1"
+                                                   class="form-label">Choose Customer</label>
+                                                <select name="customer" id="" class="form-control">
+                                                   <option value="">Select Customer</option>
+                                                   <%findCustomer.forEach((result)=>{ %>
+                                                   <option value=" <%=result.id%>"
+                                                      class="form-control">
+                                                      <%=result.name%>
+                                                   </option>
+                                                   <% })%>
+                                                </select>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="form-group">
+                                          <label class="form-label" for="exampleInputEmail1">Domain
+                                          Name</label>
+                                          <input name="domain" type="text" class="form-control"
+                                             id="phone_no" aria-describedby="emailHelp"
+                                             placeholder="Domain Name">
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Total Project Basic
+                                                cost </label>
+                                                <input name="projectBasicCost" type="number"
+                                                   class="form-control" id="totalProjectCost"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Total Project Basic cost">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">GST</label>
+                                                <input name="gst" type="number" class="form-control"
+                                                   id="gstInput" aria-describedby="emailHelp"
+                                                   placeholder="GST">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Net Payable
+                                                Amount</label>
+                                                <input name="paybleAmount" type="number"
+                                                   class="form-control" id="paybleAmount"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Net Payable Amount">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Advance Payment
+                                                received</label>
+                                                <input name="advancePayment" type="number"
+                                                   class="form-control" id="advancePayment"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Advance Payment received">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label for="" id="errorLabel"
+                                                   class="text-danger"></label>
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Balance Payment</label>
+                                                <input name="balancePayment" type="number"
+                                                   class="form-control" id="balancePayment"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Balance Payment"
+                                                   id="balancePayment">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="mb-3">
+                                                <label for="exampleInputEmail1"
+                                                   class="form-label">Choose Project Status</label>
+                                                <select name="projectStatus" id=""
+                                                   class="form-control">
+                                                   <option value="">Select Project Status</option>
+                                                   <%findProjectStatus.forEach((result)=>{ %>
+                                                   <option value=" <%=result.status%>"
+                                                      class="form-control">
+                                                      <%=result.status%>
+                                                   </option>
+                                                   <% })%>
+                                                </select>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Invoice No. </label>
+                                                <input name="invoiceNo" type="text"
+                                                   class="form-control" id=""
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Invoice No">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Invoice</label>
+                                                <input name="invoice" type="file"
+                                                   class="form-control" id=""
+                                                   aria-describedby="emailHelp" placeholder="GST">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="form-group">
+                                          <label class="form-label"
+                                             for="exampleInputPassword1">Customer
+                                          Remark</label>
+                                          <textarea name="Remark" type="totalBasicCost"
+                                             class="form-control" id="password"
+                                             placeholder="Remark"></textarea>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">advance payment
+                                                1</label>
+                                                <input name="customerAdPay1" type="number"
+                                                   class="form-control" id="password"
+                                                   placeholder="Advance Payment">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">Advance Payment Date
+                                                </label>
+                                                <input name="customerAdPayDate1" type="date"
+                                                   class="form-control" >
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">advance payment
+                                                2</label>
+                                                <input name="customerAdPay2" type="number"
+                                                   class="form-control" id="password"
+                                                   placeholder="Advance Payment ">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">Advance Payment Date
+                                                </label>
+                                                <input name="customerAdPayDate2" type="date"
+                                                   class="form-control" >
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">advance payment
+                                                3</label>
+                                                <input name="customerAdPay3" type="number"
+                                                   class="form-control" id="password"
+                                                   placeholder="Advance Payment">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">Advance Payment Date
+                                                </label>
+                                                <input name="customerAdPayDate3" type="date"
+                                                   class="form-control" >
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">advance payment
+                                                4</label>
+                                                <input name="customerAdPay4" type="number"
+                                                   class="form-control" id="password"
+                                                   placeholder="Advance Payment ">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">Advance Payment Date
+                                                </label>
+                                                <input name="customerAdPayDate4" type="date"
+                                                   class="form-control" >
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!-- DEVELOPER FORM -->
+                                    <div class="col-md-6">
+                                       <h3>For Team</h3>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="mb-3">
+                                                <label for="exampleInputEmail1"
+                                                   class="form-label">Choose Team</label>
+                                                <select name="developer" id="" class="form-control">
+                                                   <option value="">Select Team</option>
+                                                   <%findDeveloper.forEach((result)=>{ %>
+                                                   <option value=" <%=result.id%>"
+                                                      class="form-control">
+                                                      <%=result.name%>
+                                                   </option>
+                                                   <% })%>
+                                                </select>
+                                             </div>
+                                          </div>
+                                          <div class="form-group">
+                                             <label class="form-label" for="exampleInputEmail1">Total
+                                             Project Basic cost </label>
+                                             <input name="d_projectBasicCost" type="number"
+                                                class="form-control" id="d_totalProjectCost"
+                                                aria-describedby="emailHelp"
+                                                placeholder="Total Project Basic cost">
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">GST</label>
+                                                <input name="d_gst" type="number"
+                                                   class="form-control" id="d_gstInput"
+                                                   aria-describedby="emailHelp" placeholder="GST">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Net Payable
+                                                Amount</label>
+                                                <input name="d_paybleAmount" type="number"
+                                                   class="form-control" id="d_paybleAmount"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Net Payable Amount">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Advance Payment
+                                                received</label>
+                                                <input name="d_advancePayment" type="number"
+                                                   class="form-control" id="d_advancePayment"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Advance Payment received">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label for="" id="errorLabel"
+                                                   class="text-danger"></label>
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Balance Payment</label>
+                                                <input name="d_balancePayment" type="number"
+                                                   class="form-control" id="d_balancePayment"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Balance Payment"
+                                                   id="balancePayment">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="form-group">
+                                          <label class="form-label" for="exampleInputPassword1"> Team
+                                          Remark</label>
+                                          <textarea name="d_Remark" type="totalBasicCost"
+                                             class="form-control" id="password" placeholder="Remark">
+                                          </textarea>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">Project Start
+                                                Date</label>
+                                                <input name="projectStart" type="date"
+                                                   class="form-control" id="password"
+                                                   placeholder="Password">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">Project End
+                                                Date</label>
+                                                <input name="projectEnd" type="date"
+                                                   class="form-control" id="password"
+                                                   placeholder="Password">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">advance payment
+                                                1</label>
+                                                <input name="developerAdPay1" type="number"
+                                                   class="form-control" id="password"
+                                                   placeholder="Advance Payment">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label" for="exampleInputPassword1">Advance Payment Date
+                                                </label>
+                                                <input name="developerAdPayDate1" type="date" class="form-control">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">advance payment
+                                                2</label>
+                                                <input name="developerAdPay2" type="number"
+                                                   class="form-control" id="password"
+                                                   placeholder="Advance Payment ">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label" for="exampleInputPassword1">Advance Payment Date
+                                                </label>
+                                                <input name="developerAdPayDate2" type="date" class="form-control">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">advance payment
+                                                3</label>
+                                                <input name="developerAdPay3" type="number"
+                                                   class="form-control" id="password"
+                                                   placeholder="Advance Payment ">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label" for="exampleInputPassword1">Advance Payment Date
+                                                </label>
+                                                <input name="developerAdPayDate3" type="date" class="form-control">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputPassword1">advance payment
+                                                4</label>
+                                                <input name="developerAdPay4" type="number"
+                                                   class="form-control" id="password"
+                                                   placeholder="Advance Payment">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label" for="exampleInputPassword1">Advance Payment Date
+                                                </label>
+                                                <input name="developerAdPayDate4" type="date" class="form-control">
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <h3 class="">For Project Manager</h3>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Choose
+                                                Project Manager</label>
+                                                <select name="projectManager" id="" class="form-control"
+                                                   required>
+                                                   <option value="">Select Project Manager</option>
+                                                   <%findProjectManager.forEach((result)=>{ %>
+                                                   <option value=" <%=result.id%>"
+                                                      class="form-control">
+                                                      <%=result.name%>
+                                                   </option>
+                                                   <% })%>
+                                                </select>
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Total Project Basic
+                                                cost </label>
+                                                <input name="pm_projectBasicCost" type="number"
+                                                   class="form-control" id="pm_totalProjectCost"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Total Project Basic cost">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">GST</label>
+                                                <input name="pm_gst" type="number"
+                                                   class="form-control" id="pm_gstInput"
+                                                   aria-describedby="emailHelp" placeholder="GST">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Net Payable
+                                                Amount</label>
+                                                <input name="pm_paybleAmount" type="number"
+                                                   class="form-control" id="pm_paybleAmount"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Net Payable Amount">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-12">
+                                             <div class="col-md-6">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Advance Payment
+                                                received</label>
+                                                <input name="pm_advancePayment" type="number"
+                                                   class="form-control" id="pm_advancePayment"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Advance Payment received">
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label for="" id="errorLabel"
+                                                   class="text-danger"></label>
+                                                <label class="form-label"
+                                                   for="exampleInputEmail1">Balance Payment</label>
+                                                <input name="pm_balancePayment" type="number"
+                                                   class="form-control" id="pm_balancePayment"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Balance Payment">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label class="form-label"
+                                                         for="exampleInputPassword1">advance payment
+                                                      1</label>
+                                                      <input name="pmAdPay1" type="number"
+                                                         class="form-control" id="password"
+                                                         placeholder="Advance Payment">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label class="form-label" for="exampleInputPassword1">Advance Payment Date
+                                                      </label>
+                                                      <input name="pmAdPayDate1" type="date" class="form-control">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label class="form-label"
+                                                         for="exampleInputPassword1">advance payment
+                                                      2</label>
+                                                      <input name="pmAdPay2" type="number"
+                                                         class="form-control" id="password"
+                                                         placeholder="Advance Payment ">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label class="form-label" for="exampleInputPassword1">Advance Payment Date
+                                                      </label>
+                                                      <input name="pmAdPayDate2" type="date" class="form-control">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label class="form-label"
+                                                         for="exampleInputPassword1">advance payment
+                                                      3</label>
+                                                      <input name="pmAdPay3" type="number"
+                                                         class="form-control" id="password"
+                                                         placeholder="Advance Payment">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label class="form-label" for="exampleInputPassword1">Advance Payment Date
+                                                      </label>
+                                                      <input name="pmAdPayDate3" type="date" class="form-control">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label class="form-label"
+                                                         for="exampleInputPassword1">advance payment
+                                                      4</label>
+                                                      <input name="pmAdPay4" type="number"
+                                                         class="form-control" id="password"
+                                                         placeholder="Advance Payment ">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label class="form-label" for="exampleInputPassword1">Advance Payment Date
+                                                      </label>
+                                                      <input name="pmAdPayDate4" type="date" class="form-control">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                           </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- // Main Content -->
+      </div>
+      <!-- If you prefer jQuery these are the   scripts -->
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+      <script src="../js/vendor.js"></script>
+      <script src="../js/adminx.js"></script>
+      <script>
+         document.getElementById("gstInput").onchange = function () { myFunction() };
+         
+         function myFunction() {
+             var totalProjectCost = parseInt(document.getElementById("totalProjectCost").value)
+             //  console.log(typeof totalProjectCost)
+             var gstValue = parseInt(document.getElementById("gstInput").value)
+             //  console.log(typeof gstValue)
+             var total = document.getElementById("paybleAmount");
+             total.value = totalProjectCost + gstValue
+         }
+      </script>
+      <script>
+         document.getElementById("advancePayment").onchange = function () { myFunction2() };
+         
+         function myFunction2() {
+             var paybleAmount = parseInt(document.getElementById("paybleAmount").value)
+             var advancePayment = parseInt(document.getElementById("advancePayment").value)
+             console.log(paybleAmount - advancePayment)
+         
+             document.getElementById("balancePayment").value = paybleAmount - advancePayment
+         
+         
+         
+         }
+      </script>
+      <script>
+         document.getElementById("d_gstInput").onchange = function () { myFunction3() };
+         
+         function myFunction3() {
+             var totalProjectCost = parseInt(document.getElementById("d_totalProjectCost").value)
+             //  console.log(typeof totalProjectCost)
+             var gstValue = parseInt(document.getElementById("d_gstInput").value)
+             //  console.log(typeof gstValue)
+             var total = document.getElementById("d_paybleAmount");
+             total.value = totalProjectCost + gstValue
+         }
+      </script>
+      <script>
+         document.getElementById("d_advancePayment").onchange = function () { myFunction4() };
+         
+         function myFunction4() {
+             var paybleAmount = parseInt(document.getElementById("d_paybleAmount").value)
+             var advancePayment = parseInt(document.getElementById("d_advancePayment").value)
+             console.log(paybleAmount - advancePayment)
+         
+             document.getElementById("d_balancePayment").value = paybleAmount - advancePayment
+         
+         
+         
+         }
+      </script>
+      <script>
+         document.getElementById("pm_gstInput").onchange = function () { myFunction5() };
+         
+         function myFunction5() {
+             var totalProjectCost = parseInt(document.getElementById("pm_totalProjectCost").value)
+             //  console.log(typeof totalProjectCost)
+             var gstValue = parseInt(document.getElementById("pm_gstInput").value)
+             //  console.log(typeof gstValue)
+             var total = document.getElementById("pm_paybleAmount");
+             total.value = totalProjectCost + gstValue
+         }
+      </script>
+      <script>
+         document.getElementById("pm_advancePayment").onchange = function () { myFunction6() };
+         
+         function myFunction6() {
+             var paybleAmount = parseInt(document.getElementById("pm_paybleAmount").value)
+             var advancePayment = parseInt(document.getElementById("pm_advancePayment").value)
+             console.log(paybleAmount - advancePayment)
+         
+             document.getElementById("pm_balancePayment").value = paybleAmount - advancePayment
+         
+         
+         
+         }
+      </script>
+      <script>
+         // Example starter JavaScript for disabling form submissions if there are invalid fields
+         (function () {
+             'use strict';
+         
+             window.addEventListener('load', function () {
+                 var form = document.getElementById('needs-validation');
+                 if (form !== null) {
+                     form.addEventListener('submit', function (event) {
+                         if (form.checkValidity() === false) {
+                             event.preventDefault();
+                             event.stopPropagation();
+                         }
+                         form.classList.add('was-validated');
+                     }, false);
+                 }
+             }, false);
+         })();
+      </script>
+   </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project Management - makeMybiz Customer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="../css/adminx.css" media="screen" />
+
+    <!-- this is only relevant for the demo -->
+    <link rel="stylesheet" href="../demo/demo.css">
+  </head>
+  <body>
+    <div class="adminx-container">
+      <%- include("../partials/header.ejs")%>
+
+      <!-- expand-hover push -->
+      <!-- Sidebar -->
+     
+      <!-- Sidebar End -->
+      <%- include("../partials/customer-dashboard.ejs")%>
+    
+      <!-- Sidebar End -->
+
+      <!-- Main Content -->
+      <div class="adminx-content">
+        <div class="adminx-main-content">
+          <div class="container-fluid">
+            <!-- BreadCrumb -->
+            <nav aria-label="breadcrumb" role="navigation">
+              <ol class="breadcrumb adminx-page-breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Customer</a></li>
+                <li class="breadcrumb-item active  aria-current="page">Project List</li>
+              </ol>
+            </nav>
+
+           
+            
+
+            <div class="row">
+              <div class="col">
+                <div class="card mb-grid">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card-header-title">Project List</div>
+                  </div>
+                  <div class="table-responsive-md">
+                    <table class="table table-actions table-striped table-hover mb-0">
+                      <thead>
+                        <tr>
+                          <th scope="col">
+                            <label class="custom-control custom-checkbox m-0 p-0">
+                              <input type="checkbox" class="custom-control-input table-select-all">
+                              <span class="custom-control-indicator"></span>
+                            </label>
+                          </th>
+                          <th scope="col">Project Name</th>
+                          <th scope="col">Domain</th>
+                          <th scope="col">payble Amount</th>
+                          <th scope="col">projectStatus</th>
+                          <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% projects.forEach((result)=>{ %>
+                          <tr>
+                            <th scope="row">
+                              <label class="custom-control custom-checkbox m-0 p-0">
+                                <input type="checkbox" class="custom-control-input table-select-row">
+                                <span class="custom-control-indicator"></span>
+                              </label>
+                            </th>
+                            <td><%=result.projectName%></td>
+                            <td><%=result.domain%></td>
+                            <td><%=result.paybleAmount%></td>
+                            <td><%=result.projectStatus%></td>
+                          
+                            <td>
+                             <a href="/readMoreCustomerProject/<%=result.id%>">
+                              <button class="btn btn-sm btn-primary">View</button>
+                             </a>
+                            </td>
+                          </tr>
+                      <%  })%>
+                      
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- // Main Content -->
+    </div>
+
+    <!-- If you prefer jQuery these are the required scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="../js/vendor.js"></script>
+    <script src="../js/adminx.js"></script>
+
+    <!-- If you prefer vanilla JS these are the only required scripts -->
+    <!-- script src="../dist/js/vendor.js"></script>
+    <script src="../dist/js/adminx.vanilla.js"></script-->
+  </body>
+</html>

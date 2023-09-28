@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Project Management - makeMybiz Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" type="text/css" href="../css/adminx.css" media="screen" />
+</head>
+
+<body style=" background: url(../image/image01.jpg); background-repeat: no-repeat; background-size: cover; background-position: top;">
+  <div class="adminx-container d-flex justify-content-center align-items-center">
+    <div class="page-login">
+      <div class="text-center">
+        <a class="navbar-brand  h1" href="/login">
+          <img src="../image/MMB-logo.png" class="navbar-brand-image d-inline-block align-top " alt="" style="    width: 100%;
+    height: 100%;">
+        </a>
+      </div>
+
+      <div class="card mb-0">
+      
+       
+        <div class="card-body">
+          <form action="/login" method="post" id="form">
+            <label for="" id="errorLabel" class="text-danger"></label>
+            <div class="form-group">
+              <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+          
+            <button type="submit" class="btn btn-sm btn-block btn-primary">Sign in</button>
+          </form>
+        </div>
+        <div class="card-footer text-center">
+          <a href="#"><small>Forgot your password?</small></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- If you prefer jQuery these are the required scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <script src="../js/vendor.js"></script>
+  <script src="../js/adminx.js"></script>
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+
+    let errorLabel = document.getElementById("errorLabel");
+
+    let form = document.getElementById("form");
+
+
+    //  let form = document.getElementById('form');
+    form.addEventListener("submit", (e) => {
+      let email = $("#email").val();
+      let password = $("#password").val();
+      e.preventDefault();
+      $.ajax({
+        url: `http://localhost:5000/login`,
+        method: "post",
+        contentType: "application/x-www-form-urlencoded",
+        data: {
+          email,
+          password,
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.message == 'admin successfully login') {
+            window.location = `http://localhost:5000/adminDashboard`
+          }
+          else if (res.message == 'developer successfully login') {
+            window.location = `http://localhost:5000/developerDashboard`
+          }
+          else if (res.message == 'customer successfully login') {
+            window.location = `http://localhost:5000/customerDashboard`
+          }
+          else if (res.message == 'project Manager successfully login') {
+            window.location = `http://localhost:5000/projectManagerDashboard`
+          }
+
+        },
+        error: function (error) {
+          console.log(error);
+          if (
+            error.responseJSON.data ===
+            "Internal error occured: your account dose not exist"
+          ) {
+            errorLabel.style.display = "block";
+            errorLabel.innerHTML = "your account dose not exist";
+          } else if (
+            error.responseJSON.data ===
+            "Internal error occured: your password is inccorect"
+          ) {
+            errorLabel.style.display = "block";
+            errorLabel.innerHTML = "your password is inccorect";
+          } else if (
+            error.responseJSON.data ===
+            "Internal error occured: you are user so you can't login"
+          ) {
+            errorLabel.style.display = "block";
+            errorLabel.innerHTML = " you are user so you can't login";
+          }
+          else if (
+            error.responseJSON.data ===
+            "Internal error occured: this account is dissabled ! please contect admin"
+          ) {
+            errorLabel.style.display = "block";
+            errorLabel.innerHTML = "this account is dissabled ! please contect admin";
+          }
+        },
+      });
+    });
+  </script>
+
+  <!-- If you prefer vanilla JS these are the only required scripts -->
+  <!-- script src="../dist/js/vendor.js"></script>
+    <script src="../dist/js/adminx.vanilla.js"></script-->
+</body>
+
+</html>

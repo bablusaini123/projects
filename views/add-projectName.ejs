@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Project Management - makeMybiz Admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="../css/adminx.css" media="screen" />
+</head>
+
+<body>
+    <div class="adminx-container">
+        <%- include("../partials/header.ejs")%>
+
+            <!-- expand-hover push -->
+            <!-- Sidebar -->
+
+            <!-- Sidebar End -->
+            <%- include("../partials/dashboard.ejs")%>
+                <!-- Sidebar -->
+
+                <!-- Sidebar End -->
+
+                <!-- Main Content -->
+                <div class="adminx-content">
+                    <div class="adminx-main-content">
+                        <div class="container-fluid">
+                            <!-- BreadCrumb -->
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb adminx-page-breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Project Name</a></li>
+                                    <li class="breadcrumb-item active  aria-current=" page">Project Name </li>
+                                </ol>
+                            </nav>
+
+                            <div class="pb-3">
+                             
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card mb-grid">
+                                        <div class="card-header d-flex justify-content-between align-items-center">
+                                            <div class="card-header-title">Project Name</div>
+
+                                            <nav class="card-header-actions">
+                                                <a class="card-header-action" data-toggle="collapse" href="#card1"
+                                                    aria-expanded="false" aria-controls="card1">
+                                                    <i data-feather="minus-circle"></i>
+                                                </a>
+
+                                            </nav>
+                                        </div>
+                                        <div class="card-body collapse show" id="card1">
+                                            <form action="/addProjectName" method="post" id="form">
+                                            <div class="row">
+    <div class="col-md-6">
+     <div class="form-group">
+                                                    <label class="form-label" for="exampleInputEmail1">Project Name</label>
+                                                    <input id="name" required name="projectName" type="text"
+                                                        class="form-control" id="exampleInputEmail1"
+                                                        aria-describedby="emailHelp" placeholder="Enter Project Name">
+
+                                                </div>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+                                               
+
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <table class="table table-actions table-striped table-hover mb-0 bg-light">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">
+                                      <label class="custom-control custom-checkbox m-0 p-0">
+                                        <input type="checkbox" class="custom-control-input table-select-all">
+                                        <span class="custom-control-indicator"></span>
+                                      </label>
+                                    </th>
+                                    <th style="width: 70%;text-align: left;" scope="col">Name</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                
+                                  <% projectName.forEach((result)=>{ %>
+                                    <tr>
+                                      <th scope="row">
+                                        <label class="custom-control custom-checkbox m-0 p-0">
+                                          <input type="checkbox" class="custom-control-input table-select-row">
+                                          <span class="custom-control-indicator"></span>
+                                        </label>
+                                      </th>
+                                      <td><%=result.projectName%></td>
+                                    
+                                    
+                                      <td>
+                                        <a href="/editProjectName/<%=result.id%>"><button class="btn btn-sm btn-primary">Edit</button></a>
+                                        <a href="/deleteProjectName/<%=result.id%>"> <button class="btn btn-sm btn-danger">Delete</button></a>
+                                      </td>
+                                    </tr>
+                                <%  })%>
+                                
+                                 
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                    <!-- // Main Content -->
+                </div>
+
+                <!-- If you prefer jQuery these are the required scripts -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+                <script src="../js/vendor.js"></script>
+                <script src="../js/adminx.js"></script>
+
+
+              
+
+                <!-- If you prefer vanilla JS these are the only required scripts -->
+                <!-- script src="../dist/js/vendor.js"></script>
+    <script src="../dist/js/adminx.vanilla.js"></script-->
+
+                <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function () {
+                        'use strict';
+
+                        window.addEventListener('load', function () {
+                            var form = document.getElementById('needs-validation');
+                            if (form !== null) {
+                                form.addEventListener('submit', function (event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            }
+                        }, false);
+                    })();
+                </script>
+</body>
+
+</html>

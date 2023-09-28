@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project Management - makeMybiz Admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="../css/adminx.css" media="screen" />
+
+    <!-- this is only relevant for the demo -->
+    <link rel="stylesheet" href="../demo/demo.css">
+  </head>
+  <body>
+    <div class="adminx-container">
+      <%- include("../partials/header.ejs")%>
+
+      <!-- expand-hover push -->
+      <!-- Sidebar -->
+     
+      <!-- Sidebar End -->
+      <%- include("../partials/dashboard.ejs")%>
+    
+      <!-- Sidebar End -->
+
+      <!-- Main Content -->
+      <div class="adminx-content">
+        <div class="adminx-main-content">
+          <div class="container-fluid">
+            <!-- BreadCrumb -->
+            <nav aria-label="breadcrumb" role="navigation">
+              <ol class="breadcrumb adminx-page-breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Projects</a></li>
+                <li class="breadcrumb-item active  aria-current="page">Projects Details</li>
+              </ol>
+            </nav>
+
+           
+            
+
+            <div class="row">
+              <div class="col">
+                <div class="card mb-grid">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card-header-title">Project Details</div>
+                  </div>
+                  <div class="table-responsive-md">
+                    <table class="table table-actions table-striped table-hover mb-0">
+                     <div class="row">
+                      <div class="col-md-6 p-5">
+                        <h4>Customer Project Details</h4>
+                        <div class="mt-4">
+                          <h5><b>Project Name</b> :  <%=result.projectName%></h5>
+                          
+                          
+                        </div>
+
+                        <div class="mt-4">
+                          <h5><b>Project Basic Cost</b> :  <%=result.projectBasicCost%></h5>
+                         
+                        </div>
+
+                        <div class="mt-4">
+                          <h5><b>GST</b> :  <%=result.gst%></h5>
+                         
+                        </div>
+
+                        <div class="mt-4">
+                          <h5><b>Net Payable Amount</b> :  <%=result.paybleAmount%></h5>
+                         
+                        </div>
+
+                        <div class="mt-4">
+                          <h5><b>Advance Payment</b> : <%=result.advancePayment%></h5>
+                         
+                        </div>
+
+                        <div class="mt-4">
+                          <h5><b>Balance Payment</b> :  <%=result.balancePayment%></h5>
+                         
+                        </div>
+
+                        <div class="mt-4">
+                          <h5><b>Domain Name</b> :  <%=result.domain%></h5>
+                         
+                        </div>
+
+                        <div class="mt-4">
+                          <h5><b>Project Status</b> :   <%=result.projectStatus%></h5>
+                          
+                        </div>
+
+                        <div class="mt-4">
+                          <h5><b>Remark</b> :  <%=result.Remark%></h5>
+                         
+                        </div>
+
+                      <div class="row">
+                      <div class="col-md-6">
+                      <div class="mt-4">
+                          <h5><b>Invoice No</b> :  <%=result.invoiceno%></h5>
+                         
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mt-4">
+                          <h5><b>Invoice</b> : <br><a href="../upload-pdf/<%=result.invoice%>" target="_blank"><button>View Invoice</button></a>
+                         
+                        </div>
+                      </div>
+                      </div>
+
+                        
+
+                      
+                        
+                        <h4>Advance Payment Details</h4>
+                         <div class="row">
+                         <div class="col-md-6">
+                             <div class="mt-4">
+                          <h5><b>Advance Payment 1</b> :  <%=result.customeradpay1%></h5>
+                        </div>
+                         </div>
+                         <div class="col-md-6">
+                              <div class="mt-4">
+                          <h5><b>Date</b> :  <%=result.customeradpaydate1%></h5>
+                         
+                        </div>
+                         </div>
+                        </div>
+                        
+                        
+                        
+                         <div class="row">
+                         <div class="col-md-6">
+                             <div class="mt-4">
+                          <h5><b>Advance Payment 2</b> :  <%=result.customeradpay2%></h5>
+                        </div>
+                         </div>
+                         <div class="col-md-6">
+                              <div class="mt-4">
+                          <h5><b>Date</b> :  <%=result.customeradpaydate2%></h5>
+                         
+                        </div>
+                         </div>
+                        </div>
+                         <div class="row">
+                         <div class="col-md-6">
+                             <div class="mt-4">
+                          <h5><b>Advance Payment 3</b> :  <%=result.customeradpay3%></h5>
+                        </div>
+                         </div>
+                         <div class="col-md-6">
+                              <div class="mt-4">
+                          <h5><b>Date</b> :  <%=result.customeradpaydate3%></h5>
+                         
+                        </div>
+                         </div>
+                        </div>
+                         <div class="row">
+                         <div class="col-md-6">
+                             <div class="mt-4">
+                          <h5><b>Advance Payment 4</b> :  <%=result.customeradpay4%></h5>
+                        </div>
+                         </div>
+                         <div class="col-md-6">
+                              <div class="mt-4">
+                          <h5><b>Date</b> :  <%=result.customeradpaydate4%></h5>
+                         
+                        </div>
+                         </div>
+                        </div>
+
+
+
+                      
+
+                      </div>
+                       
+
+
+
+
+
+
+                  <!-- DEVELOPER VIEW -->
+
+                  <div class="col-md-6 p-5">
+                    <h4>Team Project Details</h4>
+                  
+
+                    <div class="mt-4">
+                      <h5><b>Project Basic Cost</b> :  <%=result.projectBasicCost%></h5>
+                     
+                    </div>
+
+                    <div class="mt-4">
+                      <h5><b>GST</b> :  <%=result.gst%></h5>
+                     
+                    </div>
+
+                    <div class="mt-4">
+                      <h5><b>Net Payable Amount</b> :  <%=result.paybleAmount%></h5>
+                     
+                    </div>
+
+                    <div class="mt-4">
+                      <h5><b>Advance Payment</b> :  <%=result.advancePayment%></h5>
+                     
+                    </div>
+
+                    <div class="mt-4">
+                      <h5><b>Balance Payment</b> :   <%=result.balancePayment%></h5>
+                     
+                    </div>
+
+                 
+
+                   
+
+                    <div class="mt-4">
+                      <h5><b>Remark</b> :  <%=result.Remark%></h5>
+                     
+                    </div>
+                      <div class="mt-4">
+                          <h5><b>Project Start Date</b> :  <%=result.projectStart%></h5>
+                         
+                        </div>
+
+                        <div class="mt-4">
+                          <h5><b>Project End Date</b> :  <%=result.projectEnd%></h5>
+                         
+                        </div>
+                    <h4>Advance Payment Details</h4>
+                      <div class="row">
+                         <div class="col-md-6">
+                             <div class="mt-4">
+                          <h5><b>Advance Payment 1</b> :  <%=result.developeradpaydate1%></h5>
+                        </div>
+                         </div>
+                         <div class="col-md-6">
+                              <div class="mt-4">
+                          <h5><b>Date</b> :  <%=result.developeradpaydate1%></h5>
+                         
+                        </div>
+                         </div>
+                        </div>
+                        
+                         <div class="row">
+                         <div class="col-md-6">
+                             <div class="mt-4">
+                          <h5><b>Advance Payment 2</b> :  <%=result.developeradpaydate2%></h5>
+                        </div>
+                         </div>
+                         <div class="col-md-6">
+                              <div class="mt-4">
+                          <h5><b>Date</b> :  <%=result.developeradpaydate2%></h5>
+                         
+                        </div>
+                         </div>
+                        </div>
+                         <div class="row">
+                         <div class="col-md-6">
+                             <div class="mt-4">
+                          <h5><b>Advance Payment 3</b> :  <%=result.developeradpaydate3%></h5>
+                        </div>
+                         </div>
+                         <div class="col-md-6">
+                              <div class="mt-4">
+                          <h5><b>Date</b> :  <%=result.developeradpaydate3%></h5>
+                         
+                        </div>
+                         </div>
+                        </div>
+                         <div class="row">
+                         <div class="col-md-6">
+                             <div class="mt-4">
+                          <h5><b>Advance Payment 4</b> :  <%=result.developeradpaydate4%></h5>
+                        </div>
+                         </div>
+                         <div class="col-md-6">
+                              <div class="mt-4">
+                          <h5><b>Date</b> :  <%=result.developeradpaydate4%></h5>
+                         
+                        </div>
+                         </div>
+                        </div>
+
+                 
+
+                  
+
+                  </div>
+                  
+                  
+                   <div class="col-md-12">
+                      <div class="row">
+                          <div class="col-md-12 px-5">
+                              <h4>Project Manager Details</h4>
+                              </div>
+                          <div class="col-md-6 px-5">
+                              <div class="mt-4">
+                      <h5><b>Project Basic Cost</b> :  <%=result.pm_totalProjectCost%></h5>
+                     
+                    </div>
+                              </div>
+                          <div class="col-md-6 px-5">
+                               <div class="mt-4">
+                      <h5><b>GST</b> :  <%=result.pm_gst%></h5>
+                     
+                    </div>
+                              </div>
+                              
+                               <div class="col-md-6 px-5">
+                               <div class="mt-4">
+                      <h5><b>Net Payable Amount </b> :  <%=result.pm_paybleAmount%></h5>
+                     
+                    </div>
+                              </div>
+                              
+                              
+                               <div class="col-md-6 px-5">
+                               <div class="mt-4">
+                      <h5><b>Advance Payment </b> :  <%=result.	pm_advancePayment%></h5>
+                     
+                    </div>
+                              </div>
+                              
+                               <div class="col-md-6 px-5">
+                               <div class="mt-4">
+                      <h5><b>Balance Payment </b> :  <%=result.	pm_balancePayment%></h5>
+                     
+                    </div>
+                              </div>
+                              
+                              <div class="col-md-6 px-5">
+                               <div class="mt-4">
+                      <h5><b>Remark </b> :  <%=result.	d_Remark%></h5>
+                     
+                    </div>
+                              </div>
+                              
+                              <div class="col-md-12 px-5 ">
+                                   <h4>Advance Payment Details</h4>
+                                  </div>
+                               <div class="col-md-6 px-5">
+                                  
+                                    <div class="row">
+                                     <div class="col-md-6">
+                                         <div class="mt-4">
+                          <h5><b>Advance Payment 1</b> : <%=result.pmadpay1%> </h5>
+                        </div>
+                                         </div>
+                                     <div class="col-md-6">
+                                             <div class="mt-4">
+                          <h5><b>Date</b> : <%=result.pmadpaydate1%> </h5>
+                        </div>
+                                         </div>
+                                     </div>
+                               
+                              </div>
+                               <div class="col-md-6 px-5">
+                                    <div class="row">
+                                     <div class="col-md-6">
+                                          <div class="mt-4">
+                          <h5><b>Advance Payment 2</b> : <%=result.pmadpay2%> </h5>
+                        </div>
+                                     </div>
+                                     <div class="col-md-6">
+                                          <div class="mt-4">
+                          <h5><b>Date</b> : <%=result.pmadpaydate2%> </h5>
+                        </div>
+                                         </div>
+                                     </div>
+                               
+                              </div>
+                              
+                              
+                              <div class="col-md-6 px-5 ">
+                                    <div class="row">
+                                     <div class="col-md-6">
+                                          <div class="mt-4">
+                          <h5><b>Advance Payment 3</b> : <%=result.pmadpay3%> </h5>
+                        </div>
+                                     </div>
+                                     <div class="col-md-6 ">
+                                          <div class="mt-4">
+                          <h5><b>Date</b> : <%=result.pmadpaydate3%> </h5>
+                        </div>
+                                         </div>
+                                     </div>
+                               
+                              </div>
+                              
+                              <div class="col-md-6 px-5 ">
+                                    <div class="row">
+                                     <div class="col-md-6">
+                                          <div class="mt-4">
+                          <h5><b>Advance Payment 4</b> : <%=result.pmadpay4%> </h5>
+                        </div>
+                                     </div>
+                                     <div class="col-md-6 ">
+                                          <div class="mt-4">
+                          <h5><b>Date</b> : <%=result.pmadpaydate4%> </h5>
+                        </div>
+                                         </div>
+                                     </div>
+                               
+                              </div>
+                              
+                              
+                              
+                               
+                             
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                     </div>
+                      
+
+                     </div>
+                    
+                     </div>
+                    
+                    
+                     
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- // Main Content -->
+    </div>
+
+    <!-- If you prefer jQuery these are the required scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="../js/vendor.js"></script>
+    <script src="../js/adminx.js"></script>
+
+    <!-- If you prefer vanilla JS these are the only required scripts -->
+    <!-- script src="../dist/js/vendor.js"></script>
+    <script src="../dist/js/adminx.vanilla.js"></script-->
+  </body>
+</html>
