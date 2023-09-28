@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://www.playg.softdevtest.in/admin/users.php -->
+<html lang="en" style="overflow: hidden;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+
+    <title>Playmaker Dashboard - </title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="./css/fontawesome.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/solid.min.css">
+    <style type="text/css">
+
+        /* Chart.js */
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1102.0" data-gr-ext-installed="" style="" cz-shortcut-listen="true">
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        
+        <%- include("../partials/header.ejs") %>
+
+
+        <div class="app-main">
+           
+            <%- include("../partials/sidebar.ejs") %>
+
+
+            <div class="app-main__outer">
+                <div id="main-contents" tabindex="1"></div>
+                <div class="app-main__inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                         
+                        </div>
+                    </div>
+                    <div id="z"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main-card mb-3 card">
+                                <div class="card-header"> Staff Member Lists
+                                    <!--<div class="btn-actions-pane-right">
+                                            <div role="group" class="btn-group-sm btn-group">
+                                                <button class="active btn btn-focus">Last Week</button>
+                                                <button class="btn btn-focus">All Month</button>
+                                            </div>
+        </div>-->
+                                </div>
+                                <div class="table-responsive">
+                                    <table
+                                        class="align-middle mb-0 table table-borderless table-striped table-hover display table table-bordered table-striped"
+                                        id="example">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">No.</th>
+                                                <th class="text-center">First Name</th>
+                                                <th class="text-center">Last Name</th>
+                                                <th class="text-center">Email</th>
+                                                <th class="text-center">Phone No.</th>
+                                                <th class="text-center">Country</th>
+                                                <th class="text-center">State</th>
+                                                <th class="text-center">IP Address</th>
+                                               
+                                                <th class="text-center">Status</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody id="appendrow">
+                                            <% users.forEach((result,index)=>{  %>
+                                                <tr class="" id="row1">
+                                                    <td class="text-center"><%=index+1%></td>
+                                                    <td class="text-center"><%=result.name%></td>
+                                                    <td class="text-center"><%=result.lname%></td>
+                                                    <td class="text-center"><%=result.email%></td>
+                                                    <td class="text-center"><%=result.phone%></td>
+                                                    <td class="text-center"><%=result.country%></td>
+                                                    <td class="text-center"><%=result.state%></td>
+                                                    <td class="text-center"><%=result.ipAddress%></td>
+                                                  
+                                                    <td class="text-center"><a href="/changeStatus/<%=result.id%>" class="btn btn-primary"><%=result.status%></a></td>
+                                                 
+                                                   
+                                                 
+                                                </tr>
+                                         <%   })%>
+                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    function isNumberKey(evt) {
+                        var charCode = (evt.which) ? evt.which : event.keyCode
+                        if (charCode > 31 && (charCode < 48 || charCode > 57))
+                            return false;
+                        return true;
+                    }
+                    function updatePriority(id, obj) {
+                        $(obj).attr("disabled", "disabled");
+                        //alert(id);
+                        var priority = $('#priority' + id).val();
+                        $('#update' + id).html('<img class="loadingimage" src="images/loading.gif" width="64" height="20"/>');
+                        //return;
+                        $.ajax({
+                            type: "POST",
+                            url: "?doAction=updatePriority",
+                            async: false,
+                            data: { update_id: id, priority: priority },
+                            success: function (response) {
+                                alert(response);
+                                $('#update' + id).html('<button onclick="updatePriority(' + id + ',this);" id="update" class="btn btn-primary" name="update" type="button">Update</button>');
+                                $(obj).removeAttr('disabled');
+                            }
+                        });
+                    }
+
+
+                    function edit_data(id, firstName, lastName, user_name, email, phone, password, role) {
+                        window.location = '#main-contents';
+                        $('#firstName').focus();
+                        $('#lastName').focus();
+                        $('#user_name').focus();
+                        $('#email').focus();
+                        $('#phone').focus();
+                        $('#password').focus();
+                        $('#role').focus();
+                        $('#hid_id').val(id);
+                        $('#firstName').val(firstName);
+                        $('#lastName').val(lastName);
+                        $('#user_name').val(user_name);
+                        $('#email').val(email);
+                        $('#phone').val(phone);
+                        $('#password').val(password);
+                        $('#role').val(role);
+                        //$('#priority').val(priority);
+                        //$('#submit').val('Update');
+                    }
+
+                    function clearData() {
+                        $('#frmEditPage')[0].reset();
+                        $('#hid_id').val('');
+                        $('#firstName').val('');
+                        $('#lastName').val('');
+                        $('#user_name').val('');
+                        $('#email').val('');
+                        $('#phone').val('');
+                        $('#password').val('');
+                        $('#role').val('');
+                    }
+
+                    function deletRow(id) {
+                        if (confirm('Do you want to delete this record?')) {
+                            $.ajax({
+                                type: "POST",
+                                url: "",
+                                //            url: "ajax/getDetails.php?doAction=getSlidingBanners",
+                                async: false,
+                                data: { id: id, doAction: 'deleteItem' },
+                                success: function (response) {
+
+                                    response = $.trim(response);
+
+                                    if (response == "0") {
+                                        alert("user used. Can't delete.");
+                                    }
+                                    else {
+                                        alert("Successfully Deleted.");
+                                        $('#row' + id).remove();
+
+                                    }
+                                },
+                                error: function () {
+                                    //your error code
+                                }
+                            });
+                        }
+                        return false;
+                    }
+
+                    function updateStatus(obj, status) {
+                        var tdd = $(obj).closest('td');
+                        id = $(obj).attr("data_id");
+                        tdd.html('<img class="loadingimage" src="images/loading.gif" width="64" height="20"/>');
+                        if (status == 'activer') {
+                            newval = 0;
+                            trueMsg = '<a class="inactiver" data_id="' + id + '" onclick="updateStatus(this,\'inactiver\');" href="javascript:void(0);"></a>';
+                            fasleMsg = '<a class="activer" data_id="' + id + '" onclick="updateStatus(this,\'activer\');" href="javascript:void(0);"></a>';
+                        } else {
+                            newval = 1;
+                            fasleMsg = '<a class="inactiver" data_id="' + id + '" onclick="updateStatus(this,\'inactiver\');" href="javascript:void(0);"></a>';
+                            trueMsg = '<a class="activer" data_id="' + id + '" onclick="updateStatus(this,\'activer\');" href="javascript:void(0);"></a>';
+                        }
+                        $.ajax({
+                            url: '',
+                            type: 'POST',
+                            data: { id: id, newval: newval, doAction: 'updateStatus' },
+                            success: function (response) {
+                                if ($.trim(response) == 'false') {
+                                    tdd.html(fasleMsg);
+                                } else {
+                                    tdd.html(trueMsg);
+                                }
+                            }
+                        });
+                    }
+
+
+                    $(document).ready(function () {
+                        $('#example').DataTable();
+                        adjustHeight();
+                    });
+
+                    $(window).resize(function () {
+                        adjustHeight();
+                    });
+
+                    function adjustHeight() {
+
+                        footerHeight = $('.site-footer').height();
+                        var contHeight = $(window).height() - footerHeight - 20;
+
+                        $('#main-content').css('min-height', contHeight + 'px');
+                        contHeight = contHeight - 95;
+                        $('.site-min-height').css('min-height', contHeight + 'px');
+
+                    }
+                </script>
+
+                <div class="app-wrapper-footer">
+                    <div class="app-footer">
+                        <div class="app-footer__inner">
+                            <div class="app-footer-left">
+                                <ul class="nav">
+                                    <li class="nav-item"> <a href="javascript:void(0);" class="nav-link"> </a> </li>
+                                    <li class="nav-item"> <a href="javascript:void(0);" class="nav-link"> </a> </li>
+                                </ul>
+                            </div>
+                            <div class="app-footer-right">
+                                <ul class="nav">
+                                    <li class="nav-item"> <a href="javascript:void(0);" class="nav-link"> Copyright
+                                            @2022 </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <script src="http://maps.google.com/maps/api/js?sensor=true"></script>  -->
+        </div>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript"
+        src="./js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="./js/jquery.scrollTo.min.js"></script>
+    <script src="./js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="./js/respond.min.js"></script>
+    <script src="./js/common-scripts.js"></script>
+    <div id="ascrail2000" class="nicescroll-rails"
+        style="width: 12px; z-index: 1000; background: rgb(64, 64, 64); cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; display: none;">
+        <div
+            style="position: relative; top: 0px; float: right; width: 12px; height: 0px; background-color: rgb(232, 64, 63); background-clip: padding-box; border-radius: 10px;">
+        </div>
+    </div>
+    <div id="ascrail2000-hr" class="nicescroll-rails"
+        style="height: 12px; z-index: 1000; background: rgb(64, 64, 64); position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none;">
+        <div
+            style="position: relative; top: 0px; height: 12px; width: 0px; background-color: rgb(232, 64, 63); background-clip: padding-box; border-radius: 10px;">
+        </div>
+    </div>
+    <script src="./js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="./js/jquery.cropbox.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+
+
+    <div class="jvectormap-tip"></div>
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+<div id="smartyContainer"
+    style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;">
+</div>
+
+</html>

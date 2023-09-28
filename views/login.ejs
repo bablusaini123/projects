@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://www.playg.softdevtest.in/admin/index.php -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="en">
+
+  <title>Playmaker Login</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+  <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link href="./css/main.css" rel="stylesheet">
+  <link href="./css/fontawesome.min.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <style type="text/css">
+    /* Chart.js */
+    @-webkit-keyframes chartjs-render-animation {
+      from {
+        opacity: 0.99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes chartjs-render-animation {
+      from {
+        opacity: 0.99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .chartjs-render-monitor {
+      -webkit-animation: chartjs-render-animation 0.001s;
+      animation: chartjs-render-animation 0.001s;
+    }
+  </style>
+</head>
+
+<body cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1102.0" data-gr-ext-installed="">
+  <div id="main" class="main-container">
+    <div class="box">
+      <h2><img src="./img/logos.png" style="width:250px;"></h2>
+      <h2>Welcome to Playmaker!</h2>
+      <form name="form1" class="form-signin" action="/" method="post" id="form">
+        <div class="input-box">
+          <span class="error"
+            style="color:#c00000;background:none;line-height: 40px;text-shadow: 2px 0px 7px rgba(255, 255, 255, 0.9);-webkit-text-shadow: 2px 0px 7px rgba(255, 255, 255, 0.9);"></span>
+          <input id="txtusername" autocomplete="off" type="text" name="txtusername" required="">
+          <label>Username</label>
+        </div>
+        <div class="input-box">
+          <span class="error" style="color:#C00"></span>
+          <input autocomplete="off" type="password" name="txtpassword" id="txtpassword" value="" required="">
+          <label>Password</label>
+        </div>
+        <input id="submit" type="submit" name="submit" value="Login">
+      </form>
+      <p><a href="https://www.playg.softdevtest.in/admin/index.php#">Forgot Password?</a></p>
+      <label for="" id="errorLabel" style="display: none; color: red;margin-top: 15px;font-size: 15px;"></label>
+    </div>
+  </div>
+
+  <div id="logged-in">
+  </div>
+  <script type="text/javascript" src="./js/main.js.download"></script>
+  <script>
+    $(document).ready(function (e) {
+      $("#txtusername").focus();
+    });
+	
+  </script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+  let Inputusername = document.getElementById("txtusername");
+  let InputPassword = document.getElementById("txtpassword");
+  let errorLabel = document.getElementById("errorLabel");
+ 
+  let form = document.getElementById("form");
+ 
+
+  //  let form = document.getElementById('form');
+  form.addEventListener("submit", (e) => {
+    let username = $("#txtusername").val();
+    let password = $("#txtpassword").val();
+    e.preventDefault();
+          $.ajax({
+            url: `http://localhost:5000/`,
+            method: "post",
+            contentType: "application/x-www-form-urlencoded",
+            data: {
+              username,
+              password,
+            },
+            success: function (res) {
+              window.location = `http://localhost:5000/dashboard`
+            },
+            error: function (error) {
+              console.log(error);
+              if (
+                error.responseJSON.data ===
+                "Internal error occured: your account dose not exist"
+              ) {
+                errorLabel.style.display = "block";
+                errorLabel.innerHTML = "your account dose not exist";
+              } else if (
+                error.responseJSON.data ===
+                "Internal error occured: your password is inccorect"
+              ) {
+                errorLabel.style.display = "block";
+                errorLabel.innerHTML = "your password is inccorect";
+              } else if (
+                error.responseJSON.data ===
+                "Internal error occured: you are user so you can't login"
+              ) {
+                errorLabel.style.display = "block";
+                errorLabel.innerHTML = " you are user so you can't login";
+              }
+              else if (
+                error.responseJSON.data ===
+                "Internal error occured: your account is disabled please contact admin"
+              ) {
+                errorLabel.style.display = "block";
+                errorLabel.innerHTML = "your account is disabled please contact admin !";
+              }
+            },
+          });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="jvectormap-tip"></div>
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+<div id="smartyContainer"
+  style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;">
+</div>
+
+</html>

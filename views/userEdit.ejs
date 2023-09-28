@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insert user</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <%- include("../partials/header.ejs") %>
+
+  <section>
+    <div class="container">
+      <div class="row">
+   <div class="col-md-6 shadow rounded p-5 mt-5" style="margin: auto;">
+    <form action="/userEditSubmit/<%=user.id%>" method="post">
+        <h4 class="mb-4">Edit User</h4>
+        <div class="form-group">
+          <label for="exampleInputEmail1">User Name</label>
+          <input required type="text" class="form-control"  name="username" value="<%=user.username%>" disabled="disabled">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">User Email</label>
+          <input required type="email" class="form-control" name="email"  value="<%=user.email%>">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">User Password</label>
+            <input required type="password" class="form-control" name="password"  value="<%=user.password%>">
+          </div>
+       
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+   </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

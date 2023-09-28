@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://www.playg.softdevtest.in/admin/add_contest.php -->
+<html lang="en" style="overflow: hidden;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+
+    <title>Playmaker Dashboard - </title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1102.0" data-gr-ext-installed="" cz-shortcut-listen="true" style="">
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+
+
+        <%- include("../partials/header.ejs") %>
+
+            <div class="app-main">
+
+                <%- include("../partials/sidebar.ejs") %>
+
+                    <div class="app-main__outer">
+                        <div id="main-contents" tabindex="1"></div>
+                        <div class="app-main__inner">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="main-card mb-3 card">
+                                        <div class="card-header"> Edit Contest</div>
+                                        <form id="frmEditPage" action="/editContest/<%=contestDetails.id%>" method="post">
+                                            <div class="input-sec">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="inp-sec">
+                                                                <i>Game Category <span
+                                                                        style="color: red;margin-left: 0px;position: absolute;">*</span></i>
+                                                                <select name="category" id="category" required=""
+                                                                    class="form-control" title="Select School">
+                                                                <%categoryData.forEach((result)=>{     %>
+                                                                    <option value="<%=result.id%>" <%= result.id == contestDetails.category ? 'selected' : "" %>>
+                                                                        <%=result.category%>
+                                                                    </option>
+                                                                <%    })%>
+                                                                 
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="inp-sec">
+
+                                                                <i>Contest Name <span
+                                                                        style="color: red;margin-left: 0px;position: absolute;">*</span></i>
+                                                                <input type="text" name="name" id="name"
+                                                                    class="form-control" required=""
+                                                                    value="<%=contestDetails.name%>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="inp-sec">
+                                                                <i>Start Date <span
+                                                                        style="color: red;margin-left: 0px;position: absolute;">*</span></i>
+                                                                <input type="date" required="" name="startDate"
+                                                                    id="startDate" class="form-control"
+                                                                    value="<%=contestDetails.startDate%>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="inp-sec">
+                                                                <i>End Date <span
+                                                                        style="color: red;margin-left: 0px;position: absolute;">*</span></i>
+                                                                <input type="date" required="" name="endDate"
+                                                                    id="endDate" class="form-control"
+                                                                    value="<%=contestDetails.endDate%>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="inp-sec">
+                                                                <i>End Time <span
+                                                                        style="color: red;margin-left: 0px;position: absolute;">*</span></i>
+                                                                <input type="time" required="" name="endTime"
+                                                                    id="endTime" class="form-control"
+                                                                    value="<%=contestDetails.endTime%>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4"></div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+
+                                                                <span class="inp-file"><input type="file" name="file"
+                                                                        id="imgInp"
+                                                                        style="height: 30px;cursor: pointer;"><i>Browse
+                                                                        Banner
+                                                                        Image</i></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <img id="blah" style="width:50px;height: 50px;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="inp-sec">
+                                                                <i>Description</i>
+                                                                <input type="text" name="description"
+                                                                    class="form-control" required=""
+                                                                    value="<%=contestDetails.description%>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!----------Managers----------->
+                                            <div class="card-header"> Questions</div>
+                                            <div class="input-sec">
+                                                <div class="container-fluid">
+                                                    <div id="appendChain" class="row">
+
+
+
+                                                        <div class="shop contactleft">
+                                                            <div class="form-group inp-sec d-flex">
+                                                                <i><strong>Question <span
+                                                                            style="color: red;margin-left: 0px;position: absolute;">*</span></strong></i>
+                                                                <input type="hidden" name="chncnt" id="chncnt"
+                                                                    value="0">
+
+                                                                <input type="hidden" name="contest_id[]" value="0">
+                                                                <input type="hidden" name="question_id[]" value="0">
+
+
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="col-md-12 form-group"></div>
+                                                    </div>
+                                                    <div role="group" class="btn-group-sm" style="text-align: center;">
+                                                        <a class="btn btn-focus"
+                                                            style="color:#fff;border-radius: 30px;text-align:center;"
+                                                            onclick="onChainOk(event)">+</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!----------Managers----------->
+
+                                            <!----------Prize for Contest----------->
+                                            <div class="card-header"> Prize for Contest</div>
+                                            <div class="input-sec">
+                                                <div class="container-fluid">
+
+
+                                                    <div id="appendChain1" class="row">
+                                                        <div class="shop1 contactleft">
+                                                            <div class="form-group">
+                                                                <label><strong>Prize <span
+                                                                            style="color: red;margin-left: 0px;position: absolute;">*</span></strong></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="shop1">
+                                                            <div class="form-group">
+                                                                <label><strong>Image</strong></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="shop1">
+                                                            <div class="form-group">
+                                                                <label><strong>Prize Code <span
+                                                                            style="color: red;margin-left: 0px;position: absolute;">*</span></strong></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="shop1">
+                                                            <div class="form-group">
+                                                                <label><strong>URL</strong></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="shop1">
+                                                            <div class="form-group">
+                                                                <label><strong>Rank <span
+                                                                            style="color: red;margin-left: 0px;position: absolute;">*</span></strong></label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-12 form-group"></div>
+
+
+
+
+                                                        <div class="row" id='th0'>
+
+                                                            <div class="shop1 contactleft">
+                                                                <div class="form-group">
+                                                                    <input type="hidden" name="chncnt1" id="chncnt1"
+                                                                        value='1'>
+                                                                    <input type="hidden" name="price_id[]" value="0">
+                                                                    <input type="text" class="form-control" name="price"
+                                                                        required="" value="" id="pricePrice">
+                                                                </div>
+                                                            </div>
+                                                            <div class="shop1">
+                                                                <div class="form-group">
+                                                                    <span class="inp-file"><input type="file"
+                                                                            name="image[]" id="image0"
+                                                                            onchange="loadFile(event,0)"><i>Browse</i></span>
+                                                                    <img id="output0" style="width:30px;height: 30px;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="shop1">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" name="code"
+                                                                        required="" value="" id="priceCode">
+                                                                </div>
+                                                            </div>
+                                                            <div class="shop1">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" name="url"
+                                                                        value="" id="priceUrl">
+                                                                </div>
+                                                            </div>
+                                                            <div class="shop1">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" name="rank"
+                                                                        required="" id="priceRank">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+
+
+
+
+
+                                                    </div>
+
+
+
+
+                                                    <div role="group" class="btn-group-sm" style="text-align: center;">
+                                                        <a class="btn btn-focus"
+                                                            style="color:#fff;border-radius: 30px;text-align:center;"
+                                                            onclick="onChainOk1(event)">+</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!----------Price for Contest----------->
+
+                                            <!----------Special Hours----------->
+                                            <div class="card-header"> Sponsors</div>
+                                            <div class="input-sec">
+                                                <div class="container-fluid">
+                                                    <div id="appendChain2" class="row">
+                                                        <div class="shop2 contactleft">
+                                                            <div class="form-group">
+                                                                <label><strong>Name <span
+                                                                            style="color: red;margin-left: 0px;position: absolute;">*</span></strong></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="shop2">
+                                                            <div class="form-group">
+                                                                <label><strong>URL</strong></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="shop2">
+                                                            <div class="form-group">
+                                                                <label><strong>Image</strong></label>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="row" id='sh0'>
+
+                                                            <div class="shop2 contactleft">
+                                                                <div class="form-group">
+                                                                    <input type="hidden" name="chncnt2" id="chncnt2"
+                                                                        value="1">
+                                                                    <input type="text" class="form-control" name="sName"
+                                                                        required="" value="" id="sName">
+                                                                </div>
+                                                            </div>
+                                                            <div class="shop2">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" name="sUrl"
+                                                                        value="" id="sUrl">
+                                                                </div>
+                                                            </div>
+                                                            <div class="shop2" style="width:200px;">
+                                                                <div class="form-group">
+                                                                    <span class="inp-file"><input type="file"
+                                                                            name="sImage[]" id="sImage0"
+                                                                            onchange="loadFile1(event,0)"><i>Browse</i></span>
+                                                                    <img id="spoutput0"
+                                                                        style="width:30px;height: 30px;">
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+
+
+
+
+
+                                                    </div>
+                                                    <div role="group" class="btn-group-sm" style="text-align: center;">
+                                                        <a class="btn btn-focus"
+                                                            style="color:#fff;border-radius: 30px;text-align:center;"
+                                                            onclick="onChainOk2(event)">+</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!----------Special Hours----------->
+
+
+                                            <div class="col-md-4">
+                                                <div class="inp-sec">
+                                                    <button type="submit" name="submit" class="active btn btn-focus"
+                                                        id="submit">Save</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            function selectType(id) {
+                                var type = document.getElementById('type' + id).value;
+                                console.log("tyyyy", type)
+                                if (type == 1) {
+                                    document.getElementById("opndiv" + id).style.display = "none";
+                                } else {
+                                    document.getElementById("opndiv" + id).style.display = "block";
+                                }
+                            }
+                            var loadFile1 = function (event, i) {
+                                var output = document.getElementById('spoutput' + i);
+                                output.src = URL.createObjectURL(event.target.files[0]);
+                                output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                }
+                            };
+                            var loadFile = function (event, i) {
+                                var output = document.getElementById('output' + i);
+                                output.src = URL.createObjectURL(event.target.files[0]);
+                                output.onload = function () {
+                                    URL.revokeObjectURL(output.src) // free memory
+                                }
+                            };
+                        </script>
+                        <script type="text/javascript">
+                            imgInp.onchange = evt => {
+                                const [file] = imgInp.files
+                                if (file) {
+                                    blah.src = URL.createObjectURL(file)
+                                }
+                            }
+                            function closeSchoolcontact(id) {
+                                $("#schoolcontact" + id).remove();
+                            }
+                            function closeSchoolcontact1(id) {
+                                $("#th" + id).remove();
+                            }
+                            function closeSchoolcontact2(id) {
+                                $("#sh" + id).remove();
+                            }
+                            function onChainOk2(event) {
+                                ccnt = parseInt(document.getElementById('chncnt2').value) + 1;
+                                document.getElementById('chncnt2').value = ccnt;
+                                var ccntz = ccnt - 1;
+                                chn5 = '<div id="sh' + ccntz + '" class="row" style="width: 100%;margin-right:0px;margin-left:0px;"><div class="shop2 contactleft"><div class="form-group"><input type="text" class="form-control" name="sName" required /></div></div><div class="shop2"><div class="form-group"><input type="text" class="form-control" name="sUrl" /></div></div><div class="shop2" style="width:200px;"><div class="form-group"><span class="inp-file"><input type="file" name="sImage[]" onchange="loadFile1(event,' + ccntz + ')"><i>Browse</i></span>&nbsp;<img id="spoutput' + ccntz + '" style="width:50px;height: 30px;"/></div></div><div class="contactright form-group first-list" style="display:flex;margin:-7px 0;padding:20px 0 0 20px;"><a id="close' + ccntz + '" onClick="closeSchoolcontact2(' + ccntz + ')" class="close" title="Del"><em class="close">+</em></a></div></div>';
+                                $('#appendChain2').append(chn5);
+                            }
+                            function onChainOk1(event) {
+                                ccnt = parseInt(document.getElementById('chncnt1').value) + 1;
+                                document.getElementById('chncnt1').value = ccnt;
+                                console.log("tthththth", ccnt)
+                                var ccntz = ccnt - 1;
+                                chn5 = '<div id="th' + ccntz + '" class="row" style="width: 100%;margin-right:0px;margin-left:0px;"><div class="shop1 "><div class="form-group"><input type="text" class="form-control" name="price" required /></div></div><div class="shop1"><div class="form-group"><span class="inp-file"><input type="file" name="image[]" onchange="loadFile(event,' + ccntz + ')"><i>Browse</i></span>&nbsp;<img id="output' + ccntz + '" style="width:50px;height: 30px;"/></div></div><div class="shop1"><div class="form-group"><input type="text" class="form-control" name="code" required /></div></div><div class="shop1"><div class="form-group"><input type="text" class="form-control" name="url" /></div></div><div class="shop1"><div class="form-group"><input type="text" class="form-control" name="rank" required /></div></div><div class="contactright form-group first-list" style="display:flex;margin:-7px 0;padding:20px 0 0 20px;"><a id="close' + ccntz + '" onClick="closeSchoolcontact1(' + ccntz + ')" class="close" title="Del"><em class="close">+</em></a></div></div>';
+                                $('#appendChain1').append(chn5);
+                            }
+                            function onChainOk(event) {
+                                ccnt = parseInt(document.getElementById('chncnt').value) + 1;
+                                document.getElementById('chncnt').value = ccnt;
+                                var ccntz = ccnt - 1;
+                                chn5 = '<div id="schoolcontact' + ccntz + '" class="row schoolcontact" style="width: 100%;margin-right:0px;margin-left:0px;"><div class="shop contactleft"><div class="form-group inp-sec"><i><strong>Type</strong></i><select name="questionsType" id="type' + ccntz + '" required class="form-control" title="Select Type"  onchange="selectType(' + ccntz + ')" ><option value="0">Option</option><option value="1">Text</option></select></div></div><div class="shop contactleft"><div class="form-group inp-sec d-flex"><input type="hidden" name="contest_id[]" value="0"><input type="hidden" name="question_id[]" value="0"><i><strong>Question <span style="color: red;margin-left: 0px;position: absolute;">*</span></strong></i><input type="text" class="form-control" name="questions" required /><a class="btn btn-focus" style="color:#fff;border-radius: 30px;text-align:center;height: 33px;margin-left: 20px;margin-top: 5px;" onclick="addoption(this);">+</a></div></div><div class="option-group" id="opndiv' + ccntz + '"><div class="shop contactleft contactleft1 option-group-section" ><div class="form-group inp-sec"><i><strong>Option 1 <span style="color: red;margin-left: 0px;position: absolute;">*</span></strong></i><input type="text" class="form-control" name="schoolcontact' + ccntz + '" style="width:92%" /></div></div></div><div class="shop contactleft"><div class="form-group inp-sec"><i><strong>Answer</strong></i><input type="text" class="form-control" name="answers" /></div></div><div class="contactright form-group first-list" style="display:flex;margin:-7px 0;padding:20px 0 0 20px;"><a id="close' + ccntz + '" onClick="closeSchoolcontact(' + ccntz + ')" class="close" title="Del"><em class="close">+</em></a></div></div>';
+                                $('#appendChain').append(chn5);
+                            }
+
+                            function isNumberKey(evt) {
+                                var charCode = (evt.which) ? evt.which : event.keyCode
+                                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                                    return false;
+                                return true;
+                            }
+                            function addoption(obj) {
+                                console.log(obj)
+                                var count = 0;
+                                var parentdiv = $(obj).closest('.schoolcontact');
+                                
+                                console.log("parentdiv", parentdiv)
+                                var data = '<div class="shop contactleft contactleft1 option-group-section">';
+                                data += '<div class="form-group inp-sec d-flex">';
+                                data += '<i><strong class="optionindex">Option </strong></i>';
+                                data += '<input type="text" class="form-control optiopninput" name="option[]"/>';
+                                data += '<a class="btn btn-focus" style="color:#fff;border-radius: 30px;text-align:center;height: 33px;margin-left: 20px;margin-top: 5px;" onclick="optionclose(this);">x</a></div></div>';
+                                $(parentdiv).find('.option-group-section').each(function () {
+                                    count++;
+                                });
+                                if (count > 4) {
+                                    //alert('max limit exist');
+                                }
+                                else {
+                                    $(parentdiv).find('.option-group').append(data);
+                                    SetIndexOption($(parentdiv));
+                                }
+                            }
+                            function optionclose(obj) {
+                                var parentdiv = $(obj).closest('.schoolcontact');
+                                $(obj).closest('.contactleft1').remove();
+                                SetIndexOption($(parentdiv));
+                            }
+                            function SetIndexOption(obj) {
+                                var count = 1;
+                                $(obj).find('.contactleft1').each(function () {
+                                    var parentdiv = $(this).closest('.schoolcontact').attr("id");
+                                    var option = parentdiv;
+                                    $(this).find('.optionindex').text("Option " + count);
+                                    $(this).find('.optiopninput').attr("name", option);
+                                    count++;
+                                });
+                            }
+
+                            function clearData() {
+                                $('#frmEditPage')[0].reset();
+                                $('#hid_id').val('');
+                                $('#firstName').val('');
+                                $('#lastName').val('');
+                                $('#email').val('');
+                                $('#phone').val('');
+                                $('#password').val('');
+                                $('#role').val('');
+                            }
+
+                        </script>
+
+                        <div class="app-wrapper-footer">
+                            <div class="app-footer">
+                                <div class="app-footer__inner">
+                                    <div class="app-footer-left">
+                                        <ul class="nav">
+                                            <li class="nav-item"> <a href="javascript:void(0);" class="nav-link"> </a>
+                                            </li>
+                                            <li class="nav-item"> <a href="javascript:void(0);" class="nav-link"> </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="app-footer-right">
+                                        <ul class="nav">
+                                            <li class="nav-item"> <a href="javascript:void(0);" class="nav-link">
+                                                    Copyright
+                                                    @2022 </a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <script src="http://maps.google.com/maps/api/js?sensor=true"></script>  -->
+            </div>
+    </div>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script>
+
+        const current = window.location.href
+        const id = current.slice(34)
+        console.log(id)
+        let optionArray =[]
+
+        function addoption2(obj) {
+                             //   console.log("this",obj)
+                             console.log("optionArray",optionArray)
+                            
+                                const element = optionArray[0];
+                                console.log("element", element)
+                                for (let z = 1; z < element.length; z++) {
+                                    const element2 = element[z];
+                                    console.log(element2)
+                                    var count = 0;
+                                var parentdiv = $(obj).closest('.schoolcontact');
+                                
+                            //    console.log("parentdiv", parentdiv)
+                                var data = '<div class="shop contactleft contactleft1 option-group-section">';
+                                data += '<div class="form-group inp-sec d-flex">';
+                                data += '<i><strong class="optionindex">Option </strong></i>';
+                                data += '<input type="text" class="form-control optiopninput" name="option[]" value=" '+ element[z] +' "/>';
+                                data += '<a class="btn btn-focus" style="color:#fff;border-radius: 30px;text-align:center;height: 33px;margin-left: 20px;margin-top: 5px;" onclick="optionclose(this);">x</a></div></div>';
+                                $(parentdiv).find('.option-group-section').each(function () {
+                                    count++;
+                                });
+                                if (count > 4) {
+                                    //alert('max limit exist');
+                                }
+                                else {
+                                    $(parentdiv).find('.option-group').append(data);
+                                    SetIndexOption($(parentdiv));
+                                }
+                              
+                                    
+                                }
+                               
+                                  
+                              
+                             
+                              
+                            }
+       
+        $.ajax({
+            url: `http://localhost:5000/getContest/${id}`,
+            method: "get",
+            contentType: "application/x-www-form-urlencoded",
+            success: function (res) {
+                const response = res
+
+                // APPEND PRICE DATA
+
+                const price = document.getElementById("pricePrice").value = response.priceData[0].price
+                const code = document.getElementById("priceCode").value = response.priceData[0].code
+                const url = document.getElementById("priceUrl").value = response.priceData[0].url
+                const rank = document.getElementById("priceRank").value = response.priceData[0].rank
+                for (let i = 1; i < response.priceData.length; i++) {
+                    const element = response.priceData[i];
+                    //   console.log("element",element)
+                    ccnt = parseInt(document.getElementById('chncnt1').value) + 1;
+                    document.getElementById('chncnt1').value = ccnt;
+                    //   console.log("tthththth", ccnt)
+                    var ccntz = ccnt - 1;
+                    chn5 = '<div id="th' + ccntz + '" class="row" style="width: 100%;margin-right:0px;margin-left:0px;"><div class="shop1 "><div class="form-group"><input type="text" class="form-control" name="price" required value="' + element.price + '"/></div></div><div class="shop1"><div class="form-group"><span class="inp-file"><input type="file" name="image[]" onchange="loadFile(event,' + ccntz + ')"><i>Browse</i></span>&nbsp;<img id="output' + ccntz + '" style="width:50px;height: 30px;"/></div></div><div class="shop1"><div class="form-group"><input type="text" class="form-control" name="code" required value="' + element.code + '"/></div></div><div class="shop1"><div class="form-group"><input type="text" class="form-control" name="url" value="' + element.url + '"/></div></div><div class="shop1"><div class="form-group"><input type="text" class="form-control" name="rank" required value="' + element.rank + '"/></div></div><div class="contactright form-group first-list" style="display:flex;margin:-7px 0;padding:20px 0 0 20px;"><a id="close' + ccntz + '" onClick="closeSchoolcontact1(' + ccntz + ')" class="close" title="Del"><em class="close">+</em></a></div></div>';
+                    $('#appendChain1').append(chn5);
+
+                }
+
+
+                // APPEND SPONSER DATA
+
+
+                const sName = document.getElementById("sName").value = response.sponserData[0].sName
+                const sUrl = document.getElementById("sUrl").value = response.sponserData[0].sUrl
+                for (let J = 1; J < response.sponserData.length; J++) {
+                    const element2 = response.sponserData[J];
+                    console.log("element2", element2)
+                    ccnt = parseInt(document.getElementById('chncnt2').value) + 1;
+                    document.getElementById('chncnt2').value = ccnt;
+                    var ccntz = ccnt - 1;
+                    chn5 = '<div id="sh' + ccntz + '" class="row" style="width: 100%;margin-right:0px;margin-left:0px;"><div class="shop2 contactleft"><div class="form-group"><input type="text" class="form-control" name="sName" required value="' + element2.sName + '" /></div></div><div class="shop2"><div class="form-group"><input type="text" class="form-control" name="sUrl" value="' + element2.sUrl + '" /></div></div><div class="shop2" style="width:200px;"><div class="form-group"><span class="inp-file"><input type="file" name="sImage[]" onchange="loadFile1(event,' + ccntz + ')"><i>Browse</i></span>&nbsp;<img id="spoutput' + ccntz + '" style="width:50px;height: 30px;"/></div></div><div class="contactright form-group first-list" style="display:flex;margin:-7px 0;padding:20px 0 0 20px;"><a id="close' + ccntz + '" onClick="closeSchoolcontact2(' + ccntz + ')" class="close" title="Del"><em class="close">+</em></a></div></div>';
+                    $('#appendChain2').append(chn5);
+                }
+
+
+                // APPEND QUESTIONS  DATA
+            
+
+                for (let K = 0; K < response.questionData.length; K++) {
+
+                   
+                    const element3 = response.questionData[K];
+                    console.log("element3", element3)
+                    ccnt = parseInt(document.getElementById('chncnt').value) + 1;
+                    document.getElementById('chncnt').value = ccnt;
+                    var ccntz = ccnt - 1;
+                    if (element3.type == 0) {
+
+                    
+
+                        // OPTIONS
+
+                        let obj = []
+                        for (let o = 1; o <= 7; o++) {
+                            
+                            const optionCount = element3["option"+o]
+                            if(optionCount !== "undefined" && optionCount !== null && optionCount !== "null"){
+                                 
+                                 obj.push(optionCount)
+     
+                            }
+                       
+
+                        }
+                        optionArray = []
+                        optionArray.push(obj)
+
+
+                            // QUESTIONS
+
+                            chn5 = '<div id="schoolcontact' + ccntz + '" class="row schoolcontact" style="width: 100%;margin-right:0px;margin-left:0px;"><div class="shop contactleft"><div class="form-group inp-sec"><i><strong>Type</strong></i><select name="questionsType" id="type' + ccntz + '" required class="form-control" title="Select Type"  onchange="selectType(' + ccntz + ')" ><option value="0">Option</option><option value="1">Text</option></select></div></div><div class="shop contactleft"><div class="form-group inp-sec d-flex"><input type="hidden" name="contest_id[]" value="0"><input type="hidden" name="question_id[]" value="0"><i><strong>Question <span style="color: red;margin-left: 0px;position: absolute;">*</span></strong></i><input type="text" class="form-control" name="questions" required value="'+ element3["question"]+'"/><a class="btn btn-focus" style="color:#fff;border-radius: 30px;text-align:center;height: 33px;margin-left: 20px;margin-top: 5px;"  id="plus' + K + '" onclick="addoption2(this);">+</a></div></div><div class="option-group" id="opndiv' + ccntz + '"><div class="shop contactleft contactleft1 option-group-section" ><div class="form-group inp-sec"><i><strong>Option 1 <span style="color: red;margin-left: 0px;position: absolute;">*</span></strong></i><input type="text" class="form-control" name="schoolcontact' + ccntz + '" style="width:92%" value="'+element3["option1"]+'" /></div></div></div><div class="shop contactleft"><div class="form-group inp-sec"><i><strong>Answer</strong></i><input type="text" class="form-control" name="answers"  value="'+ element3["answer"]+'" /></div></div><div class="contactright form-group first-list" style="display:flex;margin:-7px 0;padding:20px 0 0 20px;"><a id="close' + ccntz + '" onClick="closeSchoolcontact(' + ccntz + ')" class="close" title="Del"><em class="close">+</em></a></div></div>';
+                        $('#appendChain').append(chn5);
+                        selectType(ccntz)
+
+
+                        const plusButton = document.getElementById("plus"+K)
+                        plusButton.click();
+
+           
+
+
+                    } else {
+                        chn5 = '<div id="schoolcontact' + ccntz + '" class="row schoolcontact" style="width: 100%;margin-right:0px;margin-left:0px;"><div class="shop contactleft"><div class="form-group inp-sec"><i><strong>Type</strong></i><select name="questionsType" id="type' + ccntz + '" required class="form-control" title="Select Type"  onchange="selectType(' + ccntz + ')" ><option value="0">Option</option><option selected value="1">Text</option></select></div></div><div class="shop contactleft"><div class="form-group inp-sec d-flex"><input type="hidden" name="contest_id[]" value="0"><input type="hidden" name="question_id[]" value="0"><i><strong>Question <span style="color: red;margin-left: 0px;position: absolute;">*</span></strong></i><input type="text" class="form-control" name="questions" required value="'+ element3["question"]+'" /><a class="btn btn-focus" style="color:#fff;border-radius: 30px;text-align:center;height: 33px;margin-left: 20px;margin-top: 5px;" onclick="addoption(this);">+</a></div></div><div class="option-group" id="opndiv' + ccntz + '"><div class="shop contactleft contactleft1 option-group-section" ><div class="form-group inp-sec"><i><strong>Option 1 <span style="color: red;margin-left: 0px;position: absolute;">*</span></strong></i><input type="text" class="form-control" name="schoolcontact' + ccntz + '" style="width:92%" value="'+ element3["option1"] +'" /></div></div></div><div class="shop contactleft"><div class="form-group inp-sec"><i><strong>Answer</strong></i><input type="text" class="form-control" name="answers"  value="'+ element3["answer"]+'" /></div></div><div class="contactright form-group first-list" style="display:flex;margin:-7px 0;padding:20px 0 0 20px;"><a id="close' + ccntz + '" onClick="closeSchoolcontact(' + ccntz + ')" class="close" title="Del"><em class="close">+</em></a></div></div>';
+                        $('#appendChain').append(chn5);
+                        selectType(ccntz)
+                    }
+
+                }
+
+
+            },
+            error: function (error) {
+                console.log(error);
+
+            },
+        });
+    </script>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="../js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="../js/jquery.scrollTo.min.js"></script>
+    <script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="../js/respond.min.js"></script>
+    <script src="../js/common-scripts.js"></script>
+    <div id="ascrail2000" class="nicescroll-rails"
+        style="width: 12px; z-index: 1000; background: rgb(64, 64, 64); cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; opacity: 0;">
+        <div
+            style="position: relative; top: 0px; float: right; width: 12px; height: 397px; background-color: rgb(232, 64, 63); background-clip: padding-box; border-radius: 10px;">
+        </div>
+    </div>
+    <div id="ascrail2000-hr" class="nicescroll-rails"
+        style="height: 12px; z-index: 1000; background: rgb(64, 64, 64); position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none; opacity: 0;">
+        <div
+            style="position: relative; top: 0px; height: 12px; width: 1536px; background-color: rgb(232, 64, 63); background-clip: padding-box; border-radius: 10px;">
+        </div>
+    </div>
+    <script src="../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="../js/jquery.cropbox.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+
+
+    <div class="jvectormap-tip"></div>
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+<div id="smartyContainer"
+    style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;">
+</div>
+
+</html>
