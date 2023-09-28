@@ -1,0 +1,2332 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Sep 28, 2023 at 01:24 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `playg`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `countries`
+--
+
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `alpha_2` varchar(2) NOT NULL DEFAULT '',
+  `alpha_3` varchar(3) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `name`, `alpha_2`, `alpha_3`) VALUES
+(1, 'Afghanistan', 'af', 'afg'),
+(2, 'Aland Islands', 'ax', 'ala'),
+(3, 'Albania', 'al', 'alb'),
+(4, 'Algeria', 'dz', 'dza'),
+(5, 'American Samoa', 'as', 'asm'),
+(6, 'Andorra', 'ad', 'and'),
+(7, 'Angola', 'ao', 'ago'),
+(8, 'Anguilla', 'ai', 'aia'),
+(9, 'Antarctica', 'aq', ''),
+(10, 'Antigua and Barbuda', 'ag', 'atg'),
+(11, 'Argentina', 'ar', 'arg'),
+(12, 'Armenia', 'am', 'arm'),
+(13, 'Aruba', 'aw', 'abw'),
+(14, 'Australia', 'au', 'aus'),
+(15, 'Austria', 'at', 'aut'),
+(16, 'Azerbaijan', 'az', 'aze'),
+(17, 'Bahamas', 'bs', 'bhs'),
+(18, 'Bahrain', 'bh', 'bhr'),
+(19, 'Bangladesh', 'bd', 'bgd'),
+(20, 'Barbados', 'bb', 'brb'),
+(21, 'Belarus', 'by', 'blr'),
+(22, 'Belgium', 'be', 'bel'),
+(23, 'Belize', 'bz', 'blz'),
+(24, 'Benin', 'bj', 'ben'),
+(25, 'Bermuda', 'bm', 'bmu'),
+(26, 'Bhutan', 'bt', 'btn'),
+(27, 'Bolivia, Plurinational State of', 'bo', 'bol'),
+(28, 'Bonaire, Sint Eustatius and Saba', 'bq', 'bes'),
+(29, 'Bosnia and Herzegovina', 'ba', 'bih'),
+(30, 'Botswana', 'bw', 'bwa'),
+(31, 'Bouvet Island', 'bv', ''),
+(32, 'Brazil', 'br', 'bra'),
+(33, 'British Indian Ocean Territory', 'io', ''),
+(34, 'Brunei Darussalam', 'bn', 'brn'),
+(35, 'Bulgaria', 'bg', 'bgr'),
+(36, 'Burkina Faso', 'bf', 'bfa'),
+(37, 'Burundi', 'bi', 'bdi'),
+(38, 'Cambodia', 'kh', 'khm'),
+(39, 'Cameroon', 'cm', 'cmr'),
+(40, 'Canada', 'ca', 'can'),
+(41, 'Cape Verde', 'cv', 'cpv'),
+(42, 'Cayman Islands', 'ky', 'cym'),
+(43, 'Central African Republic', 'cf', 'caf'),
+(44, 'Chad', 'td', 'tcd'),
+(45, 'Chile', 'cl', 'chl'),
+(46, 'China', 'cn', 'chn'),
+(47, 'Christmas Island', 'cx', ''),
+(48, 'Cocos (Keeling) Islands', 'cc', ''),
+(49, 'Colombia', 'co', 'col'),
+(50, 'Comoros', 'km', 'com'),
+(51, 'Congo', 'cg', 'cog'),
+(52, 'Congo, The Democratic Republic of the', 'cd', 'cod'),
+(53, 'Cook Islands', 'ck', 'cok'),
+(54, 'Costa Rica', 'cr', 'cri'),
+(55, 'Cote d\'Ivoire', 'ci', 'civ'),
+(56, 'Croatia', 'hr', 'hrv'),
+(57, 'Cuba', 'cu', 'cub'),
+(58, 'Curacao', 'cw', 'cuw'),
+(59, 'Cyprus', 'cy', 'cyp'),
+(60, 'Czech Republic', 'cz', 'cze'),
+(61, 'Denmark', 'dk', 'dnk'),
+(62, 'Djibouti', 'dj', 'dji'),
+(63, 'Dominica', 'dm', 'dma'),
+(64, 'Dominican Republic', 'do', 'dom'),
+(65, 'Ecuador', 'ec', 'ecu'),
+(66, 'Egypt', 'eg', 'egy'),
+(67, 'El Salvador', 'sv', 'slv'),
+(68, 'Equatorial Guinea', 'gq', 'gnq'),
+(69, 'Eritrea', 'er', 'eri'),
+(70, 'Estonia', 'ee', 'est'),
+(71, 'Ethiopia', 'et', 'eth'),
+(72, 'Falkland Islands (Malvinas)', 'fk', 'flk'),
+(73, 'Faroe Islands', 'fo', 'fro'),
+(74, 'Fiji', 'fj', 'fji'),
+(75, 'Finland', 'fi', 'fin'),
+(76, 'France', 'fr', 'fra'),
+(77, 'French Guiana', 'gf', 'guf'),
+(78, 'French Polynesia', 'pf', 'pyf'),
+(79, 'French Southern Territories', 'tf', ''),
+(80, 'Gabon', 'ga', 'gab'),
+(81, 'Gambia', 'gm', 'gmb'),
+(82, 'Georgia', 'ge', 'geo'),
+(83, 'Germany', 'de', 'deu'),
+(84, 'Ghana', 'gh', 'gha'),
+(85, 'Gibraltar', 'gi', 'gib'),
+(86, 'Greece', 'gr', 'grc'),
+(87, 'Greenland', 'gl', 'grl'),
+(88, 'Grenada', 'gd', 'grd'),
+(89, 'Guadeloupe', 'gp', 'glp'),
+(90, 'Guam', 'gu', 'gum'),
+(91, 'Guatemala', 'gt', 'gtm'),
+(92, 'Guernsey', 'gg', 'ggy'),
+(93, 'Guinea', 'gn', 'gin'),
+(94, 'Guinea-Bissau', 'gw', 'gnb'),
+(95, 'Guyana', 'gy', 'guy'),
+(96, 'Haiti', 'ht', 'hti'),
+(97, 'Heard Island and McDonald Islands', 'hm', ''),
+(98, 'Holy See (Vatican City State)', 'va', 'vat'),
+(99, 'Honduras', 'hn', 'hnd'),
+(100, 'Hong Kong', 'hk', 'hkg'),
+(101, 'Hungary', 'hu', 'hun'),
+(102, 'Iceland', 'is', 'isl'),
+(103, 'India', 'in', 'ind'),
+(104, 'Indonesia', 'id', 'idn'),
+(105, 'Iran, Islamic Republic of', 'ir', 'irn'),
+(106, 'Iraq', 'iq', 'irq'),
+(107, 'Ireland', 'ie', 'irl'),
+(108, 'Isle of Man', 'im', 'imn'),
+(109, 'Israel', 'il', 'isr'),
+(110, 'Italy', 'it', 'ita'),
+(111, 'Jamaica', 'jm', 'jam'),
+(112, 'Japan', 'jp', 'jpn'),
+(113, 'Jersey', 'je', 'jey'),
+(114, 'Jordan', 'jo', 'jor'),
+(115, 'Kazakhstan', 'kz', 'kaz'),
+(116, 'Kenya', 'ke', 'ken'),
+(117, 'Kiribati', 'ki', 'kir'),
+(118, 'Korea, Democratic People\'s Republic of', 'kp', 'prk'),
+(119, 'Korea, Republic of', 'kr', 'kor'),
+(120, 'Kuwait', 'kw', 'kwt'),
+(121, 'Kyrgyzstan', 'kg', 'kgz'),
+(122, 'Lao People\'s Democratic Republic', 'la', 'lao'),
+(123, 'Latvia', 'lv', 'lva'),
+(124, 'Lebanon', 'lb', 'lbn'),
+(125, 'Lesotho', 'ls', 'lso'),
+(126, 'Liberia', 'lr', 'lbr'),
+(127, 'Libyan Arab Jamahiriya', 'ly', 'lby'),
+(128, 'Liechtenstein', 'li', 'lie'),
+(129, 'Lithuania', 'lt', 'ltu'),
+(130, 'Luxembourg', 'lu', 'lux'),
+(131, 'Macao', 'mo', 'mac'),
+(132, 'Macedonia, The former Yugoslav Republic of', 'mk', 'mkd'),
+(133, 'Madagascar', 'mg', 'mdg'),
+(134, 'Malawi', 'mw', 'mwi'),
+(135, 'Malaysia', 'my', 'mys'),
+(136, 'Maldives', 'mv', 'mdv'),
+(137, 'Mali', 'ml', 'mli'),
+(138, 'Malta', 'mt', 'mlt'),
+(139, 'Marshall Islands', 'mh', 'mhl'),
+(140, 'Martinique', 'mq', 'mtq'),
+(141, 'Mauritania', 'mr', 'mrt'),
+(142, 'Mauritius', 'mu', 'mus'),
+(143, 'Mayotte', 'yt', 'myt'),
+(144, 'Mexico', 'mx', 'mex'),
+(145, 'Micronesia, Federated States of', 'fm', 'fsm'),
+(146, 'Moldova, Republic of', 'md', 'mda'),
+(147, 'Monaco', 'mc', 'mco'),
+(148, 'Mongolia', 'mn', 'mng'),
+(149, 'Montenegro', 'me', 'mne'),
+(150, 'Montserrat', 'ms', 'msr'),
+(151, 'Morocco', 'ma', 'mar'),
+(152, 'Mozambique', 'mz', 'moz'),
+(153, 'Myanmar', 'mm', 'mmr'),
+(154, 'Namibia', 'na', 'nam'),
+(155, 'Nauru', 'nr', 'nru'),
+(156, 'Nepal', 'np', 'npl'),
+(157, 'Netherlands', 'nl', 'nld'),
+(158, 'New Caledonia', 'nc', 'ncl'),
+(159, 'New Zealand', 'nz', 'nzl'),
+(160, 'Nicaragua', 'ni', 'nic'),
+(161, 'Niger', 'ne', 'ner'),
+(162, 'Nigeria', 'ng', 'nga'),
+(163, 'Niue', 'nu', 'niu'),
+(164, 'Norfolk Island', 'nf', 'nfk'),
+(165, 'Northern Mariana Islands', 'mp', 'mnp'),
+(166, 'Norway', 'no', 'nor'),
+(167, 'Oman', 'om', 'omn'),
+(168, 'Pakistan', 'pk', 'pak'),
+(169, 'Palau', 'pw', 'plw'),
+(170, 'Palestinian Territory, Occupied', 'ps', 'pse'),
+(171, 'Panama', 'pa', 'pan'),
+(172, 'Papua New Guinea', 'pg', 'png'),
+(173, 'Paraguay', 'py', 'pry'),
+(174, 'Peru', 'pe', 'per'),
+(175, 'Philippines', 'ph', 'phl'),
+(176, 'Pitcairn', 'pn', 'pcn'),
+(177, 'Poland', 'pl', 'pol'),
+(178, 'Portugal', 'pt', 'prt'),
+(179, 'Puerto Rico', 'pr', 'pri'),
+(180, 'Qatar', 'qa', 'qat'),
+(181, 'Reunion', 're', 'reu'),
+(182, 'Romania', 'ro', 'rou'),
+(183, 'Russian Federation', 'ru', 'rus'),
+(184, 'Rwanda', 'rw', 'rwa'),
+(185, 'Saint Barthelemy', 'bl', 'blm'),
+(186, 'Saint Helena, Ascension and Tristan Da Cunha', 'sh', 'shn'),
+(187, 'Saint Kitts and Nevis', 'kn', 'kna'),
+(188, 'Saint Lucia', 'lc', 'lca'),
+(189, 'Saint Martin (French Part)', 'mf', 'maf'),
+(190, 'Saint Pierre and Miquelon', 'pm', 'spm'),
+(191, 'Saint Vincent and The Grenadines', 'vc', 'vct'),
+(192, 'Samoa', 'ws', 'wsm'),
+(193, 'San Marino', 'sm', 'smr'),
+(194, 'Sao Tome and Principe', 'st', 'stp'),
+(195, 'Saudi Arabia', 'sa', 'sau'),
+(196, 'Senegal', 'sn', 'sen'),
+(197, 'Serbia', 'rs', 'srb'),
+(198, 'Seychelles', 'sc', 'syc'),
+(199, 'Sierra Leone', 'sl', 'sle'),
+(200, 'Singapore', 'sg', 'sgp'),
+(201, 'Sint Maarten (Dutch Part)', 'sx', 'sxm'),
+(202, 'Slovakia', 'sk', 'svk'),
+(203, 'Slovenia', 'si', 'svn'),
+(204, 'Solomon Islands', 'sb', 'slb'),
+(205, 'Somalia', 'so', 'som'),
+(206, 'South Africa', 'za', 'zaf'),
+(207, 'South Georgia and The South Sandwich Islands', 'gs', ''),
+(208, 'South Sudan', 'ss', 'ssd'),
+(209, 'Spain', 'es', 'esp'),
+(210, 'Sri Lanka', 'lk', 'lka'),
+(211, 'Sudan', 'sd', 'sdn'),
+(212, 'Suriname', 'sr', 'sur'),
+(213, 'Svalbard and Jan Mayen', 'sj', 'sjm'),
+(214, 'Swaziland', 'sz', 'swz'),
+(215, 'Sweden', 'se', 'swe'),
+(216, 'Switzerland', 'ch', 'che'),
+(217, 'Syrian Arab Republic', 'sy', 'syr'),
+(218, 'Taiwan, Province of China', 'tw', ''),
+(219, 'Tajikistan', 'tj', 'tjk'),
+(220, 'Tanzania, United Republic of', 'tz', 'tza'),
+(221, 'Thailand', 'th', 'tha'),
+(222, 'Timor-Leste', 'tl', 'tls'),
+(223, 'Togo', 'tg', 'tgo'),
+(224, 'Tokelau', 'tk', 'tkl'),
+(225, 'Tonga', 'to', 'ton'),
+(226, 'Trinidad and Tobago', 'tt', 'tto'),
+(227, 'Tunisia', 'tn', 'tun'),
+(228, 'Turkey', 'tr', 'tur'),
+(229, 'Turkmenistan', 'tm', 'tkm'),
+(230, 'Turks and Caicos Islands', 'tc', 'tca'),
+(231, 'Tuvalu', 'tv', 'tuv'),
+(232, 'Uganda', 'ug', 'uga'),
+(233, 'Ukraine', 'ua', 'ukr'),
+(234, 'United Arab Emirates', 'ae', 'are'),
+(235, 'United Kingdom', 'gb', 'gbr'),
+(236, 'United States', 'us', 'usa'),
+(237, 'United States Minor Outlying Islands', 'um', ''),
+(238, 'Uruguay', 'uy', 'ury'),
+(239, 'Uzbekistan', 'uz', 'uzb'),
+(240, 'Vanuatu', 'vu', 'vut'),
+(241, 'Venezuela, Bolivarian Republic of', 've', 'ven'),
+(242, 'Viet Nam', 'vn', 'vnm'),
+(243, 'Virgin Islands, British', 'vg', 'vgb'),
+(244, 'Virgin Islands, U.S.', 'vi', 'vir'),
+(245, 'Wallis and Futuna', 'wf', 'wlf'),
+(246, 'Western Sahara', 'eh', 'esh'),
+(247, 'Yemen', 'ye', 'yem'),
+(248, 'Zambia', 'zm', 'zmb'),
+(249, 'Zimbabwe', 'zw', 'zwe');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) NOT NULL,
+  `description` text DEFAULT NULL,
+  `guard_name` varchar(191) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `description`, `guard_name`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin can access all data...', 'web', 1, '2018-06-01 18:16:44', '2018-06-02 17:43:05'),
+(2, 'Owner', 'Owner of shop...', 'web', 1, '2018-10-21 21:08:13', '2018-10-21 21:08:13'),
+(4, 'Staff', 'staff has specific acess...', 'web', 1, '2018-06-01 18:35:27', '2022-09-16 17:08:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `states`
+--
+
+CREATE TABLE `states` (
+  `id` int(11) NOT NULL,
+  `code` char(2) NOT NULL DEFAULT '',
+  `name` varchar(128) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `states`
+--
+
+INSERT INTO `states` (`id`, `code`, `name`) VALUES
+(1, 'AL', 'Alabama'),
+(2, 'AK', 'Alaska'),
+(3, 'AS', 'American Samoa'),
+(4, 'AZ', 'Arizona'),
+(5, 'AR', 'Arkansas'),
+(6, 'CA', 'California'),
+(7, 'CO', 'Colorado'),
+(8, 'CT', 'Connecticut'),
+(9, 'DE', 'Delaware'),
+(10, 'DC', 'District of Columbia'),
+(11, 'FM', 'Federated States of Micronesia'),
+(12, 'FL', 'Florida'),
+(13, 'GA', 'Georgia'),
+(14, 'GU', 'Guam'),
+(15, 'HI', 'Hawaii'),
+(16, 'ID', 'Idaho'),
+(17, 'IL', 'Illinois'),
+(18, 'IN', 'Indiana'),
+(19, 'IA', 'Iowa'),
+(20, 'KS', 'Kansas'),
+(21, 'KY', 'Kentucky'),
+(22, 'LA', 'Louisiana'),
+(23, 'ME', 'Maine'),
+(24, 'MH', 'Marshall Islands'),
+(25, 'MD', 'Maryland'),
+(26, 'MA', 'Massachusetts'),
+(27, 'MI', 'Michigan'),
+(28, 'MN', 'Minnesota'),
+(29, 'MS', 'Mississippi'),
+(30, 'MO', 'Missouri'),
+(31, 'MT', 'Montana'),
+(32, 'NE', 'Nebraska'),
+(33, 'NV', 'Nevada'),
+(34, 'NH', 'New Hampshire'),
+(35, 'NJ', 'New Jersey'),
+(36, 'NM', 'New Mexico'),
+(37, 'NY', 'New York'),
+(38, 'NC', 'North Carolina'),
+(39, 'ND', 'North Dakota'),
+(40, 'MP', 'Northern Mariana Islands'),
+(41, 'OH', 'Ohio'),
+(42, 'OK', 'Oklahoma'),
+(43, 'OR', 'Oregon'),
+(44, 'PW', 'Palau'),
+(45, 'PA', 'Pennsylvania'),
+(46, 'PR', 'Puerto Rico'),
+(47, 'RI', 'Rhode Island'),
+(48, 'SC', 'South Carolina'),
+(49, 'SD', 'South Dakota'),
+(50, 'TN', 'Tennessee'),
+(51, 'TX', 'Texas'),
+(52, 'UT', 'Utah'),
+(53, 'VT', 'Vermont'),
+(54, 'VI', 'Virgin Islands'),
+(55, 'VA', 'Virginia'),
+(56, 'WA', 'Washington'),
+(57, 'WV', 'West Virginia'),
+(58, 'WI', 'Wisconsin'),
+(59, 'WY', 'Wyoming');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_admin`
+--
+
+CREATE TABLE `tb_admin` (
+  `id` int(11) NOT NULL,
+  `firstName` varchar(50) NOT NULL,
+  `lastName` varchar(50) DEFAULT NULL,
+  `user_name` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `role` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_admin`
+--
+
+INSERT INTO `tb_admin` (`id`, `firstName`, `lastName`, `user_name`, `email`, `phone`, `password`, `role`, `status`, `created_at`, `updated_at`) VALUES
+(0, 'Bablu', 'Saini', 'admin2', 'bablusaini90310@gmail.com', '+918949352688', '$2b$10$XDFxl4NvTCB4m29RTREZH.THKmpPc1zUaWs/MwMsQUjlqE9s9.NwC', 0, 1, '2023-04-14 07:13:31', '2023-05-02 06:29:29'),
+(1, 'admin', 'admin', 'admin', 'admin@gmail.com', '9999999999', '$2b$10$XDFxl4NvTCB4m29RTREZH.THKmpPc1zUaWs/MwMsQUjlqE9s9.NwC', 1, 1, '2022-09-12 06:14:04', '2023-04-14 07:17:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_blog`
+--
+
+CREATE TABLE `tb_blog` (
+  `id` int(11) NOT NULL,
+  `title` varchar(256) NOT NULL,
+  `url` varchar(250) NOT NULL,
+  `author` varchar(50) NOT NULL,
+  `blogDate` date NOT NULL,
+  `shortdesc` text NOT NULL,
+  `description` text NOT NULL,
+  `photo` varchar(256) NOT NULL,
+  `video` varchar(200) NOT NULL,
+  `type` varchar(200) NOT NULL,
+  `priority` int(11) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `tb_blog`
+--
+
+INSERT INTO `tb_blog` (`id`, `title`, `url`, `author`, `blogDate`, `shortdesc`, `description`, `photo`, `video`, `type`, `priority`, `status`) VALUES
+(5, 'gjhg', 'gjhg', 'hjgjhg', '2022-10-07', 'ljlkjk', '<p>ljlkj</p>\r\n', 'upload/blog/slider2.jpg', '', 'image', 0, 0),
+(6, 'uiu', 'uiu', 'uiui', '2022-10-08', 'kllk', '<p>klkl</p>\r\n', 'upload/blog/slider1.jpg', '', 'image', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_category`
+--
+
+CREATE TABLE `tb_category` (
+  `id` int(11) NOT NULL,
+  `category` varchar(50) NOT NULL,
+  `priority` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_category`
+--
+
+INSERT INTO `tb_category` (`id`, `category`, `priority`, `status`, `created_at`, `updated_at`) VALUES
+(11, 'Rugby Football', 0, 1, '2022-09-11 12:25:42', '2023-04-28 06:20:21'),
+(12, 'Football', 0, 1, '2022-09-11 12:25:42', '2022-10-01 10:47:19'),
+(13, 'NBA', 0, 1, '2022-09-11 12:25:42', '2022-10-01 10:47:19'),
+(16, 'Game1', 0, 1, '2022-10-11 10:50:19', '2022-10-13 11:48:07'),
+(17, 'Game2', 0, 1, '2022-10-12 11:41:27', '2022-10-13 11:48:07'),
+(18, 'Hockey', 0, 1, '2022-10-12 14:40:30', '2022-10-13 11:48:08'),
+(19, 'Testing 11.6', 0, 1, '2022-11-06 15:52:44', '2022-11-06 15:52:44'),
+(20, 'Testing', 0, 1, '2022-11-22 17:28:37', '2023-04-14 07:18:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_claimprize`
+--
+
+CREATE TABLE `tb_claimprize` (
+  `id` int(11) NOT NULL,
+  `uId` int(11) NOT NULL,
+  `contest_id` int(11) NOT NULL,
+  `price` varchar(50) NOT NULL,
+  `rank` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_claimprize`
+--
+
+INSERT INTO `tb_claimprize` (`id`, `uId`, `contest_id`, `price`, `rank`, `created_at`, `updated_at`) VALUES
+(1, 1, 14, '30', 1, '2022-11-25 06:43:05', '2022-11-25 06:43:05'),
+(2, 14, 11, '50', 1, '2022-12-03 19:12:27', '2022-12-03 19:12:27'),
+(3, 16, 11, '20', 2, '2023-01-02 14:24:48', '2023-01-02 14:24:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_contests`
+--
+
+CREATE TABLE `tb_contests` (
+  `id` int(11) NOT NULL,
+  `category` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `startDate` varchar(50) NOT NULL,
+  `endDate` varchar(555) NOT NULL,
+  `endTime` varchar(50) NOT NULL,
+  `banner` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `isComplete` tinyint(1) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_contests`
+--
+
+INSERT INTO `tb_contests` (`id`, `category`, `name`, `description`, `startDate`, `endDate`, `endTime`, `banner`, `status`, `isComplete`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Cricket Test 1', 'quick question on each game of the finals for your ', '2022-10-03', '2022-11-15', '23:59:00', 'upload/contest/banner.jpg', 1, 1, '2022-10-28 11:27:11', '2023-04-28 06:21:40'),
+(2, 2, 'Test 2', 'quick question on each game of the finals for your ', '2022-10-10', '2022-11-15', '23:59:00', 'upload/contest/1.jpg', 1, 0, '2022-10-28 11:27:11', '2022-12-01 07:30:29'),
+(3, 12, 'Football1', 'quick question on each game of the finals for your ', '2022-10-31', '2022-11-15', '23:59:00', 'upload/contest/3.jpg', 1, 0, '2022-10-11 08:26:28', '2022-12-01 07:30:33'),
+(4, 16, 'Game_Contest', 'quick question on each game of the finals for your ', '2022-10-11', '2022-11-30', '23:59:00', 'upload/contest/2.jpg', 1, 0, '2022-10-11 10:52:57', '2022-12-01 07:30:38'),
+(5, 16, 'Contest_Game1', 'quick question on each game of the finals for your ', '2022-10-11', '2022-11-30', '23:59:00', 'upload/contest/4.jpg', 1, 0, '2022-10-11 11:00:23', '2022-12-01 07:30:20'),
+(6, 17, 'Game2_Contest', 'quick question on each game of the finals for your ', '2022-10-12', '2022-11-30', '23:59:00', 'upload/contest/5.jpg', 1, 0, '2022-10-12 11:45:58', '2022-12-01 07:30:23'),
+(8, 2, 'IPL2022', 'quick question on each game of the finals for your ', '2022-10-13', '2022-11-30', '23:59:00', 'upload/contest/banner.jpg', 1, 0, '2022-10-13 08:12:35', '2022-12-01 07:29:55'),
+(9, 12, 'Sim - Week 6', 'Game of Year', '2022-11-30', '2022-11-30', '23:59:00', 'upload/contest/4.jpg', 1, 1, '2022-10-13 17:52:42', '2022-12-01 07:30:00'),
+(11, 19, '11.6 Test #1', 'New Game ', '2022-11-04', '2022-11-07', '23:59:00', 'upload/contest/home results not visible unless logged in.PNG', 1, 1, '2022-11-06 15:59:41', '2022-12-01 07:30:05'),
+(12, 12, 'Test Case 11.22 10:58am', 'First full cycle test from admin and user side (minus some updates on the admin end)', '2022-11-21', '2022-11-23', '23:59:00', '', 1, 1, '2022-11-22 17:01:22', '2023-04-25 07:00:35'),
+(14, 2, 'Test1.1', 'tets', '2022-11-24', '2022-11-25', '23:59:00', 'upload/contest/banner.jpg', 1, 1, '2022-11-24 05:56:53', '2022-12-01 07:29:50'),
+(15, 12, 'Test1 - 11.28', 'Test1 - 11.28', '2022-12-03', '2022-12-10', '23:59:00', '', 1, 0, '2022-11-28 17:09:27', '2022-12-05 05:37:06'),
+(23, 19, 'testing', 'sfsdfdsf', '2022-12-03', '2023-01-10', '23:59:00', 'upload/contest/banner.jpg', 1, 0, '2022-12-02 19:27:54', '2022-12-31 09:39:43'),
+(24, 12, 'Test 12.3', 'Test on 12/3 ', '2022-12-01', '2023-07-01', '13:15:00', 'upload/contest/banner.jpg', 1, 1, '2022-12-03 19:16:52', '2022-12-22 06:00:47'),
+(25, 13, 'TEST 12.7 - Highest scorer', 'TEST #1 12.7', '2022-12-07', '2022-12-11', '20:42:00', '', 1, 1, '2022-12-07 14:43:52', '2022-12-08 06:45:48'),
+(26, 12, 'FIFA WC 2022', 'FIFA WC 2022', '2022-12-09', '2022-12-12', '23:00:00', 'upload/contest/banner.jpg', 1, 0, '2022-12-09 07:21:57', '2022-12-09 07:53:09'),
+(27, 20, 'Test 12.14', 'Test', '2022-12-13', '2022-12-19', '16:52:00', 'upload/contest/playmaker.png', 1, 1, '2022-12-14 22:54:26', '2022-12-15 14:09:47'),
+(28, 20, 'New First', 'This is test Contest', '2022-12-15', '2022-12-18', '14:04:00', 'upload/contest/logo.png', 1, 0, '2022-12-15 04:31:54', '2022-12-15 04:31:54'),
+(29, 12, 'Fifa wc final', 'Fifa wc final', '2022-12-14', '2022-12-17', '18:00:00', '', 1, 0, '2022-12-15 13:17:10', '2022-12-15 13:17:10'),
+(30, 20, '12.15 Test 1', 'Test 1 12.15', '2022-12-14', '2022-12-16', '21:07:00', 'upload/contest/playmaker.png', 1, 0, '2022-12-15 15:11:13', '2022-12-15 15:11:13'),
+(31, 20, 'Test 12.21', 'Testing F2P application', '2022-12-21', '2022-12-22', '16:40:00', 'upload/contest/playmaker.jpg', 1, 0, '2022-12-21 15:48:14', '2022-12-21 15:48:14'),
+(32, 2, 'Work Cup 2023', 'Work Cup 2023', '2022-12-22', '2023-01-03', '04:28:00', 'upload/contest/banner.jpg', 1, 0, '2022-12-22 07:00:53', '2023-01-03 07:24:58'),
+(33, 2, 'for Test', 'test', '2022-12-26', '2022-12-31', '05:00:00', 'upload/contest/banner.jpg', 1, 0, '2022-12-26 06:36:50', '2022-12-31 11:01:04'),
+(34, 20, 'Test 12.27', 'Test ', '2022-12-27', '2022-12-27', '10:51:00', 'upload/contest/playmaker.jpg', 1, 0, '2022-12-27 15:44:37', '2022-12-27 15:50:49'),
+(35, 20, 'Test12.27 #2', 'test', '2022-12-27', '2022-12-27', '11:55:00', 'upload/contest/playmaker.jpg', 1, 0, '2022-12-27 15:56:01', '2022-12-27 15:56:47'),
+(36, 20, 'Test', 'test', '2022-12-30', '2022-12-30', '11:10:00', '', 1, 0, '2022-12-30 16:07:56', '2022-12-30 16:07:56'),
+(37, 20, 'Test', 'test', '2022-12-30', '2022-12-31', '10:28:00', '', 1, 0, '2022-12-30 16:13:44', '2022-12-31 10:32:18'),
+(38, 20, 'Test 1.2', 'Test on 1.2.23', '2023-01-02', '2023-01-02', '11:14:00', 'upload/contest/nba.png', 1, 0, '2023-01-02 14:15:53', '2023-01-02 14:29:43'),
+(40, 20, 'Test 1.7', 'Test 1.7 10:44am EST', '2023-01-09', '2023-01-09', '04:32:00', 'upload/contest/nba.png', 1, 0, '2023-01-07 15:45:56', '2023-01-09 09:30:03'),
+(41, 20, 'Test 1.10', 'test 1.10', '2023-01-10', '2023-01-10', '10:30:00', 'upload/contest/basketball-933173_960_720.jpg', 1, 0, '2023-01-10 15:20:39', '2023-01-11 05:06:01'),
+(42, 20, 'Test 1.10 #2', 'Testing F2P Application', '2023-01-10', '2023-01-10', '10:50:00', 'upload/contest/784x441 image.png', 1, 0, '2023-01-10 15:34:56', '2023-01-10 15:35:25'),
+(43, 20, 'Test #3', 'Testing to see if it will be set to inactive', '2023-01-10', '2023-01-10', '10:10:00', 'upload/contest/784x441 image.png', 1, 0, '2023-01-10 15:48:24', '2023-01-10 15:48:24'),
+(44, 16, 'Sunil kumar', 'Test', '2023-01-12', '2023-01-12', '00:10:00', 'upload/contest/Sports.jfif', 1, 0, '2023-01-11 04:55:44', '2023-01-11 05:41:29'),
+(45, 2, 'sunil123', 'Teszt', '2023-01-11', '2023-01-11', '11:15:00', '', 1, 0, '2023-01-11 05:01:36', '2023-01-11 05:49:55'),
+(46, 2, 'TEst', 'for test', '2023-01-11', '2023-01-11', '02:24:00', 'upload/contest/banner.jpg', 1, 1, '2023-01-11 05:20:28', '2023-01-11 05:45:27'),
+(47, 2, 'test999', 'for test', '2023-01-11', '2023-01-11', '00:00:00', 'upload/contest/banner.jpg', 1, 1, '2023-01-11 05:52:00', '2023-01-11 05:58:40'),
+(48, 17, 'kumar', 'test', '2023-01-11', '2023-01-11', '02:25:00', 'upload/contest/Sports.jfif', 1, 0, '2023-01-11 07:51:56', '2023-01-11 07:54:02'),
+(49, 2, 'IPL 2023', 'Desc - testing ', '2023-01-11', '2023-01-12', '19:47:00', 'upload/contest/download.png', 1, 0, '2023-01-11 08:15:31', '2023-01-11 08:15:31'),
+(51, 2, 'testing', 'testing', '2023-01-11', '2023-01-12', '14:06:00', 'upload/contest/Sports1.jpg', 1, 0, '2023-01-11 08:32:07', '2023-01-11 08:32:07'),
+(52, 2, 'India and SL', 'Desc - SL India One day ', '2023-01-12', '2023-01-19', '15:01:00', 'upload/contest/download.png', 1, 0, '2023-01-11 08:33:15', '2023-01-11 08:33:15'),
+(53, 12, 'Selected', 'test', '2023-01-11', '2023-01-12', '16:07:00', 'upload/contest/Sports.jfif', 1, 0, '2023-01-11 08:35:34', '2023-01-11 08:35:34'),
+(54, 20, 'Test at 4:47pm est', 'Test for 1/12', '2023-01-12', '2023-01-12', '17:00:00', 'upload/contest/784x441 image.png', 1, 1, '2023-01-12 21:48:26', '2023-01-12 21:55:10'),
+(55, 20, 'Test #2 4:58pm EST closing at 5:02pm EST', 'test', '2023-01-12', '2023-01-12', '17:02:00', '', 1, 0, '2023-01-12 21:58:41', '2023-01-12 21:58:41'),
+(56, 2, 'play game', 'for test', '2023-01-13', '2023-01-14', '16:22:00', '', 1, 0, '2023-01-13 07:50:22', '2023-01-13 07:50:22'),
+(57, 20, 'Test #1 10:00am EST closing at 10:30am EST	', 'Test #1 10:00am EST closing at 10:30am EST', '2023-01-16', '2023-01-16', '10:30:00', 'upload/contest/784x441.png', 1, 0, '2023-01-16 15:02:11', '2023-01-16 15:02:11'),
+(58, 20, 'Testing #2`', 'test', '2023-01-23', '2023-02-24', '04:00:00', 'upload/contest/784x441.png', 1, 0, '2023-01-16 15:13:40', '2023-02-06 05:34:29'),
+(59, 20, 'Test 9.30 Sim', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2023-01-31', '2023-02-01', '22:56:00', 'upload/contest/784x441.png', 1, 0, '2023-02-01 00:58:21', '2023-02-01 04:18:22'),
+(60, 20, 'Testing 1.31', 'Weekly Pick \'Em - the most correct answers wins a prize', '2023-01-31', '2023-02-27', '13:00:00', 'upload/contest/784x441.png', 1, 0, '2023-02-01 01:10:43', '2023-02-23 04:51:28'),
+(61, 20, 'Test 2-10', 'Test for Brandon and James', '2023-02-10', '2023-02-12', '13:00:00', 'upload/contest/784x441.png', 1, 1, '2023-02-10 14:01:53', '2023-02-10 14:07:10'),
+(62, 20, 'Test 3.3', 'Weekly Pick \'Em - the most correct answers wins a prize', '2023-03-03', '2023-03-08', '23:01:00', 'upload/contest/784x441.png', 1, 0, '2023-03-04 05:04:07', '2023-03-08 05:53:57'),
+(63, 20, 'Test 3.8', 'This is a test', '2023-03-08', '2023-03-27', '06:00:00', 'upload/contest/784x441.png', 1, 0, '2023-03-08 23:36:34', '2023-03-27 03:57:09'),
+(64, 20, 'Test 3.8 Again', 'second test', '2023-03-08', '2023-03-08', '18:41:00', '', 1, 0, '2023-03-08 23:39:18', '2023-03-27 03:56:46'),
+(65, 13, 'contest1', 'hello i am bablu', '2023-04-11', '2023-04-13', '18:42', '', 1, 0, '2023-04-14 09:08:47', '2023-04-18 15:29:23'),
+(68, 17, 'contest2', 'this is contest 2', '2023-04-01', '2023-04-05', '12:22', '', 1, 0, '2023-04-19 05:51:32', '2023-04-19 05:51:32'),
+(69, 11, 'contest 3', 'hello i am bablu', '2023-04-06', '2023-04-20', '14:13', '', 1, 1, '2023-04-22 05:40:36', '2023-04-25 06:57:11'),
+(70, 19, 'sammer', 'hjgjhgjhgjhg', '2023-05-01', '2023-05-13', '13:01', '', 1, 0, '2023-05-02 06:32:55', '2023-05-02 06:32:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_contest_price`
+--
+
+CREATE TABLE `tb_contest_price` (
+  `id` int(11) NOT NULL,
+  `contest_id` int(11) NOT NULL,
+  `price` varchar(50) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `rank` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_contest_price`
+--
+
+INSERT INTO `tb_contest_price` (`id`, `contest_id`, `price`, `image`, `code`, `url`, `rank`, `created_at`) VALUES
+(53, 8, '10.00', 'upload/contest/sports.jpg', 'AS101', 'aa.com', '1', '2022-10-28 11:32:10'),
+(54, 8, '20.00', 'upload/contest/sports.jpg', 'AS102', 'aa.com', '2', '2022-10-28 11:32:10'),
+(57, 1, '10.00', 'upload/contest/sports.jpg', 'AS101', 'aa.com', '1', '2022-10-28 11:33:49'),
+(58, 1, '20.00', 'upload/contest/playmaker-music.jpg', 'AS102', 'xx.com', '2', '2022-10-28 11:33:49'),
+(59, 2, '30.00', 'upload/contest/sports.jpg', 'AS101', '', '1', '2022-10-28 12:04:45'),
+(60, 2, '20.00', 'upload/contest/sports.jpg', 'AS102', '', '2', '2022-10-28 12:04:45'),
+(61, 2, '10.00', 'upload/contest/sports.jpg', 'AS103', '', '3', '2022-10-28 12:04:45'),
+(62, 3, '10.00', 'upload/contest/preser.webp', 'A101', '', '1', '2022-10-28 12:05:09'),
+(63, 4, 'PS1', 'upload/contest/preser.webp', 'A101', '', '1', '2022-10-28 12:05:52'),
+(64, 4, '0.00', 'upload/contest/smartcontract.PNG', 'A102', '', '2', '2022-10-28 12:05:52'),
+(66, 5, '0.00', 'upload/contest/ele.jpg', 'A104', '', '2', '2022-10-28 12:06:40'),
+(67, 6, '0.00', 'upload/contest/smart3.PNG', 'A101', '', '1', '2022-10-28 12:07:06'),
+(68, 6, '0.00', 'upload/contest/smartcontract.PNG', 'A103', '', '2', '2022-10-28 12:07:06'),
+(74, 11, '20.00', 'upload/contest/02.png', 'as102', 'aa.com', '2', '2022-11-22 11:51:26'),
+(75, 11, '50.00', 'upload/contest/01.png', 'AS101', 'aa.com', '1', '2022-11-22 11:51:26'),
+(76, 11, '10.00', 'upload/contest/02.png', 'as102', 'aa.com', '3', '2022-11-22 11:51:26'),
+(77, 9, '50.00', 'upload/contest/01.png', 'AS101', 'aa.com', '1', '2022-11-22 11:52:12'),
+(78, 9, '20.00', 'upload/contest/02.png', 'as102', 'aa.com', '2', '2022-11-22 11:52:12'),
+(79, 12, '50% playmaker order', '', 'OFF50', '', '1', '2022-11-22 17:01:22'),
+(84, 14, '30', 'upload/contest/02.png', 'AS101', 'aa.com', '1', '2022-11-24 05:56:53'),
+(85, 14, '20', 'upload/contest/02.png', 'as101', 'aa.com', '2', '2022-11-24 05:56:53'),
+(142, 15, '50% playmaker order', '', 'prize1', '', '1', '2022-12-02 19:25:01'),
+(143, 15, '25% playmaker order', '', 'prize 2', '', '2', '2022-12-02 19:25:01'),
+(146, 25, 'PS3', '', 'prize1', 'https://playmakerbrand.com/', '1', '2022-12-07 14:43:52'),
+(147, 25, '50% playmaker order', '', 'OFF50', 'https://playmakerbrand.com/', '2', '2022-12-07 14:43:52'),
+(157, 26, '50% off', 'upload/contest/01.png', 'AS101', '', '1', '2022-12-09 07:47:28'),
+(158, 26, '30% off', 'upload/contest/01.png', 'AS101', '', '2', '2022-12-09 07:47:28'),
+(159, 26, '20% off', 'upload/contest/02.png', 'AS101', '', '3', '2022-12-09 07:47:28'),
+(162, 27, 'PS3', '', 'OFF50', 'https://playmakerbrand.com/', '1', '2022-12-15 04:29:12'),
+(163, 28, 'Banner', 'upload/contest/logo.png', 'a101', '', '1', '2022-12-15 04:31:54'),
+(164, 29, '50% off', '', 'Asp101', '', '1', '2022-12-15 13:17:10'),
+(165, 30, '1', 'upload/contest/playmaker.png', '1st', 'playmaker.com', '1', '2022-12-15 15:11:13'),
+(166, 30, '2', 'upload/contest/playmaker.png', '2nd', 'https://playmakerbrand.com/', '2', '2022-12-15 15:11:13'),
+(167, 31, 'playmaker', 'upload/contest/playmaker.jpg', 'OFF50', 'https://playmakerbrand.com/', '1', '2022-12-21 15:48:14'),
+(168, 31, 'PS3', 'upload/contest/playmaker.jpg', 'prize1', 'https://playmakerbrand.com/', '2', '2022-12-21 15:48:14'),
+(169, 24, '50% playmaker order', '', 'email', '', '1', '2022-12-22 06:00:47'),
+(171, 23, '4534', 'upload/contest/02.png', '5453', '', '433', '2022-12-22 06:06:19'),
+(178, 34, '50% playmaker order', '', 'OFF50', '', '1', '2022-12-27 15:50:49'),
+(181, 35, '50% playmaker order', 'upload/contest/playmaker.jpg', 'OFF50', '', '1', '2022-12-27 15:58:19'),
+(182, 36, '50% playmaker order', '', 'OFF50', '', '1', '2022-12-30 16:07:56'),
+(204, 37, '50% playmaker order', '', 'OFF50', '', '1', '2022-12-31 10:32:18'),
+(210, 33, '10', 'upload/contest/02.png', 'AS1011', '', '1', '2022-12-31 11:01:04'),
+(213, 38, '50% playmaker order', 'upload/contest/playmaker.jpg', 'OFF50', '', '1', '2023-01-02 14:36:28'),
+(218, 32, '50% off', 'upload/contest/02.png', 'AS101', '', '1', '2023-01-03 07:24:58'),
+(219, 32, '30% off', 'upload/contest/01.png', 'as101', '', '2', '2023-01-03 07:24:58'),
+(252, 40, '50% playmaker order', 'upload/contest/playmaker.jpg', 'prize1', '', '1', '2023-01-09 09:30:03'),
+(254, 41, 'PS3', 'upload/contest/playmaker.png', 'OFF50', '', '1', '2023-01-10 15:24:09'),
+(257, 42, 'PS3', 'upload/contest/784x441 image.png', 'OFF50', '', '1', '2023-01-10 15:41:30'),
+(259, 43, 'PS3', 'upload/contest/784x441 image.png', 'OFF50', 'https://playmakerbrand.com/', '1', '2023-01-10 15:48:48'),
+(260, 44, '10', '', '452252', '', '2', '2023-01-11 04:55:44'),
+(272, 46, '50% off', 'upload/contest/01.png', 'AS101', 'aa.com', '1', '2023-01-11 05:25:40'),
+(273, 46, '30% off', 'upload/contest/02.png', 'AS101', '', '2', '2023-01-11 05:25:40'),
+(274, 45, '1', '', '25241255', '', '1', '2023-01-11 05:49:55'),
+(281, 47, '30', 'upload/contest/01.png', 'AS101', '', '1', '2023-01-11 05:58:40'),
+(282, 47, '20', 'upload/contest/02.png', 'AS101', '', '2', '2023-01-11 05:58:40'),
+(284, 48, '2', '', '8522452', '', '1', '2023-01-11 07:54:02'),
+(285, 49, 'cup', 'upload/contest/ddb70d8c-dbca-4ebe-ba06-677f356e22c2.jpg', '007', 'test.com', '1', '2023-01-11 08:15:31'),
+(287, 51, 'Cup', '', '8552', 'aac.com', '1', '2023-01-11 08:32:07'),
+(288, 52, 'Trophy', 'upload/contest/test.jpg', '001', 'ind.com', '12', '2023-01-11 08:33:15'),
+(289, 53, 'cup', '', '53263', '', '2', '2023-01-11 08:35:34'),
+(290, 54, 'PS3', 'upload/contest/784x441 image.png', 'OFF50', 'https://playmakerbrand.com/', '1', '2023-01-12 21:48:26'),
+(291, 55, 'PS3', '', 'OFF50', '', '1', '2023-01-12 21:58:41'),
+(292, 56, '50% off', '', 'AS1011', '', '1', '2023-01-13 07:50:22'),
+(294, 57, '50% playmaker order', 'upload/contest/784x441.png', 'prize1', 'https://playmakerbrand.com/', '1', '2023-01-16 15:10:21'),
+(305, 59, '50% playmaker order', 'upload/contest/784x441.png', 'prize1', 'https://playmakerbrand.com/', '1', '2023-02-01 04:06:46'),
+(306, 58, '50% playmaker order', 'upload/contest/784x441.png', 'prize1', '', '1', '2023-02-01 04:17:46'),
+(308, 61, '50% playmaker order', '', 'prize1', 'https://playmakerbrand.com/', '1', '2023-02-10 14:01:53'),
+(310, 60, '50% playmaker order', 'upload/contest/784x441.png', 'prize1', '', '1', '2023-02-23 04:51:28'),
+(312, 62, '50% playmaker order', 'upload/contest/784x441.png', 'OFF50', 'https://playmakerbrand.com/', '1', '2023-03-08 05:53:57'),
+(320, 64, '50% playmaker order', '', 'prize1', '', '1', '2023-03-27 03:56:46'),
+(321, 63, '50% playmaker order', '', 'prize1', '', '1', '2023-03-27 03:57:09'),
+(343, 65, '10100', '', '718455', 'https://81.0.246.73/', '10200', '2023-04-17 07:52:52'),
+(350, 65, '100', '', '100', 'https://getprowriter.onrender.com/chats', '100', '2023-04-18 15:27:58'),
+(351, 65, '23', '', '23', 'https://81.0.246.73/', '23', '2023-04-18 15:27:58'),
+(353, 68, '10', '', '718455', 'https://81.0.246.73/', '1000', '2023-04-19 05:51:32'),
+(355, 69, '10', '', '718455', 'https://81.0.246.73/', '10', '2023-04-22 05:40:36'),
+(356, 69, '100', '', '6506335555', 'https://getprowriter.onrender.com/', '1', '2023-04-22 05:40:36'),
+(357, 70, '10', '', '718455', 'https://81.0.246.73/', '10', '2023-05-02 06:32:55'),
+(358, 70, '100', '', '6506335555', 'https://getprowriter.onrender.com/chats', '100', '2023-05-02 06:32:55'),
+(359, 70, '1000', '', '753233', 'https://front.getprowriter.com/', '1000', '2023-05-02 06:32:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_contest_sponsors`
+--
+
+CREATE TABLE `tb_contest_sponsors` (
+  `id` int(11) NOT NULL,
+  `contest_id` int(11) NOT NULL,
+  `sName` varchar(255) NOT NULL,
+  `sUrl` varchar(255) NOT NULL,
+  `sImage` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_contest_sponsors`
+--
+
+INSERT INTO `tb_contest_sponsors` (`id`, `contest_id`, `sName`, `sUrl`, `sImage`, `created_at`) VALUES
+(73, 8, 'AA', 'aa.com', 'upload/contest/sick-sportz.jpg', '2022-10-28 11:32:10'),
+(75, 1, 'AA', 'aa.com', 'upload/contest/VENDOR.png', '2022-10-28 11:33:49'),
+(76, 1, 'CC', 'cc.com', 'upload/contest/tri-ad-logo.png', '2022-10-28 11:33:49'),
+(77, 1, 'XX', 'cc.com', 'upload/contest/1ECHO.png', '2022-10-28 11:33:49'),
+(78, 1, 'VV', 'aa.com', 'upload/contest/fINNY.png', '2022-10-28 11:33:49'),
+(79, 2, 'Test', 'test.com', 'upload/contest/MY-PRO.png', '2022-10-28 12:04:45'),
+(80, 2, 'Test1', 'test.com', 'upload/contest/locus-logo.png', '2022-10-28 12:04:45'),
+(81, 2, 'Test2', 'test.com', 'upload/contest/load-max-logo.png', '2022-10-28 12:04:45'),
+(82, 2, 'Test3', 'test.com', 'upload/contest/metwater-logo.png', '2022-10-28 12:04:45'),
+(83, 3, 'vv', 'cxcx.com', 'upload/contest/tri-ad-logo.png', '2022-10-28 12:05:09'),
+(84, 4, 'Sponsors1', '', 'upload/contest/smart2.PNG', '2022-10-28 12:05:52'),
+(85, 5, 'Sponsors1', '', 'upload/contest/smart2.PNG', '2022-10-28 12:06:40'),
+(86, 6, 'Sponsors1', '', 'upload/contest/smartcontract.PNG', '2022-10-28 12:07:06'),
+(93, 11, 'Sponsorhere', 'playmakerbrand.com', '', '2022-11-22 11:51:26'),
+(94, 9, 'AA', 'aa.com', 'upload/contest/01.png', '2022-11-22 11:52:12'),
+(95, 12, 'Playmaker', '', '', '2022-11-22 17:01:22'),
+(98, 14, 'Test1', 'aa.com', 'upload/contest/02.png', '2022-11-24 05:56:53'),
+(142, 15, 'Playmaker', '', '', '2022-12-02 19:25:01'),
+(145, 25, 'Playmaker', 'https://playmakerbrand.com/', '', '2022-12-07 14:43:52'),
+(149, 26, 'AA', 'aa.com', 'upload/contest/02.png', '2022-12-09 07:47:28'),
+(152, 27, 'Playmaker', 'https://playmakerbrand.com/', '', '2022-12-15 04:29:12'),
+(153, 28, 'Sponsor1', 'www.google.com', 'upload/contest/hat.png', '2022-12-15 04:31:54'),
+(154, 29, 'Fifa', '', '', '2022-12-15 13:17:10'),
+(155, 30, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/playmaker.png', '2022-12-15 15:11:13'),
+(156, 31, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/playmaker.jpg', '2022-12-21 15:48:14'),
+(157, 24, 'Playmaker', '', '', '2022-12-22 06:00:47'),
+(159, 23, '433534', '', 'upload/contest/01.png', '2022-12-22 06:06:19'),
+(165, 34, 'Playmaker', 'https://playmakerbrand.com/', '', '2022-12-27 15:50:49'),
+(168, 35, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/playmaker.jpg', '2022-12-27 15:58:19'),
+(169, 36, 'Playmaker', '', '', '2022-12-30 16:07:56'),
+(191, 37, 'Playmaker', '', '', '2022-12-31 10:32:18'),
+(197, 33, 'AA', '', 'upload/contest/02.png', '2022-12-31 11:01:04'),
+(200, 38, 'Playmaker', '', 'upload/contest/playmaker.jpg', '2023-01-02 14:36:28'),
+(203, 32, 'Test', '', 'upload/contest/01.png', '2023-01-03 07:24:58'),
+(236, 40, 'Playmaker', '', 'upload/contest/playmaker.jpg', '2023-01-09 09:30:03'),
+(238, 41, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/playmaker.png', '2023-01-10 15:24:09'),
+(241, 42, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/784x441 image.png', '2023-01-10 15:41:30'),
+(243, 43, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/784x441 image.png', '2023-01-10 15:48:48'),
+(244, 44, 'ASunil', '', '', '2023-01-11 04:55:44'),
+(252, 46, 'Test', 'aa.com', 'upload/contest/logo.png', '2023-01-11 05:25:40'),
+(253, 45, 'sunil123', '', '', '2023-01-11 05:49:55'),
+(257, 47, 'Test1', '', 'upload/contest/logo.png', '2023-01-11 05:58:40'),
+(259, 48, 'googlr', 'aa.com', '', '2023-01-11 07:54:02'),
+(260, 49, 'Testing name ', 'testing.com', '', '2023-01-11 08:15:31'),
+(262, 51, 'Royal', '', '', '2023-01-11 08:32:07'),
+(263, 52, 'Paytm', 'paytm.com', 'upload/contest/ddb70d8c-dbca-4ebe-ba06-677f356e22c2.jpg', '2023-01-11 08:33:15'),
+(264, 53, 'royal', '', '', '2023-01-11 08:35:34'),
+(265, 54, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/784x441 image.png', '2023-01-12 21:48:26'),
+(266, 55, 'Playmaker', '', '', '2023-01-12 21:58:41'),
+(267, 56, 'Test1', '', '', '2023-01-13 07:50:22'),
+(269, 57, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/784x441.png', '2023-01-16 15:10:21'),
+(280, 59, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/784x441.png', '2023-02-01 04:06:46'),
+(281, 58, 'Playmaker', '', 'upload/contest/784x441.png', '2023-02-01 04:17:46'),
+(283, 61, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/784x441.png', '2023-02-10 14:01:53'),
+(285, 60, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/784x441.png', '2023-02-23 04:51:28'),
+(287, 62, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/784x441.png', '2023-03-08 05:53:57'),
+(295, 64, 'Playmaker', '', '', '2023-03-27 03:56:46'),
+(296, 63, 'Playmaker', 'https://playmakerbrand.com/', 'upload/contest/784x441.png', '2023-03-27 03:57:09'),
+(318, 65, 'bablu', 'https://81.0.246.73/', '', '2023-04-17 07:52:52'),
+(323, 65, 'bablu222', 'https://81.0.246.73/', '', '2023-04-18 15:27:58'),
+(325, 68, 'bablu2', 'https://81.0.246.73/', '', '2023-04-19 05:51:32'),
+(326, 69, 'bablu', 'https://81.0.246.73/', '', '2023-04-22 05:40:36'),
+(327, 69, 'bablu2', 'https://81.0.246.73/', '', '2023-04-22 05:40:36'),
+(328, 70, 'bablu', 'https://81.0.246.73/22', '', '2023-05-02 06:32:55'),
+(329, 70, 'bablu2', 'https://81.0.246.73/', '', '2023-05-02 06:32:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_leaderboard`
+--
+
+CREATE TABLE `tb_leaderboard` (
+  `id` int(11) NOT NULL,
+  `contest_id` int(11) NOT NULL,
+  `uId` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `answerDate` date NOT NULL,
+  `answerTime` time NOT NULL,
+  `points` int(11) NOT NULL,
+  `rank` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_leaderboard`
+--
+
+INSERT INTO `tb_leaderboard` (`id`, `contest_id`, `uId`, `name`, `answerDate`, `answerTime`, `points`, `rank`, `created_at`, `updated_at`) VALUES
+(5, 11, 14, 'sim test', '2022-11-06', '11:22:31', 2, 1, '2022-11-22 16:35:01', '2022-11-22 16:35:01'),
+(6, 11, 16, 'Rob Bott', '2022-11-06', '11:28:10', 1, 2, '2022-11-22 16:35:01', '2022-11-22 16:35:01'),
+(13, 15, 19, 'sim', '2022-11-28', '12:11:46', 2, 1, '2022-11-28 17:18:03', '2022-11-28 17:18:03'),
+(40, 25, 18, 'test', '2022-12-07', '09:50:22', 1, 1, '2022-12-09 06:39:37', '2022-12-09 06:39:37'),
+(41, 25, 14, 'sim', '2022-12-07', '09:53:10', 1, 2, '2022-12-09 06:39:37', '2022-12-09 06:39:37'),
+(42, 25, 1, 'demo', '2022-12-08', '01:36:50', 1, 3, '2022-12-09 06:39:37', '2022-12-09 06:39:37'),
+(43, 26, 1, 'demo', '2022-12-09', '02:48:38', 3, 1, '2022-12-09 07:52:32', '2022-12-09 07:52:32'),
+(44, 26, 5, 'Prashant Sharma', '2022-12-09', '02:50:35', 3, 2, '2022-12-09 07:52:32', '2022-12-09 07:52:32'),
+(45, 14, 1, 'demo', '2022-11-24', '00:57:39', 1, 1, '2022-12-09 10:45:45', '2022-12-09 10:45:45'),
+(46, 14, 5, 'Prashant Sharma', '2022-11-24', '00:59:09', 1, 2, '2022-12-09 10:45:45', '2022-12-09 10:45:45'),
+(47, 27, 19, 'sim', '2022-12-15', '09:08:47', 2, 1, '2022-12-15 14:09:54', '2022-12-15 14:09:54'),
+(48, 24, 14, 'sim', '2022-12-21', '11:12:55', 1, 1, '2022-12-21 16:14:57', '2022-12-21 16:14:57'),
+(49, 24, 19, 'sim', '2022-12-21', '11:13:25', 1, 2, '2022-12-21 16:14:57', '2022-12-21 16:14:57'),
+(51, 46, 42, 'test', '2023-01-11', '00:22:30', 2, 1, '2023-01-11 05:45:36', '2023-01-11 05:45:36'),
+(52, 47, 42, 'test', '2023-01-11', '00:54:55', 4, 1, '2023-01-11 05:56:04', '2023-01-11 05:56:04'),
+(53, 54, 14, 'sim', '2023-01-12', '16:54:05', 1, 1, '2023-01-12 21:55:16', '2023-01-12 21:55:16'),
+(54, 54, 16, 'Rob Bott', '2023-01-12', '16:54:27', 1, 2, '2023-01-12 21:55:16', '2023-01-12 21:55:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_qhse`
+--
+
+CREATE TABLE `tb_qhse` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `description` text DEFAULT NULL,
+  `type` varchar(200) NOT NULL,
+  `photo` varchar(250) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_qhse`
+--
+
+INSERT INTO `tb_qhse` (`id`, `title`, `description`, `type`, `photo`, `status`) VALUES
+(1, 'bablu', '<p>hello</p>\r\n', '<p>babluu chuuwwwwww</p>\r\n', 'image1682404390942Screenshot_20230204_110237.png', 1),
+(2, 'Terms and Conditions', NULL, '', 'contactBanner1682337408635Screenshot_20221112_223728.png', 1),
+(3, 'Privacy Policy', NULL, '', 'contactBanner1682337408635Screenshot_20221112_223728.png', 1),
+(5, 'How to play', NULL, '', 'contactBanner1682337408635Screenshot_20221112_223728.png', 1),
+(4, 'Faqs', NULL, 'text', 'contactBanner1682337408635Screenshot_20221112_223728.png', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_questions`
+--
+
+CREATE TABLE `tb_questions` (
+  `id` int(11) NOT NULL,
+  `contest_id` int(11) NOT NULL,
+  `question` text NOT NULL,
+  `option1` varchar(50) DEFAULT NULL,
+  `option2` varchar(50) DEFAULT NULL,
+  `option3` varchar(50) DEFAULT NULL,
+  `option4` varchar(50) DEFAULT NULL,
+  `option5` varchar(50) DEFAULT NULL,
+  `option6` varchar(50) DEFAULT NULL,
+  `option7` varchar(50) DEFAULT NULL,
+  `answer` varchar(50) NOT NULL,
+  `type` tinyint(1) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_questions`
+--
+
+INSERT INTO `tb_questions` (`id`, `contest_id`, `question`, `option1`, `option2`, `option3`, `option4`, `option5`, `option6`, `option7`, `answer`, `type`, `created_at`) VALUES
+(58, 8, 'Who will win', 'RR', 'MI', '', '', '', NULL, NULL, 'MI', 0, '2022-10-28 11:32:10'),
+(63, 1, 'Who will win', 'ind', 'pak', '', '', '', NULL, NULL, 'ind', 0, '2022-10-28 11:33:49'),
+(64, 1, 'Who will wins', 'ind', 'aus', '', '', '', NULL, NULL, 'ind', 0, '2022-10-28 11:45:26'),
+(66, 3, 'Who will won', 'team a ', 'team b', 'draw', '', '', NULL, NULL, 'team a', 0, '2022-10-28 12:05:09'),
+(67, 4, 'Who will won', 'team a', 'team b', 'Draw', 'None', '', NULL, NULL, 'team b', 0, '2022-10-28 12:05:52'),
+(68, 4, 'Who score most', 'Player1', 'Player2', 'Player3', '', '', NULL, NULL, 'Player1', 0, '2022-10-28 12:05:52'),
+(69, 5, 'Who will won', 'team a', 'team b', 'Draw', 'None', '', NULL, NULL, 'team a', 0, '2022-10-28 12:06:40'),
+(70, 5, 'Who score most', 'Player1', 'Player2', '', '', '', NULL, NULL, 'Player2', 0, '2022-10-28 12:06:40'),
+(71, 6, 'Who will won', 'team a', 'team b', 'Draw', '', '', NULL, NULL, 'team a', 0, '2022-10-28 12:07:06'),
+(72, 6, 'Who score most', 'Player1', 'Player2', '', '', '', NULL, NULL, 'Player1', 1, '2022-10-28 12:07:06'),
+(93, 11, '1. Los Angeles Chargers VS Atlanta Falcons Spread', 'Los Angeles Chargers -3.5', 'Atlanta Falcons +3.5', '', '', '', NULL, NULL, 'Atlanta Falcons +3.5', 0, '2022-11-22 11:51:26'),
+(94, 11, '2. Los Angeles Chargers VS Atlanta Falcons over/under', 'Over 49.5', ' Under 49.5', '', '', '', NULL, NULL, ' Under 49.5', 0, '2022-11-22 11:51:26'),
+(95, 11, '3. Miami Dolphins VS Chicago Bears Spread', 'Miami Dolphins -5.5', 'Chicago Bears +5.5', '', '', '', NULL, NULL, 'Chicago Bears +5.5', 0, '2022-11-22 11:51:26'),
+(96, 11, '4. Miami Dolphins VS Chicago Bears over/under', ' Over 45.5', ' Under 45.5', '', '', '', NULL, NULL, ' Under 45.5', 0, '2022-11-22 11:51:26'),
+(97, 9, 'Questions 1', 'answer 1', 'answer 2', 'answer 3', 'answer 4', '', NULL, NULL, 'answer 2', 0, '2022-11-22 11:52:12'),
+(98, 9, 'Questions 2', 'answer 1', 'answer 2', 'answer 3', 'answer 4', '', NULL, NULL, 'answer 3', 0, '2022-11-22 11:52:12'),
+(99, 9, 'Questions 3', 'answer 1', 'answer 2', 'answer 3', 'answer 4', '', NULL, NULL, 'answer 1', 0, '2022-11-22 11:52:12'),
+(100, 12, 'Heat vs Spurs?', 'Heat', 'Spurs', '', '', '', NULL, NULL, 'Spurs', 0, '2022-11-22 17:14:46'),
+(101, 12, 'Netflix, Hulu, or Apple?', 'Netflix', 'Hulu', 'Apple', '', '', NULL, NULL, 'Hulu', 0, '2022-11-22 17:14:46'),
+(102, 12, 'MS vs Google', 'MS', 'Google', '', '', '', NULL, NULL, 'Google', 0, '2022-11-22 17:14:46'),
+(109, 14, 'Who will win', 'ind', 'aus', '', '', '', NULL, NULL, 'ind', 0, '2022-11-24 05:59:55'),
+(251, 15, 'Twitter or Facebook', 'Twitter', 'Facebook', '', '', '', '', '', 'Twitter', 0, '2022-12-02 19:25:01'),
+(252, 15, 'Google or Microsoft', 'Google', 'Microsoft', '', '', '', '', '', 'Google', 0, '2022-12-02 19:25:01'),
+(253, 23, 'test1', 'test1', '', '', '', '', '', '', 'test1', 0, '2022-12-02 19:27:54'),
+(254, 23, 'test2', 'test2', 'test23', '', '', '', '', '', 'test2', 0, '2022-12-02 19:27:54'),
+(255, 23, 'test3', 'test3', 'test31', 'test32', '', '', '', '', 'test3', 0, '2022-12-02 19:27:54'),
+(256, 23, 'test4', 'test4', 'test41', 'test42', 'test43', '', '', '', 'test4', 0, '2022-12-02 19:27:54'),
+(257, 23, 'test5', 'test5', 'test51', 'test52', 'test53', 'test54', '', '', 'test5', 0, '2022-12-02 19:27:54'),
+(258, 24, 'ARG vs AUS', 'ARG', 'AUS', '', '', '', '', '', 'ARG', 0, '2022-12-21 16:14:51'),
+(259, 24, 'US vs NED', 'US', 'NED', '', '', '', '', '', 'NED', 0, '2022-12-21 16:14:51'),
+(260, 24, 'Guess the score', 'Guess the score', '', '', '', '', '', '', 'Guess the score', 1, '2022-12-21 16:14:51'),
+(261, 25, 'Who will be the highest scorer?', 'Kyrie', 'AD', 'LeBron', 'KD', '', '', '', 'KD', 0, '2022-12-07 14:58:24'),
+(262, 25, 'Who will be the highest scorer? ', 'Jimmy Buckets', 'Bam', 'Demar', 'Ball', '', '', '', 'Ball', 0, '2022-12-08 06:22:01'),
+(265, 26, 'Who will win', 'Argentina', 'netherlands', '', '', '', '', '', 'Argentina', 0, '2022-12-09 07:52:19'),
+(266, 26, 'Who will win', 'Portugal', 'Morocco', '', '', '', '', '', 'Portugal', 0, '2022-12-09 07:52:19'),
+(267, 26, 'Who will win', 'Croatia', 'Brazil', '', '', '', '', '', 'Brazil', 0, '2022-12-09 07:52:19'),
+(268, 27, 'Microsoft or Google', 'Google', 'Microsoft', '', '', '', '', '', 'Google', 0, '2022-12-15 14:09:47'),
+(269, 27, 'A or B', 'A', 'B', '', '', '', '', '', 'A', 0, '2022-12-15 14:09:47'),
+(270, 28, 'Who will win', 'India', 'PAK', '', '', '', '', '', '', 0, '2022-12-15 04:31:54'),
+(271, 28, 'Who make most Run', 'Virat', 'Babar', '', '', '', '', '', '', 0, '2022-12-15 04:31:54'),
+(272, 29, 'Who will win', 'Argentina', 'France', '', '', '', '', '', '', 0, '2022-12-15 13:17:10'),
+(273, 30, 'Question 1', 'A', 'B', 'C', '', '', '', '', '', 0, '2022-12-15 15:11:13'),
+(274, 30, 'Question 2', 'A', 'B', 'C', '', '', '', '', '', 0, '2022-12-15 15:11:13'),
+(275, 30, 'Question 3', 'A', 'B', 'C', '', '', '', '', '', 0, '2022-12-15 15:11:13'),
+(276, 31, 'Best sports media company?', 'Numedia', 'Playmaker', 'GetSocialPost', '', '', '', '', '', 0, '2022-12-21 15:48:14'),
+(277, 31, 'Guess the Super Bowl Score?', 'Please enter here (ex 24-20)', '', '', '', '', '', '', '', 1, '2022-12-21 15:48:14'),
+(278, 31, 'Best NBA Team?', 'Mavs', 'Spurs', 'Heat', 'Lakers', '', '', '', '', 0, '2022-12-21 15:48:14'),
+(279, 32, 'Who will win ratio', '100 to 150', '', '', '', '', '', '', '', 1, '2022-12-22 07:00:53'),
+(280, 33, 'AU WTC Win Ratio 50 - 60', '', '', '', '', '', '', '', '', 1, '2022-12-26 06:45:29'),
+(281, 33, 'Who will win', 'aa', 'cc', '', '', '', '', '', '', 0, '2022-12-26 06:36:50'),
+(282, 33, 'India WTC Win Ratio 40 - 50%', '', '', '', '', '', '', '', '59', 1, '2023-01-11 05:40:57'),
+(283, 34, 'Questions 1', 'ee', '', '', '', '', '', '', '', 0, '2022-12-27 15:47:04'),
+(284, 35, 'Pick 1', 'A', 'B', 'C', '', '', '', '', '', 0, '2022-12-27 15:56:01'),
+(285, 35, 'Text answer', '', '', '', '', '', '', '', '', 1, '2022-12-27 15:56:01'),
+(286, 36, 'test', 'test', '', '', '', '', '', '', '', 0, '2022-12-30 16:07:56'),
+(287, 37, 'Favorite Color', '', '', '', '', '', '', '', '', 1, '2022-12-30 16:13:44'),
+(288, 37, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2022-12-30 16:13:44'),
+(289, 38, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-01-02 14:15:53'),
+(290, 38, 'Favorite Color', '', '', '', '', '', '', '', '', 1, '2023-01-02 14:15:53'),
+(293, 40, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-01-07 15:45:56'),
+(294, 40, 'Favorite Team', '', '', '', '', '', '', '', '', 1, '2023-01-07 15:45:56'),
+(295, 41, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-01-10 15:20:39'),
+(296, 41, 'Favorite color?', '', '', '', '', '', '', '', '', 0, '2023-01-10 15:20:39'),
+(297, 42, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-01-10 15:34:56'),
+(298, 42, 'Favorite Color:', '', '', '', '', '', '', '', '', 1, '2023-01-10 15:34:56'),
+(299, 43, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-01-10 15:48:24'),
+(300, 43, 'Favorite Color', '', '', '', '', '', '', '', '', 1, '2023-01-10 15:48:24'),
+(301, 44, 'How to play cricket', '', '', '', '', '', '', '', 'Bat', 1, '2023-01-11 04:55:44'),
+(302, 45, 'How to play game', '', '', '', '', '', '', '', 'technics', 1, '2023-01-11 05:01:36'),
+(303, 46, 'Who will win', 'test1', 'test2', 'test3', '', '', '', '', 'test1', 0, '2023-01-11 05:26:59'),
+(304, 46, 'AU WTC Win Ratio 50 - 60', '', '', '', '', '', '', '', '55', 1, '2023-01-11 05:45:27'),
+(305, 47, 'Who will win', 'Q', 'W', 'E', '', '', '', '', 'Q', 0, '2023-01-11 05:55:59'),
+(306, 47, 'Win Ratio', '', '', '', '', '', '', '', '55', 1, '2023-01-11 05:55:59'),
+(307, 47, 'WTC Win', '', '', '', '', '', '', '', 'ind', 1, '2023-01-11 05:55:59'),
+(308, 47, 'For test', 'oiio', 'ooo', '', '', '', '', '', 'oiio', 0, '2023-01-11 05:55:59'),
+(309, 48, 'how games will conduct', 'test1', 'test2', 'test4', '', '', '', '', 'test1', 0, '2023-01-11 07:51:56'),
+(310, 49, 'who win Today', 'MI', 'KKR', 'Draw', '', '', '', '', 'MI', 0, '2023-01-11 08:15:31'),
+(312, 51, 'who will win this contest', 'CSK', 'MI', 'RR', '', '', '', '', 'RR', 0, '2023-01-11 08:32:07'),
+(313, 52, 'who Will win', 'India', 'SL', 'Draw', '', '', '', '', 'Ind', 0, '2023-01-11 08:33:15'),
+(314, 52, 'who will be the Man of the Match', '', '', '', '', '', '', '', 'Rohit Sharma', 1, '2023-01-11 08:33:15'),
+(315, 53, 'How to get more text', '', '', '', '', '', '', '', 'using brain', 1, '2023-01-11 08:35:34'),
+(316, 54, 'A or B', 'A', 'B', '', '', '', '', '', 'A', 0, '2023-01-12 21:55:10'),
+(317, 54, 'Favorite Color', '', '', '', '', '', '', '', 'Red', 1, '2023-01-12 21:55:10'),
+(318, 55, 'Test', '', '', '', '', '', '', '', '', 0, '2023-01-12 21:58:41'),
+(319, 56, 'Who will win', 'aa', 'gg', '', '', '', '', '', '', 0, '2023-01-13 07:50:22'),
+(320, 57, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-01-16 15:02:11'),
+(321, 57, 'Favorite Color', '', '', '', '', '', '', '', '', 1, '2023-01-16 15:02:11'),
+(322, 58, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-01-16 15:13:40'),
+(323, 58, 'Best sports media company?', '', '', '', '', '', '', '', '', 1, '2023-01-16 15:13:40'),
+(324, 59, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-02-01 00:58:21'),
+(325, 59, 'Best sports media company?', '', '', '', '', '', '', '', '', 1, '2023-02-01 00:58:21'),
+(326, 60, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-02-01 01:10:43'),
+(327, 60, 'Favorite Volor', '', '', '', '', '', '', '', '', 1, '2023-02-01 01:10:43'),
+(328, 61, 'A or B', 'A', 'B', '', '', '', '', '', 'A', 0, '2023-02-10 14:07:10'),
+(329, 61, 'Best sports media company?', '', '', '', '', '', '', '', 'Numedia', 1, '2023-02-10 14:07:10'),
+(330, 62, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-03-04 05:04:07'),
+(331, 62, 'Favorite Color', '', '', '', '', '', '', '', '', 1, '2023-03-04 05:04:07'),
+(332, 63, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-03-08 23:36:34'),
+(333, 63, 'Best sports media company?', '', '', '', '', '', '', '', '', 1, '2023-03-08 23:36:34'),
+(334, 64, 'A or B', 'A', 'B', '', '', '', '', '', '', 0, '2023-03-08 23:39:18'),
+(356, 65, 'how are you1111', ' ', '', '', '', 'null', 'null', 'null', '111', 1, '2023-04-22 05:33:28'),
+(376, 68, 'contest 2 question1', 'Option1', ' Option2 ', 'undefined', 'undefined', 'undefined', 'undefined', 'undefined', 'option1', 0, '2023-04-19 05:52:05'),
+(377, 68, 'contest 2 question 2', '1', ' 2 ', ' 3 ', ' 4 ', 'undefined', 'undefined', 'undefined', '1', 0, '2023-04-19 05:52:05'),
+(378, 68, 'contest 2 question3', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'fine', 1, '2023-04-19 05:52:05'),
+(379, 65, 'how are you 4', ' ', '', '', '', 'null', 'null', 'null', '4', 1, '2023-04-22 05:33:28'),
+(380, 69, 'how are you1', 'Option1', 'Option2', 'Option3', ' Option4', 'undefined', 'undefined', 'undefined', 'Option1', 0, '2023-04-25 06:57:11'),
+(381, 69, 'how are you2', '1', '2', '3', '4', 'undefined', 'undefined', 'undefined', '2', 0, '2023-04-25 06:57:11'),
+(382, 69, 'how are you3', 'a', 'b', 'c', 'undefined', 'undefined', 'undefined', 'undefined', 'c', 0, '2023-04-25 06:57:11'),
+(383, 69, 'how are you4', 'y', 'z', 'undefined', 'undefined', 'undefined', 'undefined', 'undefined', 'z', 0, '2023-04-22 05:40:36'),
+(384, 70, 'how are you1', 'Option1', 'Option2', 'Option3', 'Option4', 'undefined', 'undefined', 'undefined', 'option1', 0, '2023-05-02 06:32:55'),
+(385, 70, 'how are you2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'fine2', 1, '2023-05-02 06:32:55'),
+(386, 70, 'how are you3', '1', '2', '3', 'undefined', 'undefined', 'undefined', 'undefined', '1', 0, '2023-05-02 06:32:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_seo`
+--
+
+CREATE TABLE `tb_seo` (
+  `id` int(11) NOT NULL,
+  `busiName` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `primaryContact` varchar(50) NOT NULL,
+  `mailingName` varchar(50) NOT NULL,
+  `address1` text NOT NULL,
+  `address2` text NOT NULL,
+  `address3` text NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `zip` varchar(10) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `phoneNo` varchar(50) NOT NULL,
+  `faxNo` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `website` varchar(50) NOT NULL,
+  `logo` varchar(50) NOT NULL,
+  `icon` varchar(50) NOT NULL,
+  `sinupBanner` varchar(255) DEFAULT NULL,
+  `resultBanner` varchar(255) DEFAULT NULL,
+  `contactBanner` varchar(255) DEFAULT NULL,
+  `resetPassword` varchar(255) DEFAULT NULL,
+  `facebook` varchar(255) NOT NULL,
+  `twitter` varchar(255) NOT NULL,
+  `instagram` varchar(255) NOT NULL,
+  `linkedin` varchar(255) NOT NULL,
+  `pintrest` varchar(255) NOT NULL,
+  `gplus` text NOT NULL,
+  `whatsup` varchar(255) NOT NULL,
+  `title` text NOT NULL,
+  `desc` text NOT NULL,
+  `keyword` text NOT NULL,
+  `smsMessage` text NOT NULL,
+  `payLater` tinyint(1) NOT NULL,
+  `reserveNow` tinyint(1) NOT NULL,
+  `minipop` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_seo`
+--
+
+INSERT INTO `tb_seo` (`id`, `busiName`, `name`, `primaryContact`, `mailingName`, `address1`, `address2`, `address3`, `city`, `zip`, `state`, `country`, `phoneNo`, `faxNo`, `email`, `website`, `logo`, `icon`, `sinupBanner`, `resultBanner`, `contactBanner`, `resetPassword`, `facebook`, `twitter`, `instagram`, `linkedin`, `pintrest`, `gplus`, `whatsup`, `title`, `desc`, `keyword`, `smsMessage`, `payLater`, `reserveNow`, `minipop`, `status`, `created`) VALUES
+(5, 'reallity2', '', '', '', '', '', '', '', '', '', '', '8949352677', '12345678', 'bablusaini90310@gmail.com', 'http://localhost:5000/generalSetting', 'logo1682337396622Screenshot_20221115_230252.png', 'icon1682330865687Screenshot_20221115_230252.png', 'sinupBanner1682330865692Screenshot_20221127_154357.png', 'resultBanner1682330865698Screenshot_20221127_154357.png', 'contactBanner1682662759202Screenshot 2023-03-15 012046.png', 'resetPassword1682330865718Screenshot 2023-04-08 163145.png', 'http://localhost:3000/candidate', 'http://localhost:3000/candidate-profile', 'http://localhost:3000/candidate-profile', 'http://localhost:3000/candidate-', 'http://localhost:3000/candidate-profile', 'http://localhost:3000/candidate-', '', '', '', '', '', 0, 0, 0, 0, '2023-04-24 10:07:45'),
+(4, 'reallity', '', '', '', '', '', '', '', '', '', '', '+918949352677', '12345678', 'bablusaini90310@gmail.com', 'http://localhost:5000/generalSetting', 'logo1682330606994Screenshot 2023-03-15 012027.png', 'icon1682330606997Screenshot_20221115_230252.png', 'sinupBanner1682330607003Screenshot_20221127_154357.png', 'resultBanner1682330607010Screenshot_20221127_154357.png', 'contactBanner1682330607017Screenshot 2023-03-15 012046.png', 'resetPassword1682330607027Screenshot 2023-04-08 163145.png', 'http://localhost:3000/candidate-profile', 'http://localhost:3000/candidate-profile', 'http://localhost:3000/candidate-profile', 'http://localhost:3000/candidate-profile', 'http://localhost:3000/candidate-profile', 'http://localhost:3000/candidate-profile', '', '', '', '', '', 0, 0, 0, 0, '2023-04-24 10:03:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_state`
+--
+
+CREATE TABLE `tb_state` (
+  `id` int(11) NOT NULL,
+  `stateCode` varchar(20) NOT NULL,
+  `stateName` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_timezone`
+--
+
+CREATE TABLE `tb_timezone` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_timezone`
+--
+
+INSERT INTO `tb_timezone` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'CST6CDT', '2022-10-13 12:04:27', '2023-04-28 06:19:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_useranswers`
+--
+
+CREATE TABLE `tb_useranswers` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `contest_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `userAnswer` varchar(50) NOT NULL,
+  `rightAnswer` varchar(50) NOT NULL,
+  `type` tinyint(1) NOT NULL,
+  `isRight` tinyint(1) NOT NULL,
+  `answerDate` date NOT NULL,
+  `answerTime` time NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_useranswers`
+--
+
+INSERT INTO `tb_useranswers` (`id`, `userId`, `contest_id`, `question_id`, `question`, `userAnswer`, `rightAnswer`, `type`, `isRight`, `answerDate`, `answerTime`, `created_at`, `updated_at`) VALUES
+(1, 14, 9, 73, 'Questions 1', 'answer 1', 'answer 2', 0, 0, '2022-10-31', '10:29:53', '2022-10-31 15:29:53', '2022-11-22 16:56:36'),
+(2, 14, 9, 74, 'Questions 2', 'answer 1', 'answer 3', 0, 0, '2022-10-31', '10:31:11', '2022-10-31 15:31:11', '2022-11-22 16:56:36'),
+(3, 14, 9, 75, 'Questions 3', 'answer 2', 'answer 1', 0, 0, '2022-10-31', '10:31:17', '2022-10-31 15:31:17', '2022-11-22 16:56:36'),
+(4, 14, 8, 58, 'Who will win', 'MI', '', 0, 0, '2022-10-31', '10:47:26', '2022-10-31 15:47:26', '2022-10-31 15:47:26'),
+(5, 1, 8, 58, 'Who will win', 'RR', '', 0, 0, '2022-11-04', '01:36:37', '2022-11-04 06:36:37', '2022-11-04 06:36:37'),
+(6, 1, 9, 73, 'Questions 1', 'answer 1', 'answer 2', 0, 0, '2022-11-04', '01:37:16', '2022-11-04 06:37:16', '2022-11-22 16:56:36'),
+(7, 1, 9, 74, 'Questions 2', 'answer 1', 'answer 3', 0, 0, '2022-11-04', '01:37:16', '2022-11-04 06:37:16', '2022-11-22 16:56:36'),
+(8, 1, 9, 75, 'Questions 3', 'answer 1', 'answer 1', 0, 1, '2022-11-04', '01:37:16', '2022-11-04 06:37:16', '2022-11-22 16:56:36'),
+(9, 15, 9, 73, 'Questions 1', 'answer 1', 'answer 2', 0, 0, '2022-11-05', '13:07:06', '2022-11-05 17:07:06', '2022-11-22 16:56:36'),
+(10, 15, 9, 74, 'Questions 2', 'answer 2', 'answer 3', 0, 0, '2022-11-05', '13:07:06', '2022-11-05 17:07:06', '2022-11-22 16:56:36'),
+(11, 15, 9, 75, 'Questions 3', 'answer 1', 'answer 1', 0, 1, '2022-11-05', '13:07:06', '2022-11-05 17:07:06', '2022-11-22 16:56:36'),
+(12, 15, 8, 58, 'Who will win', 'RR', '', 0, 0, '2022-11-05', '13:10:19', '2022-11-05 17:10:19', '2022-11-05 17:10:19'),
+(13, 14, 11, 89, '1. Los Angeles Chargers VS Atlanta Falcons Spread', 'Los Angeles Chargers -3.5', 'Atlanta Falcons +3.5', 0, 0, '2022-11-06', '11:22:31', '2022-11-06 16:22:31', '2022-11-06 16:28:52'),
+(14, 14, 11, 90, '2. Los Angeles Chargers VS Atlanta Falcons over/under', ' Under 49.5', ' Under 49.5', 0, 1, '2022-11-06', '11:22:31', '2022-11-06 16:22:31', '2022-11-06 16:28:52'),
+(15, 14, 11, 91, '3. Miami Dolphins VS Chicago Bears Spread', 'Miami Dolphins -5.5', 'Chicago Bears +5.5', 0, 0, '2022-11-06', '11:22:31', '2022-11-06 16:22:31', '2022-11-06 16:28:52'),
+(16, 14, 11, 92, '4. Miami Dolphins VS Chicago Bears over/under', ' Under 45.5', ' Under 45.5', 0, 1, '2022-11-06', '11:22:31', '2022-11-06 16:22:31', '2022-11-06 16:28:52'),
+(17, 16, 11, 89, '1. Los Angeles Chargers VS Atlanta Falcons Spread', 'Los Angeles Chargers -3.5', 'Atlanta Falcons +3.5', 0, 0, '2022-11-06', '11:28:10', '2022-11-06 16:28:10', '2022-11-06 16:28:52'),
+(18, 16, 11, 90, '2. Los Angeles Chargers VS Atlanta Falcons over/under', 'Over 49.5', ' Under 49.5', 0, 0, '2022-11-06', '11:28:10', '2022-11-06 16:28:10', '2022-11-06 16:28:52'),
+(19, 16, 11, 91, '3. Miami Dolphins VS Chicago Bears Spread', 'Miami Dolphins -5.5', 'Chicago Bears +5.5', 0, 0, '2022-11-06', '11:28:10', '2022-11-06 16:28:10', '2022-11-06 16:28:52'),
+(20, 16, 11, 92, '4. Miami Dolphins VS Chicago Bears over/under', ' Under 45.5', ' Under 45.5', 0, 1, '2022-11-06', '11:28:10', '2022-11-06 16:28:10', '2022-11-06 16:28:52'),
+(21, 18, 9, 97, 'Questions 1', 'answer 1', 'answer 2', 0, 0, '2022-11-22', '11:50:22', '2022-11-22 16:50:22', '2022-11-22 16:56:36'),
+(22, 18, 9, 98, 'Questions 2', 'answer 1', 'answer 3', 0, 0, '2022-11-22', '11:50:22', '2022-11-22 16:50:22', '2022-11-22 16:56:36'),
+(23, 18, 9, 99, 'Questions 3', 'answer 1', 'answer 1', 0, 1, '2022-11-22', '11:50:22', '2022-11-22 16:50:22', '2022-11-22 16:56:36'),
+(24, 14, 12, 100, 'Heat vs Spurs?', 'Heat', 'Spurs', 0, 0, '2022-11-22', '12:02:26', '2022-11-22 17:02:26', '2022-11-22 17:14:46'),
+(25, 14, 12, 102, 'MS vs Google', 'MS', 'Google', 0, 0, '2022-11-22', '12:02:26', '2022-11-22 17:02:26', '2022-11-22 17:14:46'),
+(26, 14, 12, 101, 'Netflix, Hulu, or Apple?', 'Netflix', 'Hulu', 0, 0, '2022-11-22', '12:02:26', '2022-11-22 17:02:26', '2022-11-22 17:14:46'),
+(27, 18, 12, 100, 'Heat vs Spurs?', 'Spurs', 'Spurs', 0, 1, '2022-11-22', '12:03:49', '2022-11-22 17:03:49', '2022-11-22 17:14:46'),
+(28, 18, 12, 102, 'MS vs Google', 'Google', 'Google', 0, 1, '2022-11-22', '12:03:49', '2022-11-22 17:03:49', '2022-11-22 17:14:46'),
+(29, 18, 12, 101, 'Netflix, Hulu, or Apple?', 'Netflix', 'Hulu', 0, 0, '2022-11-22', '12:03:49', '2022-11-22 17:03:49', '2022-11-22 17:14:46'),
+(30, 19, 12, 100, 'Heat vs Spurs?', 'Spurs', 'Spurs', 0, 1, '2022-11-22', '12:05:45', '2022-11-22 17:05:45', '2022-11-22 17:14:46'),
+(31, 19, 12, 102, 'MS vs Google', 'Google', 'Google', 0, 1, '2022-11-22', '12:05:45', '2022-11-22 17:05:45', '2022-11-22 17:14:46'),
+(32, 19, 12, 101, 'Netflix, Hulu, or Apple?', 'Apple', 'Hulu', 0, 0, '2022-11-22', '12:05:45', '2022-11-22 17:05:45', '2022-11-22 17:14:46'),
+(33, 1, 14, 109, 'Who will win', 'ind', 'ind', 0, 1, '2022-11-24', '00:57:39', '2022-11-24 05:57:39', '2022-11-24 05:59:55'),
+(34, 5, 14, 109, 'Who will win', 'ind', 'ind', 0, 1, '2022-11-24', '00:59:09', '2022-11-24 05:59:09', '2022-11-24 05:59:55'),
+(35, 19, 15, 113, 'Google or Microsoft', 'Google', 'Google', 0, 1, '2022-11-28', '12:11:46', '2022-11-28 17:11:46', '2022-11-28 17:17:56'),
+(36, 19, 15, 112, 'Twitter or Facebook', 'Twitter', 'Twitter', 0, 1, '2022-11-28', '12:11:46', '2022-11-28 17:11:46', '2022-11-28 17:17:56'),
+(37, 18, 15, 113, 'Google or Microsoft', 'Microsoft', 'Google', 0, 0, '2022-11-28', '12:14:41', '2022-11-28 17:14:41', '2022-11-28 17:17:56'),
+(38, 18, 15, 112, 'Twitter or Facebook', 'Facebook', 'Twitter', 0, 0, '2022-11-28', '12:14:41', '2022-11-28 17:14:41', '2022-11-28 17:17:56'),
+(39, 1, 19, 178, 'Fifa WC Total Goal', '41-60', '', 0, 0, '2022-12-01', '03:24:55', '2022-12-01 08:24:55', '2022-12-01 08:24:55'),
+(40, 1, 19, 176, 'Massy Goal', '5-7', '', 0, 0, '2022-12-01', '03:24:55', '2022-12-01 08:24:55', '2022-12-01 08:24:55'),
+(41, 1, 19, 177, 'Ronaldo Goal', '6-10', '', 0, 0, '2022-12-01', '03:24:55', '2022-12-01 08:24:55', '2022-12-01 08:24:55'),
+(42, 1, 19, 175, 'Who will win', 'Span', '', 0, 0, '2022-12-01', '03:24:55', '2022-12-01 08:24:55', '2022-12-01 08:24:55'),
+(43, 19, 25, 261, 'Who will be the highest scorer?', 'Kyrie', 'Ball', 0, 0, '2022-12-07', '09:47:50', '2022-12-07 14:47:50', '2022-12-08 06:45:48'),
+(44, 19, 25, 262, 'Who will be the highest scorer? ', 'Bam', 'Ball', 0, 0, '2022-12-07', '09:47:50', '2022-12-07 14:47:50', '2022-12-08 06:45:48'),
+(45, 18, 25, 261, 'Who will be the highest scorer?', 'KD', 'Ball', 0, 0, '2022-12-07', '09:50:22', '2022-12-07 14:50:22', '2022-12-08 06:45:48'),
+(46, 18, 25, 262, 'Who will be the highest scorer? ', 'Ball', 'Ball', 0, 1, '2022-12-07', '09:50:22', '2022-12-07 14:50:22', '2022-12-08 06:45:48'),
+(47, 14, 25, 261, 'Who will be the highest scorer?', 'KD', 'Ball', 0, 0, '2022-12-07', '09:53:10', '2022-12-07 14:53:10', '2022-12-08 06:45:48'),
+(48, 14, 25, 262, 'Who will be the highest scorer? ', 'Ball', 'Ball', 0, 1, '2022-12-07', '09:53:10', '2022-12-07 14:53:10', '2022-12-08 06:45:48'),
+(49, 1, 25, 261, 'Who will be the highest scorer?', 'KD', 'Ball', 0, 0, '2022-12-08', '01:36:50', '2022-12-08 06:36:50', '2022-12-08 06:45:48'),
+(50, 1, 25, 262, 'Who will be the highest scorer? ', 'Ball', 'Ball', 0, 1, '2022-12-08', '01:36:50', '2022-12-08 06:36:50', '2022-12-08 06:45:48'),
+(51, 1, 26, 265, 'Who will win', 'Argentina', 'Argentina', 0, 1, '2022-12-09', '02:48:38', '2022-12-09 07:48:38', '2022-12-09 07:52:19'),
+(52, 1, 26, 266, 'Who will win', 'Portugal', 'Portugal', 0, 1, '2022-12-09', '02:48:38', '2022-12-09 07:48:38', '2022-12-09 07:52:19'),
+(53, 1, 26, 267, 'Who will win', 'Brazil', 'Brazil', 0, 1, '2022-12-09', '02:48:38', '2022-12-09 07:48:38', '2022-12-09 07:52:19'),
+(54, 5, 26, 265, 'Who will win', 'Argentina', 'Argentina', 0, 1, '2022-12-09', '02:50:35', '2022-12-09 07:50:35', '2022-12-09 07:52:19'),
+(55, 5, 26, 266, 'Who will win', 'Portugal', 'Portugal', 0, 1, '2022-12-09', '02:50:35', '2022-12-09 07:50:35', '2022-12-09 07:52:19'),
+(56, 5, 26, 267, 'Who will win', 'Brazil', 'Brazil', 0, 1, '2022-12-09', '02:50:35', '2022-12-09 07:50:35', '2022-12-09 07:52:19'),
+(57, 19, 27, 269, 'A or B', 'A', 'A', 0, 1, '2022-12-15', '09:08:47', '2022-12-15 14:08:47', '2022-12-15 14:09:47'),
+(58, 19, 27, 268, 'Microsoft or Google', 'Google', 'Google', 0, 1, '2022-12-15', '09:08:47', '2022-12-15 14:08:47', '2022-12-15 14:09:47'),
+(59, 14, 27, 269, 'A or B', 'B', 'A', 0, 0, '2022-12-15', '09:09:12', '2022-12-15 14:09:12', '2022-12-15 14:09:47'),
+(60, 14, 27, 268, 'Microsoft or Google', 'Microsoft', 'Google', 0, 0, '2022-12-15', '09:09:12', '2022-12-15 14:09:12', '2022-12-15 14:09:47'),
+(61, 19, 30, 273, 'Question 1', 'A', '', 0, 0, '2022-12-15', '10:14:44', '2022-12-15 15:14:44', '2022-12-15 15:14:44'),
+(62, 19, 30, 274, 'Question 2', 'A', '', 0, 0, '2022-12-15', '10:14:44', '2022-12-15 15:14:44', '2022-12-15 15:14:44'),
+(63, 19, 30, 275, 'Question 3', 'A', '', 0, 0, '2022-12-15', '10:14:44', '2022-12-15 15:14:44', '2022-12-15 15:14:44'),
+(64, 19, 31, 278, 'Best NBA Team?', 'Heat', '', 0, 0, '2022-12-21', '10:51:53', '2022-12-21 15:51:53', '2022-12-21 15:51:53'),
+(65, 19, 31, 276, 'Best sports media company?', 'Playmaker', '', 0, 0, '2022-12-21', '10:51:53', '2022-12-21 15:51:53', '2022-12-21 15:51:53'),
+(66, 19, 31, 277, 'Guess the Super Bowl Score?', '', '', 1, 0, '2022-12-21', '10:51:53', '2022-12-21 15:51:53', '2022-12-21 15:51:53'),
+(67, 14, 31, 278, 'Best NBA Team?', 'Mavs', '', 0, 0, '2022-12-21', '11:00:30', '2022-12-21 16:00:30', '2022-12-21 16:00:30'),
+(68, 14, 31, 276, 'Best sports media company?', 'Numedia', '', 0, 0, '2022-12-21', '11:00:30', '2022-12-21 16:00:30', '2022-12-21 16:00:30'),
+(69, 14, 31, 277, 'Guess the Super Bowl Score?', '', '', 1, 0, '2022-12-21', '11:00:30', '2022-12-21 16:00:30', '2022-12-21 16:00:30'),
+(70, 14, 24, 258, 'ARG vs AUS', 'ARG', 'ARG', 0, 1, '2022-12-21', '11:12:55', '2022-12-21 16:12:55', '2022-12-21 16:14:51'),
+(71, 14, 24, 260, 'Guess the score', '', 'Guess the score', 1, 0, '2022-12-21', '11:12:55', '2022-12-21 16:12:55', '2022-12-21 16:14:51'),
+(72, 14, 24, 259, 'US vs NED', 'US', 'NED', 0, 0, '2022-12-21', '11:12:55', '2022-12-21 16:12:55', '2022-12-21 16:14:51'),
+(73, 19, 24, 258, 'ARG vs AUS', 'AUS', 'ARG', 0, 0, '2022-12-21', '11:13:25', '2022-12-21 16:13:25', '2022-12-21 16:14:51'),
+(74, 19, 24, 260, 'Guess the score', '', 'Guess the score', 1, 0, '2022-12-21', '11:13:25', '2022-12-21 16:13:25', '2022-12-21 16:14:51'),
+(75, 19, 24, 259, 'US vs NED', 'NED', 'NED', 0, 1, '2022-12-21', '11:13:25', '2022-12-21 16:13:25', '2022-12-21 16:14:51'),
+(76, 1, 32, 279, 'Who will win ratio', '120', '', 1, 0, '2022-12-22', '02:02:48', '2022-12-22 07:02:48', '2022-12-22 07:02:48'),
+(77, 5, 32, 279, 'Who will win ratio', '130', '', 1, 0, '2022-12-22', '02:09:13', '2022-12-22 07:09:13', '2022-12-22 07:09:13'),
+(80, 25, 32, 279, 'Who will win ratio', '149', '', 1, 0, '2022-12-23', '05:26:25', '2022-12-23 10:26:25', '2022-12-23 10:26:25'),
+(81, 26, 23, 253, 'test1', 'test1', '', 0, 0, '2022-12-23', '05:28:05', '2022-12-23 10:28:05', '2022-12-23 10:28:05'),
+(82, 26, 23, 254, 'test2', 'test2', '', 0, 0, '2022-12-23', '05:28:05', '2022-12-23 10:28:05', '2022-12-23 10:28:05'),
+(83, 26, 23, 255, 'test3', 'test3', '', 0, 0, '2022-12-23', '05:28:05', '2022-12-23 10:28:05', '2022-12-23 10:28:05'),
+(84, 26, 23, 256, 'test4', 'test4', '', 0, 0, '2022-12-23', '05:28:05', '2022-12-23 10:28:05', '2022-12-23 10:28:05'),
+(85, 26, 23, 257, 'test5', 'test5', '', 0, 0, '2022-12-23', '05:28:05', '2022-12-23 10:28:05', '2022-12-23 10:28:05'),
+(86, 26, 32, 279, 'Who will win ratio', '145', '', 1, 0, '2022-12-23', '05:28:51', '2022-12-23 10:28:51', '2022-12-23 10:28:51'),
+(87, 27, 33, 280, 'AU WTC Win Ratio 50 - 60', '50', '', 1, 0, '2022-12-26', '02:20:58', '2022-12-26 07:20:58', '2022-12-26 07:20:58'),
+(88, 27, 33, 282, 'India WTC Win Ratio 40 - 50%', '50', '', 1, 0, '2022-12-26', '02:20:58', '2022-12-26 07:20:58', '2022-12-26 07:20:58'),
+(89, 27, 33, 281, 'Who will win', 'aa', '', 0, 0, '2022-12-26', '02:20:58', '2022-12-26 07:20:58', '2022-12-26 07:20:58'),
+(90, 28, 35, 284, 'Pick 1', 'A', '', 0, 0, '2022-12-27', '10:59:59', '2022-12-27 15:59:59', '2022-12-27 15:59:59'),
+(91, 28, 35, 285, 'Text answer', '', '', 1, 0, '2022-12-27', '10:59:59', '2022-12-27 15:59:59', '2022-12-27 15:59:59'),
+(92, 21, 35, 284, 'Pick 1', 'A', '', 0, 0, '2022-12-27', '11:01:38', '2022-12-27 16:01:38', '2022-12-27 16:01:38'),
+(93, 21, 35, 285, 'Text answer', '', '', 1, 0, '2022-12-27', '11:01:38', '2022-12-27 16:01:38', '2022-12-27 16:01:38'),
+(96, 1, 35, 284, 'Pick 1', 'A', '', 0, 0, '2022-12-28', '02:21:34', '2022-12-28 07:21:34', '2022-12-28 07:21:34'),
+(97, 1, 35, 285, 'Text answer', 'www', '', 1, 0, '2022-12-28', '02:21:34', '2022-12-28 07:21:34', '2022-12-28 07:21:34'),
+(98, 29, 33, 280, 'AU WTC Win Ratio 50 - 60', '55', '', 1, 0, '2022-12-28', '03:17:28', '2022-12-28 08:17:28', '2022-12-28 08:17:28'),
+(99, 29, 33, 282, 'India WTC Win Ratio 40 - 50%', '49', '', 1, 0, '2022-12-28', '03:17:28', '2022-12-28 08:17:28', '2022-12-28 08:17:28'),
+(100, 29, 33, 281, 'Who will win', 'cc', '', 0, 0, '2022-12-28', '03:17:28', '2022-12-28 08:17:28', '2022-12-28 08:17:28'),
+(101, 30, 33, 280, 'AU WTC Win Ratio 50 - 60', '55', '', 1, 0, '2022-12-28', '03:39:43', '2022-12-28 08:39:43', '2022-12-28 08:39:43'),
+(102, 30, 33, 282, 'India WTC Win Ratio 40 - 50%', '45', '', 1, 0, '2022-12-28', '03:39:43', '2022-12-28 08:39:43', '2022-12-28 08:39:43'),
+(103, 30, 33, 281, 'Who will win', 'aa', '', 0, 0, '2022-12-28', '03:39:43', '2022-12-28 08:39:43', '2022-12-28 08:39:43'),
+(104, 31, 36, 286, 'test', 'test', '', 0, 0, '2022-12-30', '11:11:33', '2022-12-30 16:11:33', '2022-12-30 16:11:33'),
+(105, 31, 37, 288, 'A or B', 'A', '', 0, 0, '2022-12-30', '11:15:18', '2022-12-30 16:15:18', '2022-12-30 16:15:18'),
+(106, 31, 37, 287, 'Favorite Color', '', '', 1, 0, '2022-12-30', '11:15:18', '2022-12-30 16:15:18', '2022-12-30 16:15:18'),
+(109, 5, 37, 288, 'A or B', 'B', '', 0, 0, '2022-12-31', '03:05:39', '2022-12-31 08:05:39', '2022-12-31 08:05:39'),
+(110, 5, 37, 287, 'Favorite Color', 'Red', '', 1, 0, '2022-12-31', '03:05:39', '2022-12-31 08:05:39', '2022-12-31 08:05:39'),
+(111, 32, 37, 288, 'A or B', 'A', '', 0, 0, '2022-12-31', '03:08:05', '2022-12-31 08:08:05', '2022-12-31 08:08:05'),
+(112, 32, 37, 287, 'Favorite Color', 'White', '', 1, 0, '2022-12-31', '03:08:05', '2022-12-31 08:08:05', '2022-12-31 08:08:05'),
+(113, 1, 37, 288, 'A or B', 'B', '', 0, 0, '2022-12-31', '06:11:13', '2022-12-31 11:11:13', '2022-12-31 11:11:13'),
+(114, 1, 37, 287, 'Favorite Color', 'Yellow', '', 1, 0, '2022-12-31', '06:11:13', '2022-12-31 11:11:13', '2022-12-31 11:11:13'),
+(115, 1, 23, 253, 'test1', 'test1', '', 0, 0, '2022-12-31', '06:13:01', '2022-12-31 11:13:01', '2022-12-31 11:13:01'),
+(116, 1, 23, 254, 'test2', 'test23', '', 0, 0, '2022-12-31', '06:13:01', '2022-12-31 11:13:01', '2022-12-31 11:13:01'),
+(117, 1, 23, 255, 'test3', 'test32', '', 0, 0, '2022-12-31', '06:13:01', '2022-12-31 11:13:01', '2022-12-31 11:13:01'),
+(118, 1, 23, 256, 'test4', 'test42', '', 0, 0, '2022-12-31', '06:13:01', '2022-12-31 11:13:01', '2022-12-31 11:13:01'),
+(119, 1, 23, 257, 'test5', 'test53', '', 0, 0, '2022-12-31', '06:13:01', '2022-12-31 11:13:01', '2022-12-31 11:13:01'),
+(120, 14, 38, 289, 'A or B', 'A', '', 0, 0, '2023-01-02', '09:19:38', '2023-01-02 14:19:38', '2023-01-02 14:19:38'),
+(121, 14, 38, 290, 'Favorite Color', 'Blue', '', 1, 0, '2023-01-02', '09:19:38', '2023-01-02 14:19:38', '2023-01-02 14:19:38'),
+(122, 16, 38, 289, 'A or B', 'B', '', 0, 0, '2023-01-02', '09:24:38', '2023-01-02 14:24:38', '2023-01-02 14:24:38'),
+(123, 16, 38, 290, 'Favorite Color', 'Red', '', 1, 0, '2023-01-02', '09:24:38', '2023-01-02 14:24:38', '2023-01-02 14:24:38'),
+(124, 33, 38, 289, 'A or B', 'A', '', 0, 0, '2023-01-02', '09:39:26', '2023-01-02 14:39:26', '2023-01-02 14:39:26'),
+(125, 33, 38, 290, 'Favorite Color', 'purple', '', 1, 0, '2023-01-02', '09:39:26', '2023-01-02 14:39:26', '2023-01-02 14:39:26'),
+(126, 14, 40, 293, 'A or B', 'A', '', 0, 0, '2023-01-07', '11:13:50', '2023-01-07 16:13:50', '2023-01-07 16:13:50'),
+(127, 14, 40, 294, 'Favorite Team', 'Heat', '', 1, 0, '2023-01-07', '11:13:50', '2023-01-07 16:13:50', '2023-01-07 16:13:50'),
+(128, 41, 23, 253, 'test1', 'test1', '', 0, 0, '2023-01-10', '23:25:34', '2023-01-11 04:25:34', '2023-01-11 04:25:34'),
+(129, 41, 23, 254, 'test2', 'test23', '', 0, 0, '2023-01-10', '23:25:34', '2023-01-11 04:25:34', '2023-01-11 04:25:34'),
+(130, 41, 23, 255, 'test3', 'test32', '', 0, 0, '2023-01-10', '23:25:34', '2023-01-11 04:25:34', '2023-01-11 04:25:34'),
+(131, 41, 23, 256, 'test4', 'test43', '', 0, 0, '2023-01-10', '23:25:34', '2023-01-11 04:25:34', '2023-01-11 04:25:34'),
+(132, 41, 23, 257, 'test5', 'test54', '', 0, 0, '2023-01-10', '23:25:34', '2023-01-11 04:25:34', '2023-01-11 04:25:34'),
+(133, 41, 44, 301, 'How to play cricket', 'Bat', '', 1, 0, '2023-01-10', '23:58:22', '2023-01-11 04:58:22', '2023-01-11 04:58:22'),
+(134, 41, 45, 302, 'How to play game', 'technics', '', 1, 0, '2023-01-11', '00:02:45', '2023-01-11 05:02:45', '2023-01-11 05:02:45'),
+(135, 42, 46, 304, 'AU WTC Win Ratio 50 - 60', '55', '55', 1, 1, '2023-01-11', '00:22:30', '2023-01-11 05:22:30', '2023-01-11 05:45:27'),
+(136, 42, 46, 303, 'Who will win', 'test1', 'test1', 0, 1, '2023-01-11', '00:22:30', '2023-01-11 05:22:30', '2023-01-11 05:26:59'),
+(137, 42, 47, 308, 'For test', 'oiio', 'oiio', 0, 1, '2023-01-11', '00:54:55', '2023-01-11 05:54:55', '2023-01-11 05:55:59'),
+(138, 42, 47, 305, 'Who will win', 'Q', 'Q', 0, 1, '2023-01-11', '00:54:55', '2023-01-11 05:54:55', '2023-01-11 05:55:59'),
+(139, 42, 47, 306, 'Win Ratio', '55', '55', 1, 1, '2023-01-11', '00:54:55', '2023-01-11 05:54:55', '2023-01-11 05:55:59'),
+(140, 42, 47, 307, 'WTC Win', 'ind', 'ind', 1, 1, '2023-01-11', '00:54:55', '2023-01-11 05:54:55', '2023-01-11 05:55:59'),
+(141, 41, 48, 309, 'how games will conduct', 'test1', '', 0, 0, '2023-01-11', '02:52:37', '2023-01-11 07:52:37', '2023-01-11 07:52:37'),
+(142, 41, 49, 310, 'who win Today', 'MI', '', 0, 0, '2023-01-11', '03:20:13', '2023-01-11 08:20:13', '2023-01-11 08:20:13'),
+(143, 41, 50, 311, 'Who will in this contest', 'CSK', '', 0, 0, '2023-01-11', '03:27:44', '2023-01-11 08:27:44', '2023-01-11 08:27:44'),
+(144, 41, 51, 312, 'who will win this contest', 'RR', '', 0, 0, '2023-01-11', '03:33:23', '2023-01-11 08:33:23', '2023-01-11 08:33:23'),
+(145, 41, 52, 314, 'who will be the Man of the Match', 'Rohit', '', 1, 0, '2023-01-11', '03:34:22', '2023-01-11 08:34:22', '2023-01-11 08:34:22'),
+(146, 41, 52, 313, 'who Will win', 'India', '', 0, 0, '2023-01-11', '03:34:22', '2023-01-11 08:34:22', '2023-01-11 08:34:22'),
+(147, 41, 53, 315, 'How to get more text', 'using brain', '', 1, 0, '2023-01-11', '03:36:21', '2023-01-11 08:36:21', '2023-01-11 08:36:21'),
+(148, 14, 54, 316, 'A or B', 'A', 'A', 0, 1, '2023-01-12', '16:54:05', '2023-01-12 21:54:05', '2023-01-12 21:55:10'),
+(149, 14, 54, 317, 'Favorite Color', 'Blue', 'Red', 1, 0, '2023-01-12', '16:54:05', '2023-01-12 21:54:05', '2023-01-12 21:55:10'),
+(150, 16, 54, 316, 'A or B', 'B', 'A', 0, 0, '2023-01-12', '16:54:27', '2023-01-12 21:54:27', '2023-01-12 21:55:10'),
+(151, 16, 54, 317, 'Favorite Color', 'Red', 'Red', 1, 1, '2023-01-12', '16:54:27', '2023-01-12 21:54:27', '2023-01-12 21:55:10'),
+(152, 14, 58, 322, 'A or B', 'A', '', 0, 0, '2023-01-16', '10:18:57', '2023-01-16 15:18:57', '2023-01-16 15:18:57'),
+(153, 14, 58, 323, 'Best sports media company?', 'Numedia', '', 1, 0, '2023-01-16', '10:18:57', '2023-01-16 15:18:57', '2023-01-16 15:18:57'),
+(154, 14, 61, 328, 'A or B', 'A', 'A', 0, 1, '2023-02-10', '09:06:36', '2023-02-10 14:06:36', '2023-02-10 14:07:10'),
+(155, 14, 61, 329, 'Best sports media company?', 'Numedia', 'Numedia', 1, 1, '2023-02-10', '09:06:36', '2023-02-10 14:06:36', '2023-02-10 14:07:10'),
+(156, 44, 58, 322, 'A or B', 'A', '', 0, 0, '2023-02-16', '10:41:53', '2023-02-16 15:41:53', '2023-02-16 15:41:53'),
+(157, 44, 58, 323, 'Best sports media company?', 'Test', '', 1, 0, '2023-02-16', '10:41:53', '2023-02-16 15:41:53', '2023-02-16 15:41:53'),
+(158, 45, 60, 326, 'A or B', 'A', '', 0, 0, '2023-02-25', '12:06:15', '2023-02-25 17:06:15', '2023-02-25 17:06:15'),
+(159, 45, 60, 327, 'Favorite Volor', 'a', '', 1, 0, '2023-02-25', '12:06:15', '2023-02-25 17:06:15', '2023-02-25 17:06:15'),
+(160, 14, 63, 332, 'A or B', 'A', '', 0, 0, '2023-03-08', '21:22:27', '2023-03-09 02:22:27', '2023-03-09 02:22:27'),
+(161, 14, 63, 333, 'Best sports media company?', 'Blue', '', 1, 0, '2023-03-08', '21:22:27', '2023-03-09 02:22:27', '2023-03-09 02:22:27'),
+(162, 1, 64, 334, 'A or B', 'A', '', 0, 0, '2023-03-26', '23:36:31', '2023-03-27 03:36:31', '2023-03-27 03:36:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_users`
+--
+
+CREATE TABLE `tb_users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `other` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `ipAddress` varchar(50) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_users`
+--
+
+INSERT INTO `tb_users` (`id`, `name`, `lname`, `email`, `phone`, `country`, `other`, `state`, `password`, `status`, `ipAddress`, `created`, `updated_at`) VALUES
+(1, 'demo', '', 'demo@gmail.com', '9999999999', 'US', '', '', 'e10adc3949ba59abbe56e057f20f883e', 1, '', '2022-10-06 06:53:46', '2022-11-04 13:22:17'),
+(2, 'test', '', 'test@gmail.com', '8290120849', 'US', '', '', 'e10adc3949ba59abbe56e057f20f883e', 1, '', '2022-10-06 07:50:19', '2022-11-04 13:22:39'),
+(5, 'Prashant Sharma', '', 'psprashant929@gmail.com', '08290120849', 'US', '', '', 'e10adc3949ba59abbe56e057f20f883e', 1, '', '2022-10-08 13:44:43', '2022-12-09 07:50:00'),
+(6, 'pankaj', '', 'takpankaj@yahoo.com', '43455', 'US', '', '', 'e10adc3949ba59abbe56e057f20f883e', 1, '', '2022-10-11 08:27:49', '2022-11-04 13:22:39'),
+(7, 'Pankaj', '', 'takpankaj11@gmail.com', '00011110000', 'US', '', '', 'e10adc3949ba59abbe56e057f20f883e', 1, '', '2022-10-11 10:55:47', '2022-11-04 13:22:39'),
+(8, 'test', '', 'admin@admin.com', '001 123 456 789', 'US', '', '', 'e10adc3949ba59abbe56e057f20f883e', 1, '', '2022-10-11 10:58:21', '2022-11-04 13:22:39'),
+(9, 'test5', '', 'test5@gmail.com', '8290120849', 'US', '', '', 'e10adc3949ba59abbe56e057f20f883e', 1, '', '2022-10-11 12:26:01', '2022-11-04 13:22:39'),
+(12, 'Meghna', '', 'meghna.shrivastav@a3logics.in', '8058954866', 'US', '', '', 'd41d8cd98f00b204e9800998ecf8427e', 1, '', '2022-10-12 14:38:57', '2022-11-04 13:22:39'),
+(13, 'demo1', '', 'demo1@gmail.com', '8290120849', 'US', '', '', 'e10adc3949ba59abbe56e057f20f883e', 1, '', '2022-10-28 11:43:03', '2022-11-04 13:22:39'),
+(14, 'sim', 'test', 'test@test.com', '2342342345', 'US', '', 'Arkansas', '098f6bcd4621d373cade4e832627b4f6', 1, '', '2022-10-31 15:17:38', '2022-11-22 17:02:08'),
+(15, 'test account', '', 'test12@test.com', '5555555555', 'US', '', 'Delaware', '098f6bcd4621d373cade4e832627b4f6', 1, '', '2022-11-05 16:59:34', '2022-11-24 06:30:42'),
+(16, 'Rob Bott', '', 'test2@test.com', '5555555555', 'US', '', 'Indiana', '098f6bcd4621d373cade4e832627b4f6', 1, '', '2022-11-06 16:27:59', '2022-11-06 16:31:40'),
+(17, 'test3', 'test', 'test3@gmail.com', '9639639639', 'International', 'India', '', 'e10adc3949ba59abbe56e057f20f883e', 1, '157.38.137.132', '2022-11-21 12:47:36', '2022-11-21 12:47:36'),
+(18, 'test', '11.2', 'test@test112.com', '5555555555', 'US', '', 'Iowa', '098f6bcd4621d373cade4e832627b4f6', 1, '165.225.217.58', '2022-11-22 16:50:05', '2022-11-22 16:50:05'),
+(19, 'sim', 'test', 'test2@test1122.com', '5555555555', 'International', 'Spain', '', '098f6bcd4621d373cade4e832627b4f6', 1, '165.225.217.58', '2022-11-22 17:05:33', '2022-11-22 17:05:33'),
+(20, 'pankaj', 'tak', 'pankaj.tak@a3logics.in', '7891490222', 'US', '', 'New York', 'e10adc3949ba59abbe56e057f20f883e', 1, '103.59.75.32', '2022-12-05 10:04:28', '2022-12-05 10:04:28'),
+(21, 'Sim', 'Rev', 'testsim@test.com', '999999999', 'US', '', 'Alabama', '098f6bcd4621d373cade4e832627b4f6', 1, '99.94.167.87', '2022-12-21 18:37:44', '2022-12-21 18:37:44'),
+(25, 'Prashant', 'Sharma', 'test929@gmail.com', '08290120849', 'US', '', 'Florida', 'e10adc3949ba59abbe56e057f20f883e', 1, '157.38.115.51', '2022-12-23 09:56:55', '2022-12-23 09:56:55'),
+(26, 'Prashant', 'Sharma', 'test55@gmail.com', '08290120849', 'US', '', 'Hawaii', 'e10adc3949ba59abbe56e057f20f883e', 1, '157.38.115.51', '2022-12-23 10:28:04', '2022-12-23 10:28:04'),
+(27, 'hghghg', 'kkk', '8888@gmail.com', '8290120849', 'US', '', 'Delaware', 'e10adc3949ba59abbe56e057f20f883e', 1, '157.38.245.136', '2022-12-26 07:20:58', '2022-12-26 07:20:58'),
+(28, 'Sim', 'Test1227', 'test1227@test.com', '5555555555', 'US', '', 'Florida', '098f6bcd4621d373cade4e832627b4f6', 1, '99.94.167.87', '2022-12-27 15:59:50', '2022-12-27 15:59:50'),
+(29, 'Prashant', 'Sharma', 'test99@gmail.com', '08290120849', 'US', '', 'Alabama', 'e10adc3949ba59abbe56e057f20f883e', 1, '157.38.209.5', '2022-12-28 08:17:28', '2022-12-28 08:17:28'),
+(30, 'pankaj', 'tak', 'pantak@gmail.com', '7891490222', 'US', '', 'New York', 'e10adc3949ba59abbe56e057f20f883e', 1, '103.231.222.2', '2022-12-28 08:39:43', '2022-12-28 08:39:43'),
+(31, 'Sim', 'Test', 'test30@test.com', '5555555555', 'US', '', 'Alabama', '098f6bcd4621d373cade4e832627b4f6', 1, '99.94.167.87', '2022-12-30 16:11:33', '2022-12-30 16:11:33'),
+(32, 'Prashant', 'Sharma', 'test66@gmail.com', '08290120849', 'US', '', 'Iowa', 'e10adc3949ba59abbe56e057f20f883e', 1, '223.188.158.49', '2022-12-31 08:08:04', '2022-12-31 08:08:04'),
+(33, 'test', 'test', 'test100@test.com', '555555555', 'US', '', 'Iowa', '098f6bcd4621d373cade4e832627b4f6', 1, '99.94.167.87', '2023-01-02 14:39:26', '2023-01-02 14:39:26'),
+(34, 'test', 'test', 'test@test111.com', '8798794656', 'US', '', 'Alabama', 'e10adc3949ba59abbe56e057f20f883e', 1, '14.143.147.166', '2023-01-05 09:21:30', '2023-01-05 09:21:30'),
+(35, 'Nitesh', 'Gupta', 'nitesh.gupta@a3logics.in', '9799306535', 'International', 'India', '', '131903ee15fdbb0209ead53be278b048', 1, '14.143.147.166', '2023-01-10 07:30:06', '2023-01-10 07:30:06'),
+(36, 'Test10012023', 'Last10012023', 'testtoday10012023@yopmail.com', '9799306555', 'International', 'India', '', 'fe32116eb27446e6d82adbfe6527f627', 1, '14.143.147.166', '2023-01-10 10:27:22', '2023-01-10 10:27:22'),
+(37, 'Test10012024', 'Last10012024', 'testtoday10012024@yopmail.com', '9799305555', 'International', 'India', '', '0d149d2fdc6b7f73718f2fe02a7e2429', 1, '14.143.147.166', '2023-01-10 10:36:37', '2023-01-10 10:36:37'),
+(38, 'Test10012025', 'Last10012025', 'testtoday10012025@yopmail.com', '9799305556', 'International', 'India', '', '0d8b5bcb95b8e190884cfe9d2902c279', 1, '14.143.147.166', '2023-01-10 10:50:05', '2023-01-10 10:50:05'),
+(39, 'Test10012026', 'Last10012026', 'testtoday10012026@yopmail.com', '9799305557', 'International', 'India', '', 'b9782d7e538c81154241efc127037584', 1, '14.143.147.166', '2023-01-10 10:51:37', '2023-01-10 10:51:37'),
+(40, 'Test10012027', 'Last10012027', 'testtoday10012027@yopmail.com', '9799305558', 'International', 'India', '', '0f16f2d6e35c2763bf6203f633fa5947', 1, '14.143.147.166', '2023-01-10 10:59:08', '2023-01-10 10:59:08'),
+(41, 'sunil', 'kumar', 'sunilkumar4321@yopmail.com', '85255258', 'US', '', 'Alabama', 'e10adc3949ba59abbe56e057f20f883e', 1, '157.45.67.152', '2023-01-11 04:24:52', '2023-01-11 04:24:52'),
+(42, 'test', 'test', 'test88', '8888888888', 'US', '', 'Hawaii', 'e10adc3949ba59abbe56e057f20f883e', 1, '223.188.161.219', '2023-01-11 05:22:29', '2023-01-11 05:22:29'),
+(43, 'hgghjngh', '', 'hgnhhhhhhhhhh@asdd.com', 'ghngh', 'US', '', 'Alabama', '9d46890b7d0243d7eb593eaa3478f162', 1, '157.45.67.152', '2023-01-11 07:05:11', '2023-01-11 07:05:11'),
+(44, 'Test', 'Test', 'test@gmail.cim', '08058299728', 'International', 'India', '', 'c41b88650f2a17a63d9302e95899362a', 1, '223.228.219.232', '2023-02-16 15:41:53', '2023-02-16 15:41:53'),
+(45, 'Shubham', 'kaswan', 'ajaykaswan00@gmail.com', '9828182881', 'US', '', 'Alabama', '25d55ad283aa400af464c76d713c07ad', 1, '103.131.25.184', '2023-02-23 04:51:12', '2023-04-28 06:18:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timezone_list`
+--
+
+CREATE TABLE `timezone_list` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `timezone_list`
+--
+
+INSERT INTO `timezone_list` (`id`, `name`) VALUES
+(1, 'Africa/Abidjan'),
+(2, 'Africa/Accra'),
+(3, 'Africa/Addis_Ababa'),
+(4, 'Africa/Algiers'),
+(5, 'Africa/Asmera'),
+(6, 'Africa/Bamako'),
+(7, 'Africa/Bangui'),
+(8, 'Africa/Banjul'),
+(9, 'Africa/Bissau'),
+(10, 'Africa/Blantyre'),
+(11, 'Africa/Brazzaville'),
+(12, 'Africa/Bujumbura'),
+(13, 'Africa/Cairo'),
+(14, 'Africa/Casablanca'),
+(15, 'Africa/Ceuta'),
+(16, 'Africa/Conakry'),
+(17, 'Africa/Dakar'),
+(18, 'Africa/Dar_es_Salaam'),
+(19, 'Africa/Djibouti'),
+(20, 'Africa/Douala'),
+(21, 'Africa/El_Aaiun'),
+(22, 'Africa/Freetown'),
+(23, 'Africa/Gaborone'),
+(24, 'Africa/Harare'),
+(25, 'Africa/Johannesburg'),
+(26, 'Africa/Juba'),
+(27, 'Africa/Kampala'),
+(28, 'Africa/Khartoum'),
+(29, 'Africa/Kigali'),
+(30, 'Africa/Kinshasa'),
+(31, 'Africa/Lagos'),
+(32, 'Africa/Libreville'),
+(33, 'Africa/Lome'),
+(34, 'Africa/Luanda'),
+(35, 'Africa/Lubumbashi'),
+(36, 'Africa/Lusaka'),
+(37, 'Africa/Malabo'),
+(38, 'Africa/Maputo'),
+(39, 'Africa/Maseru'),
+(40, 'Africa/Mbabane'),
+(41, 'Africa/Mogadishu'),
+(42, 'Africa/Monrovia'),
+(43, 'Africa/Nairobi'),
+(44, 'Africa/Ndjamena'),
+(45, 'Africa/Niamey'),
+(46, 'Africa/Nouakchott'),
+(47, 'Africa/Ouagadougou'),
+(48, 'Africa/Porto-Novo'),
+(49, 'Africa/Sao_Tome'),
+(50, 'Africa/Tripoli'),
+(51, 'Africa/Tunis'),
+(52, 'Africa/Windhoek'),
+(53, 'America/Anchorage'),
+(54, 'America/Anguilla'),
+(55, 'America/Antigua'),
+(56, 'America/Araguaina'),
+(57, 'America/Argentina/La_Rioja'),
+(58, 'America/Argentina/Rio_Gallegos'),
+(59, 'America/Argentina/Salta'),
+(60, 'America/Argentina/San_Juan'),
+(61, 'America/Argentina/San_Luis'),
+(62, 'America/Argentina/Tucuman'),
+(63, 'America/Argentina/Ushuaia'),
+(64, 'America/Aruba'),
+(65, 'America/Asuncion'),
+(66, 'America/Bahia'),
+(67, 'America/Bahia_Banderas'),
+(68, 'America/Barbados'),
+(69, 'America/Belem'),
+(70, 'America/Belize'),
+(71, 'America/Blanc-Sablon'),
+(72, 'America/Boa_Vista'),
+(73, 'America/Bogota'),
+(74, 'America/Boise'),
+(75, 'America/Buenos_Aires'),
+(76, 'America/Cambridge_Bay'),
+(77, 'America/Campo_Grande'),
+(78, 'America/Cancun'),
+(79, 'America/Caracas'),
+(80, 'America/Catamarca'),
+(81, 'America/Cayenne'),
+(82, 'America/Cayman'),
+(83, 'America/Chicago'),
+(84, 'America/Chihuahua'),
+(85, 'America/Coral_Harbour'),
+(86, 'America/Cordoba'),
+(87, 'America/Costa_Rica'),
+(88, 'America/Creston'),
+(89, 'America/Cuiaba'),
+(90, 'America/Curacao'),
+(91, 'America/Danmarkshavn'),
+(92, 'America/Dawson'),
+(93, 'America/Dawson_Creek'),
+(94, 'America/Denver'),
+(95, 'America/Detroit'),
+(96, 'America/Dominica'),
+(97, 'America/Edmonton'),
+(98, 'America/Eirunepe'),
+(99, 'America/El_Salvador'),
+(100, 'America/Fortaleza'),
+(101, 'America/Glace_Bay'),
+(102, 'America/Godthab'),
+(103, 'America/Goose_Bay'),
+(104, 'America/Grand_Turk'),
+(105, 'America/Grenada'),
+(106, 'America/Guadeloupe'),
+(107, 'America/Guatemala'),
+(108, 'America/Guayaquil'),
+(109, 'America/Guyana'),
+(110, 'America/Halifax'),
+(111, 'America/Havana'),
+(112, 'America/Hermosillo'),
+(113, 'America/Indiana/Knox'),
+(114, 'America/Indiana/Marengo'),
+(115, 'America/Indiana/Petersburg'),
+(116, 'America/Indiana/Tell_City'),
+(117, 'America/Indiana/Vevay'),
+(118, 'America/Indiana/Vincennes'),
+(119, 'America/Indiana/Winamac'),
+(120, 'America/Indianapolis'),
+(121, 'America/Inuvik'),
+(122, 'America/Iqaluit'),
+(123, 'America/Jamaica'),
+(124, 'America/Jujuy'),
+(125, 'America/Juneau'),
+(126, 'America/Kentucky/Monticello'),
+(127, 'America/Kralendijk'),
+(128, 'America/La_Paz'),
+(129, 'America/Lima'),
+(130, 'America/Los_Angeles'),
+(131, 'America/Louisville'),
+(132, 'America/Lower_Princes'),
+(133, 'America/Maceio'),
+(134, 'Africa/Abidjan'),
+(135, 'America/Managua'),
+(136, 'Africa/Accra'),
+(137, 'America/Manaus'),
+(138, 'Africa/Addis_Ababa'),
+(139, 'America/Marigot'),
+(140, 'Africa/Algiers'),
+(141, 'America/Martinique'),
+(142, 'Africa/Asmera'),
+(143, 'America/Matamoros'),
+(144, 'Africa/Bamako'),
+(145, 'America/Mazatlan'),
+(146, 'Africa/Bangui'),
+(147, 'America/Mendoza'),
+(148, 'Africa/Banjul'),
+(149, 'America/Menominee'),
+(150, 'Africa/Bissau'),
+(151, 'America/Merida'),
+(152, 'Africa/Blantyre'),
+(153, 'America/Mexico_City'),
+(154, 'Africa/Brazzaville'),
+(155, 'America/Moncton'),
+(156, 'Africa/Bujumbura'),
+(157, 'America/Monterrey'),
+(158, 'Africa/Cairo'),
+(159, 'America/Montevideo'),
+(160, 'Africa/Casablanca'),
+(161, 'America/Montreal'),
+(162, 'Africa/Ceuta'),
+(163, 'America/Montserrat'),
+(164, 'Africa/Conakry'),
+(165, 'America/Nassau'),
+(166, 'Africa/Dakar'),
+(167, 'America/New_York'),
+(168, 'Africa/Dar_es_Salaam'),
+(169, 'America/Nipigon'),
+(170, 'Africa/Djibouti'),
+(171, 'America/Nome'),
+(172, 'Africa/Douala'),
+(173, 'America/Noronha'),
+(174, 'Africa/El_Aaiun'),
+(175, 'America/North_Dakota/Beulah'),
+(176, 'Africa/Freetown'),
+(177, 'America/North_Dakota/Center'),
+(178, 'Africa/Gaborone'),
+(179, 'America/North_Dakota/New_Salem'),
+(180, 'Africa/Harare'),
+(181, 'America/Ojinaga'),
+(182, 'Africa/Johannesburg'),
+(183, 'America/Panama'),
+(184, 'Africa/Juba'),
+(185, 'America/Pangnirtung'),
+(186, 'Africa/Kampala'),
+(187, 'America/Paramaribo'),
+(188, 'Africa/Khartoum'),
+(189, 'America/Phoenix'),
+(190, 'Africa/Kigali'),
+(191, 'America/Port-au-Prince'),
+(192, 'Africa/Kinshasa'),
+(193, 'America/Port_of_Spain'),
+(194, 'Africa/Lagos'),
+(195, 'America/Porto_Velho'),
+(196, 'Africa/Libreville'),
+(197, 'America/Puerto_Rico'),
+(198, 'Africa/Lome'),
+(199, 'America/Rainy_River'),
+(200, 'Africa/Luanda'),
+(201, 'America/Rankin_Inlet'),
+(202, 'Africa/Lubumbashi'),
+(203, 'America/Recife'),
+(204, 'Africa/Lusaka'),
+(205, 'America/Regina'),
+(206, 'Africa/Malabo'),
+(207, 'America/Resolute'),
+(208, 'Africa/Maputo'),
+(209, 'America/Rio_Branco'),
+(210, 'Africa/Maseru'),
+(211, 'America/Santa_Isabel'),
+(212, 'Africa/Mbabane'),
+(213, 'America/Santarem'),
+(214, 'Africa/Mogadishu'),
+(215, 'America/Santiago'),
+(216, 'Africa/Monrovia'),
+(217, 'America/Santo_Domingo'),
+(218, 'Africa/Nairobi'),
+(219, 'America/Sao_Paulo'),
+(220, 'Africa/Ndjamena'),
+(221, 'America/Scoresbysund'),
+(222, 'Africa/Niamey'),
+(223, 'America/Sitka'),
+(224, 'Africa/Nouakchott'),
+(225, 'America/St_Barthelemy'),
+(226, 'Africa/Ouagadougou'),
+(227, 'America/St_Johns'),
+(228, 'Africa/Porto-Novo'),
+(229, 'America/St_Kitts'),
+(230, 'Africa/Sao_Tome'),
+(231, 'America/St_Lucia'),
+(232, 'Africa/Tripoli'),
+(233, 'America/St_Thomas'),
+(234, 'Africa/Tunis'),
+(235, 'America/St_Vincent'),
+(236, 'Africa/Windhoek'),
+(237, 'America/Swift_Current'),
+(238, 'America/Anchorage'),
+(239, 'America/Tegucigalpa'),
+(240, 'America/Anguilla'),
+(241, 'America/Thule'),
+(242, 'America/Antigua'),
+(243, 'America/Thunder_Bay'),
+(244, 'America/Araguaina'),
+(245, 'America/Tijuana'),
+(246, 'America/Argentina/La_Rioja'),
+(247, 'America/Toronto'),
+(248, 'America/Argentina/Rio_Gallegos'),
+(249, 'America/Tortola'),
+(250, 'America/Argentina/Salta'),
+(251, 'America/Vancouver'),
+(252, 'America/Argentina/San_Juan'),
+(253, 'America/Whitehorse'),
+(254, 'America/Argentina/San_Luis'),
+(255, 'America/Winnipeg'),
+(256, 'America/Argentina/Tucuman'),
+(257, 'America/Yakutat'),
+(258, 'America/Argentina/Ushuaia'),
+(259, 'America/Yellowknife'),
+(260, 'America/Aruba'),
+(261, 'Antarctica/Casey'),
+(262, 'America/Asuncion'),
+(263, 'Antarctica/Davis'),
+(264, 'America/Bahia'),
+(265, 'Antarctica/DumontDUrville'),
+(266, 'America/Bahia_Banderas'),
+(267, 'Antarctica/Macquarie'),
+(268, 'America/Barbados'),
+(269, 'Antarctica/Mawson'),
+(270, 'America/Belem'),
+(271, 'Antarctica/McMurdo'),
+(272, 'America/Belize'),
+(273, 'Antarctica/Palmer'),
+(274, 'America/Blanc-Sablon'),
+(275, 'Antarctica/Rothera'),
+(276, 'America/Boa_Vista'),
+(277, 'Antarctica/Syowa'),
+(278, 'America/Bogota'),
+(279, 'Antarctica/Vostok'),
+(280, 'America/Boise'),
+(281, 'Arctic/Longyearbyen'),
+(282, 'America/Buenos_Aires'),
+(283, 'Asia/Aden'),
+(284, 'America/Cambridge_Bay'),
+(285, 'Asia/Almaty'),
+(286, 'America/Campo_Grande'),
+(287, 'Asia/Amman'),
+(288, 'America/Cancun'),
+(289, 'Asia/Anadyr'),
+(290, 'America/Caracas'),
+(291, 'Asia/Aqtau'),
+(292, 'America/Catamarca'),
+(293, 'Asia/Aqtobe'),
+(294, 'America/Cayenne'),
+(295, 'Asia/Ashgabat'),
+(296, 'America/Cayman'),
+(297, 'Asia/Baghdad'),
+(298, 'America/Chicago'),
+(299, 'Asia/Bahrain'),
+(300, 'America/Chihuahua'),
+(301, 'Asia/Baku'),
+(302, 'America/Coral_Harbour'),
+(303, 'Asia/Bangkok'),
+(304, 'America/Cordoba'),
+(305, 'Asia/Beirut'),
+(306, 'America/Costa_Rica'),
+(307, 'Asia/Bishkek'),
+(308, 'America/Creston'),
+(309, 'Asia/Brunei'),
+(310, 'America/Cuiaba'),
+(311, 'Asia/Calcutta'),
+(312, 'America/Curacao'),
+(313, 'Asia/Chita'),
+(314, 'America/Danmarkshavn'),
+(315, 'Asia/Choibalsan'),
+(316, 'America/Dawson'),
+(317, 'Asia/Colombo'),
+(318, 'America/Dawson_Creek'),
+(319, 'Asia/Damascus'),
+(320, 'America/Denver'),
+(321, 'Asia/Dhaka'),
+(322, 'America/Detroit'),
+(323, 'Asia/Dili'),
+(324, 'America/Dominica'),
+(325, 'Asia/Dubai'),
+(326, 'America/Edmonton'),
+(327, 'Asia/Dushanbe'),
+(328, 'America/Eirunepe'),
+(329, 'Asia/Hong_Kong'),
+(330, 'America/El_Salvador'),
+(331, 'Asia/Hovd'),
+(332, 'America/Fortaleza'),
+(333, 'Asia/Irkutsk'),
+(334, 'America/Glace_Bay'),
+(335, 'Asia/Jakarta'),
+(336, 'America/Godthab'),
+(337, 'Asia/Jayapura'),
+(338, 'America/Goose_Bay'),
+(339, 'Asia/Jerusalem'),
+(340, 'America/Grand_Turk'),
+(341, 'Asia/Kabul'),
+(342, 'America/Grenada'),
+(343, 'Asia/Kamchatka'),
+(344, 'America/Guadeloupe'),
+(345, 'Asia/Karachi'),
+(346, 'America/Guatemala'),
+(347, 'Asia/Kathmandu'),
+(348, 'America/Guayaquil'),
+(349, 'Asia/Khandyga'),
+(350, 'America/Guyana'),
+(351, 'Asia/Kolkata'),
+(352, 'America/Halifax'),
+(353, 'Asia/Krasnoyarsk'),
+(354, 'America/Havana'),
+(355, 'Asia/Kuala_Lumpur'),
+(356, 'America/Hermosillo'),
+(357, 'Asia/Kuching'),
+(358, 'America/Indiana/Knox'),
+(359, 'Asia/Kuwait'),
+(360, 'America/Indiana/Marengo'),
+(361, 'Asia/Macau'),
+(362, 'America/Indiana/Petersburg'),
+(363, 'Asia/Magadan'),
+(364, 'America/Indiana/Tell_City'),
+(365, 'Asia/Makassar'),
+(366, 'America/Indiana/Vevay'),
+(367, 'Asia/Manila'),
+(368, 'America/Indiana/Vincennes'),
+(369, 'Asia/Muscat'),
+(370, 'America/Indiana/Winamac'),
+(371, 'Asia/Nicosia'),
+(372, 'America/Indianapolis'),
+(373, 'Asia/Novokuznetsk'),
+(374, 'America/Inuvik'),
+(375, 'Asia/Novosibirsk'),
+(376, 'America/Iqaluit'),
+(377, 'Asia/Omsk'),
+(378, 'America/Jamaica'),
+(379, 'Asia/Oral'),
+(380, 'America/Jujuy'),
+(381, 'Asia/Phnom_Penh'),
+(382, 'America/Juneau'),
+(383, 'Asia/Pontianak'),
+(384, 'America/Kentucky/Monticello'),
+(385, 'Asia/Pyongyang'),
+(386, 'America/Kralendijk'),
+(387, 'Asia/Qatar'),
+(388, 'America/La_Paz'),
+(389, 'Asia/Qyzylorda'),
+(390, 'America/Lima'),
+(391, 'Asia/Rangoon'),
+(392, 'America/Los_Angeles'),
+(393, 'Asia/Riyadh'),
+(394, 'America/Louisville'),
+(395, 'Asia/Saigon'),
+(396, 'America/Lower_Princes'),
+(397, 'Asia/Sakhalin'),
+(398, 'America/Maceio'),
+(399, 'Asia/Samarkand'),
+(400, 'America/Managua'),
+(401, 'Asia/Seoul'),
+(402, 'America/Manaus'),
+(403, 'Asia/Shanghai'),
+(404, 'America/Marigot'),
+(405, 'Asia/Singapore'),
+(406, 'America/Martinique'),
+(407, 'Asia/Srednekolymsk'),
+(408, 'America/Matamoros'),
+(409, 'Asia/Taipei'),
+(410, 'America/Mazatlan'),
+(411, 'Asia/Tashkent'),
+(412, 'America/Mendoza'),
+(413, 'Asia/Tbilisi'),
+(414, 'America/Menominee'),
+(415, 'Asia/Tehran'),
+(416, 'America/Merida'),
+(417, 'Asia/Thimphu'),
+(418, 'America/Mexico_City'),
+(419, 'Asia/Tokyo'),
+(420, 'America/Moncton'),
+(421, 'Asia/Ulaanbaatar'),
+(422, 'America/Monterrey'),
+(423, 'Asia/Urumqi'),
+(424, 'America/Montevideo'),
+(425, 'Asia/Ust-Nera'),
+(426, 'America/Montreal'),
+(427, 'Asia/Vientiane'),
+(428, 'America/Montserrat'),
+(429, 'Asia/Vladivostok'),
+(430, 'America/Nassau'),
+(431, 'Asia/Yakutsk'),
+(432, 'America/New_York'),
+(433, 'Asia/Yekaterinburg'),
+(434, 'America/Nipigon'),
+(435, 'Asia/Yerevan'),
+(436, 'America/Nome'),
+(437, 'Atlantic/Azores'),
+(438, 'America/Noronha'),
+(439, 'Atlantic/Bermuda'),
+(440, 'America/North_Dakota/Beulah'),
+(441, 'Atlantic/Canary'),
+(442, 'America/North_Dakota/Center'),
+(443, 'Atlantic/Cape_Verde'),
+(444, 'America/North_Dakota/New_Salem'),
+(445, 'Atlantic/Faeroe'),
+(446, 'America/Ojinaga'),
+(447, 'Atlantic/Madeira'),
+(448, 'America/Panama'),
+(449, 'Atlantic/Reykjavik'),
+(450, 'America/Pangnirtung'),
+(451, 'Atlantic/South_Georgia'),
+(452, 'America/Paramaribo'),
+(453, 'Atlantic/St_Helena'),
+(454, 'America/Phoenix'),
+(455, 'Atlantic/Stanley'),
+(456, 'America/Port-au-Prince'),
+(457, 'Australia/Adelaide'),
+(458, 'America/Port_of_Spain'),
+(459, 'Australia/Brisbane'),
+(460, 'America/Porto_Velho'),
+(461, 'Australia/Broken_Hill'),
+(462, 'America/Puerto_Rico'),
+(463, 'Australia/Currie'),
+(464, 'America/Rainy_River'),
+(465, 'Australia/Darwin'),
+(466, 'America/Rankin_Inlet'),
+(467, 'Australia/Hobart'),
+(468, 'America/Recife'),
+(469, 'Australia/Lindeman'),
+(470, 'America/Regina'),
+(471, 'Australia/Melbourne'),
+(472, 'America/Resolute'),
+(473, 'Australia/Perth'),
+(474, 'America/Rio_Branco'),
+(475, 'Australia/Sydney'),
+(476, 'America/Santa_Isabel'),
+(477, 'CST6CDT'),
+(478, 'America/Santarem'),
+(479, 'EST5EDT'),
+(480, 'America/Santiago'),
+(481, 'Etc/GMT'),
+(482, 'America/Santo_Domingo'),
+(483, 'Etc/GMT+1'),
+(484, 'America/Sao_Paulo'),
+(485, 'Etc/GMT+10'),
+(486, 'America/Scoresbysund'),
+(487, 'Etc/GMT+11'),
+(488, 'America/Sitka'),
+(489, 'Etc/GMT+12'),
+(490, 'America/St_Barthelemy'),
+(491, 'Etc/GMT+2'),
+(492, 'America/St_Johns'),
+(493, 'Etc/GMT+3'),
+(494, 'America/St_Kitts'),
+(495, 'Etc/GMT+4'),
+(496, 'America/St_Lucia'),
+(497, 'Etc/GMT+5'),
+(498, 'America/St_Thomas'),
+(499, 'Etc/GMT+6'),
+(500, 'America/St_Vincent'),
+(501, 'Etc/GMT+7'),
+(502, 'America/Swift_Current'),
+(503, 'Etc/GMT-1'),
+(504, 'America/Tegucigalpa'),
+(505, 'Etc/GMT-10'),
+(506, 'America/Thule'),
+(507, 'Etc/GMT-11'),
+(508, 'America/Thunder_Bay'),
+(509, 'Etc/GMT-12'),
+(510, 'America/Tijuana'),
+(511, 'Etc/GMT-13'),
+(512, 'America/Toronto'),
+(513, 'Etc/GMT-2'),
+(514, 'America/Tortola'),
+(515, 'Etc/GMT-3'),
+(516, 'America/Vancouver'),
+(517, 'Etc/GMT-4'),
+(518, 'America/Whitehorse'),
+(519, 'Etc/GMT-5'),
+(520, 'America/Winnipeg'),
+(521, 'Etc/GMT-6'),
+(522, 'America/Yakutat'),
+(523, 'Etc/GMT-7'),
+(524, 'America/Yellowknife'),
+(525, 'Etc/GMT-8'),
+(526, 'Antarctica/Casey'),
+(527, 'Etc/GMT-9'),
+(528, 'Antarctica/Davis'),
+(529, 'Europe/Amsterdam'),
+(530, 'Antarctica/DumontDUrville'),
+(531, 'Europe/Andorra'),
+(532, 'Antarctica/Macquarie'),
+(533, 'Europe/Astrakhan'),
+(534, 'Antarctica/Mawson'),
+(535, 'Europe/Athens'),
+(536, 'Antarctica/McMurdo'),
+(537, 'Europe/Belgrade'),
+(538, 'Antarctica/Palmer'),
+(539, 'Europe/Berlin'),
+(540, 'Antarctica/Rothera'),
+(541, 'Europe/Bratislava'),
+(542, 'Antarctica/Syowa'),
+(543, 'Europe/Brussels'),
+(544, 'Antarctica/Vostok'),
+(545, 'Europe/Bucharest'),
+(546, 'Arctic/Longyearbyen'),
+(547, 'Europe/Budapest'),
+(548, 'Asia/Aden'),
+(549, 'Europe/Busingen'),
+(550, 'Asia/Almaty'),
+(551, 'Europe/Chisinau'),
+(552, 'Asia/Amman'),
+(553, 'Europe/Copenhagen'),
+(554, 'Asia/Anadyr'),
+(555, 'Europe/Dublin'),
+(556, 'Asia/Aqtau'),
+(557, 'Europe/Gibraltar'),
+(558, 'Asia/Aqtobe'),
+(559, 'Europe/Guernsey'),
+(560, 'Asia/Ashgabat'),
+(561, 'Europe/Helsinki'),
+(562, 'Asia/Baghdad'),
+(563, 'Europe/Isle_of_Man'),
+(564, 'Asia/Bahrain'),
+(565, 'Europe/Istanbul'),
+(566, 'Asia/Baku'),
+(567, 'Europe/Jersey'),
+(568, 'Asia/Bangkok'),
+(569, 'Europe/Kaliningrad'),
+(570, 'Asia/Beirut'),
+(571, 'Europe/Kiev'),
+(572, 'Asia/Bishkek'),
+(573, 'Europe/Kirov'),
+(574, 'Asia/Brunei'),
+(575, 'Europe/Lisbon'),
+(576, 'Asia/Calcutta'),
+(577, 'Europe/Ljubljana'),
+(578, 'Asia/Chita'),
+(579, 'Europe/London'),
+(580, 'Asia/Choibalsan'),
+(581, 'Europe/Luxembourg'),
+(582, 'Asia/Colombo'),
+(583, 'Europe/Madrid'),
+(584, 'Asia/Damascus'),
+(585, 'Europe/Malta'),
+(586, 'Asia/Dhaka'),
+(587, 'Europe/Mariehamn'),
+(588, 'Asia/Dili'),
+(589, 'Europe/Minsk'),
+(590, 'Asia/Dubai'),
+(591, 'Europe/Monaco'),
+(592, 'Asia/Dushanbe'),
+(593, 'Europe/Moscow'),
+(594, 'Asia/Hong_Kong'),
+(595, 'Europe/Nicosia'),
+(596, 'Asia/Hovd'),
+(597, 'Europe/Oslo'),
+(598, 'Asia/Irkutsk'),
+(599, 'Europe/Paris'),
+(600, 'Asia/Jakarta'),
+(601, 'Europe/Podgorica'),
+(602, 'Asia/Jayapura'),
+(603, 'Europe/Prague'),
+(604, 'Asia/Jerusalem'),
+(605, 'Europe/Riga'),
+(606, 'Asia/Kabul'),
+(607, 'Europe/Rome'),
+(608, 'Asia/Kamchatka'),
+(609, 'Europe/Samara'),
+(610, 'Asia/Karachi'),
+(611, 'Europe/San_Marino'),
+(612, 'Asia/Kathmandu'),
+(613, 'Europe/Sarajevo'),
+(614, 'Asia/Khandyga'),
+(615, 'Europe/Simferopol'),
+(616, 'Asia/Kolkata'),
+(617, 'Europe/Skopje'),
+(618, 'Asia/Krasnoyarsk'),
+(619, 'Europe/Sofia'),
+(620, 'Asia/Kuala_Lumpur'),
+(621, 'Europe/Stockholm'),
+(622, 'Asia/Kuching'),
+(623, 'Europe/Tallinn'),
+(624, 'Asia/Kuwait'),
+(625, 'Europe/Tirane'),
+(626, 'Asia/Macau'),
+(627, 'Europe/Ulyanovsk'),
+(628, 'Asia/Magadan'),
+(629, 'Europe/Uzhgorod'),
+(630, 'Asia/Makassar'),
+(631, 'Europe/Vaduz'),
+(632, 'Asia/Manila'),
+(633, 'Europe/Vatican'),
+(634, 'Asia/Muscat'),
+(635, 'Europe/Vienna'),
+(636, 'Asia/Nicosia'),
+(637, 'Europe/Vilnius'),
+(638, 'Asia/Novokuznetsk'),
+(639, 'Europe/Volgograd'),
+(640, 'Asia/Novosibirsk'),
+(641, 'Europe/Warsaw'),
+(642, 'Asia/Omsk'),
+(643, 'Europe/Zagreb'),
+(644, 'Asia/Oral'),
+(645, 'Europe/Zaporozhye'),
+(646, 'Asia/Phnom_Penh'),
+(647, 'Europe/Zurich'),
+(648, 'Asia/Pontianak'),
+(649, 'Indian/Antananarivo'),
+(650, 'Asia/Pyongyang'),
+(651, 'Indian/Chagos'),
+(652, 'Asia/Qatar'),
+(653, 'Indian/Christmas'),
+(654, 'Asia/Qyzylorda'),
+(655, 'Indian/Cocos'),
+(656, 'Asia/Rangoon'),
+(657, 'Indian/Comoro'),
+(658, 'Asia/Riyadh'),
+(659, 'Indian/Kerguelen'),
+(660, 'Asia/Saigon'),
+(661, 'Indian/Mahe'),
+(662, 'Asia/Sakhalin'),
+(663, 'Indian/Maldives'),
+(664, 'Asia/Samarkand'),
+(665, 'Indian/Mauritius'),
+(666, 'Asia/Seoul'),
+(667, 'Indian/Mayotte'),
+(668, 'Asia/Shanghai'),
+(669, 'Indian/Reunion'),
+(670, 'Asia/Singapore'),
+(671, 'MST7MDT'),
+(672, 'Asia/Srednekolymsk'),
+(673, 'PST8PDT'),
+(674, 'Asia/Taipei'),
+(675, 'Pacific/Apia'),
+(676, 'Asia/Tashkent'),
+(677, 'Pacific/Auckland'),
+(678, 'Asia/Tbilisi'),
+(679, 'Pacific/Efate'),
+(680, 'Asia/Tehran'),
+(681, 'Pacific/Enderbury'),
+(682, 'Asia/Thimphu'),
+(683, 'Pacific/Fakaofo'),
+(684, 'Asia/Tokyo'),
+(685, 'Pacific/Fiji'),
+(686, 'Asia/Ulaanbaatar'),
+(687, 'Pacific/Funafuti'),
+(688, 'Asia/Urumqi'),
+(689, 'Pacific/Galapagos'),
+(690, 'Asia/Ust-Nera'),
+(691, 'Pacific/Guadalcanal'),
+(692, 'Asia/Vientiane'),
+(693, 'Pacific/Guam'),
+(694, 'Asia/Vladivostok'),
+(695, 'Pacific/Honolulu'),
+(696, 'Asia/Yakutsk'),
+(697, 'Pacific/Johnston'),
+(698, 'Asia/Yekaterinburg'),
+(699, 'Pacific/Kosrae'),
+(700, 'Asia/Yerevan'),
+(701, 'Pacific/Kwajalein'),
+(702, 'Atlantic/Azores'),
+(703, 'Pacific/Majuro'),
+(704, 'Atlantic/Bermuda'),
+(705, 'Pacific/Midway'),
+(706, 'Atlantic/Canary'),
+(707, 'Pacific/Nauru'),
+(708, 'Atlantic/Cape_Verde'),
+(709, 'Pacific/Niue'),
+(710, 'Atlantic/Faeroe'),
+(711, 'Pacific/Noumea'),
+(712, 'Atlantic/Madeira'),
+(713, 'Pacific/Pago_Pago'),
+(714, 'Atlantic/Reykjavik'),
+(715, 'Pacific/Palau'),
+(716, 'Atlantic/South_Georgia'),
+(717, 'Pacific/Ponape'),
+(718, 'Atlantic/St_Helena'),
+(719, 'Pacific/Port_Moresby'),
+(720, 'Atlantic/Stanley'),
+(721, 'Pacific/Rarotonga'),
+(722, 'Australia/Adelaide'),
+(723, 'Pacific/Saipan'),
+(724, 'Australia/Brisbane'),
+(725, 'Pacific/Tahiti'),
+(726, 'Australia/Broken_Hill'),
+(727, 'Pacific/Tarawa'),
+(728, 'Australia/Currie'),
+(729, 'Pacific/Tongatapu'),
+(730, 'Australia/Darwin'),
+(731, 'Pacific/Truk'),
+(732, 'Australia/Hobart'),
+(733, 'Pacific/Wake'),
+(734, 'Australia/Lindeman'),
+(735, 'Pacific/Wallis'),
+(736, 'Australia/Melbourne'),
+(737, 'Australia/Perth'),
+(738, 'Australia/Sydney'),
+(739, 'CST6CDT'),
+(740, 'EST5EDT'),
+(741, 'Etc/GMT'),
+(742, 'Etc/GMT+1'),
+(743, 'Etc/GMT+10'),
+(744, 'Etc/GMT+11'),
+(745, 'Etc/GMT+12'),
+(746, 'Etc/GMT+2'),
+(747, 'Etc/GMT+3'),
+(748, 'Etc/GMT+4'),
+(749, 'Etc/GMT+5'),
+(750, 'Etc/GMT+6'),
+(751, 'Etc/GMT+7'),
+(752, 'Etc/GMT-1'),
+(753, 'Etc/GMT-10'),
+(754, 'Etc/GMT-11'),
+(755, 'Etc/GMT-12'),
+(756, 'Etc/GMT-13'),
+(757, 'Etc/GMT-2'),
+(758, 'Etc/GMT-3'),
+(759, 'Etc/GMT-4'),
+(760, 'Etc/GMT-5'),
+(761, 'Etc/GMT-6'),
+(762, 'Etc/GMT-7'),
+(763, 'Etc/GMT-8'),
+(764, 'Etc/GMT-9'),
+(765, 'Europe/Amsterdam'),
+(766, 'Europe/Andorra'),
+(767, 'Europe/Astrakhan'),
+(768, 'Europe/Athens'),
+(769, 'Europe/Belgrade'),
+(770, 'Europe/Berlin'),
+(771, 'Europe/Bratislava'),
+(772, 'Europe/Brussels'),
+(773, 'Europe/Bucharest'),
+(774, 'Europe/Budapest'),
+(775, 'Europe/Busingen'),
+(776, 'Europe/Chisinau'),
+(777, 'Europe/Copenhagen'),
+(778, 'Europe/Dublin'),
+(779, 'Europe/Gibraltar'),
+(780, 'Europe/Guernsey'),
+(781, 'Europe/Helsinki'),
+(782, 'Europe/Isle_of_Man'),
+(783, 'Europe/Istanbul'),
+(784, 'Europe/Jersey'),
+(785, 'Europe/Kaliningrad'),
+(786, 'Europe/Kiev'),
+(787, 'Europe/Kirov'),
+(788, 'Europe/Lisbon'),
+(789, 'Europe/Ljubljana'),
+(790, 'Europe/London'),
+(791, 'Europe/Luxembourg'),
+(792, 'Europe/Madrid'),
+(793, 'Europe/Malta'),
+(794, 'Europe/Mariehamn'),
+(795, 'Europe/Minsk'),
+(796, 'Europe/Monaco'),
+(797, 'Europe/Moscow'),
+(798, 'Europe/Nicosia'),
+(799, 'Europe/Oslo'),
+(800, 'Europe/Paris'),
+(801, 'Europe/Podgorica'),
+(802, 'Europe/Prague'),
+(803, 'Europe/Riga'),
+(804, 'Europe/Rome'),
+(805, 'Europe/Samara'),
+(806, 'Europe/San_Marino'),
+(807, 'Europe/Sarajevo'),
+(808, 'Europe/Simferopol'),
+(809, 'Europe/Skopje'),
+(810, 'Europe/Sofia'),
+(811, 'Europe/Stockholm'),
+(812, 'Europe/Tallinn'),
+(813, 'Europe/Tirane'),
+(814, 'Europe/Ulyanovsk'),
+(815, 'Europe/Uzhgorod'),
+(816, 'Europe/Vaduz'),
+(817, 'Europe/Vatican'),
+(818, 'Europe/Vienna'),
+(819, 'Europe/Vilnius'),
+(820, 'Europe/Volgograd'),
+(821, 'Europe/Warsaw'),
+(822, 'Europe/Zagreb'),
+(823, 'Europe/Zaporozhye'),
+(824, 'Europe/Zurich'),
+(825, 'Indian/Antananarivo'),
+(826, 'Indian/Chagos'),
+(827, 'Indian/Christmas'),
+(828, 'Indian/Cocos'),
+(829, 'Indian/Comoro'),
+(830, 'Indian/Kerguelen'),
+(831, 'Indian/Mahe'),
+(832, 'Indian/Maldives'),
+(833, 'Indian/Mauritius'),
+(834, 'Indian/Mayotte'),
+(835, 'Indian/Reunion'),
+(836, 'MST7MDT'),
+(837, 'PST8PDT'),
+(838, 'Pacific/Apia'),
+(839, 'Pacific/Auckland'),
+(840, 'Pacific/Efate'),
+(841, 'Pacific/Enderbury'),
+(842, 'Pacific/Fakaofo'),
+(843, 'Pacific/Fiji'),
+(844, 'Pacific/Funafuti'),
+(845, 'Pacific/Galapagos'),
+(846, 'Pacific/Guadalcanal'),
+(847, 'Pacific/Guam'),
+(848, 'Pacific/Honolulu'),
+(849, 'Pacific/Johnston'),
+(850, 'Pacific/Kosrae'),
+(851, 'Pacific/Kwajalein'),
+(852, 'Pacific/Majuro'),
+(853, 'Pacific/Midway'),
+(854, 'Pacific/Nauru'),
+(855, 'Pacific/Niue'),
+(856, 'Pacific/Noumea'),
+(857, 'Pacific/Pago_Pago'),
+(858, 'Pacific/Palau'),
+(859, 'Pacific/Ponape'),
+(860, 'Pacific/Port_Moresby'),
+(861, 'Pacific/Rarotonga'),
+(862, 'Pacific/Saipan'),
+(863, 'Pacific/Tahiti'),
+(864, 'Pacific/Tarawa'),
+(865, 'Pacific/Tongatapu'),
+(866, 'Pacific/Truk'),
+(867, 'Pacific/Wake'),
+(868, 'Pacific/Wallis');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `states`
+--
+ALTER TABLE `states`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_admin`
+--
+ALTER TABLE `tb_admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_blog`
+--
+ALTER TABLE `tb_blog`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_contests`
+--
+ALTER TABLE `tb_contests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_contest_price`
+--
+ALTER TABLE `tb_contest_price`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_contest_sponsors`
+--
+ALTER TABLE `tb_contest_sponsors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_qhse`
+--
+ALTER TABLE `tb_qhse`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_questions`
+--
+ALTER TABLE `tb_questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_seo`
+--
+ALTER TABLE `tb_seo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `timezone_list`
+--
+ALTER TABLE `timezone_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tb_contests`
+--
+ALTER TABLE `tb_contests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+
+--
+-- AUTO_INCREMENT for table `tb_contest_price`
+--
+ALTER TABLE `tb_contest_price`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=360;
+
+--
+-- AUTO_INCREMENT for table `tb_contest_sponsors`
+--
+ALTER TABLE `tb_contest_sponsors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=330;
+
+--
+-- AUTO_INCREMENT for table `tb_qhse`
+--
+ALTER TABLE `tb_qhse`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tb_questions`
+--
+ALTER TABLE `tb_questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=387;
+
+--
+-- AUTO_INCREMENT for table `tb_seo`
+--
+ALTER TABLE `tb_seo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `timezone_list`
+--
+ALTER TABLE `timezone_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=869;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
