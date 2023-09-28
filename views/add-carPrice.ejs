@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from themewagon.github.io/Modernize/src/html/ui-forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 06:53:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modernize Free</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+    
+      <%- include("../partials/sidebar.ejs") %>
+
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+     <%- include("../partials/header.ejs") %>
+
+      <!--  Header End -->
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-4">Add Car Price</h5>
+              <div class="card">
+                <div class="card-body">
+                  <form action="/addCarPrice" method="post">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Select Car</label>
+                      <select name="carClass" id="carSelect" class="form-control" required onchange="getId(this)">
+                        <option value="">--please select car--</option>
+                        <%result.forEach((result)=>{   %>
+                          <option value="<%=result.generateId%>" class="form-control">
+                            <%=result.carclass%>
+                          </option>
+                     <%   })%>
+                     
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Selected Car No. of Seat</label>
+                      <input   type="number" class="form-control" id="seats" aria-describedby="emailHelp" name="seat" readonly  required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Per Hours Price</label>
+                      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="hourPrice" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Per K.m Price</label>
+                      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="kmPrice" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Full Day Price</label>
+                      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="fullDayPrice" required>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Select Status</label>
+                      <div class="">
+                        <select name="status" id="" class="form-control" required>
+                          <option value="">--select status--</option>
+                         
+                            <option value="Active" class="form-control">
+                                Active
+                            </option>
+                            <option value="Deactive" class="form-control">
+                              Deactive
+                          </option>
+                      
+                       
+                        </select>
+                      </div>
+                    </div>
+                
+                  
+                  
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+              </div>
+           
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/sidebarmenu.js"></script>
+  <script src="../js/app.min.js"></script>
+  <script src="../js/simplebar.js"></script>
+  <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <script>
+    function getId(item) {
+      
+      const selectedId =  document.getElementById("carSelect").value
+    //  const url =`http://localhost:5000/detailsCar/${selectedId}`
+    //  console.log(url)
+      $.ajax({
+      url: `http://localhost:5000/detailsCar/${selectedId}`,
+      method: "get",
+      mode: "cors",
+      contentType: "application/x-www-form-urlencoded",
+      success: function (res) {
+    document.getElementById("seats").value = res.message.seats
+    
+      },
+      error: function (error) {
+        console.log(error);
+      },
+    });
+      
+    }
+  </script>
+</body>
+
+
+<!-- Mirrored from themewagon.github.io/Modernize/src/html/ui-forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 06:53:34 GMT -->
+</html>

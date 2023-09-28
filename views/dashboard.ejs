@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from themewagon.github.io/Modernize/src/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 06:53:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travling</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <%- include("../partials/sidebar.ejs") %>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+
+    
+
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <%- include("../partials/header.ejs") %>
+
+      <!--  Header End -->
+      <div class="container-fluid">
+        <!--  Row 1 -->
+        <div class="row">
+          <div class="col-lg-12 d-flex align-items-strech">
+            <div class="card w-100">
+              <div class="card-body">
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                  <div class="mb-3 mb-sm-0">
+                    <h5 class="card-title fw-semibold">Sales Overview</h5>
+                  </div>
+                  <div>
+                    <select class="form-select">
+                      <option value="1">March 2023</option>
+                      <option value="2">April 2023</option>
+                      <option value="3">May 2023</option>
+                      <option value="4">June 2023</option>
+                    </select>
+                  </div>
+                </div>
+                <div id="chart"></div>
+              </div>
+            </div>
+          </div>
+       
+        </div>
+      
+     
+        <div class="py-6 px-6 text-center">
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/sidebarmenu.js"></script>
+  <script src="../js/js/app.min.js"></script>
+  <script src="../js/apexcharts.min.js"></script>
+  <script src="../js/simplebar.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+
+
+<!-- Mirrored from themewagon.github.io/Modernize/src/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 06:53:34 GMT -->
+</html>
