@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from themewagon.github.io/Modernize/src/html/ui-forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 06:53:34 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modernize Free</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+
+      <%- include("../partials/sidebar.ejs") %>
+
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <%- include("../partials/header.ejs") %>
+
+        <!--  Header End -->
+        <div class="container-fluid">
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Add Technologies Master</h5>
+                <div class="card">
+                  <div class="card-body">
+                    <form action="/addTechnologiesMaster" method="post">
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                          name="title">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Technologies</label><br>
+                        <% result.forEach((result)=>{ %>
+                          <input type="checkbox" name="technologies" value="<%=result.generateId%>"><span>  <%=result.title%></span><br>
+
+                             <% })%>
+                       
+                      </div>
+                    
+
+
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/sidebarmenu.js"></script>
+  <script src="../js/app.min.js"></script>
+  <script src="../js/simplebar.js"></script>
+</body>
+
+
+<!-- Mirrored from themewagon.github.io/Modernize/src/html/ui-forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 06:53:34 GMT -->
+
+</html>

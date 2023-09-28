@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from themewagon.github.io/Modernize/src/html/ui-forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 06:53:34 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modernize Free</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+
+      <%- include("../partials/sidebar.ejs") %>
+
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <%- include("../partials/header.ejs") %>
+
+        <!--  Header End -->
+        <div class="container-fluid">
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Edit Blogs</h5>
+                <div class="card">
+                  <div class="card-body">
+                    <form action="/editBlogs/<%=result.generateId%>" method="post" enctype="multipart/form-data">
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Blogs Title</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                          name="title" value="<%=findBlogsTitle.title%>" required>
+                          <input name="id" type="text" hidden value="<%=findBlogsTitle.id%>">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Blogs Pounch Line</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                          name="pounchLine" value="<%=findBlogsTitle.pounchLine%>" required>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Blogs Background Image</label>
+                        <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                          name="image">
+                        <div id="emailHelp" class="form-text"><img style="width: 100px"
+                            src="../img/<%=findBlogsTitle.image%>" alt=""></div>
+                      </div>
+                    
+                     
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                          name="title2" value="<%=result.title%>" required>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Button Text</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                          name="btnText" value="<%=result.btn_text%>" required>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Button Url</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                          name="btnUrl" value="<%=result.btn_url%>" required>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+
+
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/sidebarmenu.js"></script>
+  <script src="../js/app.min.js"></script>
+  <script src="../js/simplebar.js"></script>
+</body>
+
+
+<!-- Mirrored from themewagon.github.io/Modernize/src/html/ui-forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 06:53:34 GMT -->
+
+</html>

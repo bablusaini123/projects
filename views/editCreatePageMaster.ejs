@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from themewagon.github.io/Modernize/src/html/ui-forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 06:53:34 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modernize Free</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+
+      <%- include("../partials/sidebar.ejs") %>
+
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <%- include("../partials/header.ejs") %>
+
+        <!--  Header End -->
+        <div class="container-fluid">
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Edit Page Master</h5>
+                <h3 class=" fw-semibold mb-4 text-center text-danger" id="error"></h3>
+                <div class="card">
+                  <div class="card-body">
+                    <form action="/editCreatePageMaster/<%=createPage.id%>" method="post">
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                          name="title" value="<%=createPage.title%>">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      </div>
+                      <div class="col-md-12">
+                        <label for="exampleInputEmail1" class="form-label">Menu</label><br>
+                        <input type="text" value="<%=createPage.menuLink%>" class="form-control" disabled>
+                      </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-md-2">
+                      <label for="exampleInputEmail1" class="form-label">Sr No.</label><br>
+                      <select name="headerSr" id="headerSr" class="form-control selectVal" onchange="change2(this.id)">
+
+                        <% options.forEach((result)=>{ %>
+
+                          <option value="<%=result.option %>" <%=result.option==createPage.headerSr ? 'selected' : "" %>
+                            >
+                            <%=result.option %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                    <div class="col-md-10">
+                      <label for="exampleInputEmail1" class="form-label">Header</label><br>
+                      <select name="header" id="" class="form-control">
+                        <% header.forEach((result)=>{ %>
+
+                          <option value="<%=result.generateId %>" <%=result.generateId==createPage.header ? 'selected' : "" %>>
+                            <%=result.title %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="mb-3 row">
+                    <div class="col-md-2">
+                      <label for="exampleInputEmail1" class="form-label">Sr No.</label><br>
+                      <select name="sliderSr" id="sliderSr" class="form-control selectVal" onchange="change2(this.id)">
+                        <% options.forEach((result)=>{ %>
+
+                          <option value="<%=result.option %>" <%=result.option==createPage.sliderSr ? 'selected' : "" %>
+                            >
+                            <%=result.option %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                    <div class="col-md-10">
+                      <label for="exampleInputEmail1" class="form-label">Slider</label><br>
+                      <select name="slider" id="" class="form-control">
+                        <% slider.forEach((result)=>{ %>
+
+                          <option value="<%=result.generateId %>" <%=result.generateId==createPage.slider ? 'selected' : "" %>>
+                            <%=result.title %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-md-2">
+                      <label for="exampleInputEmail1" class="form-label">Sr No.</label><br>
+                      <select name="clientsSr" id="clientsSr" class="form-control selectVal"
+                        onchange="change2(this.id)">
+                        <% options.forEach((result)=>{ %>
+
+                          <option value="<%=result.option %>" <%=result.option==createPage.clientSr ? 'selected' : "" %>
+                            >
+                            <%=result.option %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                    <div class="col-md-10">
+                      <label for="exampleInputEmail1" class="form-label">Our Clients</label><br>
+                      <select name="clients" id="" class="form-control">
+                        <% clients.forEach((result)=>{ %>
+
+                          <option value="<%=result.generateId %>" <%=result.generateId==createPage.client ? 'selected' : "" %>>
+                            <%=result.title %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-md-2">
+                      <label for="exampleInputEmail1" class="form-label">Sr No.</label><br>
+                      <select name="successStorySr" id="successStorySr" class="form-control selectVal"
+                        onchange="change2(this.id)">
+                        <% options.forEach((result)=>{ %>
+
+                          <option value="<%=result.option %>" <%=result.option==createPage.successStorySr ? 'selected'
+                            : "" %>>
+                            <%=result.option %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                    <div class="col-md-10">
+                      <label for="exampleInputEmail1" class="form-label">Success Story</label><br>
+                      <select name="successStory" id="" class="form-control">
+                        <% successStory.forEach((result)=>{ %>
+
+                          <option value="<%=result.generateId %>" <%=result.generateId==createPage.successStory ? 'selected' : "" %>>
+                            <%=result.title %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-md-2">
+                      <label for="exampleInputEmail1" class="form-label">Sr No.</label><br>
+                      <select name="technologiesSr" id="technologiesSr" class="form-control selectVal"
+                        onchange="change2(this.id)">
+                        <% options.forEach((result)=>{ %>
+
+                          <option value="<%=result.option %>" <%=result.option==createPage.technologiesSr ? 'selected'
+                            : "" %>>
+                            <%=result.option %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                    <div class="col-md-10">
+                      <label for="exampleInputEmail1" class="form-label">Technologies</label><br>
+                      <select name="technologies" id="" class="form-control">
+                        <% technologies.forEach((result)=>{ %>
+
+                          <option value="<%=result.generateId %>" <%=result.generateId==createPage.technologies ? 'selected' : "" %>>
+                            <%=result.title %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-md-2">
+                      <label for="exampleInputEmail1" class="form-label">Sr No.</label><br>
+                      <select name="offeringSr" id="offeringSr" class="form-control selectVal"
+                        onchange="change2(this.id)">
+                        <% options.forEach((result)=>{ %>
+
+                          <option value="<%=result.option %>" <%=result.option==createPage.offeringSr ? 'selected' : ""
+                            %>>
+                            <%=result.option %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                    <div class="col-md-10">
+                      <label for="exampleInputEmail1" class="form-label">Offering</label><br>
+                      <select name="offering" id="" class="form-control">
+                        <% offering.forEach((result)=>{ %>
+
+                          <option value="<%=result.generateId %>" <%=result.generateId==createPage.offering ? 'selected' : "" %>>
+                            <%=result.title %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-md-2">
+                      <label for="exampleInputEmail1" class="form-label">Sr No.</label><br>
+                      <select name="industriesSr" id="industriesSr" class="form-control selectVal"
+                        onchange="change2(this.id)">
+                        <% options.forEach((result)=>{ %>
+
+                          <option value="<%=result.option %>" <%=result.option==createPage.industriesSr ? 'selected'
+                            : "" %>>
+                            <%=result.option %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                    <div class="col-md-10">
+                      <label for="exampleInputEmail1" class="form-label">Industries</label><br>
+                      <select name="industries" id="" class="form-control">
+                        <% industries.forEach((result)=>{ %>
+
+                          <option value="<%=result.generateId %>" <%=result.generateId==createPage.industries ? 'selected' : "" %>>
+                            <%=result.title %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-md-2">
+                      <label for="exampleInputEmail1" class="form-label">Sr No.</label><br>
+                      <select name="awardsSr" id="awardsSr" class="form-control selectVal" onchange="change2(this.id)">
+                        <% options.forEach((result)=>{ %>
+
+                          <option value="<%=result.option %>" <%=result.option==createPage.award ? 'selected' : "" %>>
+                            <%=result.option %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                    <div class="col-md-10">
+                      <label for="exampleInputEmail1" class="form-label">Awards</label><br>
+                      <select name="awards" id="" class="form-control">
+                        <% awards.forEach((result)=>{ %>
+
+                          <option value="<%=result.generateId %>" <%=result.generateId==createPage.award ? 'selected' : "" %>>
+                            <%=result.title %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="mb-3 row">
+                    <div class="col-2">
+                      <label for="exampleInputEmail1" class="form-label">Sr No.</label><br>
+                      <select name="blogSr" id="blogSr" class="form-control selectVal" onchange="change2(this.id)">
+                        <% options.forEach((result)=>{ %>
+
+                          <option value="<%=result.option %>" <%=result.option==createPage.blogSr ? 'selected' : "" %>>
+                            <%=result.option %>
+                          </option>
+                          <% })%>
+                      </select>
+
+                    </div>
+                    <div class="col-10">
+                      <label for="exampleInputEmail1" class="form-label">Blogs</label><br>
+                      <select name="blogs" id="" class="form-control">
+                        <% blogs.forEach((result)=>{ %>
+
+                          <option value="<%=result.generateId %>" <%=result.generateId==createPage.blog ? 'selected' : "" %>>
+                            <%=result.title %>
+                          </option>
+                          <% })%>
+                      </select>
+                    </div>
+
+                  </div>
+
+
+
+
+
+                  <button type="submit" class="btn btn-primary" id="button">Submit</button>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
+  <script>
+
+ 
+    
+    let arr = [
+      { id: "headerSr", SrNo: "<%=createPage.headerSr%>" },
+      { id: "sliderSr", SrNo: "<%=createPage.sliderSr%>" },
+      { id: "clientsSr", SrNo: "<%=createPage.clientSr%>" },
+      { id: "successStorySr", SrNo: "<%=createPage.successStorySr%>" },
+      { id: "technologiesSr", SrNo: "<%=createPage.technologiesSr%>" },
+      { id: "offeringSr", SrNo: "<%=createPage.offeringSr%>" },
+      { id: "industriesSr", SrNo: "<%=createPage.industriesSr%>" },
+      { id: "awardsSr", SrNo: "<%=createPage.awardsSr%>" },
+      { id: "blogSr", SrNo: "<%=createPage.blogSr%>" }
+    ]
+
+
+    const change2 = async (params) => {
+
+      const srNo = document.getElementById(params).value
+      id = params
+      let obj = {
+        id: id,
+        SrNo: srNo
+      }
+
+      // filter array for replace obj in array to curruent selected value
+
+      const filterArray = arr.filter(value => value.id !== params)
+      console.log(filterArray)
+
+      // filter array for showing error
+
+
+      const findExistFalue = arr.filter(value => value.SrNo == srNo)
+      console.log("error", findExistFalue)
+      arr = filterArray
+      arr.push(obj)
+
+      const uniqueValues = new Set(arr.map(v => v.SrNo));
+
+
+      console.log("unique", uniqueValues)
+      if (findExistFalue.length > 0 || uniqueValues.size < arr.length > 0) {
+        const errorTag = document.getElementById("error").innerHTML = "You cannot select the same Serial Number Multipul times"
+        const disable = document.getElementById("button").disabled = true
+        unUnique = []
+      } else {
+        const errorTag = document.getElementById("error").innerHTML = ""
+        const disable = document.getElementById("button").disabled = false
+        unUnique = []
+      }
+
+
+
+
+    }
+
+
+
+
+
+  </script>
+
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/sidebarmenu.js"></script>
+  <script src="../js/app.min.js"></script>
+  <script src="../js/simplebar.js"></script>
+</body>
+
+
+<!-- Mirrored from themewagon.github.io/Modernize/src/html/ui-forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 06:53:34 GMT -->
+
+</html>
