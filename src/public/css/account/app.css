@@ -27,7 +27,8 @@
 }
 
 .p-r-5 {
-    padding-right: .13333rem !important
+    padding-right: .13333rem !important;
+    color: #C4933F;
 }
 
 .m-t-10 {
@@ -652,7 +653,8 @@
 #app,
 .mian {
     width: 100%;
-    min-height: 100vh
+    min-height: 100vh;
+    background: #000;
 }
 
 .mian {
@@ -902,7 +904,7 @@ img[data-v-7b9b9922] {
     top: 0;
     height: 1.33333rem;
     line-height: 1.33333rem;
-    background-image: linear-gradient(90deg, #cd0103, #f64841);
+    background: #C4933F;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -984,8 +986,10 @@ img[data-v-7b9b9922] {
 
 .mian[data-v-a0753f48] {
     min-height: 100vh;
-    background-color: #fbfcfd
+    background-color: #292929;
 }
+
+
 
 .mian .audio[data-v-a0753f48] {
     width: .66667rem;
@@ -996,12 +1000,15 @@ img[data-v-7b9b9922] {
     padding-top: 0
 }
 
+
 .mian .login-banner[data-v-a0753f48] {
     position: relative;
-    background: url(/images/login_banner.34f15f30.png) no-repeat top;
-    background-size: 100% 100%;
+    background-image: url(https://ossimg.bdg123456.com/BDGWin/gamecategory/gamecategory_2024030623351551lj.png), linear-gradient(153deg, #D9AC4F 5.33%, #C4933F 93.42%);
+    background-size: auto;
     min-height: 6.4rem;
-    max-height: 6.66667rem
+    max-height: 10.66667rem;
+    background-position: 13%;
+    background-repeat: no-repeat;
 }
 
 .mian .login-banner .bankPage[data-v-a0753f48] {
@@ -1017,12 +1024,13 @@ img[data-v-7b9b9922] {
 }
 
 .mian .login-banner .logo[data-v-a0753f48] {
+    filter: brightness(0.5);
     position: absolute;
-    top: 50%;
+    top: 33%;
     margin-top: -.53333rem;
     right: .4rem;
     width: 3.2rem;
-    height: 1.06667rem
+    height: 1.06667rem;
 }
 
 .mian .login-box[data-v-a0753f48] {
@@ -1031,15 +1039,14 @@ img[data-v-7b9b9922] {
     padding: .66667rem .8rem;
     border-radius: .53333rem .53333rem 0 0;
     margin-top: -.53333rem;
-    background-color: #fff
+    background-color: #292929;
 }
 
 .mian .login-box .tit[data-v-a0753f48] {
     text-align: center;
     font-size: .8rem;
-    color: #670001
+    color: #C4933F;
 }
-
 .mian .forgot-box[data-v-a0753f48] {
     width: 100%;
     padding: .13333rem .8rem .8rem;
@@ -1069,7 +1076,7 @@ img[data-v-7b9b9922] {
     height: 1.06667rem;
     line-height: .96rem;
     margin: .4rem 0 .8rem;
-    border: .05333rem solid #faa09d;
+    border: .05333rem solid #C4933F;
     border-radius: .21333rem;
     overflow: hidden;
     padding-left: .88rem
@@ -1112,14 +1119,16 @@ img[data-v-7b9b9922] {
     font-size: .4rem;
     line-height: .96rem;
     padding-right: .08rem;
-    color: #f4453f
+    color: #C4933F;
 }
 
 .mian-from .item input[data-v-a0753f48] {
     border: none;
     width: 100%;
     height: .96rem;
-    font-size: .4rem
+    font-size: .4rem;
+    background-color: #292929;
+    color: rgb(161, 159, 159);
 }
 
 .mian-from .item .otp[data-v-a0753f48] {
@@ -1153,7 +1162,7 @@ img[data-v-7b9b9922] {
 .mian-from .mian-btn .gradient[data-v-a0753f48] {
     width: 65%;
     margin: 0 auto;
-    box-shadow: 0 0 .21333rem .02667rem rgba(92, 186, 71, .72);
+    box-shadow: 0 0 .21333rem .02667rem rgba(228, 235, 30, 0.72);
     border-radius: 1.06667rem;
     height: 1.06667rem
 }
@@ -1166,7 +1175,7 @@ img[data-v-7b9b9922] {
     height: .53333rem;
     line-height: .53333rem;
     font-size: .4rem;
-    color: #f4453f
+    color: #C4933F
 }
 
 .mian .AreaCode-box[data-v-a0753f48] {

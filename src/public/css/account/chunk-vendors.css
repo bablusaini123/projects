@@ -5296,7 +5296,10 @@ ul {
 .van-tabs__nav--line {
     box-sizing: content-box;
     height: 100%;
-    padding-bottom: .4rem
+    padding-bottom: .4rem;
+    background: #000;
+
+    
 }
 
 .van-tabs__nav--card {
@@ -7138,3 +7141,14 @@ ul {
 .van-tabbar--unfit {
     padding-bottom: 0
 }
+
+.van-tabs__nav {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    background-color: #fff;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
