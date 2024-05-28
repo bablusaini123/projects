@@ -757,7 +757,8 @@
     top: -.4rem;
     right: -.4rem;
     width: 3.2rem;
-    height: 2.26667rem
+    height: 2.26667rem;
+    z-index: 100;
 }
 
 .home .gameList .item .info .img.imgslot[data-v-432e6ed0] {
