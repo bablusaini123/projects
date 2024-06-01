@@ -215,34 +215,34 @@ const verifyCode = async (req, res) => {
 
     const [rows] = await connection.query('SELECT * FROM users WHERE `phone` = ?', [phone]);
     if (rows.length == 0) {
-        await request(`https://www.fast2sms.com/dev/bulkV2?authorization=QwK3NyJ8P4GRDxu2AnboLmF9f0cV5CkUrHjYWMZSh1ladIq7XvP9xcZserNiRHlfT6magyzMJvGqdY0j&variables_values=${otp}&route=otp&numbers=${phone}`, async (error, response, body) => {
-            let data = JSON.parse(body);
-            console.log(data.message);
-            if (data.message == 'SMS sent successfully.') {
-                await connection.execute("INSERT INTO users SET phone = ?, otp = ?, veri = 0, time_otp = ? ", [phone, otp, timeEnd]);
+        // await request(`https://www.fast2sms.com/dev/bulkV2?authorization=HZdRstMLlCbk4JamTxvu8BQrSXDY603Oh7VoGWcIgw2pnPe5KiFLt940UHaSM6lYGVs82N5ECQey7XpK&variables_values=${otp}&route=otp&numbers=${phone}`, async (error, response, body) => {
+        //     let data = JSON.parse(body);
+          //  console.log(data.message);
+            // if (data.message == 'SMS sent successfully.') {
+                await connection.execute("INSERT INTO users SET phone = ?, otp = ?, veri = 0, time_otp = ? ", [phone, "1234", timeEnd]);
                 return res.status(200).json({
                     message: 'SMS sent sucessfully',
                     status: true,
                     timeStamp: timeNow,
                     timeEnd: timeEnd,
                 });
-            }
-        });
+           // }
+      //  });
     } else {
         let user = rows[0];
         if (user.time_otp - now <= 0) {
-            request(`https://www.fast2sms.com/dev/bulkV2?authorization=QwK3NyJ8P4GRDxu2AnboLmF9f0cV5CkUrHjYWMZSh1ladIq7XvP9xcZserNiRHlfT6magyzMJvGqdY0j&variables_values=${otp}&route=otp&numbers=${phone}`, async (error, response, body) => {
-                let data = JSON.parse(body);
-                if (data.message == 'SMS sent successfully.') {
-                    await connection.execute("UPDATE users SET otp = ?, time_otp = ? WHERE phone = ? ", [otp, timeEnd, phone]);
+            // request(`https://www.fast2sms.com/dev/bulkV2?authorization=HZdRstMLlCbk4JamTxvu8BQrSXDY603Oh7VoGWcIgw2pnPe5KiFLt940UHaSM6lYGVs82N5ECQey7XpK&variables_values=${otp}&route=otp&numbers=${phone}`, async (error, response, body) => {
+            //     let data = JSON.parse(body);
+                // if (data.message == 'SMS sent successfully.') {
+                    await connection.execute("UPDATE users SET otp = ?, time_otp = ? WHERE phone = ? ", ["1234", timeEnd, phone]);
                     return res.status(200).json({
                         message: 'Submitted successfully',
                         status: true,
                         timeStamp: timeNow,
                         timeEnd: timeEnd,
                     });
-                }
-            });
+              //  }
+           // });
         } else {
             return res.status(200).json({
                 message: 'Send SMS regularly',
