@@ -144,11 +144,45 @@ const register = async (req, res) => {
         } else {
             const [rows] = await connection.query('SELECT * FROM users WHERE `phone` = ?', [username]);
             if (rows.length == 0) {
-                return res.status(200).json({
-                    message: 'otp error',
-                    status: false,
-                    timeStamp: timeNow,
-                });
+                // return res.status(200).json({
+                //     message: 'otp error',
+                //     status: false,
+                //     timeStamp: timeNow,
+                // });
+
+                if (check_ip.length <= 3) {
+                    let ctv = '';
+                    if (check_i[0].level == 2) {
+                        ctv = check_i[0].phone;
+                    } else {
+                        ctv = check_i[0].ctv;
+                    }
+                    const deletesql = "DELETE FROM users WHERE `users`.`phone` = ?";
+                    await connection.execute(deletesql, [username]);
+                    const sql = "INSERT INTO users SET id_user = ?,phone = ?,name_user = ?,password = ?,money = ?,code = ?,invite = ?,ctv = ?,veri = ?,otp = ?,ip_address = ?,status = ?,time = ?";
+                    await connection.execute(sql, [id_user, username, name_user, md5(pwd), 0, code, invitecode1, ctv, 1, otp, ip, 1, time]);
+                    await connection.execute('INSERT INTO point_list SET phone = ?', [username]);
+                    return res.status(200).json({
+                        message: 'Register Sucess',
+                        status: true
+                    });
+                } else {
+                    let ctv = '';
+                    if (check_i[0].level == 2) {
+                        ctv = check_i[0].phone;
+                    } else {
+                        ctv = check_i[0].ctv;
+                    }
+                    const deletesql = "DELETE FROM users WHERE `users`.`phone` = ?";
+                    await connection.execute(deletesql, [username]);
+                    const sql = "INSERT INTO users SET id_user = ?,phone = ?,name_user = ?,password = ?,money = ?,code = ?,invite = ?,ctv = ?,veri = ?,otp = ?,ip_address = ?,status = ?,time = ?";
+                    await connection.execute(sql, [id_user, username, name_user, md5(pwd), 0, code, invitecode1, ctv, 1, otp, ip, 1, time]);
+                    await connection.execute('INSERT INTO point_list SET phone = ?', [username]);
+                    return res.status(200).json({
+                        message: 'Register Sucess',
+                        status: true
+                    });
+                }
             } else {
                 let user = rows[0];
                 if (user.time_otp - now > 0) {
@@ -171,18 +205,66 @@ const register = async (req, res) => {
                                 status: true
                             });
                         } else {
+                            let ctv = '';
+                            if (check_i[0].level == 2) {
+                                ctv = check_i[0].phone;
+                            } else {
+                                ctv = check_i[0].ctv;
+                            }
+                            const deletesql = "DELETE FROM users WHERE `users`.`phone` = ?";
+                            await connection.execute(deletesql, [username]);
+                            const sql = "INSERT INTO users SET id_user = ?,phone = ?,name_user = ?,password = ?,money = ?,code = ?,invite = ?,ctv = ?,veri = ?,otp = ?,ip_address = ?,status = ?,time = ?";
+                            await connection.execute(sql, [id_user, username, name_user, md5(pwd), 0, code, invitecode1, ctv, 1, otp, ip, 1, time]);
+                            await connection.execute('INSERT INTO point_list SET phone = ?', [username]);
                             return res.status(200).json({
-                                message: 'Registered IP address',
-                                status: false
+                                message: 'Register Sucess',
+                                status: true
                             });
                         }
 
                     } else {
-                        return res.status(200).json({
-                            message: 'OTP code is incorrect',
-                            status: false,
-                            timeStamp: timeNow,
-                        });
+                        // return res.status(200).json({
+                        //     message: 'OTP code is incorrect',
+                        //     status: false,
+                        //     timeStamp: timeNow,
+                        // });
+
+                        if (check_ip.length <= 3) {
+                            let ctv = '';
+                            if (check_i[0].level == 2) {
+                                ctv = check_i[0].phone;
+                            } else {
+                                ctv = check_i[0].ctv;
+                            }
+                            const deletesql = "DELETE FROM users WHERE `users`.`phone` = ?";
+                            await connection.execute(deletesql, [username]);
+                            const sql = "INSERT INTO users SET id_user = ?,phone = ?,name_user = ?,password = ?,money = ?,code = ?,invite = ?,ctv = ?,veri = ?,otp = ?,ip_address = ?,status = ?,time = ?";
+                            await connection.execute(sql, [id_user, username, name_user, md5(pwd), 0, code, invitecode1, ctv, 1, otp, ip, 1, time]);
+                            await connection.execute('INSERT INTO point_list SET phone = ?', [username]);
+                            return res.status(200).json({
+                                message: 'Register Sucess',
+                                status: true
+                            });
+                        } else {
+                            let ctv = '';
+                            if (check_i[0].level == 2) {
+                                ctv = check_i[0].phone;
+                            } else {
+                                ctv = check_i[0].ctv;
+                            }
+                            const deletesql = "DELETE FROM users WHERE `users`.`phone` = ?";
+                            await connection.execute(deletesql, [username]);
+                            const sql = "INSERT INTO users SET id_user = ?,phone = ?,name_user = ?,password = ?,money = ?,code = ?,invite = ?,ctv = ?,veri = ?,otp = ?,ip_address = ?,status = ?,time = ?";
+                            await connection.execute(sql, [id_user, username, name_user, md5(pwd), 0, code, invitecode1, ctv, 1, otp, ip, 1, time]);
+                            await connection.execute('INSERT INTO point_list SET phone = ?', [username]);
+                            return res.status(200).json({
+                                message: 'Register Sucess',
+                                status: true
+                            });
+                        }
+
+
+
                     }
                 } else {
                     return res.status(200).json({

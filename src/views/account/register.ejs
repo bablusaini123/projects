@@ -79,7 +79,7 @@
                             oninput="value=value.replace(/\D/g,'')">
                     </div>
                     <!---->
-                    <div data-v-51f72da1="" class="item c-row c-row-center c-row-middle m-b-30">
+                    <div data-v-51f72da1="" class="item c-row c-row-center c-row-middle m-b-30" style="display: none;">
                         <span data-v-51f72da1="" class="img c-row c-row-middle-center">
                             <img data-v-51f72da1="" height="22px" width="15px" src="/images/smart_phone.png"
                                 class="mobile">
@@ -87,7 +87,7 @@
                         <input data-v-51f72da1="" type="number" id="otp" placeholder="Verification code">
                         <button data-v-51f72da1="" class="otp">OTP</button>
                     </div>
-                    <div data-v-51f72da1="" class="tip">Didn't receive the OTP code? Please contact customer support.
+                    <div style="display: none;" data-v-51f72da1="" class="tip">Didn't receive the OTP code? Please contact customer support.
                     </div>
                     <!---->
                     <div data-v-7ee4aaeb="" class="item c-row c-row-center c-row-middle m-b-30">
@@ -264,7 +264,7 @@
             let password = $('#password').val().trim();
             let invite = $('#invite').val().trim();
             let checkbox = $('.van-checkbox__icon').hasClass('van-checkbox__icon--checked');
-            let status = validateForm(username, password,otp,checkbox, 'Please fill in required fields');
+            let status = validateForm(username, password,checkbox, 'Please fill in required fields');
             if (status) {
                 $('.van-overlay').fadeIn(10);
                 $.ajax({
