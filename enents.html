@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .other {
+        background-color: red;
+        font-size: 60px;
+        font-weight: bolder;
+    }
+</style>
+
+<body>
+
+    <h1 id="heading">
+        heading
+    </h1>
+
+    <h1 id="heading2">
+        heading2
+    </h1>
+
+    <button onclick="addClass()">
+        add class
+    </button>
+
+    <button onclick="removeClass()">
+        remove class
+    </button>
+
+
+
+
+    <img src="" id="image" alt="" style="width: 200px;">
+
+    <button onclick="showImage()">
+        show image
+    </button>
+    <button onclick="hideImage()">
+        hide image
+    </button>
+
+    <script>
+
+
+
+
+        function addClass() {
+
+            const heading = document.getElementById("heading2")
+            heading.innerText = "hello i am bablu saini"
+            heading.style.background = "red"
+
+
+        }
+
+        function removeClass() {
+
+            const heading = document.getElementById("heading2")
+            heading.innerText = "heading2"
+            heading.style.background = "none"
+
+
+        }
+
+
+        function showImage() {
+
+            const image = document.getElementById("image")
+            image.src = "https://images.squarespace-cdn.com/content/v1/54fc8146e4b02a22841f4df7/1497832653543-F9EH524VOZ7ELRAFXIEV/Doraemon-12-1024x576.jpg"
+
+        }
+
+        function hideImage() {
+
+            const image = document.getElementById("image")
+            image.removeAttribute("src")
+
+        }
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
