@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+  <title>iNDEX</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #333;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .search-bar {
+      flex: 1 1 300px;
+      margin: 10px 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 20px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .search-bar {
+        flex: 1 1 100%;
+        order: 3;
+        margin: 10px 0;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        background-color: #444;
+        order: 4;
+      }
+
+      nav a {
+        padding: 10px;
+        border-top: 1px solid #555;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      margin: 22px 0px;
+      letter-spacing: 1px;
+      color: #555;
+    }
+
+    .breadcrumb a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="date"],
+    select,
+    .location,
+    .dropdown {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .inline-group {
+      display: flex;
+      gap: 15px;
+    }
+
+    .inline-group .form-group {
+      flex: 1;
+    }
+
+    .upload-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border: 2px dashed #ccc;
+      border-radius: 6px;
+    }
+
+    .upload-box .text {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .upload-box .upload-btn {
+      color: #0056d2;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .flag-select {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flag-select img {
+      width: 24px;
+      height: 18px;
+      border: 1px solid #ccc;
+    }
+
+    .timezone-box {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .event-type {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #f0f6ff;
+      border-radius: 6px;
+      font-weight: 500;
+      border: 1px solid #d0e3ff;
+      color: #0056d2;
+    }
+
+
+
+    #countryDropdown {
+      border: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .startDate {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+    }
+
+    .checkbox-container label {
+      display: inline-block;
+      margin-right: 15px;
+      /* horizontal gap */
+      margin-bottom: 8px;
+      /* vertical gap */
+      cursor: pointer;
+    }
+
+    .multiselect-container {
+      position: relative;
+      width: 250px;
+    }
+
+    .select-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .options-container {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-top: none;
+      background-color: white;
+      z-index: 10;
+      padding: 10px;
+    }
+
+    .options-container label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .options-container label input {
+      margin-right: 10px;
+    }
+
+    .multiselect-container.active .options-container {
+      display: block;
+    }
+
+    .decsTextarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .eventBtn {
+      padding: 9px 31px;
+      background: #f9d3d3;
+      margin-left: auto;
+      color: #000;
+      text-decoration: none;
+      border-radius: 18px;
+      font-weight: 400;
+      border: navajowhite;
+      margin: 19px 0px;
+    }
+
+    .sponsers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .innerSpronsers {
+      width: 30%;
+      margin: 10px 0px;
+    }
+
+    .addButton {
+      background: #e1ffed;
+      font-size: 13px;
+      border: navajowhite;
+      border: solid 1px #d9d9d9;
+      padding: 7px 13px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .input-row input {
+      flex: 1;
+      padding: 5px;
+    }
+
+    .paid-inputs {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .authorInput {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .authorDiv {
+      margin: 15px 0px;
+      width: 50% !important;
+    }
+
+    #loader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.8);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      color: #333;
+      text-align: center;
+    }
+
+    #loader img {
+      margin-top: 18%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- header start -->
+
+  <%- include("../../partials/frountHeader.ejs")%>
+    <!-- header end -->
+
+
+    <section>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/" style="color: #555;">Home </a> ><a href="/influencers" style="color: #555;">Influencer </a> > <a
+            href="#">Add Influencer</a>
+        </div>
+        <h2>Add Influencer</h2>
+      </div>
+    </section>
+    <section>
+      <div id="loader">
+        <img src="../../image/Animation - 1749114626093.gif" alt="">
+        <h4>Loading...</h4>
+
+      </div>
+    </section>
+
+    <form action="/createInfluencer" method="post" enctype="multipart/form-data" onsubmit="showLoader()">
+
+      <section>
+        <div class="container">
+          <div class="form-container">
+            <div class="form-group">
+              <label>Influencer Name <span style="color:red">*</span></label>
+              <input name="name" type="text" placeholder="Enter Influencer Name " required />
+            </div>
+
+            <div class="form-group">
+              <label> Profile Image  <span style="color:red">*</span></label>
+              <div class="upload-box">
+                <div class="text">
+                  Drag and drop an image or <strong>1250 x 656</strong> (in pixels).<br />
+                  PNG, JPEG, <strong>SVG</strong> are Supported
+                </div>
+                <input type="file" name="profileImage" required>
+              </div>
+            </div>
+
+            <div class="inline-group">
+              <div class="form-group">
+                <label>Facebook Profile Link  <span style="color:red">*</span></label>
+                <input name="facebook" class="form-control" type="text" />
+              </div>
+              <div class="form-group">
+                <label>Twitter Profile Link  <span style="color:red">*</span></label>
+                <input name="twitter" class="form-control" type="url" />
+              </div>
+            </div>
+            <div class="inline-group">
+              <div class="form-group">
+                <label>Instagram Profile Link  <span style="color:red">*</span></label>
+                <input name="instagram" class="form-control" type="text" />
+              </div>
+              <div class="form-group">
+                <label>Reddit Profile Link  <span style="color:red">*</span></label>
+                <input name="reddit" class="form-control" type="url" />
+              </div>
+            </div>
+            <div class="inline-group">
+              <div class="form-group">
+                <label>Teligram Handle's Link  <span style="color:red">*</span></label>
+                <input name="teligramHandle" class="form-control" type="text" />
+              </div>
+              <div class="form-group">
+                <label>Telegram's Channel/Group Link  <span style="color:red">*</span></label>
+                <input name="telegramChannel" class="form-control" type="url" />
+              </div>
+            </div>
+             <div class="inline-group">
+              <div class="form-group">
+                <label>LinkedIn Profile Link  <span style="color:red">*</span></label>
+                <input name="linkedIn" class="form-control" type="text" />
+              </div>
+              <div class="form-group">
+                <label>Dicord Channel Link  <span style="color:red">*</span></label>
+                <input name="discord" class="form-control" type="url" />
+              </div>
+            </div>
+              <div class="inline-group">
+              <div class="form-group">
+                <label>Whatsapp  <span style="color:red">*</span></label>
+                <input name="whatsapp" class="form-control" type="text" />
+              </div>
+              <div class="form-group">
+                <label>Youtube Channel Link  <span style="color:red">*</span></label>
+                <input name="youtube" class="form-control" type="url" />
+              </div>
+            </div>
+            <div>
+            </div>
+  
+            <button type="submit" class="eventBtn">Submit</button>
+
+          </div>
+
+
+
+
+      </section>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+
+    <script>
+      $(document).ready(function () {
+        $('#countryCodeSelect').select2({
+          placeholder: "Search country or code...",
+          allowClear: true
+        });
+      });
+    </script>
+
+    <script>
+      function toggleDropdown() {
+        document.getElementById("multiselect").classList.toggle("active");
+      }
+
+      // Optional: close if clicked outside
+      document.addEventListener("click", function (e) {
+        const multiselect = document.getElementById("multiselect");
+        if (!multiselect.contains(e.target)) {
+          multiselect.classList.remove("active");
+        }
+      });
+    </script>
+
+    <script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace("editor")
+    </script>
+
+    <script>
+      const ticketTypeSelect = document.getElementById("ticketType");
+      const paidInputs = document.getElementById("paidInputs");
+
+      ticketTypeSelect.addEventListener("change", function () {
+        if (this.value === "paid") {
+          paidInputs.style.display = "block";
+        } else {
+          paidInputs.style.display = "none";
+        }
+      });
+    </script>
+    <script>
+      function showLoader() {
+        document.getElementById('loader').style.display = 'block';
+      }
+    </script>
+
+
+</body>
+
+</html>

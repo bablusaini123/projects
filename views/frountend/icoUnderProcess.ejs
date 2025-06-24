@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= message %> Under Review
+    </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon-container {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .review-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            animation: pulse 2s infinite;
+            position: relative;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 107, 107, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+            }
+        }
+
+        .spinning-ring {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 100px;
+            height: 100px;
+            border: 3px solid transparent;
+            border-top: 3px solid #ff6b6b;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            color: #d35400;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .description {
+            color: #7f8c8d;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .timeline {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px 0;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-icon {
+            width: 12px;
+            height: 12px;
+            background: #3498db;
+            border-radius: 50%;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .timeline-icon.active {
+            background: #2ecc71;
+            animation: glow 1.5s infinite;
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .timeline-icon.pending {
+            background: #95a5a6;
+        }
+
+        .timeline-text {
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .info-card h3 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .contact-section h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .contact-section p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="icon-container">
+            <div class="review-icon">
+                📋
+                <div class="spinning-ring"></div>
+            </div>
+        </div>
+
+        <h1>
+            <%= message %> Under Review
+        </h1>
+        <div class="status-badge">Review in Progress</div>
+
+        <p class="description">
+            Thank you for submitting your <%= message %> request! Our team is currently reviewing your application and
+                will
+                get back to you within 24-48 hours.
+        </p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon active"></div>
+                <div class="timeline-text">Application Submitted ✓</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon active"></div>
+                <div class="timeline-text">Initial Review in Progress...</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon pending"></div>
+                <div class="timeline-text">Technical Verification</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon pending"></div>
+                <div class="timeline-text">Final Approval & Listing</div>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>⏰ Review Time</h3>
+                <p>24-48 hours for standard review process</p>
+            </div>
+            <div class="info-card">
+                <h3>📧 Notification</h3>
+                <p>You'll receive email updates on your application status</p>
+            </div>
+            <div class="info-card">
+                <h3>🔍 What's Next</h3>
+                <p>Our team will verify all submitted information and documents</p>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h3>Need Help?</h3>
+            <p>If you have any questions about your submission or need to make changes, please contact our support team.
+            </p>
+            <button class="btn" onclick="openSupport()">Contact Support</button>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive elements
+        function openSupport() {
+            alert('Support contact: support@yoursite.com\nPhone: +1-XXX-XXX-XXXX');
+        }
+
+        // Update the current time display
+        function updateCurrentTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString();
+
+            // You can add a timestamp element if needed
+            console.log('Review page loaded at:', timeString);
+        }
+
+        // Initialize
+        updateCurrentTime();
+
+        // Add a simple animation trigger on scroll
+        window.addEventListener('scroll', function () {
+            const elements = document.querySelectorAll('.info-card');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight * 0.8) {
+                    element.style.animation = 'slideIn 0.6s ease-out';
+                }
+            });
+        });
+
+
+    </script>
+
+    <script>
+        window.addEventListener('load', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            // Check if message is what we expect
+            if (message === 'Airdrop') {
+                setTimeout(function () {
+                    window.location.href = '/airdropListing';
+                }, 7000); // redirect after 7 seconds
+            }else if (message === 'ICO') {
+                setTimeout(function () {
+                    window.location.href = '/icoListing';
+                }, 7000); // redirect after 7 seconds
+            }
+        });
+    </script>
+
+</body>
+
+</html>

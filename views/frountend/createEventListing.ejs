@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+  <title>iNDEX</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #333;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .search-bar {
+      flex: 1 1 300px;
+      margin: 10px 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 20px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .search-bar {
+        flex: 1 1 100%;
+        order: 3;
+        margin: 10px 0;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        background-color: #444;
+        order: 4;
+      }
+
+      nav a {
+        padding: 10px;
+        border-top: 1px solid #555;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      margin: 22px 0px;
+      letter-spacing: 1px;
+      color: #555;
+    }
+
+    .breadcrumb a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="date"],
+    select,
+    .location,
+    .dropdown {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .inline-group {
+      display: flex;
+      gap: 15px;
+    }
+
+    .inline-group .form-group {
+      flex: 1;
+    }
+
+    .upload-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border: 2px dashed #ccc;
+      border-radius: 6px;
+    }
+
+    .upload-box .text {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .upload-box .upload-btn {
+      color: #0056d2;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .flag-select {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flag-select img {
+      width: 24px;
+      height: 18px;
+      border: 1px solid #ccc;
+    }
+
+    .timezone-box {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .event-type {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #f0f6ff;
+      border-radius: 6px;
+      font-weight: 500;
+      border: 1px solid #d0e3ff;
+      color: #0056d2;
+    }
+
+
+
+    #countryDropdown {
+      border: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .startDate {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+    }
+
+    .checkbox-container label {
+      display: inline-block;
+      margin-right: 15px;
+      /* horizontal gap */
+      margin-bottom: 8px;
+      /* vertical gap */
+      cursor: pointer;
+    }
+
+    .multiselect-container {
+      position: relative;
+      width: 250px;
+    }
+
+    .select-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .options-container {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-top: none;
+      background-color: white;
+      z-index: 10;
+      padding: 10px;
+    }
+
+    .options-container label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .options-container label input {
+      margin-right: 10px;
+    }
+
+    .multiselect-container.active .options-container {
+      display: block;
+    }
+
+    .decsTextarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .eventBtn {
+      padding: 9px 31px;
+      background: #f9d3d3;
+      margin-left: auto;
+      color: #000;
+      text-decoration: none;
+      border-radius: 18px;
+      font-weight: 400;
+      border: navajowhite;
+      margin: 19px 0px;
+    }
+
+    .sponsers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .innerSpronsers {
+      width: 30%;
+      margin: 10px 0px;
+    }
+
+    .addButton {
+      background: #e1ffed;
+      font-size: 13px;
+      border: navajowhite;
+      border: solid 1px #d9d9d9;
+      padding: 7px 13px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .input-row input {
+      flex: 1;
+      padding: 5px;
+    }
+
+    .paid-inputs {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .authorInput {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .authorDiv {
+      margin: 15px 0px;
+      width: 50% !important;
+    }
+
+    #loader {
+       display: none; 
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(255, 255, 255, 0.8);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      color: #333;
+      text-align: center;
+    }
+
+    #loader img {
+      margin-top: 18%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- header start -->
+
+  <%- include("../../partials/frountHeader.ejs")%>
+    <!-- header end -->
+
+
+    <section>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/" style="color: #555;">Home </a> ><a href="/eventListing" style="color: #555;">Events </a> > <a
+            href="#">Create Events</a>
+        </div>
+        <h2>Create Event</h2>
+      </div>
+    </section>
+    <section>
+      <div id="loader">
+        <img src="../../image/Animation - 1749114626093.gif" alt="">
+        <h4>Loading...</h4>
+
+      </div>
+    </section>
+
+    <form action="/createEventListing" method="post" enctype="multipart/form-data" onsubmit="showLoader()">
+
+      <section>
+        <div class="container">
+          <div class="form-container">
+            <div class="form-group">
+              <label>Event Title <span style="color:red">*</span></label>
+              <input name="title" type="text" placeholder="Enter Event Title" required />
+            </div>
+
+            <div class="form-group">
+              <label>Upload Event Banner</label>
+              <div class="upload-box">
+                <div class="text">
+                  Drag and drop an image or <strong>1250 x 656</strong> (in pixels).<br />
+                  PNG, JPEG, <strong>SVG</strong> are Supported
+                </div>
+                <input type="file" name="banner" required>
+              </div>
+            </div>
+
+            <div class="inline-group">
+              <div class="form-group">
+                <label>Alt Image Text</label>
+                <input type="text" placeholder="Enter Alt Image Text" />
+              </div>
+              <div class="form-group">
+                <label>Select Country</label>
+
+                <select id="countryCodeSelect" style="width: 300px;" name="country" required>
+                  <option value="">-- Select a country --</option>
+                  <option value="Afghanistan">🇦🇫 Afghanistan (+93)</option>
+                  <option value="Albania">🇦🇱 Albania (+355)</option>
+                  <option value="Algeria">🇩🇿 Algeria (+213)</option>
+                  <option value="American Samoa">🇦🇸 American Samoa (+1-684)</option>
+                  <option value="Andorra">🇦🇩 Andorra (+376)</option>
+                  <option value="Angola">🇦🇴 Angola (+244)</option>
+                  <option value="Anguilla">🇦🇮 Anguilla (+1-264)</option>
+                  <option value="Antarctica">🇦🇶 Antarctica (+672)</option>
+                  <option value="Antigua and Barbuda">🇦🇬 Antigua and Barbuda (+1-268)</option>
+                  <option value="Argentina">🇦🇷 Argentina (+54)</option>
+                  <option value="Armenia">🇦🇲 Armenia (+374)</option>
+                  <option value="Aruba">🇦🇼 Aruba (+297)</option>
+                  <option value="Australia">🇦🇺 Australia (+61)</option>
+                  <option value="Austria">🇦🇹 Austria (+43)</option>
+                  <option value="Azerbaijan">🇦🇿 Azerbaijan (+994)</option>
+                  <option value="Bahamas">🇧🇸 Bahamas (+1-242)</option>
+                  <option value="Bahrain">🇧🇭 Bahrain (+973)</option>
+                  <option value="Bangladesh">🇧🇩 Bangladesh (+880)</option>
+                  <option value="Barbados">🇧🇧 Barbados (+1-246)</option>
+                  <option value="Belarus">🇧🇾 Belarus (+375)</option>
+                  <option value="Belgium">🇧🇪 Belgium (+32)</option>
+                  <option value="Belize">🇧🇿 Belize (+501)</option>
+                  <option value="Benin">🇧🇯 Benin (+229)</option>
+                  <option value="Bermuda">🇧🇲 Bermuda (+1-441)</option>
+                  <option value="Bhutan">🇧🇹 Bhutan (+975)</option>
+                  <option value="Bolivia">🇧🇴 Bolivia (+591)</option>
+                  <option value="Bosnia and Herzegovina">🇧🇦 Bosnia and Herzegovina (+387)</option>
+                  <option value="Botswana">🇧🇼 Botswana (+267)</option>
+                  <option value="Brazil">🇧🇷 Brazil (+55)</option>
+                  <option value="British Indian Ocean Territory">🇮🇴 British Indian Ocean Territory (+246)</option>
+                  <option value="British Virgin Islands">🇻🇬 British Virgin Islands (+1-284)</option>
+                  <option value="Brunei">🇧🇳 Brunei (+673)</option>
+                  <option value="Bulgaria">🇧🇬 Bulgaria (+359)</option>
+                  <option value="Burkina Faso">🇧🇫 Burkina Faso (+226)</option>
+                  <option value="Burundi">🇧🇮 Burundi (+257)</option>
+                  <option value="Cambodia">🇰🇭 Cambodia (+855)</option>
+                  <option value="Cameroon">🇨🇲 Cameroon (+237)</option>
+                  <option value="Canada">🇨🇦 Canada (+1)</option>
+                  <option value="Cape Verde">🇨🇻 Cape Verde (+238)</option>
+                  <option value="Cayman Islands">🇰🇾 Cayman Islands (+1-345)</option>
+                  <option value="Central African Republic">🇨🇫 Central African Republic (+236)</option>
+                  <option value="Chad">🇹🇩 Chad (+235)</option>
+                  <option value="Chile">🇨🇱 Chile (+56)</option>
+                  <option value="China">🇨🇳 China (+86)</option>
+                  <option value="Christmas Island">🇨🇽 Christmas Island (+61)</option>
+                  <option value="Cocos Islands">🇨🇨 Cocos Islands (+61)</option>
+                  <option value="Colombia">🇨🇴 Colombia (+57)</option>
+                  <option value="Comoros">🇰🇲 Comoros (+269)</option>
+                  <option value="Cook Islands">🇨🇰 Cook Islands (+682)</option>
+                  <option value="Costa Rica">🇨🇷 Costa Rica (+506)</option>
+                  <option value="Croatia">🇭🇷 Croatia (+385)</option>
+                  <option value="Cuba">🇨🇺 Cuba (+53)</option>
+                  <option value="Curaçao">🇨🇼 Curaçao (+599)</option>
+                  <option value="Cyprus">🇨🇾 Cyprus (+357)</option>
+                  <option value="Czech Republic">🇨🇿 Czech Republic (+420)</option>
+                  <option value="Democratic Republic of the Congo">🇨🇩 Democratic Republic of the Congo (+243)</option>
+                  <option value="Denmark">🇩🇰 Denmark (+45)</option>
+                  <option value="Djibouti">🇩🇯 Djibouti (+253)</option>
+                  <option value="Dominica">🇩🇲 Dominica (+1-767)</option>
+                  <option value="Dominican Republic">🇩🇴 Dominican Republic (+1-809)</option>
+                  <option value="Ecuador">🇪🇨 Ecuador (+593)</option>
+                  <option value="Egypt">🇪🇬 Egypt (+20)</option>
+                  <option value="El Salvador">🇸🇻 El Salvador (+503)</option>
+                  <option value="Equatorial Guinea">🇬🇶 Equatorial Guinea (+240)</option>
+                  <option value="Eritrea">🇪🇷 Eritrea (+291)</option>
+                  <option value="Estonia">🇪🇪 Estonia (+372)</option>
+                  <option value="Ethiopia">🇪🇹 Ethiopia (+251)</option>
+                  <option value="Falkland Islands">🇫🇰 Falkland Islands (+500)</option>
+                  <option value="Faroe Islands">🇫🇴 Faroe Islands (+298)</option>
+                  <option value="Fiji">🇫🇯 Fiji (+679)</option>
+                  <option value="Finland">🇫🇮 Finland (+358)</option>
+                  <option value="France">🇫🇷 France (+33)</option>
+                  <option value="French Guiana">🇬🇫 French Guiana (+594)</option>
+                  <option value="French Polynesia">🇵🇫 French Polynesia (+689)</option>
+                  <option value="Gabon">🇬🇦 Gabon (+241)</option>
+                  <option value="Gambia">🇬🇲 Gambia (+220)</option>
+                  <option value="Georgia">🇬🇪 Georgia (+995)</option>
+                  <option value="Germany">🇩🇪 Germany (+49)</option>
+                  <option value="Ghana">🇬🇭 Ghana (+233)</option>
+                  <option value="Gibraltar">🇬🇮 Gibraltar (+350)</option>
+                  <option value="Greece">🇬🇷 Greece (+30)</option>
+                  <option value="Greenland">🇬🇱 Greenland (+299)</option>
+                  <option value="Grenada">🇬🇩 Grenada (+1-473)</option>
+                  <option value="Guadeloupe">🇬🇵 Guadeloupe (+590)</option>
+                  <option value="Guam">🇬🇺 Guam (+1-671)</option>
+                  <option value="Guatemala">🇬🇹 Guatemala (+502)</option>
+                  <option value="Guernsey">🇬🇬 Guernsey (+44-1481)</option>
+                  <option value="Guinea">🇬🇳 Guinea (+224)</option>
+                  <option value="Guinea-Bissau">🇬🇼 Guinea-Bissau (+245)</option>
+                  <option value="Guyana">🇬🇾 Guyana (+592)</option>
+                  <option value="Haiti">🇭🇹 Haiti (+509)</option>
+                  <option value="Honduras">🇭🇳 Honduras (+504)</option>
+                  <option value="Hong Kong">🇭🇰 Hong Kong (+852)</option>
+                  <option value="Hungary">🇭🇺 Hungary (+36)</option>
+                  <option value="Iceland">🇮🇸 Iceland (+354)</option>
+                  <option value="India">🇮🇳 India (+91)</option>
+                  <option value="Indonesia">🇮🇩 Indonesia (+62)</option>
+                  <option value="Iran">🇮🇷 Iran (+98)</option>
+                  <option value="Iraq">🇮🇶 Iraq (+964)</option>
+                  <option value="Ireland">🇮🇪 Ireland (+353)</option>
+                  <option value="Isle of Man">🇮🇲 Isle of Man (+44-1624)</option>
+                  <option value="Israel">🇮🇱 Israel (+972)</option>
+                  <option value="Italy">🇮🇹 Italy (+39)</option>
+                  <option value="Jamaica">🇯🇲 Jamaica (+1-876)</option>
+                  <option value="Japan">🇯🇵 Japan (+81)</option>
+                  <option value="Jersey">🇯🇪 Jersey (+44-1534)</option>
+                  <option value="Jordan">🇯🇴 Jordan (+962)</option>
+                  <option value="Kazakhstan">🇰🇿 Kazakhstan (+7)</option>
+                  <option value="Kenya">🇰🇪 Kenya (+254)</option>
+                  <option value="Kiribati">🇰🇮 Kiribati (+686)</option>
+                  <option value="Kosovo">🇽🇰 Kosovo (+383)</option>
+                  <option value="Kuwait">🇰🇼 Kuwait (+965)</option>
+                  <option value="Kyrgyzstan">🇰🇬 Kyrgyzstan (+996)</option>
+                  <option value="Laos">🇱🇦 Laos (+856)</option>
+                  <option value="Latvia">🇱🇻 Latvia (+371)</option>
+                  <option value="Lebanon">🇱🇧 Lebanon (+961)</option>
+                  <option value="Lesotho">🇱🇸 Lesotho (+266)</option>
+                  <option value="Liberia">🇱🇷 Liberia (+231)</option>
+                  <option value="Libya">🇱🇾 Libya (+218)</option>
+                  <option value="Liechtenstein">🇱🇮 Liechtenstein (+423)</option>
+                  <option value="Lithuania">🇱🇹 Lithuania (+370)</option>
+                  <option value="Luxembourg">🇱🇺 Luxembourg (+352)</option>
+                  <option value="+853">🇲🇴 Macau (+853)</option>
+                  <option value="+389">🇲🇰 North Macedonia (+389)</option>
+                  <option value="+261">🇲🇬 Madagascar (+261)</option>
+                  <option value="+265">🇲🇼 Malawi (+265)</option>
+                  <option value="+60">🇲🇾 Malaysia (+60)</option>
+                  <option value="+960">🇲🇻 Maldives (+960)</option>
+                  <option value="+223">🇲🇱 Mali (+223)</option>
+                  <option value="+356">🇲🇹 Malta (+356)</option>
+                  <option value="+692">🇲🇭 Marshall Islands (+692)</option>
+                  <option value="+596">🇲🇶 Martinique (+596)</option>
+                  <option value="+222">🇲🇷 Mauritania (+222)</option>
+                  <option value="+230">🇲🇺 Mauritius (+230)</option>
+                  <option value="+262">🇾🇹 Mayotte (+262)</option>
+                  <option value="+52">🇲🇽 Mexico (+52)</option>
+                  <option value="+691">🇫🇲 Micronesia (+691)</option>
+                  <option value="+373">🇲🇩 Moldova (+373)</option>
+                  <option value="+377">🇲🇨 Monaco (+377)</option>
+                  <option value="+976">🇲🇳 Mongolia (+976)</option>
+                  <option value="+382">🇲🇪 Montenegro (+382)</option>
+                  <option value="+1-664">🇲🇸 Montserrat (+1-664)</option>
+                  <option value="+212">🇲🇦 Morocco (+212)</option>
+                  <option value="+258">🇲🇿 Mozambique (+258)</option>
+                  <option value="+95">🇲🇲 Myanmar (+95)</option>
+                  <option value="+264">🇳🇦 Namibia (+264)</option>
+                  <option value="+674">🇳🇷 Nauru (+674)</option>
+                  <option value="+977">🇳🇵 Nepal (+977)</option>
+                  <option value="+31">🇳🇱 Netherlands (+31)</option>
+                  <option value="+687">🇳🇨 New Caledonia (+687)</option>
+                  <option value="+64">🇳🇿 New Zealand (+64)</option>
+                  <option value="+505">🇳🇮 Nicaragua (+505)</option>
+                  <option value="+227">🇳🇪 Niger (+227)</option>
+                  <option value="+234">🇳🇬 Nigeria (+234)</option>
+                  <option value="+683">🇳🇺 Niue (+683)</option>
+                  <option value="+672">🇳🇫 Norfolk Island (+672)</option>
+                  <option value="+850">🇰🇵 North Korea (+850)</option>
+                  <option value="+1-670">🇲🇵 Northern Mariana Islands (+1-670)</option>
+                  <option value="+47">🇳🇴 Norway (+47)</option>
+                  <option value="+968">🇴🇲 Oman (+968)</option>
+                  <option value="+92">🇵🇰 Pakistan (+92)</option>
+                  <option value="+680">🇵🇼 Palau (+680)</option>
+                  <option value="+970">🇵🇸 Palestine (+970)</option>
+                  <option value="+507">🇵🇦 Panama (+507)</option>
+                  <option value="+675">🇵🇬 Papua New Guinea (+675)</option>
+                  <option value="+595">🇵🇾 Paraguay (+595)</option>
+                  <option value="+51">🇵🇪 Peru (+51)</option>
+                  <option value="+63">🇵🇭 Philippines (+63)</option>
+                  <option value="+64">🇵🇳 Pitcairn Islands (+64)</option>
+                  <option value="+48">🇵🇱 Poland (+48)</option>
+                  <option value="+351">🇵🇹 Portugal (+351)</option>
+                  <option value="+1-787">🇵🇷 Puerto Rico (+1-787)</option>
+                  <option value="+974">🇶🇦 Qatar (+974)</option>
+                  <option value="+242">🇨🇬 Republic of the Congo (+242)</option>
+                  <option value="+262">🇷🇪 Réunion (+262)</option>
+                  <option value="+40">🇷🇴 Romania (+40)</option>
+                  <option value="+7">🇷🇺 Russia (+7)</option>
+                  <option value="+250">🇷🇼 Rwanda (+250)</option>
+                  <option value="+590">🇧🇱 Saint Barthélemy (+590)</option>
+                  <option value="+290">🇸🇭 Saint Helena (+290)</option>
+                  <option value="+1-869">🇰🇳 Saint Kitts and Nevis (+1-869)</option>
+                  <option value="+1-758">🇱🇨 Saint Lucia (+1-758)</option>
+                  <option value="+590">🇲🇫 Saint Martin (+590)</option>
+                  <option value="+508">🇵🇲 Saint Pierre and Miquelon (+508)</option>
+                  <option value="+1-784">🇻🇨 Saint Vincent and the Grenadines (+1-784)</option>
+                  <option value="+685">🇼🇸 Samoa (+685)</option>
+                  <option value="+378">🇸🇲 San Marino (+378)</option>
+                  <option value="+239">🇸🇹 São Tomé and Príncipe (+239)</option>
+                  <option value="+966">🇸🇦 Saudi Arabia (+966)</option>
+                  <option value="+221">🇸🇳 Senegal (+221)</option>
+                  <option value="+381">🇷🇸 Serbia (+381)</option>
+                  <option value="+248">🇸🇨 Seychelles (+248)</option>
+                  <option value="+232">🇸🇱 Sierra Leone (+232)</option>
+                  <option value="+65">🇸🇬 Singapore (+65)</option>
+                  <option value="+1-721">🇸🇽 Sint Maarten (+1-721)</option>
+                  <option value="+421">🇸🇰 Slovakia (+421)</option>
+                  <option value="+386">🇸🇮 Slovenia (+386)</option>
+                  <option value="+677">🇸🇧 Solomon Islands (+677)</option>
+                  <option value="+252">🇸🇴 Somalia (+252)</option>
+                  <option value="+27">🇿🇦 South Africa (+27)</option>
+                  <option value="+82">🇰🇷 South Korea (+82)</option>
+                  <option value="+211">🇸🇸 South Sudan (+211)</option>
+                  <option value="+34">🇪🇸 Spain (+34)</option>
+                  <option value="+94">🇱🇰 Sri Lanka (+94)</option>
+                  <option value="+249">🇸🇩 Sudan (+249)</option>
+                  <option value="+597">🇸🇷 Suriname (+597)</option>
+                  <option value="+47">🇸🇯 Svalbard and Jan Mayen (+47)</option>
+                  <option value="+268">🇸🇿 Eswatini (+268)</option>
+                  <option value="+46">🇸🇪 Sweden (+46)</option>
+                  <option value="+41">🇨🇭 Switzerland (+41)</option>
+                  <option value="+963">🇸🇾 Syria (+963)</option>
+                  <option value="+886">🇹🇼 Taiwan (+886)</option>
+                  <option value="+992">🇹🇯 Tajikistan (+992)</option>
+                  <option value="+255">🇹🇿 Tanzania (+255)</option>
+                  <option value="+66">🇹🇭 Thailand (+66)</option>
+                  <option value="+670">🇹🇱 Timor-Leste (+670)</option>
+                  <option value="+228">🇹🇬 Togo (+228)</option>
+                  <option value="+690">🇹🇰 Tokelau (+690)</option>
+                  <option value="+676">🇹🇴 Tonga (+676)</option>
+                  <option value="+1-868">🇹🇹 Trinidad and Tobago (+1-868)</option>
+                  <option value="+216">🇹🇳 Tunisia (+216)</option>
+                  <option value="+90">🇹🇷 Turkey (+90)</option>
+                  <option value="+993">🇹🇲 Turkmenistan (+993)</option>
+                  <option value="+1-649">🇹🇨 Turks and Caicos Islands (+1-649)</option>
+                  <option value="+688">🇹🇻 Tuvalu (+688)</option>
+                  <option value="+256">🇺🇬 Uganda (+256)</option>
+                  <option value="+380">🇺🇦 Ukraine (+380)</option>
+                  <option value="+971">🇦🇪 United Arab Emirates (+971)</option>
+                  <option value="+44">🇬🇧 United Kingdom (+44)</option>
+                  <option value="+1">🇺🇸 United States (+1)</option>
+                  <option value="+598">🇺🇾 Uruguay (+598)</option>
+                  <option value="+998">🇺🇿 Uzbekistan (+998)</option>
+                  <option value="+678">🇻🇺 Vanuatu (+678)</option>
+                  <option value="+379">🇻🇦 Vatican City (+379)</option>
+                  <option value="+58">🇻🇪 Venezuela (+58)</option>
+                  <option value="+84">🇻🇳 Vietnam (+84)</option>
+                  <option value="+1-284">🇻🇬 British Virgin Islands (+1-284)</option>
+                  <option value="+1-340">🇻🇮 U.S. Virgin Islands (+1-340)</option>
+                  <option value="+681">🇼🇫 Wallis and Futuna (+681)</option>
+                  <option value="+212">🇪🇭 Western Sahara (+212)</option>
+                  <option value="+967">🇾🇪 Yemen (+967)</option>
+                  <option value="+260">🇿🇲 Zambia (+260)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Event Location <span style="color:red">*</span></label>
+              <input name="location" class="location" type="text" placeholder="Enter Event Venue full address here"
+                required />
+            </div>
+
+            <div class="inline-group">
+              <div class="form-group">
+                <label>Start Date</label>
+                <input name="startDate" class="startDate" type="datetime-local" required />
+              </div>
+              <div class="form-group">
+                <label>End Date</label>
+                <input name="endDate" class="startDate" type="datetime-local" required />
+              </div>
+
+            </div>
+
+            <div class="inline-group">
+              <div class="form-group">
+                <label>Event Type <span style="color:red">*</span></label>
+                <select name="eventType" id="" required>
+                  <option value="Seminar">Seminar</option>
+                  <option value="Webinar">Webinar</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <div class="multiselect-container" id="multiselect">
+                  <label>Select Category</label>
+                  <div class="select-box" onclick="toggleDropdown()">
+                    Select Category
+                  </div>
+
+                  <div class="options-container">
+                    <label><input name="category" type="checkbox" value="Airdrops"> Airdrops</label>
+                    <label><input name="category" type="checkbox" value="Altcoin"> Altcoin</label>
+                    <label><input name="category" type="checkbox" value="Artificial Intelligence"> Artificial
+                      Intelligence</label>
+                    <label><input name="category" type="checkbox" value="Banking"> Banking</label>
+                    <label><input name="category" type="checkbox" value="Bitcoin"> Bitcoin</label>
+                    <label><input name="category" type="checkbox" value="Bitcoin ETF"> Bitcoin ETF</label>
+                    <label><input name="category" type="checkbox" value="Bitcoin Futures"> Bitcoin Futures</label>
+                    <label><input name="category" type="checkbox" value="Bitcoin Gambling"> Bitcoin Gambling</label>
+                    <label><input name="category" type="checkbox" value="Blockchain"> Blockchain</label>
+                    <label><input name="category" type="checkbox" value="Blockchain E-sports"> Blockchain
+                      E-sports</label>
+                    <label><input name="category" type="checkbox" value="Blockchain Events"> Blockchain Events</label>
+                    <label><input name="category" type="checkbox" value="Blockchain Industry"> Blockchain
+                      Industry</label>
+                    <label><input name="category" type="checkbox" value="Blockchain Projects"> Blockchain
+                      Projects</label>
+                    <label><input name="category" type="checkbox" value="Blockchain Startups"> Blockchain
+                      Startups</label>
+                    <label><input name="category" type="checkbox" value="Cardano (ADA)"> Cardano (ADA)</label>
+                    <label><input name="category" type="checkbox" value="Coinbase"> Coinbase</label>
+                    <label><input name="category" type="checkbox" value="Coinmarketcap"> Coinmarketcap</label>
+                    <label><input name="category" type="checkbox" value="Conferences"> Conferences</label>
+                    <label><input name="category" type="checkbox" value="Courses"> Courses</label>
+                    <label><input name="category" name="category" type="checkbox" value="Crypto"> Crypto</label>
+                    <label><input name="category" type="checkbox" value="Crypto Exchange"> Crypto Exchange</label>
+                    <label><input name="category" type="checkbox" value="Crypto Finance"> Crypto Finance</label>
+                    <label><input name="category" type="checkbox" value="Crypto Investment"> Crypto Investment</label>
+                    <label><input name="category" type="checkbox" value="Crypto MLM"> Crypto MLM</label>
+                    <label><input name="category" type="checkbox" value="Crypto Mining"> Crypto Mining</label>
+                    <label><input name="category" type="checkbox" value="Crypto Payments"> Crypto Payments</label>
+                    <label><input name="category" type="checkbox" value="Crypto Regulations"> Crypto Regulations</label>
+                    <label><input name="category" type="checkbox" value="Crypto Scams"> Crypto Scams</label>
+                    <label><input name="category" type="checkbox" value="Crypto Trading"> Crypto Trading</label>
+                    <label><input name="category" type="checkbox" value="Crypto Wallets"> Crypto Wallets</label>
+                    <label><input name="category" type="checkbox" value="Cryptocurrency"> Cryptocurrency</label>
+                    <label><input name="category" type="checkbox" value="Dapps"> Dapps</label>
+                    <label><input name="category" type="checkbox" value="Decentralised exchange"> Decentralised
+                      exchange</label>
+                    <label><input name="category" type="checkbox" value="Defi"> Defi</label>
+                    <label><input name="category" type="checkbox" value="Dogecoin (DOGE)"> Dogecoin (DOGE)</label>
+                    <label><input name="category" type="checkbox" value="Ethereum"> Ethereum</label>
+                    <label><input name="category" type="checkbox" value="Expo"> Expo</label>
+                    <label><input name="category" type="checkbox" value="Fintech"> Fintech</label>
+                    <label><input name="category" type="checkbox" value="Funding"> Funding</label>
+                    <label><input name="category" type="checkbox" value="Gaming"> Gaming</label>
+                    <label><input name="category" type="checkbox" value="Hackathons"> Hackathons</label>
+                    <label><input name="category" type="checkbox" value="ICO"> ICO</label>
+                    <label><input name="category" type="checkbox" value="Information"> Information</label>
+                    <label><input name="category" type="checkbox" value="Litecoin (LTC)"> Litecoin (LTC)</label>
+                    <label><input name="category" type="checkbox" value="MEME coins"> MEME coins</label>
+                    <label><input name="category" type="checkbox" value="Market stories"> Market stories</label>
+                    <label><input name="category" type="checkbox" value="Media Partner"> Media Partner</label>
+                    <label><input name="category" type="checkbox" value="Metaverse"> Metaverse</label>
+                    <label><input name="category" type="checkbox" value="NFT"> NFT</label>
+                    <label><input name="category" type="checkbox" value="Play-to-Earn"> Play-to-Earn</label>
+                    <label><input name="category" type="checkbox" value="Policy"> Policy</label>
+                    <label><input name="category" type="checkbox" value="Price analysis"> Price analysis</label>
+                    <label><input name="category" type="checkbox" value="Price prediction"> Price prediction</label>
+                    <label><input name="category" type="checkbox" value="Regulation"> Regulation</label>
+                    <label><input name="category" type="checkbox" value="Ripple (XRP)"> Ripple (XRP)</label>
+                    <label><input name="category" type="checkbox" value="Seminars"> Seminars</label>
+                    <label><input name="category" type="checkbox" value="Shiba Inu"> Shiba Inu</label>
+                    <label><input name="category" type="checkbox" value="Smart Contract"> Smart Contract</label>
+                    <label><input name="category" type="checkbox" value="Solana"> Solana</label>
+                    <label><input name="category" type="checkbox" value="Stable Coins"> Stable Coins</label>
+                    <label><input name="category" type="checkbox" value="Staking"> Staking</label>
+                    <label><input name="category" type="checkbox" value="Summits"> Summits</label>
+                    <label><input name="category" type="checkbox" value="Technology"> Technology</label>
+                    <label><input name="category" type="checkbox" value="Trade Shows"> Trade Shows</label>
+                    <label><input name="category" type="checkbox" value="Traders Guide"> Traders Guide</label>
+                    <label><input name="category" type="checkbox" value="Trading Bot"> Trading Bot</label>
+                    <label><input name="category" type="checkbox" value="Web3"> Web3</label>
+                    <label><input name="category" type="checkbox" value="Webinar"> Webinar</label>
+                    <label><input name="category" type="checkbox" value="Workshops"> Workshops</label>
+                    <label><input name="category" type="checkbox" value="Yield Farming"> Yield Farming</label>
+                    <label><input name="category" type="checkbox" value="test"> test</label>
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <label>Event / Website Link <span style="color:red">*</span></label>
+                <input name="website" type="url" placeholder="Enter Event Link" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <label for="ticketType">Entry Type</label>
+                <select id="ticketType" name="entryType">
+                  <option value="free">Free</option>
+                  <option value="paid">Paid</option>
+                </select>
+              </div>
+
+              <div class="paid-inputs" id="paidInputs">
+                <div class="input-row">
+                  <input type="text" placeholder="Add Basic Entry Ticket Price Here" name="basicPrice">
+                  <input type="text" placeholder="Add Standard Entry Ticket Here" name="standradPrice">
+                </div>
+                <div class="input-row">
+                  <input type="text" placeholder="Add Premium Entry Ticket Here" name="premiumPrice">
+                  <input type="text" placeholder="Add VIP Entry Ticket Here" name="vipPrice">
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Event Description <span style="color:red">*</span></label>
+              <textarea required name="description" id="editor" class="decsTextarea ckeditor" rows="4"
+                placeholder="Update full description of your event here"></textarea>
+            </div>
+            <div>
+              <div class="">
+                <label>Speakers <span style="color:red">*</span></label>
+                <div class="">
+                  <div class="sponsers">
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="speakers[0].name" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter business email"
+                        name="speakers[0].businessEmail" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                        name="speakers[0].whatsappNumber" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                        name="speakers[0].twitter" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Telegram"
+                        name="speakers[0].telegram" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Website" name="speakers[0].website" />
+                    </div>
+                  </div>
+                  <div id="additionalSpeaker"></div>
+                </div>
+              </div>
+
+              <button type="button" onclick="addSpeakerSection()" class="addButton">Add Another Speaker</button>
+            </div>
+
+            <div class="mt-3">
+              <div class="">
+                <label>Collaborations/Partners <span style="color:red">*</span></label>
+                <div class="">
+                  <div class="sponsers">
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="partner[0].name" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter business email"
+                        name="partner[0].businessEmail" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                        name="partner[0].whatsappNumber" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                        name="partner[0].twitter" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Telegram" name="partner[0].telegram" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Website" name="partner[0].website" />
+                    </div>
+                  </div>
+                  <div id="additionalPartner"></div>
+                </div>
+              </div>
+
+              <button type="button" onclick="addPartnerSection()" class="addButton">Add Another Partner</button>
+            </div>
+
+            <div class="mt-3">
+              <div class="">
+                <label>Sponsors <span style="color:red">*</span></label>
+                <div class="">
+                  <div class="sponsers">
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="sponsor[0].name" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter business email"
+                        name="sponsor[0].businessEmail" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                        name="sponsor[0].whatsappNumber" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                        name="sponsor[0].twitter" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Telegram" name="sponsor[0].telegram" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Website" name="sponsor[0].website" />
+                    </div>
+                  </div>
+                  <div id="additionalSponsor"></div>
+                </div>
+                  <button type="button" onclick="addSponsorSection()" class="addButton">Add Another Sponsor</button>
+              </div>
+
+              <div class="mt-3">
+                <div class="">
+                  <label>Author <span style="color:red">*</span></label>
+                  <div class="">
+                    <div class="author">
+                      <div class="row d-flex">
+                        <div class=" authorDiv">
+                          <input type="text" class="form-control authorInput" placeholder="Enter Author's Name"
+                            name="authorName" />
+
+                        </div>
+                        <div class=" authorDiv">
+                          <input type="email" class="form-control authorInput" placeholder="Enter Author's Email"
+                            name="authorEmail" />
+                        </div>
+                      </div>
+
+                      <div class="row d-flex">
+                        <div class="col-sm-3 authorDiv d-flex">
+                          <input type="texr" class="form-control authorInput" placeholder="Enter Author's Whatsapp"
+                            name="authorWhatsapp" />
+
+
+                        </div>
+                        <div class="col-sm-3 authorDiv d-flex">
+                          <input type="url" class="form-control authorInput" placeholder="Author's Twitter handle"
+                            name="authorTwitter" />
+
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="eventBtn">Submit Event</button>
+
+            </div>
+          </div>
+
+
+
+      </section>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+      let speakerCounter = 1;
+      let partnerCounter = 1;
+      let sponsorCounter = 1;
+
+
+      // for Speakers
+
+      function addSpeakerSection() {
+        if (speakerCounter >= 6) {
+          alert("You can add up to 4 price tiers only.");
+          return;
+        }
+
+        const newSponsersHTML = ` 
+        <div>
+           <label class="col-sm-2 col-form-label">Speaker ${speakerCounter + 1}</label>
+         <div class="sponsers">
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Name" name="speakers[${speakerCounter}].name" required />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter business email" name="speakers[${speakerCounter}].businessEmail"
+                      required />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                      name="speakers[${speakerCounter}].whatsappNumber" required />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                      name="speakers[${speakerCounter}].twitter" required />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Telegram"
+                      name="speakers[${speakerCounter}].telegram" required />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="url" class="form-control" placeholder="Enter Website"
+                      name="speakers[${speakerCounter}].website" />
+                  </div>
+                </div>
+                   
+              </div>
+            </div>
+            </div>
+            `
+
+        document.getElementById('additionalSpeaker').insertAdjacentHTML('beforeend', newSponsersHTML);
+        speakerCounter++;
+      }
+
+
+
+      // for Partner
+
+      function addPartnerSection() {
+        if (speakerCounter >= 6) {
+          alert("You can add up to 4 price tiers only.");
+          return;
+        }
+
+        const newPartnerHTML = ` 
+        <div>
+           <label class="col-sm-2 col-form-label">Partner ${partnerCounter + 1}</label>
+         <div class="sponsers">
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Name" name="partner[${partnerCounter}].name" required />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter business email" name="partner[${partnerCounter}].businessEmail"
+                      required />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                      name="partner[${partnerCounter}].whatsappNumber" required />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                      name="partner[${partnerCounter}].twitter" required />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Telegram"
+                      name="partner[${partnerCounter}].telegram" required />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="url" class="form-control" placeholder="Enter Website"
+                      name="partner[${partnerCounter}].website" required />
+                  </div>
+                </div>
+                   
+              </div>
+            </div>
+            </div>
+            `
+
+        document.getElementById('additionalPartner').insertAdjacentHTML('beforeend', newPartnerHTML);
+        partnerCounter++;
+      }
+
+
+
+      // for Sponsors
+
+      function addSponsorSection() {
+        if (speakerCounter >= 6) {
+          alert("You can add up to 4 price tiers only.");
+          return;
+        }
+
+        const newSponsorHTML = ` 
+        <div>
+           <label class="col-sm-2 col-form-label">Sponsor ${sponsorCounter + 1}</label>
+         <div class="sponsers">
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Name" name="sponsor[${sponsorCounter}].name" required />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter business email" name="sponsor[${sponsorCounter}].businessEmail"
+                      required />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                      name="sponsor[${sponsorCounter}].whatsappNumber" required />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                      name="sponsor[${sponsorCounter}].twitter" required />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Telegram"
+                      name="sponsor[${sponsorCounter}].telegram" required />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="url" class="form-control" placeholder="Enter Website"
+                      name="sponsor[${sponsorCounter}].website" required />
+                  </div>
+                </div>
+                   
+              </div>
+            </div>
+            </div>
+            `
+
+        document.getElementById('additionalSponsor').insertAdjacentHTML('beforeend', newSponsorHTML);
+        sponsorCounter++;
+
+
+      }
+    </script>
+
+
+    <script>
+      $(document).ready(function () {
+        $('#countryCodeSelect').select2({
+          // placeholder: "Search country or code...",
+          // allowClear: true
+        });
+      });
+    </script>
+
+    <script>
+      function toggleDropdown() {
+        document.getElementById("multiselect").classList.toggle("active");
+      }
+
+      // Optional: close if clicked outside
+      document.addEventListener("click", function (e) {
+        const multiselect = document.getElementById("multiselect");
+        if (!multiselect.contains(e.target)) {
+          multiselect.classList.remove("active");
+        }
+      });
+    </script>
+
+    <script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace("editor")
+    </script>
+
+    <script>
+      const ticketTypeSelect = document.getElementById("ticketType");
+      const paidInputs = document.getElementById("paidInputs");
+
+      ticketTypeSelect.addEventListener("change", function () {
+        if (this.value === "paid") {
+          paidInputs.style.display = "block";
+        } else {
+          paidInputs.style.display = "none";
+        }
+      });
+    </script>
+    <script>
+      function showLoader() {
+        document.getElementById('loader').style.display = 'block';
+      }
+    </script>
+
+
+</body>
+
+</html>

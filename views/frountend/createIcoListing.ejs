@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+  <title>iNDEX</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #333;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .search-bar {
+      flex: 1 1 300px;
+      margin: 10px 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 20px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .search-bar {
+        flex: 1 1 100%;
+        order: 3;
+        margin: 10px 0;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        background-color: #444;
+        order: 4;
+      }
+
+      nav a {
+        padding: 10px;
+        border-top: 1px solid #555;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      margin: 22px 0px;
+      letter-spacing: 1px;
+      color: #555;
+    }
+
+    .breadcrumb a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .form-container {
+      max-width: 950px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="date"],
+    select,
+    .location,
+    .dropdown {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .inline-group {
+      display: flex;
+      gap: 15px;
+    }
+
+    .inline-group .form-group {
+      flex: 1;
+    }
+
+    .upload-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border: 2px dashed #ccc;
+      border-radius: 6px;
+    }
+
+    .upload-box .text {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .upload-box .upload-btn {
+      color: #0056d2;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .flag-select {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flag-select img {
+      width: 24px;
+      height: 18px;
+      border: 1px solid #ccc;
+    }
+
+    .timezone-box {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .event-type {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #f0f6ff;
+      border-radius: 6px;
+      font-weight: 500;
+      border: 1px solid #d0e3ff;
+      color: #0056d2;
+    }
+
+
+
+    #countryDropdown {
+      border: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .startDate {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+    }
+
+    .checkbox-container label {
+      display: inline-block;
+      margin-right: 15px;
+      /* horizontal gap */
+      margin-bottom: 8px;
+      /* vertical gap */
+      cursor: pointer;
+    }
+
+    .multiselect-container {
+      position: relative;
+
+    }
+
+    .multiselect-category {
+      position: relative;
+
+    }
+
+    .multiselect-industry {
+      position: relative;
+
+    }
+
+    .select-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .options-container {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-top: none;
+      background-color: white;
+      z-index: 10;
+      padding: 10px;
+    }
+
+    .options-container label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .options-container label input {
+      margin-right: 10px;
+    }
+
+    .multiselect-container.active .options-container {
+      display: block;
+    }
+
+    .multiselect-category.active .options-container {
+      display: block;
+    }
+
+    .multiselect-industry.active .options-container {
+      display: block;
+    }
+
+    .decsTextarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .eventBtn {
+    padding: 10px 29px;
+    background: #655de6;
+    margin-left: auto;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 18px;
+    font-weight: 600;
+    border: navajowhite;
+    }
+
+    .sponsers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .innerSpronsers {
+      width: 30%;
+      margin: 10px 0px;
+    }
+
+    .addButton {
+      background: #e1ffed;
+      font-size: 13px;
+      border: navajowhite;
+      border: solid 1px #d9d9d9;
+      padding: 7px 13px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .input-row input {
+      flex: 1;
+      padding: 5px;
+    }
+
+    .paid-inputs {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .authorInput {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .authorDiv {
+      margin: 15px 0px;
+      width: 50% !important;
+    }
+      #loader {
+     display: none; 
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(255, 255, 255, 0.8);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      color: #333;
+      text-align: center;
+    }
+    #loader img{
+      margin-top: 18%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- header start -->
+
+  <%- include("../../partials/frountHeader.ejs")%>
+    <!-- header end -->
+
+
+    <section>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/" style="color: #555;">Home </a> ><a href="/icoListing" style="color: #555;">ICO </a> > <a
+            href="#">Create ICO </a>
+        </div>
+        <h2>Create ICO Listing</h2>
+      </div>
+    </section>
+
+     <section>
+      <div id="loader">
+        <img src="../../image/Animation - 1749114626093.gif" alt="">
+        <h4>Loading...</h4>
+       
+      </div>
+    </section>
+
+    <form class="mt-5" action="/createIcoListing" method="post" enctype="multipart/form-data" onsubmit="showLoader()"> 
+
+      <section>
+        <div class="container">
+          <div class="form-container">
+            <div class="form-group">
+              <label>Toekn/Coin Title <span style="color:red">*</span></label>
+              <input name="title" type="text" placeholder="Enter Token Title" required />
+            </div>
+
+            <div class="form-group">
+              <label>Upload Logo</label>
+              <div class="upload-box">
+                <div class="text">
+                  Drag and drop an image or <strong>1250 x 656</strong> (in pixels).<br />
+                  PNG, JPEG, <strong>SVG</strong> are Supported
+                </div>
+                <input type="file" name="logo" required class="form-control">
+              </div>
+            </div>
+
+             <div class="form-group">
+              <label>Project Screenshots</label>
+              <div class="upload-box">
+                <div class="text">
+                  Drag and drop an image or <strong>1250 x 656</strong> (in pixels).<br />
+                  PNG, JPEG, <strong>SVG</strong> are Supported
+                </div>
+                <input type="file" name="projectSreenshot" required multiple class="form-control">
+              </div>
+            </div>
+
+            <div class="inline-group">
+              <div class="form-group">
+                <label>Raise Funds</label>
+                <input type="text" placeholder="Enter Raise Fund" name="raiseFund" />
+              </div>
+              <div class="form-group" style="opacity: 0;">
+                <label>Extra <span style="color:red">*</span></label>
+                <input type="text" placeholder="extra">
+              </div>
+            </div>
+
+          
+
+            <div class="inline-group">
+              <div class="form-group">
+                <label>Start Date</label>
+                <input name="startDate" class="startDate" type="date" required />
+              </div>
+              <div class="form-group">
+                <label>End Date</label>
+                <input name="endDate" class="startDate" type="date" required />
+              </div>
+
+            </div>
+
+              <div class="form-group">
+              <label>Token Description <span style="color:red">*</span></label>
+              <textarea required name="smallDescription" id="editor" class="decsTextarea ckeditor" rows="4"
+                placeholder="Update full description of your token/coin"></textarea>
+            </div>
+
+            <!-- Token Overview -->
+
+
+            <div>
+              <label>Token/Coin Overview <span style="color:red">*</span></label>
+              <div class="inline-group">
+                <div class="form-group">
+                  <input name="ticker" type="text" placeholder="Ticker" />
+                </div>
+
+
+                <div class="form-group">
+                  <div class="multiselect-container" id="multiselect">
+                    <div class="select-box" onclick="toggleDropdown()">
+                      Select Block Chain
+                    </div>
+
+                    <div class="options-container">
+                      <label><input name="blockChain" type="checkbox" value="ETH">ETH</label>
+                      <label><input name="blockChain" type="checkbox" value="BNB"> BNB</label>
+                      <label><input name="blockChain" type="checkbox" value="Polygon">Polygon</label>
+                      <label><input name="blockChain" type="checkbox" value="Arb"> Arb</label>
+                      <label><input name="blockChain" type="checkbox" value="Solana"> Solana</label>
+                      <label><input name="blockChain" type="checkbox" value="Polka Dot">Polka Dot</label>
+                      <label><input name="blockChain" type="checkbox" value="Avalacnnche"> Avalacnnche</label>
+                      <label><input name="blockChain" type="checkbox" value="Sui"> Sui</label>
+                      <label><input name="blockChain" type="checkbox" value="fantom"> fantom</label>
+                      <label><input name="blockChain" type="checkbox" value="Sei"> Sei</label>
+                      <label><input name="blockChain" type="checkbox" value="Tezos"> Tezos</label>
+                      <label><input name="blockChain" type="checkbox" value="Cardno"> Cardno</label>
+                      <label><input name="blockChain" type="checkbox" value="Ton"> Yield Farming</label>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="form-group">
+                  <div class="multiselect-category" id="multiselectCategory">
+                    <div class="select-box" onclick="multiselectCategory()">
+                      Select Category
+                    </div>
+
+                    <div class="options-container">
+                      <label><input name="category" type="checkbox" value="ICO"> ICO</label>
+                      <label><input name="category" type="checkbox" value="IEO"> IEO</label>
+                      <label><input name="category" type="checkbox" value="IDO"> IDO</label>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+            <div class="inline-group">
+              <div class="form-group">
+                <div class="form-group">
+
+
+                  <select id="countryCodeSelect" style="width: 300px;" name="country">
+                    <option value="">-- Select a country --</option>
+                    <option value="Afghanistan">🇦🇫 Afghanistan (+93)</option>
+                    <option value="Albania">🇦🇱 Albania (+355)</option>
+                    <option value="Algeria">🇩🇿 Algeria (+213)</option>
+                    <option value="American Samoa">🇦🇸 American Samoa (+1-684)</option>
+                    <option value="Andorra">🇦🇩 Andorra (+376)</option>
+                    <option value="Angola">🇦🇴 Angola (+244)</option>
+                    <option value="Anguilla">🇦🇮 Anguilla (+1-264)</option>
+                    <option value="Antarctica">🇦🇶 Antarctica (+672)</option>
+                    <option value="Antigua and Barbuda">🇦🇬 Antigua and Barbuda (+1-268)</option>
+                    <option value="Argentina">🇦🇷 Argentina (+54)</option>
+                    <option value="Armenia">🇦🇲 Armenia (+374)</option>
+                    <option value="Aruba">🇦🇼 Aruba (+297)</option>
+                    <option value="Australia">🇦🇺 Australia (+61)</option>
+                    <option value="Austria">🇦🇹 Austria (+43)</option>
+                    <option value="Azerbaijan">🇦🇿 Azerbaijan (+994)</option>
+                    <option value="Bahamas">🇧🇸 Bahamas (+1-242)</option>
+                    <option value="Bahrain">🇧🇭 Bahrain (+973)</option>
+                    <option value="Bangladesh">🇧🇩 Bangladesh (+880)</option>
+                    <option value="Barbados">🇧🇧 Barbados (+1-246)</option>
+                    <option value="Belarus">🇧🇾 Belarus (+375)</option>
+                    <option value="Belgium">🇧🇪 Belgium (+32)</option>
+                    <option value="Belize">🇧🇿 Belize (+501)</option>
+                    <option value="Benin">🇧🇯 Benin (+229)</option>
+                    <option value="Bermuda">🇧🇲 Bermuda (+1-441)</option>
+                    <option value="Bhutan">🇧🇹 Bhutan (+975)</option>
+                    <option value="Bolivia">🇧🇴 Bolivia (+591)</option>
+                    <option value="Bosnia and Herzegovina">🇧🇦 Bosnia and Herzegovina (+387)</option>
+                    <option value="Botswana">🇧🇼 Botswana (+267)</option>
+                    <option value="Brazil">🇧🇷 Brazil (+55)</option>
+                    <option value="British Indian Ocean Territory">🇮🇴 British Indian Ocean Territory (+246)</option>
+                    <option value="British Virgin Islands">🇻🇬 British Virgin Islands (+1-284)</option>
+                    <option value="Brunei">🇧🇳 Brunei (+673)</option>
+                    <option value="Bulgaria">🇧🇬 Bulgaria (+359)</option>
+                    <option value="Burkina Faso">🇧🇫 Burkina Faso (+226)</option>
+                    <option value="Burundi">🇧🇮 Burundi (+257)</option>
+                    <option value="Cambodia">🇰🇭 Cambodia (+855)</option>
+                    <option value="Cameroon">🇨🇲 Cameroon (+237)</option>
+                    <option value="Canada">🇨🇦 Canada (+1)</option>
+                    <option value="Cape Verde">🇨🇻 Cape Verde (+238)</option>
+                    <option value="Cayman Islands">🇰🇾 Cayman Islands (+1-345)</option>
+                    <option value="Central African Republic">🇨🇫 Central African Republic (+236)</option>
+                    <option value="Chad">🇹🇩 Chad (+235)</option>
+                    <option value="Chile">🇨🇱 Chile (+56)</option>
+                    <option value="China">🇨🇳 China (+86)</option>
+                    <option value="Christmas Island">🇨🇽 Christmas Island (+61)</option>
+                    <option value="Cocos Islands">🇨🇨 Cocos Islands (+61)</option>
+                    <option value="Colombia">🇨🇴 Colombia (+57)</option>
+                    <option value="Comoros">🇰🇲 Comoros (+269)</option>
+                    <option value="Cook Islands">🇨🇰 Cook Islands (+682)</option>
+                    <option value="Costa Rica">🇨🇷 Costa Rica (+506)</option>
+                    <option value="Croatia">🇭🇷 Croatia (+385)</option>
+                    <option value="Cuba">🇨🇺 Cuba (+53)</option>
+                    <option value="Curaçao">🇨🇼 Curaçao (+599)</option>
+                    <option value="Cyprus">🇨🇾 Cyprus (+357)</option>
+                    <option value="Czech Republic">🇨🇿 Czech Republic (+420)</option>
+                    <option value="Democratic Republic of the Congo">🇨🇩 Democratic Republic of the Congo (+243)
+                    </option>
+                    <option value="Denmark">🇩🇰 Denmark (+45)</option>
+                    <option value="Djibouti">🇩🇯 Djibouti (+253)</option>
+                    <option value="Dominica">🇩🇲 Dominica (+1-767)</option>
+                    <option value="Dominican Republic">🇩🇴 Dominican Republic (+1-809)</option>
+                    <option value="Ecuador">🇪🇨 Ecuador (+593)</option>
+                    <option value="Egypt">🇪🇬 Egypt (+20)</option>
+                    <option value="El Salvador">🇸🇻 El Salvador (+503)</option>
+                    <option value="Equatorial Guinea">🇬🇶 Equatorial Guinea (+240)</option>
+                    <option value="Eritrea">🇪🇷 Eritrea (+291)</option>
+                    <option value="Estonia">🇪🇪 Estonia (+372)</option>
+                    <option value="Ethiopia">🇪🇹 Ethiopia (+251)</option>
+                    <option value="Falkland Islands">🇫🇰 Falkland Islands (+500)</option>
+                    <option value="Faroe Islands">🇫🇴 Faroe Islands (+298)</option>
+                    <option value="Fiji">🇫🇯 Fiji (+679)</option>
+                    <option value="Finland">🇫🇮 Finland (+358)</option>
+                    <option value="France">🇫🇷 France (+33)</option>
+                    <option value="French Guiana">🇬🇫 French Guiana (+594)</option>
+                    <option value="French Polynesia">🇵🇫 French Polynesia (+689)</option>
+                    <option value="Gabon">🇬🇦 Gabon (+241)</option>
+                    <option value="Gambia">🇬🇲 Gambia (+220)</option>
+                    <option value="Georgia">🇬🇪 Georgia (+995)</option>
+                    <option value="Germany">🇩🇪 Germany (+49)</option>
+                    <option value="Ghana">🇬🇭 Ghana (+233)</option>
+                    <option value="Gibraltar">🇬🇮 Gibraltar (+350)</option>
+                    <option value="Greece">🇬🇷 Greece (+30)</option>
+                    <option value="Greenland">🇬🇱 Greenland (+299)</option>
+                    <option value="Grenada">🇬🇩 Grenada (+1-473)</option>
+                    <option value="Guadeloupe">🇬🇵 Guadeloupe (+590)</option>
+                    <option value="Guam">🇬🇺 Guam (+1-671)</option>
+                    <option value="Guatemala">🇬🇹 Guatemala (+502)</option>
+                    <option value="Guernsey">🇬🇬 Guernsey (+44-1481)</option>
+                    <option value="Guinea">🇬🇳 Guinea (+224)</option>
+                    <option value="Guinea-Bissau">🇬🇼 Guinea-Bissau (+245)</option>
+                    <option value="Guyana">🇬🇾 Guyana (+592)</option>
+                    <option value="Haiti">🇭🇹 Haiti (+509)</option>
+                    <option value="Honduras">🇭🇳 Honduras (+504)</option>
+                    <option value="Hong Kong">🇭🇰 Hong Kong (+852)</option>
+                    <option value="Hungary">🇭🇺 Hungary (+36)</option>
+                    <option value="Iceland">🇮🇸 Iceland (+354)</option>
+                    <option value="India">🇮🇳 India (+91)</option>
+                    <option value="Indonesia">🇮🇩 Indonesia (+62)</option>
+                    <option value="Iran">🇮🇷 Iran (+98)</option>
+                    <option value="Iraq">🇮🇶 Iraq (+964)</option>
+                    <option value="Ireland">🇮🇪 Ireland (+353)</option>
+                    <option value="Isle of Man">🇮🇲 Isle of Man (+44-1624)</option>
+                    <option value="Israel">🇮🇱 Israel (+972)</option>
+                    <option value="Italy">🇮🇹 Italy (+39)</option>
+                    <option value="Jamaica">🇯🇲 Jamaica (+1-876)</option>
+                    <option value="Japan">🇯🇵 Japan (+81)</option>
+                    <option value="Jersey">🇯🇪 Jersey (+44-1534)</option>
+                    <option value="Jordan">🇯🇴 Jordan (+962)</option>
+                    <option value="Kazakhstan">🇰🇿 Kazakhstan (+7)</option>
+                    <option value="Kenya">🇰🇪 Kenya (+254)</option>
+                    <option value="Kiribati">🇰🇮 Kiribati (+686)</option>
+                    <option value="Kosovo">🇽🇰 Kosovo (+383)</option>
+                    <option value="Kuwait">🇰🇼 Kuwait (+965)</option>
+                    <option value="Kyrgyzstan">🇰🇬 Kyrgyzstan (+996)</option>
+                    <option value="Laos">🇱🇦 Laos (+856)</option>
+                    <option value="Latvia">🇱🇻 Latvia (+371)</option>
+                    <option value="Lebanon">🇱🇧 Lebanon (+961)</option>
+                    <option value="Lesotho">🇱🇸 Lesotho (+266)</option>
+                    <option value="Liberia">🇱🇷 Liberia (+231)</option>
+                    <option value="Libya">🇱🇾 Libya (+218)</option>
+                    <option value="Liechtenstein">🇱🇮 Liechtenstein (+423)</option>
+                    <option value="Lithuania">🇱🇹 Lithuania (+370)</option>
+                    <option value="Luxembourg">🇱🇺 Luxembourg (+352)</option>
+                    <option value="+853">🇲🇴 Macau (+853)</option>
+                    <option value="+389">🇲🇰 North Macedonia (+389)</option>
+                    <option value="+261">🇲🇬 Madagascar (+261)</option>
+                    <option value="+265">🇲🇼 Malawi (+265)</option>
+                    <option value="+60">🇲🇾 Malaysia (+60)</option>
+                    <option value="+960">🇲🇻 Maldives (+960)</option>
+                    <option value="+223">🇲🇱 Mali (+223)</option>
+                    <option value="+356">🇲🇹 Malta (+356)</option>
+                    <option value="+692">🇲🇭 Marshall Islands (+692)</option>
+                    <option value="+596">🇲🇶 Martinique (+596)</option>
+                    <option value="+222">🇲🇷 Mauritania (+222)</option>
+                    <option value="+230">🇲🇺 Mauritius (+230)</option>
+                    <option value="+262">🇾🇹 Mayotte (+262)</option>
+                    <option value="+52">🇲🇽 Mexico (+52)</option>
+                    <option value="+691">🇫🇲 Micronesia (+691)</option>
+                    <option value="+373">🇲🇩 Moldova (+373)</option>
+                    <option value="+377">🇲🇨 Monaco (+377)</option>
+                    <option value="+976">🇲🇳 Mongolia (+976)</option>
+                    <option value="+382">🇲🇪 Montenegro (+382)</option>
+                    <option value="+1-664">🇲🇸 Montserrat (+1-664)</option>
+                    <option value="+212">🇲🇦 Morocco (+212)</option>
+                    <option value="+258">🇲🇿 Mozambique (+258)</option>
+                    <option value="+95">🇲🇲 Myanmar (+95)</option>
+                    <option value="+264">🇳🇦 Namibia (+264)</option>
+                    <option value="+674">🇳🇷 Nauru (+674)</option>
+                    <option value="+977">🇳🇵 Nepal (+977)</option>
+                    <option value="+31">🇳🇱 Netherlands (+31)</option>
+                    <option value="+687">🇳🇨 New Caledonia (+687)</option>
+                    <option value="+64">🇳🇿 New Zealand (+64)</option>
+                    <option value="+505">🇳🇮 Nicaragua (+505)</option>
+                    <option value="+227">🇳🇪 Niger (+227)</option>
+                    <option value="+234">🇳🇬 Nigeria (+234)</option>
+                    <option value="+683">🇳🇺 Niue (+683)</option>
+                    <option value="+672">🇳🇫 Norfolk Island (+672)</option>
+                    <option value="+850">🇰🇵 North Korea (+850)</option>
+                    <option value="+1-670">🇲🇵 Northern Mariana Islands (+1-670)</option>
+                    <option value="+47">🇳🇴 Norway (+47)</option>
+                    <option value="+968">🇴🇲 Oman (+968)</option>
+                    <option value="+92">🇵🇰 Pakistan (+92)</option>
+                    <option value="+680">🇵🇼 Palau (+680)</option>
+                    <option value="+970">🇵🇸 Palestine (+970)</option>
+                    <option value="+507">🇵🇦 Panama (+507)</option>
+                    <option value="+675">🇵🇬 Papua New Guinea (+675)</option>
+                    <option value="+595">🇵🇾 Paraguay (+595)</option>
+                    <option value="+51">🇵🇪 Peru (+51)</option>
+                    <option value="+63">🇵🇭 Philippines (+63)</option>
+                    <option value="+64">🇵🇳 Pitcairn Islands (+64)</option>
+                    <option value="+48">🇵🇱 Poland (+48)</option>
+                    <option value="+351">🇵🇹 Portugal (+351)</option>
+                    <option value="+1-787">🇵🇷 Puerto Rico (+1-787)</option>
+                    <option value="+974">🇶🇦 Qatar (+974)</option>
+                    <option value="+242">🇨🇬 Republic of the Congo (+242)</option>
+                    <option value="+262">🇷🇪 Réunion (+262)</option>
+                    <option value="+40">🇷🇴 Romania (+40)</option>
+                    <option value="+7">🇷🇺 Russia (+7)</option>
+                    <option value="+250">🇷🇼 Rwanda (+250)</option>
+                    <option value="+590">🇧🇱 Saint Barthélemy (+590)</option>
+                    <option value="+290">🇸🇭 Saint Helena (+290)</option>
+                    <option value="+1-869">🇰🇳 Saint Kitts and Nevis (+1-869)</option>
+                    <option value="+1-758">🇱🇨 Saint Lucia (+1-758)</option>
+                    <option value="+590">🇲🇫 Saint Martin (+590)</option>
+                    <option value="+508">🇵🇲 Saint Pierre and Miquelon (+508)</option>
+                    <option value="+1-784">🇻🇨 Saint Vincent and the Grenadines (+1-784)</option>
+                    <option value="+685">🇼🇸 Samoa (+685)</option>
+                    <option value="+378">🇸🇲 San Marino (+378)</option>
+                    <option value="+239">🇸🇹 São Tomé and Príncipe (+239)</option>
+                    <option value="+966">🇸🇦 Saudi Arabia (+966)</option>
+                    <option value="+221">🇸🇳 Senegal (+221)</option>
+                    <option value="+381">🇷🇸 Serbia (+381)</option>
+                    <option value="+248">🇸🇨 Seychelles (+248)</option>
+                    <option value="+232">🇸🇱 Sierra Leone (+232)</option>
+                    <option value="+65">🇸🇬 Singapore (+65)</option>
+                    <option value="+1-721">🇸🇽 Sint Maarten (+1-721)</option>
+                    <option value="+421">🇸🇰 Slovakia (+421)</option>
+                    <option value="+386">🇸🇮 Slovenia (+386)</option>
+                    <option value="+677">🇸🇧 Solomon Islands (+677)</option>
+                    <option value="+252">🇸🇴 Somalia (+252)</option>
+                    <option value="+27">🇿🇦 South Africa (+27)</option>
+                    <option value="+82">🇰🇷 South Korea (+82)</option>
+                    <option value="+211">🇸🇸 South Sudan (+211)</option>
+                    <option value="+34">🇪🇸 Spain (+34)</option>
+                    <option value="+94">🇱🇰 Sri Lanka (+94)</option>
+                    <option value="+249">🇸🇩 Sudan (+249)</option>
+                    <option value="+597">🇸🇷 Suriname (+597)</option>
+                    <option value="+47">🇸🇯 Svalbard and Jan Mayen (+47)</option>
+                    <option value="+268">🇸🇿 Eswatini (+268)</option>
+                    <option value="+46">🇸🇪 Sweden (+46)</option>
+                    <option value="+41">🇨🇭 Switzerland (+41)</option>
+                    <option value="+963">🇸🇾 Syria (+963)</option>
+                    <option value="+886">🇹🇼 Taiwan (+886)</option>
+                    <option value="+992">🇹🇯 Tajikistan (+992)</option>
+                    <option value="+255">🇹🇿 Tanzania (+255)</option>
+                    <option value="+66">🇹🇭 Thailand (+66)</option>
+                    <option value="+670">🇹🇱 Timor-Leste (+670)</option>
+                    <option value="+228">🇹🇬 Togo (+228)</option>
+                    <option value="+690">🇹🇰 Tokelau (+690)</option>
+                    <option value="+676">🇹🇴 Tonga (+676)</option>
+                    <option value="+1-868">🇹🇹 Trinidad and Tobago (+1-868)</option>
+                    <option value="+216">🇹🇳 Tunisia (+216)</option>
+                    <option value="+90">🇹🇷 Turkey (+90)</option>
+                    <option value="+993">🇹🇲 Turkmenistan (+993)</option>
+                    <option value="+1-649">🇹🇨 Turks and Caicos Islands (+1-649)</option>
+                    <option value="+688">🇹🇻 Tuvalu (+688)</option>
+                    <option value="+256">🇺🇬 Uganda (+256)</option>
+                    <option value="+380">🇺🇦 Ukraine (+380)</option>
+                    <option value="+971">🇦🇪 United Arab Emirates (+971)</option>
+                    <option value="+44">🇬🇧 United Kingdom (+44)</option>
+                    <option value="+1">🇺🇸 United States (+1)</option>
+                    <option value="+598">🇺🇾 Uruguay (+598)</option>
+                    <option value="+998">🇺🇿 Uzbekistan (+998)</option>
+                    <option value="+678">🇻🇺 Vanuatu (+678)</option>
+                    <option value="+379">🇻🇦 Vatican City (+379)</option>
+                    <option value="+58">🇻🇪 Venezuela (+58)</option>
+                    <option value="+84">🇻🇳 Vietnam (+84)</option>
+                    <option value="+1-284">🇻🇬 British Virgin Islands (+1-284)</option>
+                    <option value="+1-340">🇻🇮 U.S. Virgin Islands (+1-340)</option>
+                    <option value="+681">🇼🇫 Wallis and Futuna (+681)</option>
+                    <option value="+212">🇪🇭 Western Sahara (+212)</option>
+                    <option value="+967">🇾🇪 Yemen (+967)</option>
+                    <option value="+260">🇿🇲 Zambia (+260)</option>
+                  </select>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <div class="multiselect-industry" id="multiselectIndustry2">
+                  <div class="select-box" onclick="multiselectIndustry2(event)">
+                    Select Industry
+                  </div>
+                  <div class="options-container">
+                  <label><input name="industry" type="checkbox" value="Meme"> Meme</label>
+    <label><input name="industry" type="checkbox" value="Decentralized Crypto"> Decentralized Crypto</label>
+    <label><input name="industry" type="checkbox" value="Binance Alpha"> Binance Alpha</label>
+    <label><input name="industry" type="checkbox" value="Solana"> Solana</label>
+    <label><input name="industry" type="checkbox" value="Solana Ecosystem"> Solana Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="BNB Chain Ecosystem"> BNB Chain Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Interoperable Capital Markets"> Interoperable Capital Markets</label>
+    <label><input name="industry" type="checkbox" value="AI & Big Data"> AI & Big Data</label>
+    <label><input name="industry" type="checkbox" value="Real World Assets"> Real World Assets</label>
+    <label><input name="industry" type="checkbox" value="Gaming"> Gaming</label>
+    <label><input name="industry" type="checkbox" value="DePIN"> DePIN</label>
+    <label><input name="industry" type="checkbox" value="DeFi"> DeFi</label>
+    <label><input name="industry" type="checkbox" value="AI Agents"> AI Agents</label>
+    <label><input name="industry" type="checkbox" value="Hypernetwork Ecosystem"> Hypernetwork Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Base Fan Ecosystem"> Base Fan Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Prediction Markets"> Prediction Markets</label>
+    <label><input name="industry" type="checkbox" value="Reddit Points"> Reddit Points</label>
+    <label><input name="industry" type="checkbox" value="Restaking"> Restaking</label>
+    <label><input name="industry" type="checkbox" value="Binance Megadrop"> Binance Megadrop</label>
+    <label><input name="industry" type="checkbox" value="Sui Thailand"> Sui Thailand</label>
+    <label><input name="industry" type="checkbox" value="EigenLayer Ecosystem"> EigenLayer Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Derivatives"> Derivatives</label>
+    <label><input name="industry" type="checkbox" value="Binance HODLer Airdrops"> Binance HODLer Airdrops</label>
+    <label><input name="industry" type="checkbox" value="Lending & Borrowing"> Lending & Borrowing</label>
+    <label><input name="industry" type="checkbox" value="Liquid Staking Derivatives"> Liquid Staking Derivatives</label>
+    <label><input name="industry" type="checkbox" value="Technical of Traffic"> Technical of Traffic</label>
+    <label><input name="industry" type="checkbox" value="Fantom Ecosystem"> Fantom Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Inscriptions"> Inscriptions</label>
+    <label><input name="industry" type="checkbox" value="BTC Fi"> BTC Fi</label>
+    <label><input name="industry" type="checkbox" value="Animal Memes"> Animal Memes</label>
+    <label><input name="industry" type="checkbox" value="Decentralized Exchange (DEX) Token"> Decentralized Exchange (DEX) Token</label>
+    <label><input name="industry" type="checkbox" value="Fidelity crypto selection"> Fidelity crypto selection</label>
+    <label><input name="industry" type="checkbox" value="BRC-20"> BRC-20</label>
+    <label><input name="industry" type="checkbox" value="CMC Crypto Network 2024-25"> CMC Crypto Network 2024-25</label>
+    <label><input name="industry" type="checkbox" value="GambleFi"> GambleFi</label>
+    <label><input name="industry" type="checkbox" value="ETF Memes"> ETF Memes</label>
+    <label><input name="industry" type="checkbox" value="Governance"> Governance</label>
+    <label><input name="industry" type="checkbox" value="Token Memes"> Token Memes</label>
+    <label><input name="industry" type="checkbox" value="Ethereum Launchpad"> Ethereum Launchpad</label>
+    <label><input name="industry" type="checkbox" value="Megaverse Ecosystem"> Megaverse Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Arbitrum Ecosystem"> Arbitrum Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Binance Wallet SOL"> Binance Wallet SOL</label>
+    <label><input name="industry" type="checkbox" value="NFT"> NFT</label>
+    <label><input name="industry" type="checkbox" value="Olympus Pro Ecosystem"> Olympus Pro Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Forge Fan Ecosystem"> Forge Fan Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Near Protocol Ecosystem"> Near Protocol Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="MemeGold Ecosystem"> MemeGold Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Modular Blockchain"> Modular Blockchain</label>
+    <label><input name="industry" type="checkbox" value="Cosmos Ecosystem"> Cosmos Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Injective Ecosystem"> Injective Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Base Ecosystem"> Base Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Political Memes"> Political Memes</label>
+    <label><input name="industry" type="checkbox" value="Interwell Computer Ecosystem"> Interwell Computer Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Optimism Ecosystem"> Optimism Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Polygon Ecosystem"> Polygon Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Binance Launchpad"> Binance Launchpad</label>
+    <label><input name="industry" type="checkbox" value="Data Availability"> Data Availability</label>
+    <label><input name="industry" type="checkbox" value="Gaming Guild"> Gaming Guild</label>
+    <label><input name="industry" type="checkbox" value="Bit Ecosystem"> Bit Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Fantom P2M"> Fantom P2M</label>
+    <label><input name="industry" type="checkbox" value="Onea Ecosystem"> Onea Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="MU6"> MU6</label>
+    <label><input name="industry" type="checkbox" value="Zero Knowledge Proofs"> Zero Knowledge Proofs</label>
+    <label><input name="industry" type="checkbox" value="Cardano Ecosystem"> Cardano Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Metaverse"> Metaverse</label>
+    <label><input name="industry" type="checkbox" value="Elon Memes"> Elon Memes</label>
+    <label><input name="industry" type="checkbox" value="BIT Ecosystem"> BIT Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="PayPal's FTX"> PayPal's FTX</label>
+    <label><input name="industry" type="checkbox" value="Oasis Ecosystem"> Oasis Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="MUG"> MUG</label>
+    <label><input name="industry" type="checkbox" value="Telos Ecosystem"> Telos Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Aptos Ecosystem"> Aptos Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Synthetics"> Synthetics</label>
+    <label><input name="industry" type="checkbox" value="Avalanche Ecosystem"> Avalanche Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Brand"> Brand</label>
+    <label><input name="industry" type="checkbox" value="Sui Ecosystem"> Sui Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Smart Contracts"> Smart Contracts</label>
+    <label><input name="industry" type="checkbox" value="Play To Earn"> Play To Earn</label>
+    <label><input name="industry" type="checkbox" value="Fan Token"> Fan Token</label>
+    <label><input name="industry" type="checkbox" value="AI & Big Data & Collectibles"> AI & Big Data & Collectibles</label>
+    <label><input name="industry" type="checkbox" value="Cow Meme Ecosystem"> Cow Meme Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="AI Agents Launchpad"> AI Agents Launchpad</label>
+    <label><input name="industry" type="checkbox" value="Rent Ecosystem"> Rent Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Sports"> Sports</label>
+    <label><input name="industry" type="checkbox" value="Alleged BRC Ecosystem"> Alleged BRC Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Meme To Earn"> Meme To Earn</label>
+    <label><input name="industry" type="checkbox" value="CMT Coin Portfolio"> CMT Coin Portfolio</label>
+    <label><input name="industry" type="checkbox" value="AI Memes"> AI Memes</label>
+    <label><input name="industry" type="checkbox" value="Financial Owned Liquidity"> Financial Owned Liquidity</label>
+    <label><input name="industry" type="checkbox" value="Storage"> Storage</label>
+    <label><input name="industry" type="checkbox" value="Ethereum Ecosystem"> Ethereum Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Polkadot Ecosystem"> Polkadot Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="FTX Bankruptcy Estate"> FTX Bankruptcy Estate</label>
+    <label><input name="industry" type="checkbox" value="US Strategic Crypto Reserve"> US Strategic Crypto Reserve</label>
+    <label><input name="industry" type="checkbox" value="Privacy"> Privacy</label>
+    <label><input name="industry" type="checkbox" value="Communications & Social Media"> Communications & Social Media</label>
+    <label><input name="industry" type="checkbox" value="Lions Ecosystem"> Lions Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="DePIN De Ecosystem"> DePIN De Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Layer 1"> Layer 1</label>
+    <label><input name="industry" type="checkbox" value="YG Coin Portfolio"> YG Coin Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Analytics"> Analytics</label>
+    <label><input name="industry" type="checkbox" value="Celebrity Memes"> Celebrity Memes</label>
+    <label><input name="industry" type="checkbox" value="Layer 2"> Layer 2</label>
+    <label><input name="industry" type="checkbox" value="Solidity Ecosystem"> Solidity Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Enterprise Svc"> Enterprise Svc</label>
+    <label><input name="industry" type="checkbox" value="Marketplace"> Marketplace</label>
+    <label><input name="industry" type="checkbox" value="Made in America"> Made in America</label>
+    <label><input name="industry" type="checkbox" value="Binance Alpha Airdrops"> Binance Alpha Airdrops</label>
+    <label><input name="industry" type="checkbox" value="Centralized Exchange (CEX) Token"> Centralized Exchange (CEX) Token</label>
+    <label><input name="industry" type="checkbox" value="2019/20 All-season"> 2019/20 All-season</label>
+    <label><input name="industry" type="checkbox" value="Decentralized Computing"> Decentralized Computing</label>
+    <label><input name="industry" type="checkbox" value="Bitcoin Ecosystem"> Bitcoin Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Mobile Mining"> Mobile Mining</label>
+    <label><input name="industry" type="checkbox" value="Top Trader (T2T)"> Top Trader (T2T)</label>
+    <label><input name="industry" type="checkbox" value="Virtual Protocol Ecosystem"> Virtual Protocol Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="World Liberty Financial Portfolio"> World Liberty Financial Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Solana Meme 2024"> Solana Meme 2024</label>
+    <label><input name="industry" type="checkbox" value="Collectibles & NFTs"> Collectibles & NFTs</label>
+    <label><input name="industry" type="checkbox" value="Core Ecosystem"> Core Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Telos"> Telos</label>
+    <label><input name="industry" type="checkbox" value="Cryptocurrency"> Cryptocurrency</label>
+    <label><input name="industry" type="checkbox" value="Algorithmic Stablecoin"> Algorithmic Stablecoin</label>
+    <label><input name="industry" type="checkbox" value="CMC Labs"> CMC Labs</label>
+    <label><input name="industry" type="checkbox" value="YR Ecosystem"> YR Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Stablecoin"> Stablecoin</label>
+    <label><input name="industry" type="checkbox" value="Solana - Themed"> Solana - Themed</label>
+    <label><input name="industry" type="checkbox" value="Spartan Group"> Spartan Group</label>
+    <label><input name="industry" type="checkbox" value="Toncoin Ecosystem"> Toncoin Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Immutable Ecosystem"> Immutable Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Sequoia Capital Portfolio"> Sequoia Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Moonriver Ecosystem"> Moonriver Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="CMC Community Rank Winners"> CMC Community Rank Winners</label>
+    <label><input name="industry" type="checkbox" value="Kadena Ecosystem"> Kadena Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Health"> Health</label>
+    <label><input name="industry" type="checkbox" value="Sharing Economy"> Sharing Economy</label>
+    <label><input name="industry" type="checkbox" value="DeFi Index"> DeFi Index</label>
+    <label><input name="industry" type="checkbox" value="Harmony Ecosystem"> Harmony Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Polygon Ventures Portfolio"> Polygon Ventures Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Logistics"> Logistics</label>
+    <label><input name="industry" type="checkbox" value="Hashed Capital Portfolio"> Hashed Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Discord Bots"> Discord Bots</label>
+    <label><input name="industry" type="checkbox" value="Robotics"> Robotics</label>
+    <label><input name="industry" type="checkbox" value="Arrington XRP Capital Portfolio"> Arrington XRP Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Croatian Ecosystems"> Croatian Ecosystems</label>
+    <label><input name="industry" type="checkbox" value="Education"> Education</label>
+    <label><input name="industry" type="checkbox" value="Research"> Research</label>
+    <label><input name="industry" type="checkbox" value="Czechia"> Czechia</label>
+    <label><input name="industry" type="checkbox" value="Cellular Networks"> Cellular Networks</label>
+    <label><input name="industry" type="checkbox" value="Move To Earn"> Move To Earn</label>
+    <label><input name="industry" type="checkbox" value="Yield"> Yield</label>
+    <label><input name="industry" type="checkbox" value="Binance Labs-backed"> Binance Labs-backed</label>
+    <label><input name="industry" type="checkbox" value="Fetchrobot Capital Portfolio"> Fetchrobot Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Health / Wellness"> Health / Wellness</label>
+    <label><input name="industry" type="checkbox" value="Chef Heddge Portfolio"> Chef Heddge Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Multichain Capital Portfolio"> Multichain Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Altonomy Research Portfolio"> Altonomy Research Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Cinema Ecosystem"> Cinema Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Best Tax"> Best Tax</label>
+    <label><input name="industry" type="checkbox" value="UAE Portfolio"> UAE Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Wintermute Capital Portfolio"> Wintermute Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="10x Capital Portfolio"> 10x Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Placeholder Ventures Portfolio"> Placeholder Ventures Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Fabric Ventures Portfolio"> Fabric Ventures Portfolio</label>
+    <label><input name="industry" type="checkbox" value="BoostVC Portfolio"> BoostVC Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Pantera Portfolio"> Pantera Portfolio</label>
+    <label><input name="industry" type="checkbox" value="BCG Portfolio"> BCG Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Blockfi-backed Portfolio"> Blockfi-backed Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Dragonfly Capital Portfolio"> Dragonfly Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Framework Ventures Portfolio"> Framework Ventures Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Parafi Capital Portfolio"> Parafi Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Three Arrows Capital Portfolio"> Three Arrows Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Wrapped Tokens"> Wrapped Tokens</label>
+    <label><input name="industry" type="checkbox" value="DeFi 2.0"> DeFi 2.0</label>
+    <label><input name="industry" type="checkbox" value="Polychain Capital Portfolio"> Polychain Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Polkastarter"> Polkastarter</label>
+    <label><input name="industry" type="checkbox" value="Coinbase Ventures Portfolio"> Coinbase Ventures Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Oxbull"> Oxbull</label>
+    <label><input name="industry" type="checkbox" value="Binance Ecosystem"> Binance Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Deep Chain Ecosystem"> Deep Chain Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="OKX Ventures Portfolio"> OKX Ventures Portfolio</label>
+    <label><input name="industry" type="checkbox" value="BitPunks Launchpad"> BitPunks Launchpad</label>
+    <label><input name="industry" type="checkbox" value="BUIDL"> BUIDL</label>
+    <label><input name="industry" type="checkbox" value="Energy"> Energy</label>
+    <label><input name="industry" type="checkbox" value="Croatia tourrency future"> Croatia tourrency future</label>
+    <label><input name="industry" type="checkbox" value="Orange Group Portfolio"> Orange Group Portfolio</label>
+    <label><input name="industry" type="checkbox" value="TRON Ecosystem"> TRON Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="IMX Ecosystem"> IMX Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Media"> Media</label>
+    <label><input name="industry" type="checkbox" value="Wallet Ecosystem"> Wallet Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Animal Racing"> Animal Racing</label>
+    <label><input name="industry" type="checkbox" value="Soccer"> Soccer</label>
+    <label><input name="industry" type="checkbox" value="Private Finance Portfolio"> Private Finance Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Siberium Ecosystem"> Siberium Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="SocialMASTER"> SocialMASTER</label>
+    <label><input name="industry" type="checkbox" value="Animoca Brands Portfolio"> Animoca Brands Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Kommunitas Launchpad"> Kommunitas Launchpad</label>
+    <label><input name="industry" type="checkbox" value="Loyalty"> Loyalty</label>
+    <label><input name="industry" type="checkbox" value="Marketing"> Marketing</label>
+    <label><input name="industry" type="checkbox" value="UFO Stablecoin"> UFO Stablecoin</label>
+    <label><input name="industry" type="checkbox" value="BOSAG Ecosystem"> BOSAG Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="DNS3"> DNS3</label>
+    <label><input name="industry" type="checkbox" value="Ternoa (CMLC20) Ecosystem"> Ternoa (CMLC20) Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="B2U Stablecoin"> B2U Stablecoin</label>
+    <label><input name="industry" type="checkbox" value="Trustlaunch Launchpad"> Trustlaunch Launchpad</label>
+    <label><input name="industry" type="checkbox" value="TradeBoard Gold"> TradeBoard Gold</label>
+    <label><input name="industry" type="checkbox" value="CoinList Launchpad"> CoinList Launchpad</label>
+    <label><input name="industry" type="checkbox" value="Social Tokens"> Social Tokens</label>
+    <label><input name="industry" type="checkbox" value="Social Money"> Social Money</label>
+    <label><input name="industry" type="checkbox" value="Gpool"> Gpool</label>
+    <label><input name="industry" type="checkbox" value="ZKC Ecosystem"> ZKC Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Moon Knight Labs"> Moon Knight Labs</label>
+    <label><input name="industry" type="checkbox" value="Human Network"> Human Network</label>
+    <label><input name="industry" type="checkbox" value="New Era Capital"> New Era Capital</label>
+    <label><input name="industry" type="checkbox" value="Asset Management"> Asset Management</label>
+    <label><input name="industry" type="checkbox" value="Farming as a Service (FaaS)"> Farming as a Service (FaaS)</label>
+    <label><input name="industry" type="checkbox" value="DeFiance Capital Portfolio"> DeFiance Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="PayPal Capital"> PayPal Capital</label>
+    <label><input name="industry" type="checkbox" value="Years Partnership"> Years Partnership</label>
+    <label><input name="industry" type="checkbox" value="Standard Crypto Portfolio"> Standard Crypto Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Hyperliquid Staking"> Hyperliquid Staking</label>
+    <label><input name="industry" type="checkbox" value="Coins Ventures Portfolio"> Coins Ventures Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Yield Farming"> Yield Farming</label>
+    <label><input name="industry" type="checkbox" value="ANAR"> ANAR</label>
+    <label><input name="industry" type="checkbox" value="Staking"> Staking</label>
+    <label><input name="industry" type="checkbox" value="Memecoin"> Memecoin</label>
+    <label><input name="industry" type="checkbox" value="HECO Ecosystem"> HECO Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="a16z Capital Portfolio"> a16z Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Trading"> Trading</label>
+    <label><input name="industry" type="checkbox" value="Polybase Capital Portfolio"> Polybase Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Entertainment"> Entertainment</label>
+    <label><input name="industry" type="checkbox" value="Genesis Frontier Fund"> Genesis Frontier Fund</label>
+    <label><input name="industry" type="checkbox" value="VRC Ventures Portfolio"> VRC Ventures Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Fuel Ecosystem"> Fuel Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Solana as a Service (SaaS)"> Solana as a Service (SaaS)</label>
+    <label><input name="industry" type="checkbox" value="CMC Crypto Awards 2024"> CMC Crypto Awards 2024</label>
+    <label><input name="industry" type="checkbox" value="Precipe Miners"> Precipe Miners</label>
+    <label><input name="industry" type="checkbox" value="Yield Aggregator"> Yield Aggregator</label>
+    <label><input name="industry" type="checkbox" value="DAO"> DAO</label>
+    <label><input name="industry" type="checkbox" value="Transport"> Transport</label>
+    <label><input name="industry" type="checkbox" value="Sui Purple Ecosystem"> Sui Purple Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="VEGEM"> VEGEM</label>
+    <label><input name="industry" type="checkbox" value="TRON Network"> TRON Network</label>
+    <label><input name="industry" type="checkbox" value="Binance Capital Portfolio"> Binance Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Core Global Capital"> Core Global Capital</label>
+    <label><input name="industry" type="checkbox" value="ETH 2.0 Staking"> ETH 2.0 Staking</label>
+    <label><input name="industry" type="checkbox" value="Account Abstraction"> Account Abstraction</label>
+    <label><input name="industry" type="checkbox" value="Launchpool Portfolio"> Launchpool Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Real Estate"> Real Estate</label>
+    <label><input name="industry" type="checkbox" value="Data Crypto"> Data Crypto</label>
+    <label><input name="industry" type="checkbox" value="Events"> Events</label>
+    <label><input name="industry" type="checkbox" value="Shared Capital"> Shared Capital</label>
+    <label><input name="industry" type="checkbox" value="Launchpad"> Launchpad</label>
+    <label><input name="industry" type="checkbox" value="Decentralized"> Decentralized</label>
+    <label><input name="industry" type="checkbox" value="Multiverse Ecosystem"> Multiverse Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Tezos Ecosystem"> Tezos Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="Coinbase Capital Portfolio"> Coinbase Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Metaverse Ecosystem"> Metaverse Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="CMC Community Coin Winners"> CMC Community Coin Winners</label>
+    <label><input name="industry" type="checkbox" value="DePIN/IoT"> DePIN/IoT</label>
+    <label><input name="industry" type="checkbox" value="Hashkey Capital Portfolio"> Hashkey Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Discount Beta"> Discount Beta</label>
+    <label><input name="industry" type="checkbox" value="Blockchain UIF Capital Portfolio"> Blockchain UIF Capital Portfolio</label>
+    <label><input name="industry" type="checkbox" value="Oxyzen Ecosystem"> Oxyzen Ecosystem</label>
+    <label><input name="industry" type="checkbox" value="File Sharing"> File Sharing</label>
+    <label><input name="industry" type="checkbox" value="Move VM WNOM"> Move VM WNOM</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input name="foundedYear" type="number" placeholder="Founded Year" />
+              </div>
+            </div>
+            <div class="inline-group">
+              <div class="form-group">
+                <select name="whitelist" id="">
+                  <option value="">Select Whitelist</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select name="kyc" id="">
+                  <option value="">Select KYC</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select name="bounty">
+                  <option value="">Select Bounty</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+            </div>
+            <div class="inline-group">
+              <div class="form-group">
+                <select name="mvp">
+                  <option value="">Select MVP</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select name="securityAudit">
+                  <option value="">Select Security Audit</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="form-group" style="opacity: 0;">
+                <input placeholder="Enter Event Link"/>
+              </div>
+            </div>
+
+            <!-- Token Roadmap -->
+
+             <div class="form-group">
+              <label>Upload Roadmap</label>
+              <div class="upload-box">
+                <div class="text">
+                  Drag and drop an image or PDF.<br />
+                  PNG, JPEG, PDF, <strong>SVG</strong> are Supported
+                </div>
+                <input type="file" name="roadmap">
+              </div>
+            </div>
+
+            <!-- Token Review -->
+
+            <div class="form-group">
+              <label>Token Review <span style="color:red">*</span></label>
+              <textarea name="tokenReview" id="editor" class="decsTextarea ckeditor" rows="4"
+                placeholder="Update full Review of your Toekn here"></textarea>
+            </div>
+
+            <!-- Token Economy -->
+
+           <div>
+             <label>Token Economy <span style="color:red">*</span></label>
+             <div class="inline-group">
+              <div class="form-group">
+                <input name="totalRaise" type="text" placeholder="Total Raise">
+              </div>
+              <div class="form-group">
+                <input name="preSale" type="text" placeholder="Private/Pre-sale">
+              </div>
+              <div class="form-group">
+                <input name="fdv" type="text" placeholder="Fully Diluted Valuation (FDV)">
+              </div>
+            </div>
+            <div>
+              <div class="inline-group">
+                <div class="form-group">
+                  <input name="totalSupply" type="text" placeholder="Total Supply" >
+                </div>
+                <div class="form-group">
+                  <input name="publicSale" type="text" placeholder="Public Sale" >
+                </div>
+                <div class="form-group">
+                  <input name="initialCirculationSupply" type="text" placeholder="Initial Circulation Supply" >
+                </div>
+              </div>
+           </div>
+
+
+           <!-- social media links -->
+
+             <div>
+             <label>Social Media Links <span style="color:red">*</span></label>
+             <div class="inline-group">
+              <div class="form-group">
+                <input name="TelegramChannel" type="url" placeholder="Telegram Group/Channel">
+              </div>
+              <div class="form-group">
+                <input name="twitterLink" type="url" placeholder="Twitter Link" >
+              </div>
+              <div class="form-group">
+                <input name="instagramLink" type="url" placeholder="Instagram Link" >
+              </div>
+            </div>
+            <div>
+              <div class="inline-group">
+                <div class="form-group">
+                  <input name="youtubeLink" type="url" placeholder="Youtube Link" >
+                </div>
+                <div class="form-group">
+                  <input name="websiteLink" type="url" placeholder="Website Link" >
+                </div>
+                <div class="form-group">
+                  <input name="mediumLink" type="url" placeholder="Medium Link">
+                </div>
+              </div>
+           </div>
+
+           <!-- whitepaper -->
+
+             <div class="form-group">
+              <label>Upload Whitepaper</label>
+              <div class="upload-box">
+                <div class="text">
+                  Drag and drop an image or PDF.<br />
+                  PNG, JPEG, PDF, <strong>SVG</strong> are Supported
+                </div>
+                <input type="file" name="whitepaper" required>
+              </div>
+            </div>
+
+           <!-- token Sale(ICO & IDO) Rounds -->
+
+             <div>
+              <div>
+                <label>Token Sale(ICO & IDO) Rounds <span style="color:red">*</span></label>
+                <div class="">
+                  <div class="sponsers">
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Price" name="rounds[0].price"/>
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Tokens for sale"
+                        name="rounds[0].tokenForSale" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="texr" class="form-control" placeholder="Enter Raise Price"
+                        name="rounds[0].raisePrice" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Name"
+                        name="rounds[0].lookUp" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="date" class="form-control" placeholder=""
+                        name="rounds[0].startDate" title="Start Date" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="date" class="form-control" placeholder=""
+                        name="rounds[0].endtDate" title="End Date"  />
+                    </div>
+                  </div>
+                  <div id="additionalTokenSaleRounds"></div>
+                </div>
+              </div>
+
+              <button type="button" onclick="addTokenSaleRoundsSection()" class="addButton">Add Another Token Sale Rounds</button>
+            </div>
+
+               <!-- Teams section -->
+
+             <div class="mt-3">
+              <div>
+                <label>Team <span style="color:red">*</span></label>
+                <div class="">
+                  <div class="sponsers">
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="team[0].name" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="email" class="form-control" placeholder="Enter Email"
+                        name="team[0].email" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Degination" name="team[0].desination" />
+                    </div>
+                     <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Twitter Name" name="team[0].twitter" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Telegram"
+                        name="team[0].telegram" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Website" name="team[0].website" />
+                    </div>
+                  </div>
+                  <div id="additionalTeam"></div>
+                </div>
+              </div>
+
+              <button type="button" onclick="addTeamSection()" class="addButton">Add Another Member</button>
+            </div>
+
+
+
+            <!-- Influancer -->
+
+            <div>
+              <div class="mt-3">
+                <label>Influancer <span style="color:red">*</span></label>
+                <div class="">
+                  <div class="sponsers">
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="influancer[0].name" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="email" class="form-control" placeholder="Enter business email"
+                        name="influancer[0].email" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Whatsapp Number"
+                        name="influancer[0].whatsappNumber" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                        name="influancer[0].twitter" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Telegram"
+                        name="influancer[0].telegram" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Website" name="influancer[0].website" />
+                    </div>
+                  </div>
+                  <div id="additionalInfluancer"></div>
+                </div>
+              </div>
+
+              <button type="button" onclick="addInfluancerSection()" class="addButton">Add Another Influancer</button>
+            </div>
+
+            <!-- collaboration/partners -->
+
+            <div class="mt-3">
+              <div class="">
+                <label>Collaborations/Partners <span style="color:red">*</span></label>
+                <div class="">
+                  <div class="sponsers">
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="partner[0].name" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter business email"
+                        name="partner[0].businessEmail" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                        name="partner[0].whatsappNumber" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                        name="partner[0].twitter" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Telegram" name="partner[0].telegram" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Website" name="partner[0].website" />
+                    </div>
+                  </div>
+                  <div id="additionalPartner"></div>
+                </div>
+              </div>
+
+              <button type="button" onclick="addPartnerSection()" class="addButton">Add Another Partner</button>
+            </div>
+
+            <!-- sponsers -->
+
+            <div class="mt-3">
+              <div class="">
+                <label>Sponsors <span style="color:red">*</span></label>
+                <div class="">
+                  <div class="sponsers">
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="sponsor[0].name" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter business email"
+                        name="sponsor[0].businessEmail" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                        name="sponsor[0].whatsappNumber" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                        name="sponsor[0].twitter" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Telegram" name="sponsor[0].telegram" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Website" name="sponsor[0].website" />
+                    </div>
+                  </div>
+                  <div id="additionalSponsor"></div>
+                </div>
+                  <button type="button" onclick="addSponsorSection()" class="addButton">Add Another Sponsor</button>
+              </div>
+
+              <!-- author -->
+
+              <div class="mt-3">
+                <div class="">
+                  <label>Author <span style="color:red">*</span></label>
+                  <div class="">
+                    <div class="author">
+                      <div class="row d-flex">
+                        <div class=" authorDiv">
+                          <input type="text" class="form-control authorInput" placeholder="Enter Author's Name"
+                            name="authorName" required />
+
+                        </div>
+                        <div class=" authorDiv">
+                          <input type="email" class="form-control authorInput" placeholder="Enter Author's Email"
+                            name="authorEmail" required />
+                        </div>
+                      </div>
+
+                      <div class="row d-flex">
+                        <div class="col-sm-3 authorDiv d-flex">
+                          <input type="texr" class="form-control authorInput" placeholder="Enter Author's Whatsapp"
+                            name="authorWhatsapp" required />
+
+
+                        </div>
+                        <div class="col-sm-3 authorDiv d-flex">
+                          <input type="url" class="form-control authorInput" placeholder="Author's Twitter handle"
+                            name="authorTwitter" required />
+
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+
+              
+              </div>
+              <button type="submit" class="eventBtn">Submit ICO</button>
+
+            </div>
+          </div>
+
+
+
+      </section>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+      let InfluancerCounter = 1;
+      let partnerCounter = 1;
+      let sponsorCounter = 1;
+      let tokenSaleRoundedCounter = 1;
+      let teamCounter = 1;
+
+
+      // for Influancer
+
+      function addInfluancerSection() {
+        // if (InfluancerCounter >= 6) {
+        //   alert("You can add up to 4 price tiers only.");
+        //   return;
+        // }
+
+        const newInfluancerHTML = ` 
+        <div>
+           <label class="col-sm-2 col-form-label">Influancer ${InfluancerCounter + 1}</label>
+         <div class="sponsers">
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Name" name="influancer[${InfluancerCounter}].name"  />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter business email" name="influancer[${InfluancerCounter}].businessEmail"
+                       />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                      name="influancer[${InfluancerCounter}].whatsappNumber" />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                      name="influancer[${InfluancerCounter}].twitter" />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Telegram"
+                      name="influancer[${InfluancerCounter}].telegram" />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="url" class="form-control" placeholder="Enter Website"
+                      name="influancer[${InfluancerCounter}].website" />
+                  </div>
+                </div>
+                   
+              </div>
+            </div>
+            </div>
+            `
+
+        document.getElementById('additionalInfluancer').insertAdjacentHTML('beforeend', newInfluancerHTML);
+        InfluancerCounter++;
+      }
+
+
+
+      // for Partner
+
+      function addPartnerSection() {
+        // if (speakerCounter >= 6) {
+        //   alert("You can add up to 4 price tiers only.");
+        //   return;
+        // }
+
+        const newPartnerHTML = ` 
+        <div>
+           <label class="col-sm-2 col-form-label">Partner ${partnerCounter + 1}</label>
+         <div class="sponsers">
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Name" name="partner[${partnerCounter}].name" />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter business email" name="partner[${partnerCounter}].businessEmail"
+                     />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                      name="partner[${partnerCounter}].whatsappNumber" />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                      name="partner[${partnerCounter}].twitter" />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Telegram"
+                      name="partner[${partnerCounter}].telegram" />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="url" class="form-control" placeholder="Enter Website"
+                      name="partner[${partnerCounter}].website" />
+                  </div>
+                </div>
+                   
+              </div>
+            </div>
+            </div>
+            `
+
+        document.getElementById('additionalPartner').insertAdjacentHTML('beforeend', newPartnerHTML);
+        partnerCounter++;
+      }
+
+
+
+      // for Sponsors
+
+      function addSponsorSection() {
+        // if (speakerCounter >= 6) {
+        //   alert("You can add up to 4 price tiers only.");
+        //   return;
+        // }
+
+        const newSponsorHTML = ` 
+        <div>
+           <label class="col-sm-2 col-form-label">Sponsor ${sponsorCounter + 1}</label>
+         <div class="sponsers">
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Name" name="sponsor[${sponsorCounter}].name" />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter business email" name="sponsor[${sponsorCounter}].businessEmail"
+                       />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="texr" class="form-control" placeholder="Enter Whatsapp Number"
+                      name="sponsor[${sponsorCounter}].whatsappNumber"  />
+                  </div>
+                  <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Twitter handle"
+                      name="sponsor[${sponsorCounter}].twitter" />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="text" class="form-control" placeholder="Enter Telegram"
+                      name="sponsor[${sponsorCounter}].telegram" />
+                  </div>
+                   <div class="col-sm-3 innerSpronsers">
+                    <input type="url" class="form-control" placeholder="Enter Website"
+                      name="sponsor[${sponsorCounter}].website" />
+                  </div>
+                </div>
+                   
+              </div>
+            </div>
+            </div>
+            `
+
+        document.getElementById('additionalSponsor').insertAdjacentHTML('beforeend', newSponsorHTML);
+        sponsorCounter++;
+
+
+      }
+
+
+       // for Token Sale Rounds
+
+      function addTokenSaleRoundsSection() {
+        // if (speakerCounter >= 6) {
+        //   alert("You can add up to 4 price tiers only.");
+        //   return;
+        // }
+        const newTokenSaleRoundedHTML = ` 
+        <div>
+           <label class="col-sm-5 col-form-label">Token Sale Rounds ${tokenSaleRoundedCounter + 1}</label>
+         <div class="sponsers">
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Price" name="rounds[${tokenSaleRoundedCounter}].price" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Tokens for sale"
+                        name="rounds[${tokenSaleRoundedCounter}].tokenForSale" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="texr" class="form-control" placeholder="Enter Raise Price"
+                        name="rounds[${tokenSaleRoundedCounter}].raisePrice" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Lock-Up"
+                        name="rounds[${tokenSaleRoundedCounter}].lookUp" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="date" class="form-control" placeholder=""
+                        name="rounds[${tokenSaleRoundedCounter}].startDate"  />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="date" class="form-control" placeholder=""
+                        name="rounds[${tokenSaleRoundedCounter}].endtDate"  />
+                    </div>
+                  </div>
+            </div>
+            `
+        document.getElementById('additionalTokenSaleRounds').insertAdjacentHTML('beforeend', newTokenSaleRoundedHTML);
+        tokenSaleRoundedCounter++;
+      }
+
+         // for Teams
+
+      function addTeamSection() {
+        // if (speakerCounter >= 6) {
+        //   alert("You can add up to 4 price tiers only.");
+        //   return;
+        // }
+        const newTeamHTML = ` 
+        <div>
+           <label class="col-sm-5 col-form-label">Team ${teamCounter + 1}</label>
+         <div class="sponsers">
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="team[${teamCounter}].name" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="email" class="form-control" placeholder="Enter Email"
+                        name="team[${teamCounter}].email" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="text" class="form-control" placeholder="Enter Degination" name="team[${teamCounter}].desination" />
+                    </div>
+                     <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Twitter Name" name="team[${teamCounter}].twitter" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Telegram"
+                        name="team[${teamCounter}].telegram" />
+                    </div>
+                    <div class="col-sm-3 innerSpronsers">
+                      <input type="url" class="form-control" placeholder="Enter Website" name="team[${teamCounter}].website" />
+                    </div>
+                  </div>
+            </div>
+            `
+        document.getElementById('additionalTeam').insertAdjacentHTML('beforeend', newTeamHTML);
+        teamCounter++;
+      }
+    </script>
+
+
+    <script>
+      $(document).ready(function () {
+        $('#countryCodeSelect').select2({
+          placeholder: "Search country or code...",
+          allowClear: true
+        });
+      });
+    </script>
+
+    <script>
+      function toggleDropdown() {
+        const a = document.getElementById("multiselect").classList.toggle("active");
+        // Optional: close if clicked outside
+        document.addEventListener("click", function (e) {
+          const multiselect = document.getElementById("multiselect");
+          console.log("=====")
+          if (!multiselect.contains(e.target)) {
+            multiselect.classList.remove("active");
+          }
+        });
+      }
+
+
+      function multiselectCategory() {
+        document.getElementById("multiselectCategory").classList.toggle("active");
+        // Optional: close if clicked outside
+        document.addEventListener("click", function (e) {
+          const multiselect = document.getElementById("multiselectCategory");
+          if (!multiselect.contains(e.target)) {
+            multiselect.classList.remove("active");
+          }
+        });
+      }
+
+
+      function multiselectIndustry2(event) {
+        event.stopPropagation(); // Prevent closing dropdown on this click
+
+        const multiselect = document.getElementById("multiselectIndustry2");
+        multiselect.classList.toggle("active");
+      }
+
+      // Add only one global click listener
+      document.addEventListener("click", function (e) {
+        const multiselect = document.getElementById("multiselectIndustry2");
+        if (!multiselect.contains(e.target)) {
+          multiselect.classList.remove("active");
+        }
+      });
+
+
+    </script>
+
+    <script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace("editor")
+    </script>
+
+    <script>
+      const ticketTypeSelect = document.getElementById("ticketType");
+      const paidInputs = document.getElementById("paidInputs");
+
+      ticketTypeSelect.addEventListener("change", function () {
+        if (this.value === "paid") {
+          paidInputs.style.display = "block";
+        } else {
+          paidInputs.style.display = "none";
+        }
+      });
+    </script>
+
+     <script>
+      function showLoader() {
+        document.getElementById('loader').style.display = 'block';
+      }
+    </script>
+
+
+</body>
+
+</html>

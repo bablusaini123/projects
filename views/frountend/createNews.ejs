@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script
+    src="https://cdn.tiny.cloud/1/fabectr5pdlu35mp9o4pna5dy42kvsv5c417o4cfdm8heqhn/tinymce/5/tinymce.min.js"></script>
+
+
+  <title>iNDEX</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #333;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .search-bar {
+      flex: 1 1 300px;
+      margin: 10px 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 20px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .search-bar {
+        flex: 1 1 100%;
+        order: 3;
+        margin: 10px 0;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        background-color: #444;
+        order: 4;
+      }
+
+      nav a {
+        padding: 10px;
+        border-top: 1px solid #555;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      margin: 22px 0px;
+      letter-spacing: 1px;
+      color: #555;
+    }
+
+    .breadcrumb a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="date"],
+    select,
+    .location,
+    .dropdown {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .inline-group {
+      display: flex;
+      gap: 15px;
+    }
+
+    .inline-group .form-group {
+      flex: 1;
+    }
+
+    .upload-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border: 2px dashed #ccc;
+      border-radius: 6px;
+    }
+
+    .upload-box .text {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .upload-box .upload-btn {
+      color: #0056d2;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .flag-select {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flag-select img {
+      width: 24px;
+      height: 18px;
+      border: 1px solid #ccc;
+    }
+
+    .timezone-box {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .event-type {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #f0f6ff;
+      border-radius: 6px;
+      font-weight: 500;
+      border: 1px solid #d0e3ff;
+      color: #0056d2;
+    }
+
+
+
+    #countryDropdown {
+      border: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .startDate {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+    }
+
+    .checkbox-container label {
+      display: inline-block;
+      margin-right: 15px;
+      /* horizontal gap */
+      margin-bottom: 8px;
+      /* vertical gap */
+      cursor: pointer;
+    }
+
+    .multiselect-container {
+      position: relative;
+
+    }
+
+    .select-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .options-container {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-top: none;
+      background-color: white;
+      z-index: 10;
+      padding: 10px;
+    }
+
+    .options-container label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .options-container label input {
+      margin-right: 10px;
+    }
+
+    .multiselect-container.active .options-container {
+      display: block;
+    }
+
+    .decsTextarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .eventBtn {
+      padding: 9px 31px;
+      background: #f9d3d3;
+      margin-left: auto;
+      color: #000;
+      text-decoration: none;
+      border-radius: 18px;
+      font-weight: 400;
+      border: navajowhite;
+      margin: 19px 0px;
+    }
+
+
+
+    .addButton {
+      background: #e1ffed;
+      font-size: 13px;
+      border: navajowhite;
+      border: solid 1px #d9d9d9;
+      padding: 7px 13px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .input-row input {
+      flex: 1;
+      padding: 5px;
+    }
+
+    .paid-inputs {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .authorInput {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .authorDiv {
+      margin: 15px 0px;
+      width: 50% !important;
+    }
+
+    #loader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.8);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      color: #333;
+      text-align: center;
+    }
+
+    #loader img {
+      margin-top: 18%;
+    }
+
+    /* Style input to look like a button */
+    #tagNameInput {
+      padding: 8px 12px;
+      border: 1px solid #007BFF;
+      border-radius: 20px;
+      background-color: #f0f0f0;
+      font-size: 14px;
+      color: #007BFF;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      width: 200px;
+    }
+
+    #tagNameInput:focus {
+      outline: none;
+      background-color: #007BFF;
+      color: white;
+    }
+
+    /* Style for Add Tag button */
+    #addTagBtn {
+      padding: 8px 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 13px 0px;
+    }
+
+    #addTagBtn:hover {
+      background-color: #218838;
+    }
+
+    /* Style for dynamic tags (buttons) */
+    .tag-btn {
+      padding: 8px 12px;
+      background-color: #e0f7e9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      color: #2e7d32;
+    }
+
+    .tag-btn:hover {
+      background-color: #abd7bc;
+    }
+
+    .tag-btn .remove-btn {
+      background-color: #67ca6c;
+      border-radius: 100%;
+      color: white;
+      font-size: 12px;
+      margin-left: 12px;
+      cursor: pointer;
+      border: none;
+      color: black;
+      padding: 1px 7px;
+    }
+
+    .tag-btn .remove-btn:hover {
+      background-color: #5bc260;
+    }
+
+    #tagsList {
+      display: flex;
+      gap: 19px;
+      flex-wrap: wrap;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- header start -->
+
+  <%- include("../../partials/frountHeader.ejs")%>
+    <!-- header end -->
+
+
+    <section>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/" style="color: #555;">Home </a> ><a href="/news" style="color: #555;">News</a> > <a href="#">Add
+            News</a>
+        </div>
+        <h2>Add News</h2>
+      </div>
+    </section>
+    <section>
+      <div id="loader">
+        <img src="../../image/Animation - 1749114626093.gif" alt="">
+        <h4>Loading...</h4>
+
+      </div>
+    </section>
+
+    <form action="/addNews" method="post" enctype="multipart/form-data" onsubmit="showLoader()">
+
+      <section>
+        <div class="container">
+          <div class="form-container">
+            <div class="form-group">
+              <label>News Title <span style="color:red">*</span></label>
+              <input class="form-control" name="title" type="text" placeholder="Enter News Title" required />
+            </div>
+            <div class="form-group">
+              <label> News Banner Image <span style="color:red">*</span></label>
+              <div class="upload-box">
+                <div class="text">
+                  Drag and drop an image or <strong>1250 x 656</strong> (in pixels).<br />
+                  PNG, JPEG, <strong>SVG</strong> are Supported
+                </div>
+                <input class="form-control" type="file" name="newsBanner" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="multiselect-container" id="multiselect">
+                <label> Select Category <span style="color:red">*</span></label>
+                <div class="select-box" onclick="toggleDropdown()">
+                  Select Categorys
+                </div>
+
+                <div class="options-container">
+                  <!-- Existing Categories -->
+                  <label><input name="category" type="checkbox" value="Crypto News">Crypto News</label>
+                  <label><input name="category" type="checkbox" value="Press Release">Press Release</label>
+                  <label><input name="category" type="checkbox" value="Price Prediction">Price Prediction</label>
+                  <label><input name="category" type="checkbox" value="Sponsored">Sponsored</label>
+                  <label><input name="category" type="checkbox" value="Guest Post">Guest Post</label>
+                  <label><input name="category" type="checkbox" value="Crypto Blogs">Crypto Blogs</label>
+                  <label><input name="category" type="checkbox" value="Research Paper">Research Paper</label>
+                  <label><input name="category" type="checkbox" value="Monthly Bulletin">Monthly Bulletin</label>
+                  <label><input name="category" type="checkbox" value="Bitcoin">Bitcoin</label>
+                  <label><input name="category" type="checkbox" value="Ethereum">Ethereum</label>
+                  <label><input name="category" type="checkbox" value="Altcoin">Altcoin</label>
+                  <label><input name="category" type="checkbox" value="Meme Coin">Meme Coin</label>
+                  <label><input name="category" type="checkbox" value="Blockchain">Blockchain</label>
+                  <label><input name="category" type="checkbox" value="Exchanges">Exchanges</label>
+                  <label><input name="category" type="checkbox" value="NFTs">NFTs</label>
+                  <label><input name="category" type="checkbox" value="Metaverse">Metaverse</label>
+                  <label><input name="category" type="checkbox" value="GameFi">GameFi</label>
+                  <label><input name="category" type="checkbox" value="Projects">Projects</label>
+                  <label><input name="category" type="checkbox" value="Top Memecoins">Top Memecoins</label>
+                  <label><input name="category" type="checkbox" value="Crypto Airdrops">Crypto Airdrops</label>
+                  <label><input name="category" type="checkbox" value="Best Crypto Presale">Best Crypto Presale</label>
+                  <label><input name="category" type="checkbox" value="Web3">Web3</label>
+                  <label><input name="category" type="checkbox" value="Artificial Intelligence">Artificial
+                    Intelligence</label>
+                  <label><input name="category" type="checkbox" value="Hamster Kombat">Hamster Kombat</label>
+                  <label><input name="category" type="checkbox" value="Pi Coin">Pi Coin</label>
+                  <label><input name="category" type="checkbox" value="Tapcoin">Tapcoin</label>
+
+                  <!-- Additional Suggested Categories -->
+                  <label><input name="category" type="checkbox" value="DeFi">DeFi</label>
+                  <label><input name="category" type="checkbox" value="DAOs">DAOs</label>
+                  <label><input name="category" type="checkbox" value="Stablecoins">Stablecoins</label>
+                  <label><input name="category" type="checkbox" value="Crypto Wallets">Crypto Wallets</label>
+                  <label><input name="category" type="checkbox" value="Mining & Staking">Mining & Staking</label>
+                  <label><input name="category" type="checkbox" value="Crypto Regulation">Crypto Regulation</label>
+                  <label><input name="category" type="checkbox" value="CBDCs">CBDCs</label>
+                  <label><input name="category" type="checkbox" value="Tokenomics">Tokenomics</label>
+                  <label><input name="category" type="checkbox" value="ICO/IDO/IEO Updates">ICO/IDO/IEO Updates</label>
+                  <label><input name="category" type="checkbox" value="RWA">RWA</label>
+                  <label><input name="category" type="checkbox" value="Solana Ecosystem">Solana Ecosystem</label>
+                  <label><input name="category" type="checkbox" value="Arbitrum & Optimism">Arbitrum & Optimism</label>
+                  <label><input name="category" type="checkbox" value="Security & Hacks">Security & Hacks</label>
+                  <label><input name="category" type="checkbox" value="Privacy Coins">Privacy Coins</label>
+
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Tags <span style="color:red">*</span></label>
+              <div id="tagsInputContainer">
+                <!-- Dynamic hidden inputs will be added here -->
+                <div id="hiddenTagsContainer"></div>
+                <input type="text" id="tagsInput" placeholder="Add tags" />
+                <button type="button" id="addTagBtn">Add Tag</button>
+              </div>
+
+              <!-- Dynamic tags buttons container -->
+              <div id="tagsList" class="tags-container"></div>
+            </div>
+            <div class="form-group">
+              <label>News Description <span style="color:red">*</span></label>
+              <textarea id="editor" name="description" placeholder="Write your news here..."></textarea>
+            </div>
+            <button class="eventBtn">Submit News</button>
+          </div>
+        </div>
+      </section>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- show loader -->
+
+    <script>
+      function showLoader() {
+        document.getElementById('loader').style.display = 'block';
+      }
+    </script>
+
+    <!-- Handle dynamic tag input -->
+
+    <script>
+      // Handle dynamic tag input
+      const tagsInput = document.getElementById('tagsInput');
+      const addTagBtn = document.getElementById('addTagBtn');
+      const tagsList = document.getElementById('tagsList');
+
+      addTagBtn.addEventListener('click', () => {
+        const tagValue = tagsInput.value.trim();
+
+        // Check if tag is non-empty and not already in list
+        if (tagValue && !tagsList.querySelector(`button[data-tag="${tagValue}"]`)) {
+          // Create a new tag button item
+          const tagBtn = document.createElement('button');
+          tagBtn.setAttribute('data-tag', tagValue);
+          tagBtn.classList.add('tag-btn');
+          tagBtn.textContent = tagValue;
+
+          // Create remove button for tag
+          const removeTagBtn = document.createElement('button');
+          removeTagBtn.classList.add('remove-btn');
+          removeTagBtn.textContent = 'x';
+          removeTagBtn.addEventListener('click', () => {
+            tagBtn.remove();
+          });
+
+          // Append remove button to tag button
+          tagBtn.appendChild(removeTagBtn);
+
+          // Add the tag button to the tags container
+          tagsList.appendChild(tagBtn);
+
+          // Create a hidden input for this tag
+          const hiddenInput = document.createElement('input');
+          hiddenInput.type = 'hidden';
+          hiddenInput.name = 'tags';  // This makes it an array-like structure
+          hiddenInput.value = tagValue;
+
+          // Append hidden input to the container
+          hiddenTagsContainer.appendChild(hiddenInput);
+
+          // Clear the input field after adding the tag
+
+          // Clear input field after adding
+          tagsInput.value = '';
+
+
+        }
+      });
+    </script>
+
+    <!-- multiselect category -->
+
+    <script>
+      function toggleDropdown() {
+        const a = document.getElementById("multiselect").classList.toggle("active");
+        // Optional: close if clicked outside
+        document.addEventListener("click", function (e) {
+          const multiselect = document.getElementById("multiselect");
+          console.log("=====")
+          if (!multiselect.contains(e.target)) {
+            multiselect.classList.remove("active");
+          }
+        });
+      }
+    </script>
+
+    <!-- tiny editor -->
+
+    <script>
+      // Initialize TinyMCE Editor
+      document.addEventListener("DOMContentLoaded", function () {
+        tinymce.init({
+          selector: '#editor', // Targeting the ID of the textarea
+          height: 500, // Set the editor height
+          plugins: [
+            'image', 'table', 'lists', 'link', 'advlist', 'wordcount', 'codesample', 'emoticons', 'searchreplace'
+          ],
+          toolbar: [
+            'undo redo | bold italic underline | fontselect fontsizeselect | forecolor backcolor | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link image table | emoticons | codesample | fullscreen'
+          ],
+          images_upload_url: '/upload-image', // 👈 Your upload route
+          automatic_uploads: true,
+          images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '/addNews'); // 👈 This should match server
+
+            xhr.onload = function () {
+              if (xhr.status != 200) {
+                failure('HTTP Error: ' + xhr.status);
+                return;
+              }
+
+              var json = JSON.parse(xhr.responseText);
+
+              if (!json || typeof json.location != 'string') {
+                failure('Invalid JSON: ' + xhr.responseText);
+                return;
+              }
+
+              success(json.location); // 👈 Should return image URL
+            };
+
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename()); // 👈 Must match multer field
+
+            xhr.send(formData);
+          }
+        });
+      });
+    </script>
+
+
+</body>
+
+</html>
