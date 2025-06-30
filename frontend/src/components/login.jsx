@@ -189,86 +189,88 @@ const DotsAnimation = () => {
 };
 
 const LoginPage = () => {
-    const [showPassword, setShowPassword] = useState(false);
-    const [loginForm, setLoginForm] = useState({ email: '', password: '' });
-    const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginForm, setLoginForm] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  console.log(API_BASE_URL)
 
-    const handleLoginChange = (e) => {
-        setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
-    };
+  const handleLoginChange = (e) => {
+    setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+  };
 
-    // Validate form: both fields filled
-    const isFormValid = () => {
-        return loginForm.email.trim() && loginForm.password.trim();
-    };
+  // Validate form: both fields filled
+  const isFormValid = () => {
+    return loginForm.email.trim() && loginForm.password.trim();
+  };
 
-    const handleLoginSubmit = async (e) => {
-        e.preventDefault();
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
 
-        if (!isFormValid()) {
-            toast.error('Please fill both email and password fields.', {
-                duration: 4000,
-                position: 'top-right',
-                style: {
-                    background: '#fee2e2',
-                    color: '#b91c1c',
-                    border: '1px solid #b91c1c',
-                },
-            });
-            return;
-        }
+    if (!isFormValid()) {
+      toast.error('Please fill both email and password fields.', {
+        duration: 4000,
+        position: 'top-right',
+        style: {
+          background: '#fee2e2',
+          color: '#b91c1c',
+          border: '1px solid #b91c1c',
+        },
+      });
+      return;
+    }
 
-        try {
-            const response = await fetch('http://localhost:5000/userLogin', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: loginForm.email,
-                    password: loginForm.password,
-                }),
-            });
+    try {
+      const response = await fetch(`${API_BASE_URL}/userLogin`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: loginForm.email,
+          password: loginForm.password,
+        }),
+      });
 
-            const data = await response.json();
-            console.log("======", data)
-            if (data.message !== 'Login successful') {
-                throw new Error(data.message);
-            } else {
-                localStorage.setItem('loggedIn', 'true');
-                localStorage.setItem('currentUser', JSON.stringify(data.user)); // Assuming API returns user object in data.user
-                // Reset form
-                setLoginForm({ email: '', password: '' });
-                toast.success(data.message, {
-                    duration: 4000,
-                    position: 'top-right',
-                    style: {
-                        background: '#dcfce7',
-                        color: '#15803d',
-                        border: '1px solid #15803d',
-                    },
-                });
-                // Navigate to dashboard
-                navigate('/dashboard');
-            }
+      const data = await response.json();
+      console.log("======", data)
+      if (data.message !== 'Login successful') {
+        throw new Error(data.message);
+      } else {
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('currentUser', JSON.stringify(data.user)); // Assuming API returns user object in data.user
+        // Reset form
+        setLoginForm({ email: '', password: '' });
+        toast.success(data.message, {
+          duration: 4000,
+          position: 'top-right',
+          style: {
+            background: '#dcfce7',
+            color: '#15803d',
+            border: '1px solid #15803d',
+          },
+        });
+        // Navigate to dashboard
+        navigate('/dashboard');
+      }
 
-        } catch (error) {
-            toast.error(error.message || 'An error occurred during login.', {
-                duration: 4000,
-                position: 'top-right',
-                style: {
-                    background: '#fee2e2',
-                    color: '#b91c1c',
-                    border: '1px solid #b91c1c',
-                },
-            });
-        }
-    };
+    } catch (error) {
+      toast.error(error.message || 'An error occurred during login.', {
+        duration: 4000,
+        position: 'top-right',
+        style: {
+          background: '#fee2e2',
+          color: '#b91c1c',
+          border: '1px solid #b91c1c',
+        },
+      });
+    }
+  };
 
-    return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-red-50 flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8 relative">
-            <style>
-                {`
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-red-50 flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8 relative">
+      <style>
+        {`
                   .dots-container {
                     position: fixed;
                     top: 0;
@@ -416,133 +418,133 @@ const LoginPage = () => {
                     }
                   }
                 `}
-            </style>
-            <DotsAnimation />
-            <Toaster />
-            <div className="max-w-md w-full space-y-8 z-10">
-                <div className="bg-white rounded-2xl shadow-2xl p-8">
-                    <div className="text-center">
-                        <Link to="/">
-                            <span className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4 transition-colors">
-                                <ArrowLeft className="w-4 h-4 mr-2" />
-                                Back to Home
-                            </span>
-                        </Link>
-                        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent mb-2">
-                            SkillEarn
-                        </h1>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back!</h2>
-                        <p className="text-gray-600 mb-8">Sign in to continue your learning journey</p>
-                    </div>
+      </style>
+      <DotsAnimation />
+      <Toaster />
+      <div className="max-w-md w-full space-y-8 z-10">
+        <div className="bg-white rounded-2xl shadow-2xl p-8">
+          <div className="text-center">
+            <Link to="/">
+              <span className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4 transition-colors">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Home
+              </span>
+            </Link>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent mb-2">
+              SkillEarn
+            </h1>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back!</h2>
+            <p className="text-gray-600 mb-8">Sign in to continue your learning journey</p>
+          </div>
 
-                    <form onSubmit={handleLoginSubmit} className="space-y-6">
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                                Email Address
-                            </label>
-                            <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <Mail className="h-5 w-5 text-gray-400" />
-                                </div>
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    required
-                                    value={loginForm.email}
-                                    onChange={handleLoginChange}
-                                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                                    placeholder="Enter your email"
-                                />
-                            </div>
-                        </div>
-
-                        <div>
-                            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                                Password
-                            </label>
-                            <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <Lock className="h-5 w-5 text-gray-400" />
-                                </div>
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type={showPassword ? 'text' : 'password'}
-                                    required
-                                    value={loginForm.password}
-                                    onChange={handleLoginChange}
-                                    className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                                    placeholder="Enter your password"
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                                >
-                                    {showPassword ? (
-                                        <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-                                    ) : (
-                                        <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-                                    )}
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                                <input
-                                    id="remember-me"
-                                    name="remember-me"
-                                    type="checkbox"
-                                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                                />
-                                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
-                                    Remember me
-                                </label>
-                            </div>
-                            <button
-                                type="button"
-                                className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
-                            >
-                                Forgot password?
-                            </button>
-                        </div>
-
-                        <button
-                            type="submit"
-                            disabled={!isFormValid()}
-                            className={`w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 px-4 rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 ${!isFormValid() ? 'opacity-50 cursor-not-allowed' : ''}`}
-                        >
-                            Sign In
-                        </button>
-
-                        <div className="text-center">
-                            <p className="text-gray-600">
-                                Don't have an account?{' '}
-                                <Link to="/signup">
-                                    <span className="text-blue-600 hover:text-blue-800 font-medium transition-colors">
-                                        Sign up here
-                                    </span>
-                                </Link>
-                            </p>
-                        </div>
-                    </form>
-
-                    <div className="mt-8">
-                        <div className="relative">
-                            <div className="absolute inset-0 flex items-center">
-                                <div className="w-full border-t border-gray-300" />
-                            </div>
-                            <div className="relative flex justify-center text-sm">
-                                <span className="px-2 bg-white text-gray-500">Or continue with</span>
-                            </div>
-                        </div>
-                    </div>
+          <form onSubmit={handleLoginSubmit} className="space-y-6">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email Address
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Mail className="h-5 w-5 text-gray-400" />
                 </div>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={loginForm.email}
+                  onChange={handleLoginChange}
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  placeholder="Enter your email"
+                />
+              </div>
             </div>
+
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                Password
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Lock className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  value={loginForm.password}
+                  onChange={handleLoginChange}
+                  className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  placeholder="Enter your password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  ) : (
+                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <input
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                />
+                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+                  Remember me
+                </label>
+              </div>
+              <button
+                type="button"
+                className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
+              >
+                Forgot password?
+              </button>
+            </div>
+
+            <button
+              type="submit"
+              disabled={!isFormValid()}
+              className={`w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 px-4 rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 ${!isFormValid() ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+              Sign In
+            </button>
+
+            <div className="text-center">
+              <p className="text-gray-600">
+                Don't have an account?{' '}
+                <Link to="/signup">
+                  <span className="text-blue-600 hover:text-blue-800 font-medium transition-colors">
+                    Sign up here
+                  </span>
+                </Link>
+              </p>
+            </div>
+          </form>
+
+          <div className="mt-8">
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white text-gray-500">Or continue with</span>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default LoginPage;

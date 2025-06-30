@@ -201,6 +201,8 @@ const SignupPage = () => {
     confirmPassword: '',
     joinCode: ''
   });
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const [termsAccepted, setTermsAccepted] = useState(false);
   const navigate = useNavigate();
 
@@ -251,7 +253,7 @@ const SignupPage = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/userRegisteration', {
+      const response = await fetch(`${API_BASE_URL}/userRegisteration`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
