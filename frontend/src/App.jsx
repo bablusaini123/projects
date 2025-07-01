@@ -86,31 +86,31 @@ const App = () => {
               </div>
             ) : (
 
-              <div className="md:hidden sm:flex flex z-50 justify-between gap-5 bg-white text-black fixed bottom-0 w-full p-2">
-                <Link to="/login" className="flex justify-center flex-col items-center text-center gap-1 text-xs font-bold">
-                  <Wallet className="text-blue-500" />
-                  <div className="font-medium">Wallet</div>
-                </Link>
+              <div className='md:hidden z-50 sm:flex flex justify-between gap-5 bg-gray-200 text-black fixed bottom-0 w-full pb-2 pt-3 px-2'>
+                <HashLink to='/' className='flex justify-center flex-col items-center text-center gap-1 text-xs font-bold'>
+                  <FontAwesomeIcon icon={faHouse} className='text-2xl'/>
+                  <div className='font-medium'>Home</div>
+                </HashLink>
+                <HashLink to="/login" className='flex justify-center flex-col gap-1 items-center text-center text-xs font-bold'>
+                  <FontAwesomeIcon icon={faWallet} className='text-2xl' />
+                  <div className='font-medium'>Wallet</div>
+                </HashLink>
 
-                <Link to="/login" className="flex justify-center flex-col items-center text-center gap-1 text-xs font-bold">
-                  <Users className="text-blue-500" />
-                  <div className="font-medium">Affiliate</div>
-                </Link>
+                <HashLink to="/login" className='flex justify-center flex-col gap-1 items-center text-center text-xs font-bold'>
+                  <FontAwesomeIcon icon={faPeopleGroup} className='text-2xl'/>
+                  <div className='font-medium'>Affiliate</div>
+                </HashLink>
 
-                <Link to="/login" className="flex justify-center flex-col items-center text-center gap-1 text-xs font-bold">
-                  <DollarSignIcon className="text-blue-500" />
-                  <div className="font-medium">Refer</div>
-                </Link>
 
-                <Link to="/login" className="flex justify-center flex-col items-center text-center  gap-1 text-xs font-bold">
-                  <Book className="text-blue-500" />
-                  <div className="font-medium">Courses</div>
-                </Link>
+                <HashLink smooth to='/login' className='flex justify-center flex-col gap-1 items-center text-center text-xs font-bold'>
+                  <FontAwesomeIcon icon={faBook} className='text-2xl'/>
+                  <div className='font-medium'>Courses</div>
+                </HashLink>
 
-                <Link to='/login' className="flex justify-center flex-col items-center text-center gap-1 text-xs font-bold">
-                  <User className="text-blue-500" />
-                  <div className="font-medium">Profile</div>
-                </Link>
+                <HashLink to='/login' className='flex justify-center flex-col items-center gap-1 text-center text-xs font-bold'>
+                  <FontAwesomeIcon icon={faUser} className='text-2xl'/>
+                  <div className='font-medium'>Profile</div>
+                </HashLink>
               </div>
 
             )

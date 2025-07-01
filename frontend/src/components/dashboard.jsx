@@ -354,7 +354,7 @@ const BonusCard = ({ bonusLevel, amount, invitees, rechargePerPerson, inviteesPr
             <span className="text-red-600 text-md rounded-[50%] p-1 bg-white"><X size={14} /></span>
           )}
         </div>
-        <span className="text-lg font-bold flex items-center "><IndianRupee size={20} className='!font-bold'/>{amount.toLocaleString()}</span>
+        <span className="text-lg font-bold flex items-center "><IndianRupee size={20} className='font-semibold'/>{amount.toLocaleString()}</span>
       </div>
       <div className="text-sm space-y-1">
         <div className="flex justify-between">
@@ -888,8 +888,8 @@ const Dashboard = () => {
                 <h2 className="text-xl sm:text-2xl font-bold">Wallet</h2>
               </div>
               <div className="text-center p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg mb-4 flex  flex-col items-center">
-                <div className="text-[23px]  sm:text-4xl text-blue-600 !font-bold flex items-center">
-                  <span><IndianRupee size={25} className='!font-bold'/></span>
+                <div className="text-[23px]  sm:text-4xl text-blue-600 font-semibold flex items-center">
+                  <span><IndianRupee size={20} className='!font-bold'/></span>
                   {(dashboardData?.userWallet || currentUser?.userWallet || 0).toLocaleString()}
                 </div>
                 <div className="text-sm sm:text-base text-gray-600 mt-1 !font-semibold">Total Earnings</div>
@@ -1048,7 +1048,7 @@ const Dashboard = () => {
                                       <tbody>
                                         {bonusHistory.map((entry, index) => (
                                           <tr key={`bonus-${index}`} className="border-t hover:bg-gray-50 flex justify-between">
-                                            <td className="p-2 sm:p-3 text-green-700 font-bold">+<IndianRupee size={25} className='!font-bold'/>{(entry.bonusAmount || 0).toLocaleString()}</td>
+                                            <td className="p-2 sm:p-3 text-green-700 font-bold">+<IndianRupee size={25} className='font-semibold'/>{(entry.bonusAmount || 0).toLocaleString()}</td>
                                             <td className="p-2 sm:p-3 text-[#000] font-semibold">{entry.bonusType || 'N/A'}</td>
                                           </tr>
                                         ))}
@@ -1111,26 +1111,26 @@ const Dashboard = () => {
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                 <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg">
-                  <div className="text-[16px] sm:text-3xl font-normal text-blue-600 flex items-center justify-center">
-                    <span><IndianRupee size={25} className='!font-bold'/></span>{(walletBalance.balance || 0).toLocaleString()}
+                  <div className="text-lg sm:text-3xl font-normal text-blue-600 flex items-center justify-center">
+                    <span><IndianRupee size={15} className='font-semibold'/></span>{(walletBalance.balance || 0).toLocaleString()}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600">Total Earnings</div>
                 </div>
                 <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg">
-                  <div className="text-[16px] sm:text-3xl font-normal text-red-600 flex items-center justify-center">
-                    <IndianRupee size={25} className='!font-bold'/>{(dashboardData?.monthlyEarning || 0).toLocaleString()}
+                  <div className="text-lg sm:text-3xl font-normal text-red-600 flex items-center justify-center">
+                    <IndianRupee size={15} className='font-semibold'/>{(dashboardData?.monthlyEarning || 0).toLocaleString()}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600">Monthly Earnings</div>
                 </div>
                 <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg">
-                  <div className="text-[16px] sm:text-3xl font-normal text-red-600 flex items-center justify-center">
-                    <IndianRupee size={25} className='!font-bold'/>{(dashboardData?.yesterdayEarning || 0).toLocaleString()}
+                  <div className="text-lg sm:text-3xl font-normal text-red-600 flex items-center justify-center">
+                    <IndianRupee size={15} className='font-semibold'/>{(dashboardData?.yesterdayEarning || 0).toLocaleString()}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600">Yesterday Earnings</div>
                 </div>
                 <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg">
-                  <div className="text-[16px] sm:text-3xl font-normal text-red-600 flex items-center justify-center">
-                    <IndianRupee size={25} className='!font-bold'/>{(dashboardData?.todayEarning || 0).toLocaleString()}
+                  <div className="text-lg sm:text-3xl font-normal text-red-600 flex items-center justify-center">
+                    <IndianRupee size={15} className='font-semibold'/>{(dashboardData?.todayEarning || 0).toLocaleString()}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600">Today Earnings</div>
                 </div>
@@ -1169,8 +1169,8 @@ const Dashboard = () => {
                   <tbody>
                     {referrals.level1.slice(0, 5).map((ref) => (
                       <tr key={ref.id} className="border-t hover:bg-gray-50">
-                        <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[120px] sm:max-w-[200px] text-[16px] !font-bold">{ref.email}</td>
-                        <td className="p-2 sm:p-3 text-gray-600 text-[16px] !font-bold">Level 1</td>
+                        <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[120px] sm:max-w-[200px] text-sm font-semibold">{ref.email}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 text-sm font-semibold">Level 1</td>
                       </tr>
                     ))}
                   </tbody>
@@ -1207,12 +1207,12 @@ const Dashboard = () => {
                       <tbody>
                         {dashboardData?.purchaseHistory?.map((data, index) => (
                           <tr key={`${data.courseTitle}-${index}`} className="border-t hover:bg-gray-50">
-                            <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[120px] sm:max-w-[200px] font-bold text-[16px]">{data.courseTitle || 'N/A'}</td>
-                            <td className="p-2 sm:p-3 text-red-600 font-bold text-[16px] flex items-center justify-center">-<IndianRupee size={17} className='!font-bold'/>{(data.price || 0).toLocaleString()}</td>
+                            <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[120px] sm:max-w-[200px] !font-light !text-sm">{data.courseTitle || 'N/A'}</td>
+                            <td className="p-2 sm:p-3 text-red-600 font-bold text-sm flex items-center ">-<IndianRupee size={17} className='font-semibold'/>{(data.price || 0).toLocaleString()}</td>
                           </tr>
                         )) || (
                             <tr>
-                              <td colSpan="2" className="p-2 sm:p-3 text-center text-gray-600">
+                              <td colSpan="2" className="p-2 sm:p-3 text-center text-sm text-gray-600">
                                 No purchase history available.
                               </td>
                             </tr>
@@ -1249,15 +1249,15 @@ const Dashboard = () => {
                   <tbody>
                     {paymentHistory.map((entry) => (
                       <tr key={entry.id} className="border-t hover:bg-gray-50">
-                        <td className="p-2 sm:p-3 text-gray-600 font-bold text-[16px]">{new Date(entry.date).toLocaleDateString() || 'N/A'}</td>
-                        <td className="p-2 sm:p-3 text-gray-600 font-bold text-[16px]">{entry.buyerName || 'N/A'}</td>
-                        <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[100px] sm:max-w-[150px] font-bold text-[16px]">{entry.courseTitle || 'N/A'}</td>
-                        <td className="p-2 sm:p-3 text-green-700 font-bold text-[16px] flex items-center justify-center">+<IndianRupee size={17} className='!font-bold'/>{(entry.commission || 0).toLocaleString()}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 !font-light text-sm">{new Date(entry.date).toLocaleDateString() || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 font-light text-sm">{entry.buyerName || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[100px] sm:max-w-[150px] font-light text-sm">{entry.courseTitle || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-green-700 font-light text-sm flex items-center justify-center">+<IndianRupee size={17} className='font-semibold'/>{(entry.commission || 0).toLocaleString()}</td>
                       </tr>
                     ))}
                     {paymentHistory.length === 0 && (
                       <tr>
-                        <td colSpan="4" className="p-2 sm:p-3 text-center text-gray-600">
+                        <td colSpan="4" className="p-2 sm:p-3 text-center text-gray-600 text-[14px] font-light">
                           No transactions yet.
                         </td>
                       </tr>
@@ -1292,15 +1292,15 @@ const Dashboard = () => {
                   <tbody>
                     {withdrawalHistory.map((entry, index) => (
                       <tr key={`${entry.id || index}`} className="border-t hover:bg-gray-50">
-                        <td className="p-2 sm:p-3 text-gray-600 font-bold text-[16px]">{new Date(entry.requestedAt).toLocaleDateString() || 'N/A'}</td>
-                        <td className="p-2 sm:p-3 text-gray-600 font-bold text-[16px]">{entry.paymentMethod || 'N/A'}</td>
-                        <td className="p-2 sm:p-3 text-red-600 font-bold text-[16px] flex items-center justify-center">-<IndianRupee size={17} className='!font-bold'/>{(entry.amount || 0).toLocaleString()}</td>
-                        <td className={`p-2 sm:p-3  font-bold text-[16px] ${entry.status=='success'?"text-green-700":"text-yellow-500"}`} >{entry.status || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 font-light text-sm">{new Date(entry.requestedAt).toLocaleDateString() || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 font-light text-sm">{entry.paymentMethod || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-red-600 font-light text-sm flex items-center justify-center">-<IndianRupee size={17} className='font-semibold'/>{(entry.amount || 0).toLocaleString()}</td>
+                        <td className={`p-2 sm:p-3  font-bold text-sm ${entry.status=='success'?"text-green-700":"text-yellow-500"}`} >{entry.status || 'N/A'}</td>
                       </tr>
                     ))}
                     {withdrawalHistory.length === 0 && (
                       <tr>
-                        <td colSpan="4" className="p-2 sm:p-3 text-center text-gray-600">No withdrawal history available.</td>
+                        <td colSpan="4" className="p-2 sm:p-3 text-center text-gray-600 text-[14px] font-light">No withdrawal history available.</td>
                       </tr>
                     )}
                   </tbody>
@@ -1315,12 +1315,12 @@ const Dashboard = () => {
             transition={{ duration: 0.6 }}
           >
             <div id="reffer" className="sm:col-span-2 lg:col-span-3 bg-white rounded-2xl shadow-lg p-4 sm:p-6 flex gap-10 flex-wrap">
-              <div className="flex flex-col w-full lg:w-[50%] justify-start p-4">
+              <div className="flex flex-col w-full lg:w-[50%] justify-start p-0">
                 <div className="flex flex-col items-center mb-4">
                   <LinkIcon className="w-7 h-6 sm:w-8 sm:h-8 text-blue-600 mr-2 sm:mr-3" aria-hidden="true" />
-                  <h2 className="text-[12px] whitespace-break-spaces sm:text-2xl !font-bold">Your Referral Code</h2>
+                  <h2 className="text-[12px] whitespace-break-spaces sm:text-2xl font-semibold">Your Referral Code</h2>
                 </div>
-                <div className="w-full gap-3 sm:flex-row sm:items-center sm:gap-4">
+                <div className="w-full gap-3 sm:flex-row sm:items-center sm:gap-4 ">
                   <input
                     type="text"
                     value={referralCode}
@@ -1339,14 +1339,14 @@ const Dashboard = () => {
                     </button>
                   </div>
                 </div>
-                <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base flex items-center justify-center">
-                  Share this code to earn up to <IndianRupee size={16} className='!font-bold'/>500 per successful course purchase!
+                <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base  ">
+                  Share this code to earn up to <span><IndianRupee size={16} className='font-semibold inline-block'/></span>500 per successful course purchase!
                 </p>
               </div>
               <div className="bg-white rounded-2xl p-4 sm:p-6 hover:shadow-xl transition-all duration-300 w-full flex flex-col lg:w-[40%]">
                 <div className="flex items-center mb-4">
                   <User className="w-6 h-6 sm:w-8 sm:h-8 text-red-500 mr-2 sm:mr-3" aria-hidden="true" />
-                  <h2 className="text-[16px] whitespace-break-spaces sm:text-2xl font-bold">Profile Summary</h2>
+                  <h2 className="text-sm whitespace-break-spaces sm:text-2xl font-bold">Profile Summary</h2>
                 </div>
                 <div className="space-y-3 sm:space-y-4">
                   <div>
