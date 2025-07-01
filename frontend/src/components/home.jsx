@@ -1019,7 +1019,7 @@ const EarnscopLanding = () => {
                         ₹{course.price}
                       </div>
                       <div className="text-xs sm:text-sm text-green-600 font-semibold">
-                        Earn ₹<span className="shimmer">{Math.floor((parseInt(course.price) * parseInt(course.commisionPercent)) / 100)}</span>
+                        Earn ₹ <span className="text-black">{Math.floor((parseInt(course.price) * parseInt(course.commisionPercent)) / 100)}</span>
                       </div>
                     </div>
                     {isCoursePurchased(course.title) ? (

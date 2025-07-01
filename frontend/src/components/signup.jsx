@@ -472,13 +472,13 @@ const SignupPage = () => {
           </div>
 
           <form onSubmit={handleSignupSubmit} className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                   First Name
                 </label>
                 <div className="relative">
-                  <User className="absolute left-3 top-3 text-gray-400" />
+                  <User className="absolute left-3 top-2 text-gray-400" />
                   <input
                     id="firstName"
                     name="firstName"
@@ -486,7 +486,7 @@ const SignupPage = () => {
                     required
                     value={signupForm.firstName}
                     onChange={handleSignupChange}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     placeholder="First name"
                   />
                 </div>
@@ -497,7 +497,7 @@ const SignupPage = () => {
                   Last Name
                 </label>
                 <div className="relative">
-                  <User className="absolute left-3 top-3 text-gray-400" />
+                  <User className="absolute left-3 top-2 text-gray-400" />
                   <input
                     id="lastName"
                     name="lastName"
@@ -505,7 +505,7 @@ const SignupPage = () => {
                     required
                     value={signupForm.lastName}
                     onChange={handleSignupChange}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     placeholder="Last name"
                   />
                 </div>
@@ -517,7 +517,7 @@ const SignupPage = () => {
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-3 text-gray-400" />
+                <Mail className="absolute left-3 top-2 text-gray-400" />
                 <input
                   id="email"
                   name="email"
@@ -525,7 +525,7 @@ const SignupPage = () => {
                   required
                   value={signupForm.email}
                   onChange={handleSignupChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter your email"
                 />
               </div>
@@ -536,7 +536,7 @@ const SignupPage = () => {
                 Phone Number
               </label>
               <div className="relative">
-                <Phone className="absolute left-3 top-3 text-gray-400" />
+                <Phone className="absolute left-3 top-2 text-gray-400" />
                 <input
                   id="phone"
                   name="phone"
@@ -544,7 +544,7 @@ const SignupPage = () => {
                   required
                   value={signupForm.phone}
                   onChange={handleSignupChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="+91 98765 43210"
                 />
               </div>
@@ -555,7 +555,7 @@ const SignupPage = () => {
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-3 text-gray-400" />
+                <Lock className="absolute left-3 top-2 text-gray-400" />
                 <input
                   id="password"
                   name="password"
@@ -563,13 +563,13 @@ const SignupPage = () => {
                   required
                   value={signupForm.password}
                   onChange={handleSignupChange}
-                  className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="Create a password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-3"
+                  className="absolute right-3 top-2"
                 >
                   {showPassword ? <EyeOff className="text-gray-400" /> : <Eye className="text-gray-400" />}
                 </button>
@@ -586,7 +586,7 @@ const SignupPage = () => {
                 </p>
               )}
               <div className="relative">
-                <Lock className="absolute left-3 top-3 text-gray-400" />
+                <Lock className="absolute left-3 top-2 text-gray-400" />
                 <input
                   id="confirmPassword"
                   name="confirmPassword"
@@ -594,7 +594,7 @@ const SignupPage = () => {
                   required
                   value={signupForm.confirmPassword}
                   onChange={handleSignupChange}
-                  className={`block w-full pl-10 pr-10 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
+                  className={`block w-full pl-10 pr-10 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
                     isConfirmPasswordTouched && !passwordsMatch()
                       ? 'border-red-500'
                       : 'border-gray-300'
@@ -605,7 +605,7 @@ const SignupPage = () => {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-3"
+                  className="absolute right-3 top-2"
                 >
                   {showConfirmPassword ? <EyeOff className="text-gray-400" /> : <Eye className="text-gray-400" />}
                 </button>
@@ -617,7 +617,7 @@ const SignupPage = () => {
                 Join Code
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-3 text-gray-400" />
+                <Lock className="absolute left-3 top-2 text-gray-400" />
                 <input
                   id="joinCode"
                   name="joinCode"
@@ -626,7 +626,7 @@ const SignupPage = () => {
                   value={signupForm.joinCode}
                   onChange={handleSignupChange}
                   disabled={isJoinCodeDisabled}
-                  className={`block w-full pl-10 pr-10 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
+                  className={`block w-full pl-10 pr-10 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
                     isJoinCodeDisabled ? 'bg-gray-100 cursor-not-allowed' : 'border-gray-300'
                   }`}
                   placeholder="Join Code"
