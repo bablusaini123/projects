@@ -1017,7 +1017,7 @@ const Dashboard = () => {
                       Invitation Bonus
                     </button>
                   </DrawerTrigger>
-                  <DrawerContent className=" max-h-[99%] overflow-y-scroll bg-gradient-to-br from-blue-50 to-red-50 text-white p-0">
+                  <DrawerContent className="  bg-gradient-to-br from-blue-50 to-red-50 text-white p-0">
                     <DrawerHeader>
                       <div className='flex justify-between items-center'>
                         <DrawerTitle className="text-md sm:text-xl  font-bold text-black text-start">Invitation Bonus
@@ -1035,7 +1035,7 @@ const Dashboard = () => {
                                     Your Received Bonus History.
                                   </DialogDescription>
                                 </DialogHeader>
-                                <div className="grid gap-4 bonusHistory overflow-y-auto max-h-[300px]">
+                                <div className="grid gap-4 bonusHistory max-h-[99%] overflow-y-scroll  ">
                                   {bonusHistory.length > 0 ? (
                                     <table className="min-w-full text-left border-collapse text-xs sm:text-sm ">
                                       {/* <thead>
@@ -1070,7 +1070,7 @@ const Dashboard = () => {
                         </div>
                       </div>
                     </DrawerHeader>
-                    <div className="mt-0">
+                    <div className="mt-0 overflow-y-scroll max-h-[99%]">
                       {bonusData.map((bonus) => (
                         <BonusCard
                           key={bonus.level}
@@ -1189,55 +1189,55 @@ const Dashboard = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-            <div className="sm:col-span-2 lg:col-span-3 bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-xl border border-blue-100 p-4 sm:p-6">
-  <div className="flex items-center mb-6">
-    <div className="bg-blue-600 p-2 rounded-xl shadow-lg">
-      <History className="w-6 h-6 sm:w-8 sm:h-8 text-white mr-0" aria-hidden="true" />
-    </div>
-    <h2 className="text-xl font-semibold text-gray-800 ml-3 sm:ml-4">Purchase History</h2>
-  </div>
-  <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-    <div className="overflow-x-auto max-h-[170px]">
-      <table className="min-w-full text-left border-collapse text-xs sm:text-sm">
-        <thead>
-          <tr className="bg-gradient-to-r from-gray-50 to-blue-50 border-b border-gray-200">
-            <th className="p-3 sm:p-4 text-gray-700 font-semibold text-sm tracking-wide">Course Name</th>
-            <th className="p-3 sm:p-4 text-gray-700 font-semibold text-sm tracking-wide text-right">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {dashboardData?.purchaseHistory?.map((data, index) => (
-            <tr key={`${data.courseTitle}-${index}`} className="border-b border-gray-100 hover:bg-blue-50 transition-colors duration-200 group">
-              <td className="p-3 sm:p-4 text-gray-700 font-medium text-sm">
-                <div className="truncate max-w-[120px] sm:max-w-[180px]" title={data.courseTitle}>
-                  {data.courseTitle || 'N/A'}
-                </div>
-              </td>
-              <td className="p-3 sm:p-4 text-right">
-                <div className="inline-flex items-center bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">
-                  <span className="mr-1">-</span>
-                  <IndianRupee size={14} className='font-bold' />
-                  <span>{(data.price || 0).toLocaleString()}</span>
-                </div>
-              </td>
-            </tr>
-          )) || (
-            <tr>
-              <td colSpan="2" className="p-8 sm:p-12 text-center">
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
-                    <History className="w-8 h-8 text-gray-400" />
+              <div className="sm:col-span-2 lg:col-span-3 bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-xl border border-blue-100 p-4 sm:p-6">
+                <div className="flex items-center mb-6">
+                  <div className="bg-blue-600 p-2 rounded-xl shadow-lg">
+                    <History className="w-6 h-6 sm:w-8 sm:h-8 text-white mr-0" aria-hidden="true" />
                   </div>
-                  <span className="text-gray-600 text-sm font-medium">No purchase history available.</span>
+                  <h2 className="text-xl font-semibold text-gray-800 ml-3 sm:ml-4">Purchase History</h2>
                 </div>
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                  <div className="overflow-x-auto max-h-[170px]">
+                    <table className="min-w-full text-left border-collapse text-xs sm:text-sm">
+                      <thead>
+                        <tr className="bg-gradient-to-r from-gray-50 to-blue-50 border-b border-gray-200">
+                          <th className="p-3 sm:p-4 text-gray-700 font-semibold text-sm tracking-wide">Course Name</th>
+                          <th className="p-3 sm:p-4 text-gray-700 font-semibold text-sm tracking-wide text-right">Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {dashboardData?.purchaseHistory?.map((data, index) => (
+                          <tr key={`${data.courseTitle}-${index}`} className="border-b border-gray-100 hover:bg-blue-50 transition-colors duration-200 group">
+                            <td className="p-3 sm:p-4 text-gray-700 font-medium text-sm">
+                              <div className="truncate max-w-[120px] sm:max-w-[180px]" title={data.courseTitle}>
+                                {data.courseTitle || 'N/A'}
+                              </div>
+                            </td>
+                            <td className="p-3 sm:p-4 text-right">
+                              <div className="inline-flex items-center bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">
+                                <span className="mr-1">-</span>
+                                <IndianRupee size={14} className='font-bold' />
+                                <span>{(data.price || 0).toLocaleString()}</span>
+                              </div>
+                            </td>
+                          </tr>
+                        )) || (
+                            <tr>
+                              <td colSpan="2" className="p-2 sm:p-12 text-center">
+                                <div className="flex flex-col items-center">
+                                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
+                                    <History className="w-8 h-8 text-gray-400" />
+                                  </div>
+                                  <span className="text-gray-600 text-sm font-medium">No purchase history available.</span>
+                                </div>
+                              </td>
+                            </tr>
+                          )}:
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
           <motion.div
@@ -1296,7 +1296,7 @@ const Dashboard = () => {
                       ))}
                       {paymentHistory.length === 0 && (
                         <tr>
-                          <td colSpan="4" className="p-8 sm:p-12 text-center">
+                          <td colSpan="4" className="p-2 sm:p-12 text-center">
                             <div className="flex flex-col items-center">
                               <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
                                 <History className="w-8 h-8 text-gray-400" />
@@ -1362,7 +1362,7 @@ const Dashboard = () => {
                       ))}
                       {withdrawalHistory.length === 0 && (
                         <tr>
-                          <td colSpan="4" className="p-0 sm:p-12 text-center">
+                          <td colSpan="4" className="p-2 sm:p-12 text-center">
                             <div className="flex flex-col items-center">
                               <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
                                 <History className="w-8 h-8 text-gray-400" />
