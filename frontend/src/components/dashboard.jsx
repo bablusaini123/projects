@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Copy, Award, User, DollarSign, LogOut, Link as LinkIcon, Wallet, History, Users, X, Check } from 'lucide-react';
+import { Copy, Award, User, DollarSign, LogOut, Link as LinkIcon, Wallet, History, Users, X, Check, IndianRupee } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 import { getCurrentUser, getWithdrawHistory, logout } from './auth';
@@ -354,7 +354,7 @@ const BonusCard = ({ bonusLevel, amount, invitees, rechargePerPerson, inviteesPr
             <span className="text-red-600 text-md rounded-[50%] p-1 bg-white"><X size={14} /></span>
           )}
         </div>
-        <span className="text-lg font-bold">₹{amount.toLocaleString()}</span>
+        <span className="text-lg font-bold flex items-center "><IndianRupee size={20} className='!font-bold'/>{amount.toLocaleString()}</span>
       </div>
       <div className="text-sm space-y-1">
         <div className="flex justify-between">
@@ -668,7 +668,7 @@ const Dashboard = () => {
   }, []);
 
   const badge = getBadge(currentUser?.profileLevel);
-  const referralCode = currentUser?.referCode || `https://skillearn.com/ref/${currentUser?.email || 'user'}`;
+  const referralCode = `https://earnscop.com/signup?referCode=${currentUser?.referCode } `;
 
   const copyReferralLink = useCallback(async () => {
     try {
@@ -887,17 +887,18 @@ const Dashboard = () => {
                 <Wallet className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 -mr-1 sm:mr-3" aria-hidden="true" />
                 <h2 className="text-xl sm:text-2xl font-bold">Wallet</h2>
               </div>
-              <div className="text-center p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg mb-4">
-                <div className="text-[20px] font-medium sm:text-4xl text-blue-600">
-                  ₹{(dashboardData?.userWallet || currentUser?.userWallet || 0).toLocaleString()}
+              <div className="text-center p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg mb-4 flex  flex-col items-center">
+                <div className="text-[23px]  sm:text-4xl text-blue-600 !font-bold flex items-center">
+                  <span><IndianRupee size={25} className='!font-bold'/></span>
+                  {(dashboardData?.userWallet || currentUser?.userWallet || 0).toLocaleString()}
                 </div>
-                <div className="text-sm sm:text-base text-gray-600 mt-1">Total Earnings</div>
+                <div className="text-sm sm:text-base text-gray-600 mt-1 !font-semibold">Total Earnings</div>
               </div>
-              <p className="text-sm sm:text-base text-gray-700 mb-4">
+              <p className="text-sm sm:text-base text-gray-600 mb-4">
                 This wallet shows your earnings from referrals. Withdraw funds after reaching the minimum limit. Withdrawals are only allowed on Sundays.
               </p>
               <div className='flex gap-2'>
-                <Drawer>
+                <Drawer className='overflow-y-auto'>
                   <DrawerTrigger asChild>
                     <button
                       className="w-full bg-gradient-to-r from-blue-600 to-red-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
@@ -906,7 +907,7 @@ const Dashboard = () => {
                       Withdraw Funds
                     </button>
                   </DrawerTrigger>
-                  <DrawerContent className="h-[99%] max-h-[99%] overflow-y-auto bg-gradient-to-br from-blue-50 to-red-50 text-white p-0">
+                  <DrawerContent className="h-[99%]  bg-gradient-to-br from-blue-50 to-red-50 text-white p-0">
                     <DrawerHeader>
                       <DrawerTitle className="text-xl font-bold text-black">Withdraw Funds</DrawerTitle>
                       <DrawerDescription className="text-gray-600">Enter your withdrawal details below (available only on Sundays)</DrawerDescription>
@@ -1047,7 +1048,7 @@ const Dashboard = () => {
                                       <tbody>
                                         {bonusHistory.map((entry, index) => (
                                           <tr key={`bonus-${index}`} className="border-t hover:bg-gray-50 flex justify-between">
-                                            <td className="p-2 sm:p-3 text-green-700 font-bold">+₹{(entry.bonusAmount || 0).toLocaleString()}</td>
+                                            <td className="p-2 sm:p-3 text-green-700 font-bold">+<IndianRupee size={25} className='!font-bold'/>{(entry.bonusAmount || 0).toLocaleString()}</td>
                                             <td className="p-2 sm:p-3 text-[#000] font-semibold">{entry.bonusType || 'N/A'}</td>
                                           </tr>
                                         ))}
@@ -1106,30 +1107,30 @@ const Dashboard = () => {
             <div className="sm:col-span-2 lg:col-span-3 bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-all duration-300 w-full">
               <div className="flex items-center mb-4">
                 <DollarSign className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 mr-2 sm:mr-3" aria-hidden="true" />
-                <h2 className="text-xl sm:text-2xl font-bold">Earnings Overview</h2>
+                <h2 className="text-xl !font-extrabold">Earnings Overview</h2>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                 <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg">
-                  <div className="text-[16px] sm:text-3xl font-normal text-blue-600">
-                    ₹{(walletBalance.balance || 0).toLocaleString()}
+                  <div className="text-[16px] sm:text-3xl font-normal text-blue-600 flex items-center justify-center">
+                    <span><IndianRupee size={25} className='!font-bold'/></span>{(walletBalance.balance || 0).toLocaleString()}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600">Total Earnings</div>
                 </div>
                 <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg">
-                  <div className="text-[16px] sm:text-3xl font-normal text-red-600">
-                    ₹{(dashboardData?.monthlyEarning || 0).toLocaleString()}
+                  <div className="text-[16px] sm:text-3xl font-normal text-red-600 flex items-center justify-center">
+                    <IndianRupee size={25} className='!font-bold'/>{(dashboardData?.monthlyEarning || 0).toLocaleString()}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600">Monthly Earnings</div>
                 </div>
                 <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg">
-                  <div className="text-[16px] sm:text-3xl font-normal text-red-600">
-                    ₹{(dashboardData?.yesterdayEarning || 0).toLocaleString()}
+                  <div className="text-[16px] sm:text-3xl font-normal text-red-600 flex items-center justify-center">
+                    <IndianRupee size={25} className='!font-bold'/>{(dashboardData?.yesterdayEarning || 0).toLocaleString()}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600">Yesterday Earnings</div>
                 </div>
                 <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg">
-                  <div className="text-[16px] sm:text-3xl font-normal text-red-600">
-                    ₹{(dashboardData?.todayEarning || 0).toLocaleString()}
+                  <div className="text-[16px] sm:text-3xl font-normal text-red-600 flex items-center justify-center">
+                    <IndianRupee size={25} className='!font-bold'/>{(dashboardData?.todayEarning || 0).toLocaleString()}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600">Today Earnings</div>
                 </div>
@@ -1145,7 +1146,7 @@ const Dashboard = () => {
             <div id='affiliate' className="sm:col-span-2 lg:col-span-3 bg-white rounded-2xl shadow-lg p-4 sm:p-6">
               <div className="flex items-center mb-4">
                 <Users className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 mr-2 sm:mr-3" aria-hidden="true" />
-                <h2 className="text-xl sm:text-2xl font-bold">Referral Network</h2>
+                <h2 className="text-xl !font-extrabold">Referral Network</h2>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                 <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg">
@@ -1168,8 +1169,8 @@ const Dashboard = () => {
                   <tbody>
                     {referrals.level1.slice(0, 5).map((ref) => (
                       <tr key={ref.id} className="border-t hover:bg-gray-50">
-                        <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[120px] sm:max-w-[200px]">{ref.email}</td>
-                        <td className="p-2 sm:p-3 text-gray-600">Level 1</td>
+                        <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[120px] sm:max-w-[200px] text-[16px] !font-bold">{ref.email}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 text-[16px] !font-bold">Level 1</td>
                       </tr>
                     ))}
                   </tbody>
@@ -1193,7 +1194,7 @@ const Dashboard = () => {
                 <div className="gap-1 p-2 sm:p-4">
                   <div className="flex justify-start items-center p-2 sm:p-4">
                     <History className="w-6 h-6 sm:w-8 text-blue-600 mr-2 sm:mr-3" aria-hidden="true" />
-                    <h2 className="text-xl sm:text-2xl font-bold">Purchase History</h2>
+                    <h2 className="text-xl !font-extrabold">Purchase History</h2>
                   </div>
                   <div className="overflow-x-auto max-h-[170px]">
                     <table className="min-w-full text-left border-collapse text-xs sm:text-sm">
@@ -1206,8 +1207,8 @@ const Dashboard = () => {
                       <tbody>
                         {dashboardData?.purchaseHistory?.map((data, index) => (
                           <tr key={`${data.courseTitle}-${index}`} className="border-t hover:bg-gray-50">
-                            <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[120px] sm:max-w-[200px]">{data.courseTitle || 'N/A'}</td>
-                            <td className="p-2 sm:p-3 text-red-600 font-semibold">-₹{(data.price || 0).toLocaleString()}</td>
+                            <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[120px] sm:max-w-[200px] font-bold text-[16px]">{data.courseTitle || 'N/A'}</td>
+                            <td className="p-2 sm:p-3 text-red-600 font-bold text-[16px] flex items-center justify-center">-<IndianRupee size={17} className='!font-bold'/>{(data.price || 0).toLocaleString()}</td>
                           </tr>
                         )) || (
                             <tr>
@@ -1233,7 +1234,7 @@ const Dashboard = () => {
             <div className="sm:col-span-2 lg:col-span-3 bg-white rounded-2xl shadow-lg p-4 sm:p-6">
               <div className="flex items-center mb-4">
                 <History className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 mr-2 sm:mr-3" aria-hidden="true" />
-                <h2 className="text-xl sm:text-2xl font-bold">Commission History</h2>
+                <h2 className="text-xl !font-extrabold">Commission History</h2>
               </div>
               <div className="overflow-x-auto max-h-[200px]">
                 <table className="min-w-full text-left border-collapse text-xs sm:text-sm">
@@ -1248,10 +1249,10 @@ const Dashboard = () => {
                   <tbody>
                     {paymentHistory.map((entry) => (
                       <tr key={entry.id} className="border-t hover:bg-gray-50">
-                        <td className="p-2 sm:p-3 text-gray-600">{new Date(entry.date).toLocaleDateString() || 'N/A'}</td>
-                        <td className="p-2 sm:p-3 text-gray-600">{entry.buyerName || 'N/A'}</td>
-                        <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[100px] sm:max-w-[150px]">{entry.courseTitle || 'N/A'}</td>
-                        <td className="p-2 sm:p-3 text-green-700 font-bold">+₹{(entry.commission || 0).toLocaleString()}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 font-bold text-[16px]">{new Date(entry.date).toLocaleDateString() || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 font-bold text-[16px]">{entry.buyerName || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 truncate max-w-[100px] sm:max-w-[150px] font-bold text-[16px]">{entry.courseTitle || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-green-700 font-bold text-[16px] flex items-center justify-center">+<IndianRupee size={17} className='!font-bold'/>{(entry.commission || 0).toLocaleString()}</td>
                       </tr>
                     ))}
                     {paymentHistory.length === 0 && (
@@ -1276,7 +1277,7 @@ const Dashboard = () => {
             <div className="sm:col-span-2 lg:col-span-3 bg-white rounded-2xl shadow-lg p-4 sm:p-6 w-full">
               <div className="flex items-center mb-4">
                 <History className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 mr-2 sm:mr-3" aria-hidden="true" />
-                <h2 className="text-xl sm:text-2xl font-bold">Withdrawal History</h2>
+                <h2 className="text-xl !font-extrabold">Withdrawal History</h2>
               </div>
               <div className="overflow-x-auto overflow-y-scroll max-h-[200px]">
                 <table className="min-w-full text-left border-collapse text-xs sm:text-sm">
@@ -1291,10 +1292,10 @@ const Dashboard = () => {
                   <tbody>
                     {withdrawalHistory.map((entry, index) => (
                       <tr key={`${entry.id || index}`} className="border-t hover:bg-gray-50">
-                        <td className="p-2 sm:p-3 text-gray-600">{new Date(entry.date).toLocaleDateString() || 'N/A'}</td>
-                        <td className="p-2 sm:p-3 text-gray-600">{entry.paymentMethod || 'N/A'}</td>
-                        <td className="p-2 sm:p-3 text-red-600 font-bold">-₹{(entry.amount || 0).toLocaleString()}</td>
-                        <td className={`p-2 sm:p-3  font-bold ${entry.status=='success'?"text-green-700":"text-yellow-500"}`} >{entry.status || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 font-bold text-[16px]">{new Date(entry.requestedAt).toLocaleDateString() || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-gray-600 font-bold text-[16px]">{entry.paymentMethod || 'N/A'}</td>
+                        <td className="p-2 sm:p-3 text-red-600 font-bold text-[16px] flex items-center justify-center">-<IndianRupee size={17} className='!font-bold'/>{(entry.amount || 0).toLocaleString()}</td>
+                        <td className={`p-2 sm:p-3  font-bold text-[16px] ${entry.status=='success'?"text-green-700":"text-yellow-500"}`} >{entry.status || 'N/A'}</td>
                       </tr>
                     ))}
                     {withdrawalHistory.length === 0 && (
@@ -1317,7 +1318,7 @@ const Dashboard = () => {
               <div className="flex flex-col w-full lg:w-[50%] justify-start p-4">
                 <div className="flex flex-col items-center mb-4">
                   <LinkIcon className="w-7 h-6 sm:w-8 sm:h-8 text-blue-600 mr-2 sm:mr-3" aria-hidden="true" />
-                  <h2 className="text-[12px] whitespace-break-spaces sm:text-2xl font-bold">Your Referral Code</h2>
+                  <h2 className="text-[12px] whitespace-break-spaces sm:text-2xl !font-bold">Your Referral Code</h2>
                 </div>
                 <div className="w-full gap-3 sm:flex-row sm:items-center sm:gap-4">
                   <input
@@ -1338,14 +1339,14 @@ const Dashboard = () => {
                     </button>
                   </div>
                 </div>
-                <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base">
-                  Share this code to earn up to ₹500 per successful course purchase!
+                <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base flex items-center justify-center">
+                  Share this code to earn up to <IndianRupee size={16} className='!font-bold'/>500 per successful course purchase!
                 </p>
               </div>
               <div className="bg-white rounded-2xl p-4 sm:p-6 hover:shadow-xl transition-all duration-300 w-full flex flex-col lg:w-[40%]">
                 <div className="flex items-center mb-4">
                   <User className="w-6 h-6 sm:w-8 sm:h-8 text-red-500 mr-2 sm:mr-3" aria-hidden="true" />
-                  <h2 className="text-[14px] whitespace-break-spaces sm:text-2xl font-bold">Profile Summary</h2>
+                  <h2 className="text-[16px] whitespace-break-spaces sm:text-2xl font-bold">Profile Summary</h2>
                 </div>
                 <div className="space-y-3 sm:space-y-4">
                   <div>

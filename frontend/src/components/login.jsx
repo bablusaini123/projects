@@ -233,7 +233,7 @@ const LoginPage = () => {
       });
 
       const data = await response.json();
-      console.log("======", data)
+      // console.log("======", data)
       if (data.message !== 'Login successful') {
         throw new Error(data.message);
       } else {
@@ -252,6 +252,7 @@ const LoginPage = () => {
         });
         // Navigate to dashboard
         navigate('/dashboard');
+        window.location.reload()
       }
 
     } catch (error) {
@@ -431,7 +432,7 @@ const LoginPage = () => {
               </span>
             </Link>
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent mb-2">
-              SkillEarn
+              earnscop
             </h1>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back!</h2>
             <p className="text-gray-600 mb-8">Sign in to continue your learning journey</p>

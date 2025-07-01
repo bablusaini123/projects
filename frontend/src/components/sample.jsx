@@ -322,7 +322,7 @@ if (cachedData) {
   }, []);
 
   const badge = getBadge(currentUser?.profileLevel);
-  const referralCode = currentUser?.referCode || `https://skillearn.com/ref/${currentUser?.email || 'user'}`;
+  const referralCode = currentUser?.referCode || `https://earnscop.com/ref/${currentUser?.email || 'user'}`;
 
   const copyReferralLink = useCallback(async () => {
     try {

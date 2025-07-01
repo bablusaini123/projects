@@ -13,7 +13,7 @@ export default function Join() {
                         Join thousands of successful learners and start earning today!
                     </p>
                     <button className="bg-white text-blue-600 px-12 py-4 rounded-lg text-xl font-bold hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
-                        Join SkillEarn Now
+                        Join earnscop Now
                     </button>
                     <div className="mt-8 flex items-center justify-center space-x-8 text-sm">
                         <div className="flex items-center space-x-2">

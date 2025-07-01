@@ -23,7 +23,7 @@ const Privacy = () => {
                             <section>
                                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">1. Introduction</h2>
                                 <p className="text-gray-600 leading-relaxed">
-                                    Welcome to SkillEarn. We value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and protect your data when you visit or make a purchase from our website.
+                                    Welcome to earnscop. We value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and protect your data when you visit or make a purchase from our website.
                                 </p>
                             </section>
 
@@ -65,7 +65,7 @@ const Privacy = () => {
                             <section>
                                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">7. Refund Policy</h2>
                                 <p className="text-gray-600 leading-relaxed">
-                                    All course purchases on SkillEarn are digital and non-refundable. Once a course is purchased and accessed, refunds are not issued under normal circumstances. Refunds may be granted only in cases where technical issues prevent course access and our support team is unable to resolve the problem within 3 business days.
+                                    All course purchases on earnscop are digital and non-refundable. Once a course is purchased and accessed, refunds are not issued under normal circumstances. Refunds may be granted only in cases where technical issues prevent course access and our support team is unable to resolve the problem within 3 business days.
                                     <br /><br />
                                     If you feel you qualify for a refund, contact our support team with proof of the issue. Refunds are processed back to the original payment method within 5–7 business days if approved.
                                 </p>
@@ -74,7 +74,7 @@ const Privacy = () => {
                             <section>
                                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">8. Updates to Policy</h2>
                                 <p className="text-gray-600 leading-relaxed">
-                                    We may update this Privacy Policy from time to time. Changes will be posted on this page with a revised date. Continued use of SkillEarn after updates implies acceptance of the revised terms.
+                                    We may update this Privacy Policy from time to time. Changes will be posted on this page with a revised date. Continued use of earnscop after updates implies acceptance of the revised terms.
                                 </p>
                             </section>
 
@@ -82,7 +82,7 @@ const Privacy = () => {
                                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">9. Contact Us</h2>
                                 <p className="text-gray-600 leading-relaxed">
                                     If you have any questions or concerns regarding our privacy practices or refund policy, please reach out:<br />
-                                    Email: support@skillearn.com<br />
+                                    Email: support@earnscop.com<br />
                                     Phone: +91 98765 43210<br />
                                     Hours: Mon–Fri, 9AM–6PM IST
                                 </p>

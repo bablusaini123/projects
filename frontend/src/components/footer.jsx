@@ -46,14 +46,14 @@ export default function Footer() {
                     <div>
                         <h4 className="font-bold mb-4">Contact</h4>
                         <div className="text-gray-400 space-y-2">
-                            <p>support@skillearn.com</p>
+                            <p>support@earnscop.com</p>
                             <p>+91 98765 43210</p>
                             <p>Mon-Fri: 9AM-6PM IST</p>
                         </div>
                     </div>
                 </div>
                 <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                    <p>&copy; 2025 SkillEarn. All rights reserved.</p>
+                    <p>&copy; 2025 earnscop. All rights reserved.</p>
                 </div>
             </div>
       </footer >

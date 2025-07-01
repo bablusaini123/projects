@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { LogOut } from 'lucide-react';
+import { HashLink } from 'react-router-hash-link';
 
 export default function Header() {
     // Get user data from localStorage
@@ -24,15 +25,15 @@ export default function Header() {
                         </Link>
                     </div>
                     <div className="hidden md:flex space-x-8">
-                        <a href="#courses" className="text-gray-600 hover:text-blue-600 transition-colors">
+                        <HashLink  to="/#courses" className="text-gray-600 hover:text-blue-600 transition-colors">
                             Courses
-                        </a>
-                        <a href="#how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">
+                        </HashLink>
+                        <HashLink to="/#how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">
                             How It Works
-                        </a>
-                        <a href="#testimonials" className="text-gray-600 hover:text-blue-600 transition-colors">
+                        </HashLink>
+                         <HashLink to="/#testimonials" className="text-gray-600 hover:text-blue-600 transition-colors">
                             Success Stories
-                        </a>
+                        </HashLink>
                     </div>
                     <div className="flex space-x-4 items-center">
                         {isLoggedIn ? (

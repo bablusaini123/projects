@@ -240,7 +240,7 @@ const SuccessPage = () => {
     );
   };
   return (
-    <div className="min-h-screen font-['Outfit'] bg-gradient-to-br from-blue-50 to-red-50 py-6 sm:py-10 overflow-x-hidden">
+    <div className="min-h-3/5 font-['Outfit'] bg-gradient-to-br from-blue-50 to-red-50 py-6 sm:py-6 overflow-x-hidden">
        <style>
         {`
           .dots-container {

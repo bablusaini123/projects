@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Mail, Lock, User, Phone, Eye, EyeOff } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 
 const DotsAnimation = () => {
@@ -31,21 +31,17 @@ const DotsAnimation = () => {
         const dot = document.createElement('div');
         dot.className = 'floating-dot';
 
-        // Random color
         const colorClass = this.colors[Math.floor(Math.random() * this.colors.length)];
         dot.classList.add(colorClass);
 
-        // Random size
         const sizeClass = this.sizes[Math.floor(Math.random() * this.sizes.length)];
         dot.classList.add(sizeClass);
 
-        // Random movement type
         const movementType = this.movements[Math.floor(Math.random() * this.movements.length)];
         if (movementType !== 'floatDiagonal') {
           dot.classList.add(movementType);
         }
 
-        // Random special effects
         if (Math.random() > 0.7) {
           dot.classList.add('glow');
         }
@@ -54,7 +50,6 @@ const DotsAnimation = () => {
           dot.classList.add('pulse');
         }
 
-        // Random starting position based on movement type
         if (movementType === 'horizontal-dot') {
           dot.style.left = '-10px';
           dot.style.top = Math.random() * window.innerHeight + 'px';
@@ -62,24 +57,17 @@ const DotsAnimation = () => {
           dot.style.left = Math.random() * window.innerWidth + 'px';
           dot.style.bottom = '-10px';
         } else {
-          // Diagonal and zigzag start from bottom-left area
           dot.style.left = Math.random() * (window.innerWidth * 0.3) + 'px';
           dot.style.bottom = '-10px';
         }
 
-        // Random animation duration
-        const duration = Math.random() * 4 + 6; // 6-10 seconds for faster animations
+        const duration = Math.random() * 4 + 6;
         dot.style.animationDuration = duration + 's';
-
-        // Random delay
         dot.style.animationDelay = Math.random() * 1.5 + 's';
-
-        // Add unique ID
         dot.id = 'dot-' + (++this.dotCount);
 
         this.container.appendChild(dot);
 
-        // Remove dot after animation
         setTimeout(() => {
           if (dot && dot.parentNode) {
             dot.remove();
@@ -88,22 +76,20 @@ const DotsAnimation = () => {
       }
 
       createMultipleDots() {
-        const count = Math.random() * 5 + 4; // 4-9 dots at once to increase quantity
+        const count = Math.random() * 5 + 4;
         for (let i = 0; i < count; i++) {
-          setTimeout(() => this.createDot(), i * 80); // Faster spawning
+          setTimeout(() => this.createDot(), i * 80);
         }
       }
 
       startAnimation() {
-        // Create initial burst of dots
-        for (let i = 0; i < 20; i++) { // Increased initial burst
+        for (let i = 0; i < 20; i++) {
           setTimeout(() => this.createDot(), i * 150);
         }
 
-        // Continue creating dots
         this.animationInterval = setInterval(() => {
           this.createMultipleDots();
-        }, 600); // New batch every 0.6 seconds for more dots
+        }, 600);
       }
 
       stopAnimation() {
@@ -130,7 +116,7 @@ const DotsAnimation = () => {
         });
       }
 
-      createDotBurst(count = 20) { // Increased burst count
+      createDotBurst(count = 20) {
         for (let i = 0; i < count; i++) {
           setTimeout(() => this.createDot(), i * 40);
         }
@@ -140,13 +126,11 @@ const DotsAnimation = () => {
     const dotsAnimation = new DotsAnimation();
     window.dotsAnimation = dotsAnimation;
 
-    // Create dot burst on click
     const handleClick = (e) => {
-      dotsAnimation.createDotBurst(12); // Increased burst on click
+      dotsAnimation.createDotBurst(12);
     };
     document.body.addEventListener('click', handleClick);
 
-    // Performance monitoring
     let frameCount = 0;
     let lastTime = performance.now();
 
@@ -174,7 +158,6 @@ const DotsAnimation = () => {
 
     requestAnimationFrame(monitorPerformance);
 
-    // Cleanup
     return () => {
       document.body.removeEventListener('click', handleClick);
       if (window.dotsAnimation) {
@@ -201,10 +184,19 @@ const SignupPage = () => {
     confirmPassword: '',
     joinCode: ''
   });
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
   const [termsAccepted, setTermsAccepted] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+  // Extract referCode from URL query string
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const referCode = searchParams.get('referCode');
+    if (referCode) {
+      setSignupForm((prev) => ({ ...prev, joinCode: referCode }));
+    }
+  }, [location.search]);
 
   const handleSignupChange = (e) => {
     const { name, value } = e.target;
@@ -304,6 +296,11 @@ const SignupPage = () => {
       });
     }
   };
+
+  // Check if referCode exists in the URL query string
+  const searchParams = new URLSearchParams(location.search);
+  const referCode = searchParams.get('referCode');
+  const isJoinCodeDisabled = !!referCode;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-red-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
@@ -417,24 +414,21 @@ const SignupPage = () => {
             }
           }
 
-          /* Adjusted colors for white/light background */
-          .color-1 { background: linear-gradient(45deg, #e53e3e, #f56565); } /* Red */
-          .color-2 { background: linear-gradient(45deg, #38a169, #68d391); } /* Green */
-          .color-3 { background: linear-gradient(45deg, #3182ce, #63b3ed); } /* Blue */
-          .color-4 { background: linear-gradient(45deg, #d53f8c, #ed64a6); } /* Pink */
-          .color-5 { background: linear-gradient(45deg, #dd6b20, #f6ad55); } /* Orange */
-          .color-6 { background: linear-gradient(45deg, #805ad5, #9f7aea); } /* Purple */
-          .color-7 { background: linear-gradient(45deg, #319795, #4fd1c5); } /* Teal */
-          .color-8 { background: linear-gradient(45deg, #d69e2e, #ecc94b); } /* Yellow */
-          .color-9 { background: linear-gradient(45deg, #ed64a6, #f687b3); } /* Light Pink */
-          .color-10 { background: linear-gradient(45deg, #4a5568, #718096); } /* Gray */
+          .color-1 { background: linear-gradient(45deg, #e53e3e, #f56565); }
+          .color-2 { background: linear-gradient(45deg, #38a169, #68d391); }
+          .color-3 { background: linear-gradient(45deg, #3182ce, #63b3ed); }
+          .color-4 { background: linear-gradient(45deg, #d53f8c, #ed64a6); }
+          .color-5 { background: linear-gradient(45deg, #dd6b20, #f6ad55); }
+          .color-6 { background: linear-gradient(45deg, #805ad5, #9f7aea); }
+          .color-7 { background: linear-gradient(45deg, #319795, #4fd1c5); }
+          .color-8 { background: linear-gradient(45deg, #d69e2e, #ecc94b); }
+          .color-9 { background: linear-gradient(45deg, #ed64a6, #f687b3); }
+          .color-10 { background: linear-gradient(45deg, #4a5568, #718096); }
 
           .size-xs { width: 4px; height: 4px; }
           .size-sm { width: 6px; height: 6px; }
           .size-md { width: 9px; height: 9px; }
           .size-lg { width: 13px; height: 13px; }
-
-         
 
           .pulse {
             animation: floatVertical linear infinite, pulse 1.8s ease-in-out infinite alternate;
@@ -471,7 +465,7 @@ const SignupPage = () => {
               </span>
             </Link>
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent mb-2">
-              SkillEarn
+              earnscop
             </h1>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Create Account</h2>
             <p className="text-gray-600 mb-8">Start your learning and earning journey today</p>
@@ -502,16 +496,19 @@ const SignupPage = () => {
                 <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
                   Last Name
                 </label>
-                <input
-                  id="lastName"
-                  name="lastName"
-                  type="text"
-                  required
-                  value={signupForm.lastName}
-                  onChange={handleSignupChange}
-                  className="block w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                  placeholder="Last name"
-                />
+                <div className="relative">
+                  <User className="absolute left-3 top-3 text-gray-400" />
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    required
+                    value={signupForm.lastName}
+                    onChange={handleSignupChange}
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    placeholder="Last name"
+                  />
+                </div>
               </div>
             </div>
 
@@ -628,7 +625,10 @@ const SignupPage = () => {
                   required
                   value={signupForm.joinCode}
                   onChange={handleSignupChange}
-                  className="block w-full pl-10 pr-10 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                  disabled={isJoinCodeDisabled}
+                  className={`block w-full pl-10 pr-10 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
+                    isJoinCodeDisabled ? 'bg-gray-100 cursor-not-allowed' : 'border-gray-300'
+                  }`}
                   placeholder="Join Code"
                 />
               </div>

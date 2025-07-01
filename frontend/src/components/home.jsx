@@ -198,7 +198,7 @@ const DotsAnimation = () => {
   );
 };
 
-const SkillEarnLanding = () => {
+const EarnscopLanding = () => {
   const [openFaq, setOpenFaq] = useState(null);
   const [referrals, setReferrals] = useState(30);
   const [isLoading, setIsLoading] = useState(false);
@@ -355,7 +355,7 @@ const SkillEarnLanding = () => {
           key: 'rzp_test_yGCAXsBibCoK0y',
           amount,
           currency,
-          name: 'SkillEarn',
+          name: 'earnscop',
           description: `Purchase: ${course.title}`,
           order_id: orderId,
           handler: async (response) => {
@@ -374,11 +374,11 @@ const SkillEarnLanding = () => {
                 { courseTitle: course.title, price: course.price, date: new Date().toISOString().split('T')[0] },
               ]);
               // Update local storage with new purchase history
-              const cachedData = localStorage.getItem('landingDashboardData');
+              const cachedData = localStorage.getItem('dashboardData');
               if (cachedData) {
                 try {
                   const { data, timestamp } = JSON.parse(cachedData);
-                  localStorage.setItem('landingDashboardData', JSON.stringify({
+                  localStorage.setItem('dashboardData', JSON.stringify({
                     data: {
                       ...data,
                       purchaseHistory: [
@@ -407,7 +407,7 @@ const SkillEarnLanding = () => {
             }
           },
           prefill: {
-            name: currentUser.name || 'SkillEarn User',
+            name: currentUser.name || 'earnscop User',
             email: currentUser.email || 'user@example.com',
             contact: currentUser.contact || '9999999999',
           },
@@ -767,7 +767,7 @@ const SkillEarnLanding = () => {
       <FloatingDollarParticles />
       <FloatingCoins />
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 to-red-50 py-6 sm:py-10">
+      <section className="relative bg-gradient-to-br from-blue-50  py-6 sm:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <motion.div
@@ -799,7 +799,7 @@ const SkillEarnLanding = () => {
                   <Link to="/signup">
                     <button
                       className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-red-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300"
-                      aria-label="Join SkillEarn"
+                      aria-label="Join earnscop"
                     >
                       Join Now
                     </button>
@@ -893,7 +893,7 @@ const SkillEarnLanding = () => {
                       </div>
                     </div>
                   </motion.div>
-                  <p className="text-base sm:text-xl opacity-90">
+                  <p className="text-white sm:text-xl opacity-90">
                     Based on average course price of ₹1000 with up to 80% commission
                   </p>
                 </div>
@@ -1015,7 +1015,7 @@ const SkillEarnLanding = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-xl sm:text-2xl font-bold text-blue-600 shimmer">
+                      <div className="text-xl sm:text-2xl font-bold text-black ">
                         ₹{course.price}
                       </div>
                       <div className="text-xs sm:text-sm text-green-600 font-semibold">
@@ -1118,7 +1118,7 @@ const SkillEarnLanding = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Why Choose SkillEarn?</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Why Choose earnscop?</h2>
             <p className="text-lg sm:text-xl text-gray-600">Join thousands of successful learners and earners</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -1179,7 +1179,7 @@ const SkillEarnLanding = () => {
               Meet Our Influencers
             </h2>
             <p className="text-lg sm:text-xl text-gray-600">
-              Discover the creators promoting SkillEarn and inspiring thousands!
+              Discover the creators promoting earnscop and inspiring thousands!
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -1233,7 +1233,7 @@ const SkillEarnLanding = () => {
                     <Link
                       to="/signup"
                       className="flex items-center justify-center bg-gradient-to-r from-blue-600 to-red-500 text-white px-4 py-2 rounded-lg text-sm sm:text-base font-semibold hover:shadow-lg transition-all duration-300"
-                      aria-label="Join SkillEarn Now"
+                      aria-label="Join earnscop Now"
                     >
                       Join Now
                     </Link>
@@ -1256,7 +1256,7 @@ const SkillEarnLanding = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg sm:text-xl text-gray-600">Everything you need to know about SkillEarn</p>
+            <p className="text-lg sm:text-xl text-gray-600">Everything you need to know about earnscop</p>
           </motion.div>
           <div className="space-y-4">
             {FAQS.map((faq, index) => (
@@ -1333,9 +1333,9 @@ const SkillEarnLanding = () => {
               <button
               onClick={(e) => children.props.onClick(e)}
                 className="bg-white text-blue-600 px-8 sm:px-12 py-3 sm:py-4 rounded-lg text-lg sm:text-xl font-bold hover:shadow-2xl transition-all duration-300"
-                aria-label="Join SkillEarn Now"
+                aria-label="Join earnscop Now"
               >
-                Join SkillEarn Now
+                Join earnscop Now
               </button>
             </Link>
           {/* </ParticleBurst> */}
@@ -1377,6 +1377,6 @@ const SkillEarnLanding = () => {
   );
 };
 
-SkillEarnLanding.propTypes = {};
+EarnscopLanding.propTypes = {};
 
-export default SkillEarnLanding;
+export default EarnscopLanding;
