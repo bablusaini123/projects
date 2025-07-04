@@ -10,7 +10,17 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-  <title>iNDEX</title>
+  <title>Latest ICO</title>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Upcoming ICOs | KryptoDesk",
+  "description": "Explore upcoming and ongoing ICOs with full project details and tokenomics.",
+  "url": "https://kryptodesk.com/ico"
+}
+</script>
   <style>
     * {
       box-sizing: border-box;
@@ -637,7 +647,7 @@
                               <span class="badge light">+<%= remainingCount %></span>
                               <% } %>
                     </div>
-                    <a href="/detailIco/<%=result.slug%>" class="link">View Details</a>
+                    <a href="/ico/<%=result.slug%>" class="link">View Details</a>
                   </div>
                 </div>
               </div> 

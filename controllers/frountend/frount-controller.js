@@ -70,7 +70,7 @@ module.exports.frountHomePage = async (req, res) => {
     const eventListingData = await EventListing.find(filter)
       .sort({ startDate: 1 }) // -1 means latest first, use 1 for oldest first
       .limit(12);
-    // console.log("======", formattedAirdropData)
+    // // console.log("======", formattedAirdropData)
 
     // crypto coins
 
@@ -82,7 +82,7 @@ module.exports.frountHomePage = async (req, res) => {
         }
       }
     );
-    console.log(response.data)
+    // console.log(response.data)
     res.render("frountend/index.ejs", {
       formattedIcoListingData,
       formattedAirdropData,
@@ -129,7 +129,7 @@ module.exports.eventListing = async (req, res) => {
       .skip((page - 1) * perPage)
       .limit(perPage);
 
-    //  console.log(eventListingData)
+    //  // console.log(eventListingData)
     const formattedEventListingData = eventListingData.map(event => {
       const plain = event.toObject();
       return {
@@ -138,7 +138,7 @@ module.exports.eventListing = async (req, res) => {
         endDateFormatted: moment(plain.endDate).format("MMMM Do, YYYY"),
       };
     });
-    // console.log(formattedEventListingData)
+    // // console.log(formattedEventListingData)
     res.render("frountend/eventListing.ejs", {
       formattedEventListingData,
       current: page,
@@ -281,7 +281,7 @@ module.exports.createEventListingSubmit = async (req, res) => {
 
     var slug = title.replace(/\s+/g, '-')
     const eventData = await EventListing.find({ title: title })
-    // console.log(eventData)
+    // // console.log(eventData)
     if (eventData.length > 0) {
       slug = title.replace(/\s+/g, '-') + Math.floor(100 + Math.random() * 900);
     }
@@ -329,7 +329,7 @@ module.exports.createEventListingSubmit = async (req, res) => {
 module.exports.detailEventListing = async (req, res) => {
   try {
     const eventListingSlug = req.params.id
-    //  console.log("========",eventListingSlug)
+    //  // console.log("========",eventListingSlug)
     const eventListingData = await EventListing.find({ slug: eventListingSlug })
     const formattedEventListingData = eventListingData.map(event => {
       const plain = event.toObject();
@@ -339,7 +339,7 @@ module.exports.detailEventListing = async (req, res) => {
         endDateFormatted: moment(plain.endDate).format("MMMM Do, YYYY"),
       };
     });
-    //   console.log("--------",formattedEventListingData)
+    //   // console.log("--------",formattedEventListingData)
     res.render("frountend/DetailEventListing.ejs", { eventListingData: formattedEventListingData[0] })
   } catch (error) {
     res.status(500).json({
@@ -483,8 +483,8 @@ module.exports.createIcoListingSubmit = async (req, res) => {
     const whitepaperUrl = req.files.whitepaper ? req.files.whitepaper[0]?.location : null;
     const roadmapUrl = req.files.roadmap ? req.files.roadmap[0]?.location : null;
     const projectScreeshot = req.files.projectSreenshot ? req.files.projectSreenshot.map(file => file.location) : [];
-    console.log("=========", req.files)
-    console.log("==================", req.body)
+   // // console.log("=========", req.files)
+   // // console.log("==================", req.body)
 
     // for rounds
 
@@ -515,7 +515,7 @@ module.exports.createIcoListingSubmit = async (req, res) => {
         rounds.push(roundObj);
       }
     });
-    console.log("Rounds=========", rounds)
+  //  // console.log("Rounds=========", rounds)
 
 
     // for teams
@@ -547,7 +547,7 @@ module.exports.createIcoListingSubmit = async (req, res) => {
       }
     });
 
-    console.log("teams=========", team)
+  //  // console.log("teams=========", team)
 
 
     // for influencers section
@@ -584,7 +584,7 @@ module.exports.createIcoListingSubmit = async (req, res) => {
       }
     });
 
-    console.log("influencers=========", influencers)
+  //  // console.log("influencers=========", influencers)
 
 
     // for partners section
@@ -622,7 +622,7 @@ module.exports.createIcoListingSubmit = async (req, res) => {
       }
     });
 
-    console.log("partners=========", partners)
+    // console.log("partners=========", partners)
 
 
     // for sponsors section
@@ -665,7 +665,7 @@ module.exports.createIcoListingSubmit = async (req, res) => {
       }
     });
 
-    console.log("sponsors=========", sponsors)
+    // console.log("sponsors=========", sponsors)
 
 
     //  manage slug
@@ -772,6 +772,7 @@ module.exports.airdropListing = async (req, res) => {
         endDateFormatted: moment(plain.endDate).format("MMMM Do, YYYY"),
       };
     });
+    console.log(formattedIcoListingData)
     res.render("frountend/airdrops.ejs", {
       formattedIcoListingData,
       current: page,
@@ -799,7 +800,7 @@ module.exports.createAirdrop = async (req, res) => {
 
 module.exports.createAirdropSubmit = async (req, res) => {
   try {
-    console.log(req.body)
+    // console.log(req.body)
     const {
       tokenName,
       tokenSymbol,
@@ -952,8 +953,8 @@ module.exports.createInfluencerSubmit = async (req, res) => {
       slug: slug
     });
     const saved = await newInfluencer.save();
-    // console.log(req.body)
-    // console.log(req.files)
+    // // console.log(req.body)
+    // // console.log(req.files)
     res.redirect("/influencers")
   } catch (error) {
     res.status(500).json({
@@ -1041,7 +1042,7 @@ module.exports.DetailIco = async (req, res) => {
       year: 'numeric',
     }).format(startDate);
 
-    console.log(formattedStartDate)
+    // console.log(formattedStartDate)
   
     const endDate = new Date(icoData[0].endDate); // aapki db se aayi date
     const formattendDate = new Intl.DateTimeFormat('en-GB', {
@@ -1049,7 +1050,7 @@ module.exports.DetailIco = async (req, res) => {
       month: 'short',
       year: 'numeric',
     }).format(endDate);
-    console.log(formattendDate)
+  //  // console.log(formattendDate)
     icoData[0].formattedStartDate = formattedStartDate
     icoData[0].formattendDate = formattendDate
     res.render("frountend/detailIco.ejs", { icoData: icoData[0] })

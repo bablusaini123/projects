@@ -4,9 +4,53 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>99Bitcoins.com</title>
+    <title>Top Cryptocurrency Updates: Airdrops, ICOs, NFT Trends, DeFi & Crypto Jobs Today</title>
+    <link rel="canonical" href="https://kryptodesk.com/" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- Google Verification -->
+   <meta name="google-site-verification" content="ciIXzvXMqQyugp4yWxL_rWAf2R387-Aq6cS-Luai_tQ" />
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "KryptoDesk",
+  "url": "https://kryptodesk.com",
+  "logo": "https://kryptodesk.com/image/kryptodesk%20png%20logo.png",
+  "description": "KryptoDesk is your go-to source for the latest cryptocurrency news, airdrops, ICOs, NFTs, DeFi projects, market predictions, crypto jobs, and influencer insights — all in one place.",
+  "email": "support@kryptodesk.com",
+  "foundingDate": "2023-07-01",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Beka Anglov",
+    "url": "https://kryptodesk.com/about",
+    "sameAs": [
+      "https://x.com/kryptodeskAI",
+      "https://www.instagram.com/kryptodesk.ai/",
+      "https://www.youtube.com/@KryptoDesk"
+    ]
+  },
+  "sameAs": [
+    "https://x.com/kryptodeskAI",
+    "https://www.instagram.com/kryptodesk.ai/",
+    "https://www.youtube.com/@KryptoDesk",
+    "https://www.threads.com/@kryptodesk.ai",
+    "https://www.binance.com/en-IN/square/profile/kryptodesk",
+    "https://in.pinterest.com/kryptodeskcom/",
+    "https://truthsocial.com/@KryptoDesk",
+    "https://www.facebook.com/profile.php?id=61577251025406",
+    "https://www.reddit.com/user/KryptoDesk/",
+    "https://coinmarketcap.com/community/profile/KryptoDesk/"
+  ]
+}
+</script>
+
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&family=Lato:wght@300&display=swap");
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
@@ -263,7 +307,6 @@
             margin: 40px 55px;
             max-width: 100%;
             max-height: 800px;
-            background: url('https://99bitcoins.com/wp-content/themes/99bitcoins/assets/dist/img/footer-ninety-nine.png') no-repeat 100% 100% / 418px 296px, radial-gradient(at 130% 100%, #fbc6ce, transparent 65%), radial-gradient(at -15% -10%, #fbc6ce, transparent 35%);
             border: 1px solid #ffd6dc;
             border-radius: 20px;
             display: flex;
@@ -1161,7 +1204,8 @@
             align-items: center;
             font-size: 14px;
         }
-         .slider-container {
+
+        .slider-container {
             background: #e0e0e0;
             width: 100%;
             overflow: hidden;
@@ -1174,7 +1218,7 @@
 
         .slider-wrapper {
             display: flex;
-           animation: infiniteSlide 20s linear infinite;
+            animation: infiniteSlide 20s linear infinite;
         }
 
         .slide {
@@ -1222,8 +1266,13 @@
         }
 
         @keyframes infiniteSlide {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .slider-container::before,
@@ -1246,848 +1295,865 @@
             right: 0;
             background: linear-gradient(to left, rgba(255, 255, 255, 0.1), transparent);
         }
-
-       
     </style>
 </head>
 
 <body>
     <div class="slider-container">
         <div class="slider-wrapper">
-             <% response.forEach((result,index)=>{ %>
-            <div class="slide">
-               <img src="<%=result.image%>" alt="">
-                <div class="slide-content">ETH <span style="color: #ff0000;">-3.24%</span> $2,407.83</div>
-            </div>
-              <% })%>
+            <% response.forEach((result,index)=>{ %>
+                <div class="slide">
+                    <img src="<%=result.image%>" alt="">
+                    <div class="slide-content">ETH <span style="color: #ff0000;">-3.24%</span> $2,407.83</div>
+                </div>
+                <% })%>
         </div>
     </div>
 
-     <!-- header start -->
+    <!-- header start -->
 
-  <%- include("../../partials/frountHeader.ejs")%>
-    <!-- header end -->
-
-
-    <div class="main-container"
-        style="display: flex; gap: 20px; padding: 20px; font-family: Arial, sans-serif; height: 95vh;">
-        <div style="width: 30%; height: 100%;">
-            <div style="display: flex;justify-content: space-between;padding: 13px;">
-                <div>
-                    <h3 style="margin: 0;">ICO Listing</h3>
-                </div>
-                <div>
-                    <a href="/icoListing" style="padding: 8px 20px;background: #0b74de;color: #fff;text-decoration: none;border-radius: 10px;">
-                            View All 
-                    </a>
-                </div>
-            </div>
-            <!-- <h7 style="font-weight: 700; margin-top: 0px !important; padding: 1px 9px !important;">Event Listing</h7> -->
-            <div class="article" style="overflow-y: auto;  ">
-
-                <div class="content" style="padding: 8px;">
+    <%- include("../../partials/frountHeader.ejs")%>
+        <!-- header end -->
 
 
-                    <% formattedIcoListingData.forEach((result,index)=>{ %>
- <a href="/detailIco/<%=result.slug%>" style="text-decoration: none;color: inherit;">
-                        <div
-                            style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
-                            <div style="width: 15%;">
-                                <img src="<%=result.logo%>" alt=""
-                                    style="width: 50px; height: 50px; border-radius: 20%;">
-                            </div>
-                            <div
-                                style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height:16px;width: 85%;">
-                                <h4 style="margin: 0px !important;justify-content: space-between;display: flex;">
-                                    <div class="truncate-text" style="width: 60%;"
-                                        title="<%=result.title%> <%=result.ticker%>">
-                                        <%=result.title%>
-                                            <%=result.ticker%>
-                                    </div>
-                                    <div style="width: 40%;text-align: right;">
-                                        <span style="margin: 0px 2px;">
-                                            <i class="bi bi-globe"
-                                                style="font-size: 20px;color: #4891db;font-weight: bolder;"></i>
-                                        </span>
-                                        <span style="margin: 0px 2px;">
-                                            <i class="bi bi-twitter-x" style="font-size: 20px;;color: #4891db"></i>
-                                        </span>
-                                        <span style="margin: 0px 2px;">
-                                            <i class="bi bi-telegram" style="font-size: 21px;;color: #4891db"></i>
-                                        </span>
-                                        <span style="margin: 0px 2px;">
-                                            <i class="bi bi-facebook" style="font-size: 21px;;color: #4891db"></i>
-                                        </span>
-                                    </div>
-
-                                </h4>
-                                <div
-                                    style="font-size: 14px; margin: 0px !important; margin-top: 7px !important;    display: flex;align-items: center;justify-content: space-between;">
-                                    <div>
-                                        <%=result.startDateFormatted%>
-                                    </div>
-                                    <div class="blockchain-tags">
-                                        <% const maxVisible2=1; const industry=result.industry || []; const
-                                            visibleTags2=industry.slice(0, maxVisible2); const
-                                            remainingCount2=industry.length - visibleTags2.length; %>
-
-                                            <% visibleTags2.forEach(tag=> { %>
-                                                <span class="badge gray truncate-text"
-                                                    style="width: 65px; text-align: center;">
-                                                    <%= tag %>
-                                                </span>
-                                                <% }) %>
-
-                                                    <% if (remainingCount2> 0) { %>
-                                                        <span class="badge light">+<%= remainingCount2 %></span>
-                                                        <% } %>
-                                    </div>
-                                    <div class="blockchain-tags">
-                                        <% const maxVisible=1; const blockchain=result.blockChain || []; const
-                                            visibleTags=blockchain.slice(0, maxVisible); const
-                                            remainingCount=blockchain.length - visibleTags.length; %>
-
-                                            <% visibleTags.forEach(tag=> { %>
-                                                <span class="badge gray">
-                                                    <%= tag %>
-                                                </span>
-                                                <% }) %>
-
-                                                    <% if (remainingCount> 0) { %>
-                                                        <span class="badge light">+<%= remainingCount %></span>
-                                                        <% } %>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
+        <div class="main-container"
+            style="display: flex; gap: 20px; padding: 20px; font-family: Arial, sans-serif; height: 95vh;">
+            <div style="width: 30%; height: 100%;">
+                <div style="display: flex;justify-content: space-between;padding: 13px;">
+                    <div>
+                        <h3 style="margin: 0;">ICO Listing</h3>
+                    </div>
+                    <div>
+                        <a href="/icoListing"
+                            style="padding: 8px 20px;background: #0b74de;color: #fff;text-decoration: none;border-radius: 10px;">
+                            View All
                         </a>
+                    </div>
+                </div>
+                <!-- <h7 style="font-weight: 700; margin-top: 0px !important; padding: 1px 9px !important;">Event Listing</h7> -->
+                <div class="article" style="overflow-y: auto;  ">
 
-                        <% })%>
+                    <div class="content" style="padding: 8px;">
+
+
+                        <% formattedIcoListingData.forEach((result,index)=>{ %>
+                            <a href="/ICO/<%=result.slug%>" style="text-decoration: none;color: inherit;">
+                                <div
+                                    style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
+                                    <div style="width: 15%;">
+                                        <img src="<%=result.logo%>" alt=""
+                                            style="width: 50px; height: 50px; border-radius: 20%;">
+                                    </div>
+                                    <div
+                                        style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height:16px;width: 85%;">
+                                        <h4
+                                            style="margin: 0px !important;justify-content: space-between;display: flex;">
+                                            <div class="truncate-text" style="width: 60%;"
+                                                title="<%=result.title%> <%=result.ticker%>">
+                                                <%=result.title%>
+                                                    <%=result.ticker%>
+                                            </div>
+                                            <div style="width: 40%;text-align: right;">
+                                                <span style="margin: 0px 2px;">
+                                                    <i class="bi bi-globe"
+                                                        style="font-size: 20px;color: #4891db;font-weight: bolder;"></i>
+                                                </span>
+                                                <span style="margin: 0px 2px;">
+                                                    <i class="bi bi-twitter-x"
+                                                        style="font-size: 20px;;color: #4891db"></i>
+                                                </span>
+                                                <span style="margin: 0px 2px;">
+                                                    <i class="bi bi-telegram"
+                                                        style="font-size: 21px;;color: #4891db"></i>
+                                                </span>
+                                                <span style="margin: 0px 2px;">
+                                                    <i class="bi bi-facebook"
+                                                        style="font-size: 21px;;color: #4891db"></i>
+                                                </span>
+                                            </div>
+
+                                        </h4>
+                                        <div
+                                            style="font-size: 14px; margin: 0px !important; margin-top: 7px !important;    display: flex;align-items: center;justify-content: space-between;">
+                                            <div>
+                                                <%=result.startDateFormatted%>
+                                            </div>
+                                            <div class="blockchain-tags">
+                                                <% const maxVisible2=1; const industry=result.industry || []; const
+                                                    visibleTags2=industry.slice(0, maxVisible2); const
+                                                    remainingCount2=industry.length - visibleTags2.length; %>
+
+                                                    <% visibleTags2.forEach(tag=> { %>
+                                                        <span class="badge gray truncate-text"
+                                                            style="width: 65px; text-align: center;">
+                                                            <%= tag %>
+                                                        </span>
+                                                        <% }) %>
+
+                                                            <% if (remainingCount2> 0) { %>
+                                                                <span class="badge light">+<%= remainingCount2 %></span>
+                                                                <% } %>
+                                            </div>
+                                            <div class="blockchain-tags">
+                                                <% const maxVisible=1; const blockchain=result.blockChain || []; const
+                                                    visibleTags=blockchain.slice(0, maxVisible); const
+                                                    remainingCount=blockchain.length - visibleTags.length; %>
+
+                                                    <% visibleTags.forEach(tag=> { %>
+                                                        <span class="badge gray">
+                                                            <%= tag %>
+                                                        </span>
+                                                        <% }) %>
+
+                                                            <% if (remainingCount> 0) { %>
+                                                                <span class="badge light">+<%= remainingCount %></span>
+                                                                <% } %>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </a>
+
+                            <% })%>
+
+                    </div>
+
+
 
                 </div>
-
-
-
             </div>
-        </div>
 
-        <!-- Middle News Section with 2 images side by side -->
-        <div
-            style="width: 40%; height: 100%; display: flex; gap: 1px; background-color: whitesmoke; border-radius: 2%;">
-            <div style="width: 50%; height: 100%; position: relative; border-radius: 10px; overflow: hidden;">
-                <!-- <img src="https://99bitcoins.com/wp-content/uploads/2025/05/How-to-buy-Notcoin-3-350x197.jpg" alt="News 1" style="width: 100%; height: 100%; object-fit: cover;"> -->
-                <!-- <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 20px; color: white;">
+            <!-- Middle News Section with 2 images side by side -->
+            <div
+                style="width: 40%; height: 100%; display: flex; gap: 1px; background-color: whitesmoke; border-radius: 2%;">
+                <div style="width: 50%; height: 100%; position: relative; border-radius: 10px; overflow: hidden;">
+                    <!-- <img src="https://99bitcoins.com/wp-content/uploads/2025/05/How-to-buy-Notcoin-3-350x197.jpg" alt="News 1" style="width: 100%; height: 100%; object-fit: cover;"> -->
+                    <!-- <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 20px; color: white;">
                     <h3 style="margin: 0; font-size: 16px;">Breaking News Title 1</h3>
                     <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.9;">Latest crypto developments and market updates</p>
                 </div> -->
-            </div>
-            <div style="width: 50%; height: 100%; position: relative; border-radius: 10px; overflow: hidden;">
-                <!-- <img src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" alt="News 2" style="width: 100%; height: 100%; object-fit: cover;"> -->
-                <!-- <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 20px; color: white;">
+                </div>
+                <div style="width: 50%; height: 100%; position: relative; border-radius: 10px; overflow: hidden;">
+                    <!-- <img src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" alt="News 2" style="width: 100%; height: 100%; object-fit: cover;"> -->
+                    <!-- <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 20px; color: white;">
                     <h3 style="margin: 0; font-size: 16px;">Breaking News Title 2</h3>
                     <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.9;">Market analysis and trading insights</p>
                 </div> -->
-            </div>
-        </div>
-
-        <!-- Right Top Stories Section -->
-        <div class="top-stories" style="width: 30%; height: 100%; overflow-y: auto;">
-             <div style="display: flex;justify-content: space-between;padding: 13px;">
-                <div>
-                    <h3 style="margin: 0;">Airdrop Listing</h3>
-                </div>
-                <div>
-                    <a href="/airdropListing" style="padding: 8px 20px;background: #0b74de;color: #fff;text-decoration: none;border-radius: 10px;">
-                            View All 
-                    </a>
-                </div>
-            </div>
-            <!-- <h4>Top Stories</h4> -->
-
-            <% formattedAirdropData.forEach((result,index)=>{ %>
-   
-                <div
-                    style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
-                    <div style="width: 15%;">
-                        <img src="<%=result.tokenImage%>" alt="" style="width: 50px; height: 50px; border-radius: 20%;">
-                    </div>
-                    <div
-                        style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height:16px;width: 85%;">
-                        <h4 style="margin: 0px !important;justify-content: space-between;display: flex;">
-                            <div class="truncate-text" style="width: 60%;" title="<%=result.tokenName%>">
-                                <%=result.tokenName%>
-                            </div>
-                            <div style="width: 40%;text-align: right;">
-                                <span style="margin: 0px 2px;">
-                                    <i class="bi bi-globe"
-                                        style="font-size: 20px;color: #4891db;font-weight: bolder;"></i>
-                                </span>
-                                <span style="margin: 0px 2px;">
-                                    <i class="bi bi-twitter-x" style="font-size: 20px;;color: #4891db"></i>
-                                </span>
-                                <span style="margin: 0px 2px;">
-                                    <i class="bi bi-telegram" style="font-size: 21px;;color: #4891db"></i>
-                                </span>
-                                <span style="margin: 0px 2px;">
-                                    <i class="bi bi-facebook" style="font-size: 21px;;color: #4891db"></i>
-                                </span>
-                            </div>
-
-                        </h4>
-                        <div
-                            style="font-size: 14px; margin: 0px !important; margin-top: 7px !important;    display: flex;align-items: center;justify-content: space-between;">
-                            <div style="width: 32%;; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
-                                class="truncate-text">
-
-                                <%=result.startDateFormatted%>
-                            </div>
-                            <div style="width: 32%;text-align: right;; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
-                                class="truncate-text">
-                                <span style="font-weight: 600;">
-                                    Qty.
-                                </span>
-                                <%=result.airdropQuantity%>
-                            </div>
-                            <div style="width: 32%;text-align: right; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
-                                class="truncate-text">
-                                <span style="font-weight: 600;">
-                                    Winners.
-                                </span>
-                                <%=result.noOfWinners%>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-        
-
-                <% })%>
-
-
-        </div>
-    </div>
-
-    <div class="extra-section">
-        <div class="extra-section">
-            <div class="extra-card">
-                <div class="icon">👤➕</div>
-                <div>
-                    <div class="extra-title">Follow Us →</div>
-                    <div class="extra-sub">Start learning crypto now</div>
                 </div>
             </div>
 
-            <div class="divider"></div>
-
-            <div class="extra-card">
-                <div class="icon">📬</div>
-                <div>
-                    <div class="extra-title">Our Newsletter →</div>
-                    <div class="extra-sub">Stay ahead in the crypto game!</div>
-                </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="extra-card">
-                <div class="icon">▶️</div>
-                <div>
-                    <div class="extra-title">Youtube Channel →</div>
-                    <div class="extra-sub">Exclusive insights, tips, and updates weekly!</div>
-                </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="extra-card">
-                <div class="icon">💬99</div>
-                <div>
-                    <div class="extra-title">Why trust 99bitcoins →</div>
-                    <div class="extra-sub">Understand how we collect our data and more</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="bitcoin-section" style="padding: 7px 0px;">
-        <h1 style="color: blue;">Events</h1>
-        <div class="bitcoin-guides" style="display: flex; flex-wrap: wrap; justify-content: start; gap: 2rem; ">
-            <% eventListingData.forEach((result,index)=>{ %>
-                <div class="card">
-                    <div class="card-body">
-                        <div>
-                            <img style="border-radius: 20px;" src="<%=result.bannerImage%>" alt="Blockchain Event">
-                        </div>
-                        <div class="card-title truncate-text" title="<%= result.title %>">
-                            <%=result.title%>
-                        </div>
-                    </div>
-
-                </div>
-                <% })%>
-
+            <!-- Right Top Stories Section -->
+            <div class="top-stories" style="width: 30%; height: 100%; overflow-y: auto;">
+                <div style="display: flex;justify-content: space-between;padding: 13px;">
                     <div>
-                        <h1 style="color: blue;">News</h1>
-                        <div class="bitcoin-guides"
-                            style="display: flex; flex-wrap: wrap; justify-content: start; gap: 2rem; ">
+                        <h3 style="margin: 0;">Airdrop Listing</h3>
+                    </div>
+                    <div>
+                        <a href="/Airdrops"
+                            style="padding: 8px 20px;background: #0b74de;color: #fff;text-decoration: none;border-radius: 10px;">
+                            View All
+                        </a>
+                    </div>
+                </div>
+                <!-- <h4>Top Stories</h4> -->
 
-                            <div class="bitcoin-art"
-                                style="width: calc(25% - 1.5rem); height: 350px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                                <img src="https://99bitcoins.com/wp-content/uploads/2024/11/What-is-Bitcoin-300x300.jpeg"
-                                    alt="PancakeSwap Review"
-                                    style="width: 100%; height: 150px; object-fit: cover; display: block;" />
-                                <div class="content">
-                                    <div class="category">Cryptocurrency</div>
-                                    <h3>PancakeSwap (CAKE) Review: A Beginner’s Guide</h3>
-                                    <div class="meta">June 6, 2025 | By Mensholong Lepcha</div>
+                <% formattedAirdropData.forEach((result,index)=>{ %>
+
+                    <div
+                        style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
+                        <div style="width: 15%;">
+                            <img src="<%=result.tokenImage%>" alt=""
+                                style="width: 50px; height: 50px; border-radius: 20%;">
+                        </div>
+                        <div
+                            style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height:16px;width: 85%;">
+                            <h4 style="margin: 0px !important;justify-content: space-between;display: flex;">
+                                <div class="truncate-text" style="width: 60%;" title="<%=result.tokenName%>">
+                                    <%=result.tokenName%>
                                 </div>
-                            </div>
-                            <div class="bitcoin-art"
-                                style="width: calc(25% - 1.5rem); height: 350px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                                <img src="https://99bitcoins.com/wp-content/uploads/2017/02/shutterstock_574719532.jpg"
-                                    alt="Bitcoin Wallet Guide"
-                                    style="width: 100%; height: 150px; object-fit: cover; display: block;" />
-                                <div class="content">
-                                    <div class="category">Cryptocurrency</div>
-                                    <h3>How to Choose the Best Bitcoin Wallet</h3>
-                                    <div class="meta">June 6, 2025 | By Jane Doe</div>
+                                <div style="width: 40%;text-align: right;">
+                                    <span style="margin: 0px 2px;">
+                                        <i class="bi bi-globe"
+                                            style="font-size: 20px;color: #4891db;font-weight: bolder;"></i>
+                                    </span>
+                                    <span style="margin: 0px 2px;">
+                                        <i class="bi bi-twitter-x" style="font-size: 20px;;color: #4891db"></i>
+                                    </span>
+                                    <span style="margin: 0px 2px;">
+                                        <i class="bi bi-telegram" style="font-size: 21px;;color: #4891db"></i>
+                                    </span>
+                                    <span style="margin: 0px 2px;">
+                                        <i class="bi bi-facebook" style="font-size: 21px;;color: #4891db"></i>
+                                    </span>
                                 </div>
-                            </div>
-                            <div class="bitcoin-art"
-                                style="width: calc(25% - 1.5rem); height: 350px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                                <img src="https://99bitcoins.com/wp-content/uploads/2025/05/How-to-Buy-Bitcoin-Anonymously-300x300.jpg"
-                                    alt="Bitcoin Wallet Guide"
-                                    style="width: 100%; height: 150px; object-fit: cover; display: block;" />
-                                <div class="content">
-                                    <div class="category">Cryptocurrency</div>
-                                    <h3>How to Choose the Best Bitcoin Wallet</h3>
-                                    <div class="meta">June 6, 2025 | By Jane Doe</div>
+
+                            </h4>
+                            <div
+                                style="font-size: 14px; margin: 0px !important; margin-top: 7px !important;    display: flex;align-items: center;justify-content: space-between;">
+                                <div style="width: 32%;; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
+                                    class="truncate-text">
+
+                                    <%=result.startDateFormatted%>
                                 </div>
-                            </div>
-                            <div class="bitcoin-art"
-                                style="width: calc(25% - 1.5rem); height: 350px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                                <img src="https://99bitcoins.com/wp-content/uploads/2024/11/Best-Bitcoin-Wallets-300x300.jpeg"
-                                    alt="Bitcoin Wallet Guide"
-                                    style="width: 100%; height: 150px; object-fit: cover; display: block;" />
-                                <div class="content">
-                                    <div class="category">Cryptocurrency</div>
-                                    <h3>How to Choose the Best Bitcoin Wallet</h3>
-                                    <div class="meta">June 6, 2025 | By Jane Doe</div>
+                                <div style="width: 32%;text-align: right;; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
+                                    class="truncate-text">
+                                    <span style="font-weight: 600;">
+                                        Qty.
+                                    </span>
+                                    <%=result.airdropQuantity%>
+                                </div>
+                                <div style="width: 32%;text-align: right; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
+                                    class="truncate-text">
+                                    <span style="font-weight: 600;">
+                                        Winners.
+                                    </span>
+                                    <%=result.noOfWinners%>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                    <div class="news-section">
-                        <div class="top-news">
-                            <h4>Bitcoin News Today</h4>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/03/Margex-reviews-768x422.jpg" />
-                                <div class="text">
-                                    <span>Sponsored</span>
-                                    Maximize Your Trading With Margex’s 20% Deposit Bonus
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" />
-                                <div class="text">
-                                    <span>News</span>
-                                    What Are The Best New Presales to Buy in June 2025?
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/05/PUDGY-PENGUINS-WALLETS-39-350x263.png" />
-                                <div class="text">
-                                    <span>Adoption</span>
-                                    CoinGecko Report Analysis: What Moved Crypto in Q1 2025?
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/04/Bitcoin-Bonuses-350x287.jpg" />
-                                <div class="text">
-                                    <span>Cryptocurrency</span>
-                                    14 Best Crypto Bonuses in 2025 – Top Exchange Offers & Promotions
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/04/BingX-copy-trading-exclusive-300x267.jpg" />
-                                <div class="text">
-                                    <span>Sponsored</span>
-                                    BingX Launches $10 Risk-Free Copy Trading Voucher for New Users
-                                </div>
-                            </div>
-                        </div>
-                        <div class="top-news">
-                            <h4>Altcoin News Today</h4>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/03/Margex-reviews-768x422.jpg" />
-                                <div class="text">
-                                    <span>Sponsored</span>
-                                    Maximize Your Trading With Margex’s 20% Deposit Bonus
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" />
-                                <div class="text">
-                                    <span>News</span>
-                                    What Are The Best New Presales to Buy in June 2025?
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/05/PUDGY-PENGUINS-WALLETS-39-350x263.png" />
-                                <div class="text">
-                                    <span>Adoption</span>
-                                    CoinGecko Report Analysis: What Moved Crypto in Q1 2025?
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/04/Bitcoin-Bonuses-350x287.jpg" />
-                                <div class="text">
-                                    <span>Cryptocurrency</span>
-                                    14 Best Crypto Bonuses in 2025 – Top Exchange Offers & Promotions
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/04/BingX-copy-trading-exclusive-300x267.jpg" />
-                                <div class="text">
-                                    <span>Sponsored</span>
-                                    BingX Launches $10 Risk-Free Copy Trading Voucher for New Users
-                                </div>
-                            </div>
-                        </div>
-                        <div class="top-news">
-                            <h4>Presales</h4>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/03/Margex-reviews-768x422.jpg" />
-                                <div class="text">
-                                    <span>Sponsored</span>
-                                    Maximize Your Trading With Margex’s 20% Deposit Bonus
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" />
-                                <div class="text">
-                                    <span>News</span>
-                                    What Are The Best New Presales to Buy in June 2025?
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/05/PUDGY-PENGUINS-WALLETS-39-350x263.png" />
-                                <div class="text">
-                                    <span>Adoption</span>
-                                    CoinGecko Report Analysis: What Moved Crypto in Q1 2025?
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/04/Bitcoin-Bonuses-350x287.jpg" />
-                                <div class="text">
-                                    <span>Cryptocurrency</span>
-                                    14 Best Crypto Bonuses in 2025 – Top Exchange Offers & Promotions
-                                </div>
-                            </div>
-                            <div class="story-item">
-                                <img
-                                    src="https://99bitcoins.com/wp-content/uploads/2025/04/BingX-copy-trading-exclusive-300x267.jpg" />
-                                <div class="text">
-                                    <span>Sponsored</span>
-                                    BingX Launches $10 Risk-Free Copy Trading Voucher for New Users
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="news-btn">
-                        <button>View All News <i class="fa-solid fa-angle-right"></i> </button>
-                    </div>
+
+
+
+                    <% })%>
+
+
+            </div>
         </div>
 
-        <div class="press-release" style="background-color: #000; padding:0px 55px; margin-top:10px;">
-            <div
-                style="display: flex; justify-content: space-between; padding-left: 10px; padding-right: 10px; align-items: center; padding-bottom: 10px; color: white;">
-                <h1>Press releases</h1>
-                <button
-                    style="width: 80px; padding: 8px; background-color: transparent; border: 1px solid blue; color: blue; border-radius: 10%; cursor: pointer;">view
-                    all</button>
-            </div>
+        <div class="extra-section">
+            <div class="extra-section">
+                <div class="extra-card">
+                    <div class="icon">👤➕</div>
+                    <div>
+                        <div class="extra-title">Follow Us →</div>
+                        <div class="extra-sub">Start learning crypto now</div>
+                    </div>
+                </div>
 
-            <div style="overflow: hidden; padding-bottom: 30px;">
-                <div style="display: flex; gap: 1rem; transition: transform 0.3s ease;" id="slider">
-                    <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
-                        <img src="https://crypto.news/app/uploads/2024/01/crypto-news-PEPE-might-recover-as-new-meme-coin03-880x525.webp"
-                            alt="" style="width: 100%; height: 122px;">
-                        <div class="dis">
-                            <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun</p>
-                        </div>
+                <div class="divider"></div>
+
+                <div class="extra-card">
+                    <div class="icon">📬</div>
+                    <div>
+                        <div class="extra-title">Our Newsletter →</div>
+                        <div class="extra-sub">Stay ahead in the crypto game!</div>
                     </div>
-                    <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
-                        <img src="https://crypto.news/app/uploads/2024/01/crypto-news-PEPE-might-recover-as-new-meme-coin03-880x525.webp"
-                            alt="" style="width: 100%; height: 122px;">
-                        <div class="dis">
-                            <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun</p>
-                        </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="extra-card">
+                    <div class="icon">▶️</div>
+                    <div>
+                        <div class="extra-title">Youtube Channel →</div>
+                        <div class="extra-sub">Exclusive insights, tips, and updates weekly!</div>
                     </div>
-                    <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
-                        <img src="https://crypto.news/app/uploads/2024/01/crypto-news-PEPE-might-recover-as-new-meme-coin03-880x525.webp"
-                            alt="" style="width: 100%; height: 122px;">
-                        <div class="dis">
-                            <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
-                        <img src="https://crypto.news/app/uploads/2024/01/crypto-news-PEPE-might-recover-as-new-meme-coin03-880x525.webp"
-                            alt="" style="width: 100%; height: 122px;">
-                        <div class="dis">
-                            <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
-                        <img src="https://crypto.news/app/uploads/2024/06/crypto-news-3-projects-that-show-the-metaverse-isnt-dead-option03-880x523.webp"
-                            alt="" style="width: 100%; height: 122px;">
-                        <div class="dis">
-                            <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
-                        <img src="https://crypto.news/app/uploads/2025/02/crypto-news-trader-option07-880x523.webp"
-                            alt="" style="width: 100%; height: 122px;">
-                        <div class="dis">
-                            <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
-                        <img src="https://crypto.news/app/uploads/2025/06/crypto-news-paper-Bitcoin-option05-880x523.webp"
-                            alt="" style="width: 100%; height: 122px;">
-                        <div class="dis">
-                            <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
-                        <img src="https://crypto.news/app/uploads/2024/08/cropped-crypto-news-Examining-crypto-Wall-Street-ties-option01.webp"
-                            alt="" style="width: 100%; height: 122px;">
-                        <div class="dis">
-                            <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
-                        <img src="https://crypto.news/app/uploads/2025/04/crypto-news-blockchain-option01-880x523.webp"
-                            alt="" style="width: 100%; height: 122px;">
-                        <div class="dis">
-                            <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun</p>
-                        </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="extra-card">
+                    <div class="icon">💬99</div>
+                    <div>
+                        <div class="extra-title">Why trust 99bitcoins →</div>
+                        <div class="extra-sub">Understand how we collect our data and more</div>
                     </div>
                 </div>
             </div>
-
-            <div style="display: flex; justify-content: center; gap: 10px; padding-bottom: 20px;">
-                <div class="next-prev" onclick="goToSlide(0)"
-                    style="border-radius: 50%; background-color: white; border: 1px solid white; height: 10px; width: 10px; cursor: pointer;"
-                    id="dot0"></div>
-                <div class="next-prev" onclick="goToSlide(1)"
-                    style="border-radius: 50%; background-color: transparent; border: 1px solid white; height: 10px; width: 10px; cursor: pointer;"
-                    id="dot1"></div>
-            </div>
         </div>
 
-        <script>
-            let currentSlide = 0;
-            const slider = document.getElementById('slider');
-            const totalSlides = 2;
+        <div class="bitcoin-section" style="padding: 7px 0px;">
+            <h1 style="color: blue;">Events</h1>
+            <div class="bitcoin-guides" style="display: flex; flex-wrap: wrap; justify-content: start; gap: 2rem; ">
+                <% eventListingData.forEach((result,index)=>{ %>
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <img style="border-radius: 20px;" src="<%=result.bannerImage%>" alt="Blockchain Event">
+                            </div>
+                            <div class="card-title truncate-text" title="<%= result.title %>">
+                                <%=result.title%>
+                            </div>
+                        </div>
 
-            function updateDots() {
-                for (let i = 0; i < totalSlides; i++) {
-                    const dot = document.getElementById('dot' + i);
-                    if (i === currentSlide) {
-                        dot.style.backgroundColor = 'white';
-                    } else {
-                        dot.style.backgroundColor = 'transparent';
+                    </div>
+                    <% })%>
+
+                        <div>
+                            <h1 style="color: blue;">News</h1>
+                            <div class="bitcoin-guides"
+                                style="display: flex; flex-wrap: wrap; justify-content: start; gap: 2rem; ">
+
+                                <div class="bitcoin-art"
+                                    style="width: calc(25% - 1.5rem); height: 350px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                    <img src="https://99bitcoins.com/wp-content/uploads/2024/11/What-is-Bitcoin-300x300.jpeg"
+                                        alt="PancakeSwap Review"
+                                        style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+                                    <div class="content">
+                                        <div class="category">Cryptocurrency</div>
+                                        <h3>PancakeSwap (CAKE) Review: A Beginner’s Guide</h3>
+                                        <div class="meta">June 6, 2025 | By Mensholong Lepcha</div>
+                                    </div>
+                                </div>
+                                <div class="bitcoin-art"
+                                    style="width: calc(25% - 1.5rem); height: 350px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                    <img src="https://99bitcoins.com/wp-content/uploads/2017/02/shutterstock_574719532.jpg"
+                                        alt="Bitcoin Wallet Guide"
+                                        style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+                                    <div class="content">
+                                        <div class="category">Cryptocurrency</div>
+                                        <h3>How to Choose the Best Bitcoin Wallet</h3>
+                                        <div class="meta">June 6, 2025 | By Jane Doe</div>
+                                    </div>
+                                </div>
+                                <div class="bitcoin-art"
+                                    style="width: calc(25% - 1.5rem); height: 350px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                    <img src="https://99bitcoins.com/wp-content/uploads/2025/05/How-to-Buy-Bitcoin-Anonymously-300x300.jpg"
+                                        alt="Bitcoin Wallet Guide"
+                                        style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+                                    <div class="content">
+                                        <div class="category">Cryptocurrency</div>
+                                        <h3>How to Choose the Best Bitcoin Wallet</h3>
+                                        <div class="meta">June 6, 2025 | By Jane Doe</div>
+                                    </div>
+                                </div>
+                                <div class="bitcoin-art"
+                                    style="width: calc(25% - 1.5rem); height: 350px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                                    <img src="https://99bitcoins.com/wp-content/uploads/2024/11/Best-Bitcoin-Wallets-300x300.jpeg"
+                                        alt="Bitcoin Wallet Guide"
+                                        style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+                                    <div class="content">
+                                        <div class="category">Cryptocurrency</div>
+                                        <h3>How to Choose the Best Bitcoin Wallet</h3>
+                                        <div class="meta">June 6, 2025 | By Jane Doe</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="news-section">
+                            <div class="top-news">
+                                <h4>Bitcoin News Today</h4>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/03/Margex-reviews-768x422.jpg" />
+                                    <div class="text">
+                                        <span>Sponsored</span>
+                                        Maximize Your Trading With Margex’s 20% Deposit Bonus
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" />
+                                    <div class="text">
+                                        <span>News</span>
+                                        What Are The Best New Presales to Buy in June 2025?
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/05/PUDGY-PENGUINS-WALLETS-39-350x263.png" />
+                                    <div class="text">
+                                        <span>Adoption</span>
+                                        CoinGecko Report Analysis: What Moved Crypto in Q1 2025?
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/04/Bitcoin-Bonuses-350x287.jpg" />
+                                    <div class="text">
+                                        <span>Cryptocurrency</span>
+                                        14 Best Crypto Bonuses in 2025 – Top Exchange Offers & Promotions
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/04/BingX-copy-trading-exclusive-300x267.jpg" />
+                                    <div class="text">
+                                        <span>Sponsored</span>
+                                        BingX Launches $10 Risk-Free Copy Trading Voucher for New Users
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="top-news">
+                                <h4>Altcoin News Today</h4>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/03/Margex-reviews-768x422.jpg" />
+                                    <div class="text">
+                                        <span>Sponsored</span>
+                                        Maximize Your Trading With Margex’s 20% Deposit Bonus
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" />
+                                    <div class="text">
+                                        <span>News</span>
+                                        What Are The Best New Presales to Buy in June 2025?
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/05/PUDGY-PENGUINS-WALLETS-39-350x263.png" />
+                                    <div class="text">
+                                        <span>Adoption</span>
+                                        CoinGecko Report Analysis: What Moved Crypto in Q1 2025?
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/04/Bitcoin-Bonuses-350x287.jpg" />
+                                    <div class="text">
+                                        <span>Cryptocurrency</span>
+                                        14 Best Crypto Bonuses in 2025 – Top Exchange Offers & Promotions
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/04/BingX-copy-trading-exclusive-300x267.jpg" />
+                                    <div class="text">
+                                        <span>Sponsored</span>
+                                        BingX Launches $10 Risk-Free Copy Trading Voucher for New Users
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="top-news">
+                                <h4>Presales</h4>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/03/Margex-reviews-768x422.jpg" />
+                                    <div class="text">
+                                        <span>Sponsored</span>
+                                        Maximize Your Trading With Margex’s 20% Deposit Bonus
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" />
+                                    <div class="text">
+                                        <span>News</span>
+                                        What Are The Best New Presales to Buy in June 2025?
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/05/PUDGY-PENGUINS-WALLETS-39-350x263.png" />
+                                    <div class="text">
+                                        <span>Adoption</span>
+                                        CoinGecko Report Analysis: What Moved Crypto in Q1 2025?
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/04/Bitcoin-Bonuses-350x287.jpg" />
+                                    <div class="text">
+                                        <span>Cryptocurrency</span>
+                                        14 Best Crypto Bonuses in 2025 – Top Exchange Offers & Promotions
+                                    </div>
+                                </div>
+                                <div class="story-item">
+                                    <img
+                                        src="https://99bitcoins.com/wp-content/uploads/2025/04/BingX-copy-trading-exclusive-300x267.jpg" />
+                                    <div class="text">
+                                        <span>Sponsored</span>
+                                        BingX Launches $10 Risk-Free Copy Trading Voucher for New Users
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="news-btn">
+                            <button>View All News <i class="fa-solid fa-angle-right"></i> </button>
+                        </div>
+            </div>
+
+            <div class="press-release" style="background-color: #000; padding:0px 55px; margin-top:10px;">
+                <div
+                    style="display: flex; justify-content: space-between; padding-left: 10px; padding-right: 10px; align-items: center; padding-bottom: 10px; color: white;">
+                    <h1>Press releases</h1>
+                    <button
+                        style="width: 80px; padding: 8px; background-color: transparent; border: 1px solid blue; color: blue; border-radius: 10%; cursor: pointer;">view
+                        all</button>
+                </div>
+
+                <div style="overflow: hidden; padding-bottom: 30px;">
+                    <div style="display: flex; gap: 1rem; transition: transform 0.3s ease;" id="slider">
+                        <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
+                            <img src="https://crypto.news/app/uploads/2024/01/crypto-news-PEPE-might-recover-as-new-meme-coin03-880x525.webp"
+                                alt="" style="width: 100%; height: 122px;">
+                            <div class="dis">
+                                <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
+                            <img src="https://crypto.news/app/uploads/2024/01/crypto-news-PEPE-might-recover-as-new-meme-coin03-880x525.webp"
+                                alt="" style="width: 100%; height: 122px;">
+                            <div class="dis">
+                                <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
+                            <img src="https://crypto.news/app/uploads/2024/01/crypto-news-PEPE-might-recover-as-new-meme-coin03-880x525.webp"
+                                alt="" style="width: 100%; height: 122px;">
+                            <div class="dis">
+                                <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
+                            <img src="https://crypto.news/app/uploads/2024/01/crypto-news-PEPE-might-recover-as-new-meme-coin03-880x525.webp"
+                                alt="" style="width: 100%; height: 122px;">
+                            <div class="dis">
+                                <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
+                            <img src="https://crypto.news/app/uploads/2024/06/crypto-news-3-projects-that-show-the-metaverse-isnt-dead-option03-880x523.webp"
+                                alt="" style="width: 100%; height: 122px;">
+                            <div class="dis">
+                                <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
+                            <img src="https://crypto.news/app/uploads/2025/02/crypto-news-trader-option07-880x523.webp"
+                                alt="" style="width: 100%; height: 122px;">
+                            <div class="dis">
+                                <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
+                            <img src="https://crypto.news/app/uploads/2025/06/crypto-news-paper-Bitcoin-option05-880x523.webp"
+                                alt="" style="width: 100%; height: 122px;">
+                            <div class="dis">
+                                <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
+                            <img src="https://crypto.news/app/uploads/2024/08/cropped-crypto-news-Examining-crypto-Wall-Street-ties-option01.webp"
+                                alt="" style="width: 100%; height: 122px;">
+                            <div class="dis">
+                                <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 220px; height: 100%; flex-shrink: 0;">
+                            <img src="https://crypto.news/app/uploads/2025/04/crypto-news-blockchain-option01-880x523.webp"
+                                alt="" style="width: 100%; height: 122px;">
+                            <div class="dis">
+                                <p>VERSE token launch surpasses $1b market cap within minutes of going live on Pump.fun
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 10px; padding-bottom: 20px;">
+                    <div class="next-prev" onclick="goToSlide(0)"
+                        style="border-radius: 50%; background-color: white; border: 1px solid white; height: 10px; width: 10px; cursor: pointer;"
+                        id="dot0"></div>
+                    <div class="next-prev" onclick="goToSlide(1)"
+                        style="border-radius: 50%; background-color: transparent; border: 1px solid white; height: 10px; width: 10px; cursor: pointer;"
+                        id="dot1"></div>
+                </div>
+            </div>
+
+            <script>
+                let currentSlide = 0;
+                const slider = document.getElementById('slider');
+                const totalSlides = 2;
+
+                function updateDots() {
+                    for (let i = 0; i < totalSlides; i++) {
+                        const dot = document.getElementById('dot' + i);
+                        if (i === currentSlide) {
+                            dot.style.backgroundColor = 'white';
+                        } else {
+                            dot.style.backgroundColor = 'transparent';
+                        }
                     }
                 }
-            }
 
-            function goToSlide(slideIndex) {
-                currentSlide = slideIndex;
-                const slideWidth = (220 + 16) * 3; // 3 cards per slide (220px width + 16px gap)
-                const translateX = -slideIndex * slideWidth;
-                slider.style.transform = `translateX(${translateX}px)`;
+                function goToSlide(slideIndex) {
+                    currentSlide = slideIndex;
+                    const slideWidth = (220 + 16) * 3; // 3 cards per slide (220px width + 16px gap)
+                    const translateX = -slideIndex * slideWidth;
+                    slider.style.transform = `translateX(${translateX}px)`;
+                    updateDots();
+                }
+
+                // Initialize first slide
                 updateDots();
-            }
+            </script>
+            <h2>Editor's Picks</h2>
+            <div class="tabs">
+                <div class="tab">Top Articles</div>
+                <div class="tab">Guides</div>
+                <div class="tab">Comparisons</div>
+                <div class="tab">Reviews</div>
+            </div>
 
-            // Initialize first slide
-            updateDots();
-        </script>
-        <h2>Editor's Picks</h2>
-        <div class="tabs">
-            <div class="tab">Top Articles</div>
-            <div class="tab">Guides</div>
-            <div class="tab">Comparisons</div>
-            <div class="tab">Reviews</div>
-        </div>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://99bitcoins.com/wp-content/uploads/2024/12/Best-Bitcoin-Casinos-300x296.jpg"
+                        alt="Card Image">
+                    <div class="card-content">
+                        <div class="category">Uncategorized</div>
+                        <div class="title">15+ Best Bitcoin Casinos to Play at in June 2025</div>
+                        <div class="meta">June 6, 2025 | By <span>Caroline</span></div>
+                    </div>
+                </div>
 
-        <div class="card-container">
-            <div class="card">
-                <img src="https://99bitcoins.com/wp-content/uploads/2024/12/Best-Bitcoin-Casinos-300x296.jpg"
-                    alt="Card Image">
-                <div class="card-content">
-                    <div class="category">Uncategorized</div>
-                    <div class="title">15+ Best Bitcoin Casinos to Play at in June 2025</div>
-                    <div class="meta">June 6, 2025 | By <span>Caroline</span></div>
+                <div class="card">
+                    <img src="https://99bitcoins.com/wp-content/uploads/2022/07/crypto-betting-768x399.jpg"
+                        alt="Card Image">
+                    <div class="card-content">
+                        <div class="category">Best Bitcoin & Crypto Casinos to Play at in June 2025</div>
+                        <div class="title">The Best Bitcoin and Crypto Sports Betting Sites in June 2025</div>
+                        <div class="meta">June 5, 2025 | By <span>Alexander Reed</span></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://99bitcoins.com/wp-content/uploads/2024/09/Best-no-kyc-crypto-exchanges-768x439.jpg"
+                        alt="Card Image">
+                    <div class="card-content">
+                        <div class="category">Cryptocurrency</div>
+                        <div class="title">Best Non KYC Crypto Exchanges in 2025 – Anonymous Non KYC Exchanges</div>
+                        <div class="meta">June 5, 2025 | By <span>Shraddha</span></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://99bitcoins.com/wp-content/uploads/2024/10/Next-Crypto-to-1000x-300x300.jpeg"
+                        alt="Card Image">
+                    <div class="card-content">
+                        <div class="category">Cryptocurrency</div>
+                        <div class="title">Next 1000x Crypto – 10 Coins That Could 1000x in 2025</div>
+                        <div class="meta">June 5, 2025 | By <span>Shraddha</span></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="card">
-                <img src="https://99bitcoins.com/wp-content/uploads/2022/07/crypto-betting-768x399.jpg"
-                    alt="Card Image">
-                <div class="card-content">
-                    <div class="category">Best Bitcoin & Crypto Casinos to Play at in June 2025</div>
-                    <div class="title">The Best Bitcoin and Crypto Sports Betting Sites in June 2025</div>
-                    <div class="meta">June 5, 2025 | By <span>Alexander Reed</span></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://99bitcoins.com/wp-content/uploads/2024/09/Best-no-kyc-crypto-exchanges-768x439.jpg"
-                    alt="Card Image">
-                <div class="card-content">
-                    <div class="category">Cryptocurrency</div>
-                    <div class="title">Best Non KYC Crypto Exchanges in 2025 – Anonymous Non KYC Exchanges</div>
-                    <div class="meta">June 5, 2025 | By <span>Shraddha</span></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://99bitcoins.com/wp-content/uploads/2024/10/Next-Crypto-to-1000x-300x300.jpeg"
-                    alt="Card Image">
-                <div class="card-content">
-                    <div class="category">Cryptocurrency</div>
-                    <div class="title">Next 1000x Crypto – 10 Coins That Could 1000x in 2025</div>
-                    <div class="meta">June 5, 2025 | By <span>Shraddha</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="trust-section">
-            <!-- <div class="logo">
+            <div class="trust-section">
+                <!-- <div class="logo">
             <div class="logo-icon">₿</div>
             <span class="logo-text">99BITCOINS</span>
         </div> -->
 
-            <div class="main-content">
-                <div class="left-content">
-                    <h2 class="main-title">Why you can trust 99Bitcoins</h2>
-                    <p class="description">
-                        At 99Bitcoins, we are committed to providing accurate and unbiased information on Bitcoin and
-                        cryptocurrency. Our expert team ensures reliable, up-to-date insights and verified information
-                        to
-                        help you navigate the world of cryptocurrency with confidence.
-                    </p>
-                    <a href="#" class="read-more">Read more</a>
+                <div class="main-content">
+                    <div class="left-content">
+                        <h2 class="main-title">Why you can trust 99Bitcoins</h2>
+                        <p class="description">
+                            At 99Bitcoins, we are committed to providing accurate and unbiased information on Bitcoin
+                            and
+                            cryptocurrency. Our expert team ensures reliable, up-to-date insights and verified
+                            information
+                            to
+                            help you navigate the world of cryptocurrency with confidence.
+                        </p>
+                        <a href="#" class="read-more">Read more</a>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Years<br>Established in 2013, 99Bitcoin's team members have been
+                                crypto
+                                experts since Bitcoin's Early days.</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">90hr+</div>
+                            <div class="stat-label">Weekly Research</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Expert contributors</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100k+</div>
+                            <div class="stat-label">Monthly readers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2000+</div>
+                            <div class="stat-label">Crypto Projects<br>Reviewed</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Years<br>Established in 2013, 99Bitcoin's team members have been crypto
-                            experts since Bitcoin's Early days.</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">90hr+</div>
-                        <div class="stat-label">Weekly Research</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Expert contributors</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100k+</div>
-                        <div class="stat-label">Monthly readers</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">2000+</div>
-                        <div class="stat-label">Crypto Projects<br>Reviewed</div>
+                <div class="featured-section">
+                    <div class="featured-label">Featured in:</div>
+                    <div class="featured-logos">
+                        <div class="featured-logo">
+                            <div class="logo-placeholder">📚</div>
+                            <span>Techopedia</span>
+                        </div>
+                        <div class="featured-logo">
+                            <div class="logo-placeholder">G</div>
+                            <span>Google News</span>
+                        </div>
+                        <div class="featured-logo">
+                            <div class="logo-placeholder">🦎</div>
+                            <span>CoinGecko</span>
+                        </div>
+                        <div class="featured-logo">
+                            <div class="logo-placeholder">⚡</div>
+                            <span>cryptonews</span>
+                        </div>
+                        <div class="featured-logo">
+                            <div class="logo-placeholder">📊</div>
+                            <span>COINTELEGRAPH</span>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- Crash Course Section -->
+            <div class="crash-course">
+                <div class="crash-left">
+                    <h2>Free</h2>
+                    <h3>Bitcoin Crash Course</h3>
+                    <ul>
+                        <li>✅ Enjoyed by over 100,000 students.</li>
+                        <li>✅ One email a day, 7 days in a row.</li>
+                        <li>✅ Short and educational, guaranteed!</li>
+                    </ul>
+                    <div class="stars">
+                        Rated Excellent on Trustpilot from over <span class="highlight">750 reviews</span><br />
+                        <img src="https://99bitcoins.com/wp-content/themes/99bitcoins/assets/img/icon-star-trustpilot.svg"
+                            alt="4.5 Stars">
+                        <img src="https://99bitcoins.com/wp-content/themes/99bitcoins/assets/img/icon-star-trustpilot.svg"
+                            alt="4.5 Stars">
+                        <img src="https://99bitcoins.com/wp-content/themes/99bitcoins/assets/img/icon-star-trustpilot.svg"
+                            alt="4.5 Stars">
+                        <img src="https://99bitcoins.com/wp-content/themes/99bitcoins/assets/img/icon-star-trustpilot.svg"
+                            alt="4.5 Stars">
+                        <img src="https://99bitcoins.com/wp-content/themes/99bitcoins/assets/img/icon-star-half-trustpilot.svg"
+                            alt="4.5 Stars">
+                    </div>
+                </div>
+                <div class="crash-right">
+                    <input type="text" placeholder="Your name" />
+                    <input type="email" placeholder="Your email" />
+                    <button>Enroll Me Now</button>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="footer-container">
+                    <!-- Newsletter Section -->
+                    <div class="newsletter-section">
+                        <h2 class="newsletter-title">Subscribe to our Newsletter</h2>
+                        <form class="newsletter-form">
+                            <input type="email" class="email-input" placeholder="Type your email">
+                            <button type="submit" class="subscribe-btn">Subscribe now</button>
+                        </form>
+                        <div class="checkbox-container">
+                            <input type="checkbox" class="checkbox" id="crashCourse">
+                            <label for="crashCourse" class="checkbox-label">Sign up for bitcoin crash course</label>
+                        </div>
+                        <p class="privacy-text">
+                            This site is protected by reCAPTCHA and the Google
+                            <a href="#" class="privacy-link">Privacy Policy</a> and
+                            <a href="#" class="privacy-link">Terms of Service</a>
+                        </p>
+                    </div>
 
-            <div class="featured-section">
-                <div class="featured-label">Featured in:</div>
-                <div class="featured-logos">
-                    <div class="featured-logo">
-                        <div class="logo-placeholder">📚</div>
-                        <span>Techopedia</span>
-                    </div>
-                    <div class="featured-logo">
-                        <div class="logo-placeholder">G</div>
-                        <span>Google News</span>
-                    </div>
-                    <div class="featured-logo">
-                        <div class="logo-placeholder">🦎</div>
-                        <span>CoinGecko</span>
-                    </div>
-                    <div class="featured-logo">
-                        <div class="logo-placeholder">⚡</div>
-                        <span>cryptonews</span>
-                    </div>
-                    <div class="featured-logo">
-                        <div class="logo-placeholder">📊</div>
-                        <span>COINTELEGRAPH</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Crash Course Section -->
-        <div class="crash-course">
-            <div class="crash-left">
-                <h2>Free</h2>
-                <h3>Bitcoin Crash Course</h3>
-                <ul>
-                    <li>✅ Enjoyed by over 100,000 students.</li>
-                    <li>✅ One email a day, 7 days in a row.</li>
-                    <li>✅ Short and educational, guaranteed!</li>
-                </ul>
-                <div class="stars">
-                    Rated Excellent on Trustpilot from over <span class="highlight">750 reviews</span><br />
-                    <img src="https://99bitcoins.com/wp-content/themes/99bitcoins/assets/img/icon-star-trustpilot.svg"
-                        alt="4.5 Stars">
-                    <img src="https://99bitcoins.com/wp-content/themes/99bitcoins/assets/img/icon-star-trustpilot.svg"
-                        alt="4.5 Stars">
-                    <img src="https://99bitcoins.com/wp-content/themes/99bitcoins/assets/img/icon-star-trustpilot.svg"
-                        alt="4.5 Stars">
-                    <img src="https://99bitcoins.com/wp-content/themes/99bitcoins/assets/img/icon-star-trustpilot.svg"
-                        alt="4.5 Stars">
-                    <img src="https://99bitcoins.com/wp-content/themes/99bitcoins/assets/img/icon-star-half-trustpilot.svg"
-                        alt="4.5 Stars">
-                </div>
-            </div>
-            <div class="crash-right">
-                <input type="text" placeholder="Your name" />
-                <input type="email" placeholder="Your email" />
-                <button>Enroll Me Now</button>
-            </div>
-        </div>
-        <footer class="footer">
-            <div class="footer-container">
-                <!-- Newsletter Section -->
-                <div class="newsletter-section">
-                    <h2 class="newsletter-title">Subscribe to our Newsletter</h2>
-                    <form class="newsletter-form">
-                        <input type="email" class="email-input" placeholder="Type your email">
-                        <button type="submit" class="subscribe-btn">Subscribe now</button>
-                    </form>
-                    <div class="checkbox-container">
-                        <input type="checkbox" class="checkbox" id="crashCourse">
-                        <label for="crashCourse" class="checkbox-label">Sign up for bitcoin crash course</label>
-                    </div>
-                    <p class="privacy-text">
-                        This site is protected by reCAPTCHA and the Google
-                        <a href="#" class="privacy-link">Privacy Policy</a> and
-                        <a href="#" class="privacy-link">Terms of Service</a>
-                    </p>
-                </div>
-
-                <!-- Footer Content -->
-                <div class="footer-content">
-                    <!-- Brand Column -->
-                    <div class="footer-brand">
-                        <!-- <div class="logo">
+                    <!-- Footer Content -->
+                    <div class="footer-content">
+                        <!-- Brand Column -->
+                        <div class="footer-brand">
+                            <!-- <div class="logo">
                         <div class="logo-icon">₿</div>
                         <span class="logo-text">99BITCOINS</span>
                     </div> -->
-                        <div class="social-links">
-                            <a href="#" class="social-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                </svg>
-                            </a>
-                            <a href="#" class="social-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                </svg>
-                            </a>
-                            <a href="#" class="social-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                                </svg>
-                            </a>
-                            <a href="#" class="social-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.758-1.378l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001.017.001z.017" />
-                                </svg>
-                            </a>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.758-1.378l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001.017.001z.017" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Advertise With Us -->
+                        <div class="footer-column">
+                            <h3 class="footer-title">Advertise With Us</h3>
+                            <div class="footer-links">
+                                <a href="#" class="footer-link">Contact</a>
+                            </div>
+                        </div>
+
+                        <!-- About the Company -->
+                        <div class="footer-column">
+                            <h3 class="footer-title">About the Company</h3>
+                            <div class="footer-links">
+                                <a href="#" class="footer-link">Editorial Policy</a>
+                                <a href="#" class="footer-link">How We Review Projects</a>
+                                <a href="#" class="footer-link">Privacy Policy</a>
+                                <a href="#" class="footer-link">Disclaimer</a>
+                                <a href="#" class="footer-link">Terms of Use</a>
+                                <a href="#" class="footer-link">GDPR</a>
+                            </div>
+                        </div>
+
+                        <!-- Cryptocurrencies -->
+                        <div class="footer-column">
+                            <h3 class="footer-title">Cryptocurrencies</h3>
+                            <div class="footer-links">
+                                <a href="#" class="footer-link">What is Bitcoin?</a>
+                                <a href="#" class="footer-link">What is Ethereum?</a>
+                                <a href="#" class="footer-link">What are Stablecoins?</a>
+                                <a href="#" class="footer-link">What is Solana?</a>
+                                <a href="#" class="footer-link">Crypto Wiki</a>
+                            </div>
+                        </div>
+
+                        <!-- How to Buy Crypto -->
+                        <div class="footer-column">
+                            <h3 class="footer-title">How to Buy Crypto</h3>
+                            <div class="footer-links">
+                                <a href="#" class="footer-link">How to Buy Bitcoin</a>
+                                <a href="#" class="footer-link">How to Buy Ethereum</a>
+                                <a href="#" class="footer-link">How to Buy Solana</a>
+                                <a href="#" class="footer-link">How to Buy DOGE</a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Advertise With Us -->
-                    <div class="footer-column">
-                        <h3 class="footer-title">Advertise With Us</h3>
-                        <div class="footer-links">
-                            <a href="#" class="footer-link">Contact</a>
-                        </div>
-                    </div>
-
-                    <!-- About the Company -->
-                    <div class="footer-column">
-                        <h3 class="footer-title">About the Company</h3>
-                        <div class="footer-links">
-                            <a href="#" class="footer-link">Editorial Policy</a>
-                            <a href="#" class="footer-link">How We Review Projects</a>
-                            <a href="#" class="footer-link">Privacy Policy</a>
-                            <a href="#" class="footer-link">Disclaimer</a>
-                            <a href="#" class="footer-link">Terms of Use</a>
-                            <a href="#" class="footer-link">GDPR</a>
-                        </div>
-                    </div>
-
-                    <!-- Cryptocurrencies -->
-                    <div class="footer-column">
-                        <h3 class="footer-title">Cryptocurrencies</h3>
-                        <div class="footer-links">
-                            <a href="#" class="footer-link">What is Bitcoin?</a>
-                            <a href="#" class="footer-link">What is Ethereum?</a>
-                            <a href="#" class="footer-link">What are Stablecoins?</a>
-                            <a href="#" class="footer-link">What is Solana?</a>
-                            <a href="#" class="footer-link">Crypto Wiki</a>
-                        </div>
-                    </div>
-
-                    <!-- How to Buy Crypto -->
-                    <div class="footer-column">
-                        <h3 class="footer-title">How to Buy Crypto</h3>
-                        <div class="footer-links">
-                            <a href="#" class="footer-link">How to Buy Bitcoin</a>
-                            <a href="#" class="footer-link">How to Buy Ethereum</a>
-                            <a href="#" class="footer-link">How to Buy Solana</a>
-                            <a href="#" class="footer-link">How to Buy DOGE</a>
-                        </div>
+                    <!-- Footer Bottom -->
+                    <div class="footer-bottom">
+                        <p class="copyright">© 2025 99bitcoins LTD, All rights reserved</p>
+                        <a href="#" class="scroll-top">↑</a>
                     </div>
                 </div>
-
-                <!-- Footer Bottom -->
-                <div class="footer-bottom">
-                    <p class="copyright">© 2025 99bitcoins LTD, All rights reserved</p>
-                    <a href="#" class="scroll-top">↑</a>
-                </div>
-            </div>
-        </footer>
+            </footer>
 
 </body>
 

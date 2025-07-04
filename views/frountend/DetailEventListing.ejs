@@ -9,7 +9,26 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
-  <title>iNDEX</title>
+<title><%= eventListingData.title %> - Event Details</title>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "<%= eventListingData.title %>",
+  "startDate": "<%= eventListingData.startDate %>",
+  "endDate": "<%= eventListingData.endDate %>",
+  "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "<%= eventListingData.country %>",
+    "address": "<%= eventListingData.location %>"
+  },
+  "image": "<%= eventListingData.bannerImage %>",
+  "url": "https://kryptodesk.com/events/<%= eventListingData.slug %>"
+}
+</script>
 
   <style>
     * {

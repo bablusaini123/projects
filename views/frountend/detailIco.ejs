@@ -4,11 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= icoData.title %> - ICO Details</title>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "<%= icoData.title %>",
+  "description": "Explore the details of the ICO for <%= icoData.title %>. Find out about the tokenomics, roadmap, and investment opportunities.",
+  "brand": {
+    "@type": "Organization",
+    "name": "<%= icoData.title %>"
+  },
+  "releaseDate": "<%= icoData.startDate %>",
+  "url": "https://kryptodesk.com/ico/<%= icoData.slug %>",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "<%= icoData.totalRaise %>",
+    "availability": "https://schema.org/PreOrder"
+  }
+}
+</script>
     <link <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  
-    <title>GoodCryptoX Waitlist</title>
     <style>
         * {
             margin: 0;
@@ -1018,9 +1037,9 @@
                             <div class="overview-item2">
                                 <span class="info-label">Start Date:</span>
                                 <span class="info-value truncate-text">
-                                    <% const start=new Date(result.startDate); const end=new Date(result.endtDate); const
-                                        months=["Jan", "Feb" , "Mar" , "Apr" , "May" , "Jun" , "Jul" , "Aug" , "Sep"
-                                        , "Oct" , "Nov" , "Dec" ]; const formatDate=(date)=> {
+                                    <% const start=new Date(result.startDate); const end=new Date(result.endtDate);
+                                        const months=["Jan", "Feb" , "Mar" , "Apr" , "May" , "Jun" , "Jul" , "Aug"
+                                        , "Sep" , "Oct" , "Nov" , "Dec" ]; const formatDate=(date)=> {
                                         const day = date.getDate().toString().padStart(2, '0');
                                         const month = months[date.getMonth()];
                                         const year = date.getFullYear();
@@ -1031,17 +1050,19 @@
                                         const formattedEndDate = formatDate(end);
                                         %>
 
-                                        <p><%= formattedStartDate %>
+                                        <p>
+                                            <%= formattedStartDate %>
                                         </p>
-                                    
+
                                 </span>
                             </div>
 
                             <div class="overview-item2">
                                 <span class="info-label">End Date:</span>
                                 <span class="info-value truncate-text">
-                                       <p><%= formattedEndDate %>
-                                        </p>
+                                    <p>
+                                        <%= formattedEndDate %>
+                                    </p>
                                 </span>
                             </div>
                         </div>

@@ -6,7 +6,7 @@ frountRouter
    .route("/")
    .get(frountController.frountHomePage)
 frountRouter
-   .route("/eventListing")
+   .route("/events")
    .get(frountController.eventListing)
 frountRouter
    .route("/createEventListing")
@@ -16,18 +16,20 @@ frountRouter
    .route("/events/:id")
    .get(frountController.detailEventListing)
 frountRouter
-   .route("/icoListing")
+   .route("/ICO")
    .get(frountController.IcoListing)
 frountRouter
    .route("/createIcoListing")
    .get(frountController.createIcoListing)
    .post(app.upload.fields([{name:'logo'},{name:'roadmap'},{name:'whitepaper'},{name:'projectSreenshot'}]),frountController.createIcoListingSubmit)
-
+frountRouter
+   .route("/ICO/:slug")
+   .get(frountController.DetailIco)
 frountRouter
    .route("/icoUnderProcess/:id")
    .get(frountController.icoListingUnderProcess)
 frountRouter
-   .route("/airdropListing")
+   .route("/Airdrops")
    .get(frountController.airdropListing)
 frountRouter
    .route("/createAirdrop")
@@ -49,9 +51,7 @@ frountRouter
    .get(frountController.addNews)
    .post(app.upload.fields([{name:'newsBanner'},{name:'file'}]),frountController.addNewsSubmit)
 
-frountRouter
-   .route("/detailIco/:slug")
-   .get(frountController.DetailIco)
+
 
 
 
