@@ -45,6 +45,8 @@ const ProjectSchema = new mongoose.Schema({
   authorEmail:{ type: String,required: true },
   authorWhatsapp:{ type: String,required: true },
   authorTwitter:{ type: String,required: true },
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('IcoListing', ProjectSchema);

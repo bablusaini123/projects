@@ -6,6 +6,7 @@ const Airdrop = require('../../model/airdropModal')
 const Influencer = require('../../model/influencerModal')
 const News = require('../../model/newsModal')
 const moment = require("moment");
+const axios = require('axios');
 
 
 
@@ -15,19 +16,79 @@ const moment = require("moment");
 
 module.exports.frountHomePage = async (req, res) => {
   try {
-    //  const adminData = await Admin.find()
+
+    // ICO list
     const icoListingData = await IcoListing.find()
+      .sort({ createdAt: -1 }) // Sort by newest
+      .limit(12);
+
 
     const formattedIcoListingData = icoListingData.map(event => {
       const plain = event.toObject();
       return {
         ...plain,
-        startDateFormatted: moment(plain.startDate).format("MMMM Do, YYYY"),
-        endDateFormatted: moment(plain.endDate).format("MMMM Do, YYYY"),
+        startDateFormatted: moment(plain.startDate).format("D MMM YYYY"),  // e.g., 2 Jul 2025
+        endDateFormatted: moment(plain.endDate).format("D MMM YYYY"),
       };
     });
-    //   console.log("======",formattedIcoListingData)
-    res.render("frountend/index.ejs", { formattedIcoListingData })
+
+    // Airdrop List
+
+    //  const adminData = await Admin.find()
+    const AirdropData = await Airdrop.find()
+      .sort({ createdAt: -1 }) // Sort by newest
+      .limit(12);
+
+
+    const formattedAirdropData = AirdropData.map(event => {
+      const plain2 = event.toObject();
+      return {
+        ...plain2,
+        startDateFormatted: moment(plain2.startDate).format("D MMM YYYY"),  // e.g., 2 Jul 2025
+        endDateFormatted: moment(plain2.endDate).format("D MMM YYYY"),
+      };
+    });
+
+    // events listing
+    const category = 'upcoming'
+    const now = new Date();
+    let filter = {};
+    if (category === 'ongoing') {
+      filter = {
+        startDate: { $lte: now },
+        endDate: { $gte: now }
+      };
+    } else if (category === 'upcoming') {
+      filter = {
+        startDate: { $gt: now }
+      };
+    } else if (category === 'ended') {
+      filter = {
+        endDate: { $lt: now }
+      };
+    }
+    const eventListingData = await EventListing.find(filter)
+      .sort({ startDate: 1 }) // -1 means latest first, use 1 for oldest first
+      .limit(12);
+    // console.log("======", formattedAirdropData)
+
+    // crypto coins
+
+    const response = await axios.get(
+      'https://api.coingecko.com/api/v3/coins/markets',
+      {
+        params: {
+          vs_currency: 'usd',
+        }
+      }
+    );
+    console.log(response.data)
+    res.render("frountend/index.ejs", {
+      formattedIcoListingData,
+      formattedAirdropData,
+      eventListingData,
+      response: response.data
+    })
   } catch (error) {
     res.status(500).json({
       error: error.message,
@@ -827,8 +888,8 @@ module.exports.createAirdropSubmit = async (req, res) => {
 
 module.exports.influencers = async (req, res) => {
   try {
-     const influencerData = (await Influencer.find()).reverse()
-    res.render("frountend/influencer.ejs",{influencerData:influencerData})
+    const influencerData = (await Influencer.find()).reverse()
+    res.render("frountend/influencer.ejs", { influencerData: influencerData })
   } catch (error) {
     res.status(500).json({
       error: error.message,
@@ -865,7 +926,7 @@ module.exports.createInfluencerSubmit = async (req, res) => {
       youtube
     } = req.body;
 
-     const profileImage = req.files.profileImage ? req.files.profileImage[0]?.location : null;
+    const profileImage = req.files.profileImage ? req.files.profileImage[0]?.location : null;
 
     //  manage slug
 
@@ -877,7 +938,7 @@ module.exports.createInfluencerSubmit = async (req, res) => {
 
     const newInfluencer = new Influencer({
       name: sanitize(name),
-      profileImage:sanitize(profileImage),
+      profileImage: sanitize(profileImage),
       facebook: sanitize(facebook),
       twitter: sanitize(twitter),
       instagram: sanitize(instagram),
@@ -888,7 +949,7 @@ module.exports.createInfluencerSubmit = async (req, res) => {
       discord: sanitize(discord),
       whatsapp: sanitize(whatsapp),
       youtube: sanitize(youtube),
-      slug:slug
+      slug: slug
     });
     const saved = await newInfluencer.save();
     // console.log(req.body)
@@ -933,14 +994,14 @@ module.exports.addNewsSubmit = async (req, res) => {
       });
     }
 
-      const {
+    const {
       title,
       category,
       tags,
       description,
     } = req.body;
 
-     const newsBanner = req.files.newsBanner ? req.files.newsBanner[0]?.location : null;
+    const newsBanner = req.files.newsBanner ? req.files.newsBanner[0]?.location : null;
 
     //  manage slug
 
@@ -952,15 +1013,46 @@ module.exports.addNewsSubmit = async (req, res) => {
 
     const newNews = new News({
       title: title,
-      category:category,
-      tags:tags,
-      description:description,
-      slug:slug,
-      newsBanner:newsBanner,
-      status:"approved"
+      category: category,
+      tags: tags,
+      description: description,
+      slug: slug,
+      newsBanner: newsBanner,
+      status: "approved"
     });
     const saved = await newNews.save();
     res.redirect("/news")
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+}
+
+
+module.exports.DetailIco = async (req, res) => {
+  try {
+    const slug = req.params.slug
+    const icoData = await IcoListing.find({ slug: slug })
+    const startDate = new Date(icoData[0].startDate); // aapki db se aayi date
+    const formattedStartDate = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    }).format(startDate);
+
+    console.log(formattedStartDate)
+  
+    const endDate = new Date(icoData[0].endDate); // aapki db se aayi date
+    const formattendDate = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    }).format(endDate);
+    console.log(formattendDate)
+    icoData[0].formattedStartDate = formattedStartDate
+    icoData[0].formattendDate = formattendDate
+    res.render("frountend/detailIco.ejs", { icoData: icoData[0] })
   } catch (error) {
     res.status(500).json({
       error: error.message,
