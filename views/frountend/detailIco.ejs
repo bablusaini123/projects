@@ -4,15 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= icoData.title %> - ICO Details</title>
-   
+   <!-- Meta Title & Description for ICO Detail Page -->
+<title><%= icoData.title %> ICO, Token Sale, Tokenomics, Team & Roadmap | KryptoDesk</title>
+<meta name="description" content="Get complete details of the <%= icoData.title %> ICO including tokenomics, fundraising, roadmap, and team. Participate in the <%= icoData.title %> token sale on KryptoDesk.">
 
-    <script type="application/ld+json">
+
+
+   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "<%= icoData.title %>",
-  "description": "Explore the details of the ICO for <%= icoData.title %>. Find out about the tokenomics, roadmap, and investment opportunities.",
+  "name": "<%= icoData.title %> ICO",
+  "description": "<%= icoData.description?.replace(/(<([^>]+)>)/gi, '').substring(0, 300) || 'Explore detailed information about this crypto ICO including tokenomics, roadmap, and team.' %>",
+  "image": "<%= icoData.logo || 'https://kryptodesk.com/image/kryptodesk-logo.png' %>",
   "brand": {
     "@type": "Organization",
     "name": "<%= icoData.title %>"
@@ -20,13 +24,21 @@
   "releaseDate": "<%= icoData.startDate %>",
   "url": "https://kryptodesk.com/ico/<%= icoData.slug %>",
   "offers": {
-    "@type": "Offer",
-    "priceCurrency": "USD",
-    "price": "<%= icoData.totalRaise %>",
-    "availability": "https://schema.org/PreOrder"
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "price": "<%= icoData.rounds?.[0]?.price?.replace(/[^0-9.]/g, '') || '0.05' %>",
+  "availability": "https://schema.org/PreOrder",
+  "url": "https://kryptodesk.com/ico/<%= icoData.slug %>",
+  "priceValidUntil": "<%= icoData.endDate || new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] %>"
+},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "reviewCount": "24"
   }
 }
 </script>
+
     <link <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>

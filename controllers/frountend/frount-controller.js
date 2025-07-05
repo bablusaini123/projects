@@ -757,14 +757,14 @@ module.exports.airdropListing = async (req, res) => {
         endDate: { $lt: now }
       };
     }
-    const totalCount = await IcoListing.countDocuments(filter);
-    const icoListingData = await IcoListing.find(filter)
+    const totalCount = await Airdrop.countDocuments(filter);
+    const icoListingData = await Airdrop.find(filter)
       .sort({ startDate: 1 }) // -1 means latest first, use 1 for oldest first
       .skip((page - 1) * perPage)
       .limit(perPage);
 
 
-    const formattedIcoListingData = icoListingData.map(event => {
+    const formattedAirdropListingData = icoListingData.map(event => {
       const plain = event.toObject();
       return {
         ...plain,
@@ -772,9 +772,9 @@ module.exports.airdropListing = async (req, res) => {
         endDateFormatted: moment(plain.endDate).format("MMMM Do, YYYY"),
       };
     });
-    console.log(formattedIcoListingData)
+    console.log(formattedAirdropListingData)
     res.render("frountend/airdrops.ejs", {
-      formattedIcoListingData,
+      formattedAirdropListingData,
       current: page,
       pages: Math.ceil(totalCount / perPage),
       selectedCategory: category

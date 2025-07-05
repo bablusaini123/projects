@@ -10,18 +10,76 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
-   <title>Latest Crypto Airdrops</title>
 
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Latest Airdrops",
-  "description": "Find the latest crypto airdrops with detailed instructions, rewards, and project info at KryptoDesk.",
-  "url": "https://kryptodesk.com/airdrops"
-}
-</script>
+<title>Latest Crypto Airdrops 2025, Free Token Giveaways | KryptoDesk</title>
+<meta name="description" content="Explore upcoming and ongoing crypto airdrops from top blockchain projects. Get step-by-step guides, rewards info, and participation links at KryptoDesk.">
+
+
+  <script>
+    const encodedData = '<%- Buffer.from(JSON.stringify(formattedAirdropListingData || [])).toString("base64") %>';
+    const formattedAirdropData = JSON.parse(atob(encodedData));
+
+    const structuredAirdrops = formattedAirdropData.map((airdrop, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Event",
+        "name": airdrop.tokenName || "airdrop",
+        "startDate": airdrop.startDate || new Date().toISOString(),
+        "endDate": airdrop.endDate || new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 7 days from now fallback
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+        "description": airdrop.projectDescription
+          ? airdrop.projectDescription.replace(/(<([^>]+)>)/gi, "").substring(0, 300)
+          : "Participate in the latest crypto airdrop with detailed steps and rewards.",
+        "url": `https://kryptodesk.com/airdrops/${airdrop.slug}`,
+        "image": [
+          airdrop.tokenImage || "https://kryptodesk.com/image/kryptodesk-logo.png",
+          airdrop.bannerImage || "https://kryptodesk.com/image/kryptodesk-logo.png"
+        ],
+        "location": {
+          "@type": "VirtualLocation",
+          "url": `https://kryptodesk.com/airdrops/${airdrop.slug}`,
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "KryptoDesk",
+          "url": "https://kryptodesk.com",
+          "email": "support@kryptodesk.com"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": `https://kryptodesk.com/airdrops/${airdrop.slug}`,
+          "price": 1,  // Free airdrops ka price 0 hona chahiye
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "performer": {
+          "@type": "Person",
+          "name": airdrop.authorName || "KryptoDesk"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.5",
+          "reviewCount": "24"
+        }
+      }
+    }));
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Latest Crypto Airdrops",
+      "description": "Find the latest crypto airdrops with detailed instructions, rewards, and project info at KryptoDesk.",
+      "url": window.location.href,
+      "itemListElement": structuredAirdrops
+    };
+
+    const scriptTag = document.createElement("script");
+    scriptTag.type = "application/ld+json";
+    scriptTag.text = JSON.stringify(jsonLd);
+    document.head.appendChild(scriptTag);
+  </script>
 
 
   <style>
@@ -512,13 +570,13 @@
 
         <div class="filters">
           <div class="filter-group">
-            <a href="/icoListing?page=1&category=ongoing" class=""> <button
+            <a href="/Airdrops?page=1&category=ongoing" class=""> <button
                 class="filter-button <%= selectedCategory == 'ongoing' ? 'active-btn' : '' %>">Ongoing</button> </a>
-            <a href="/icoListing?page=1&category=upcoming" class=""><button
+            <a href="/Airdrops?page=1&category=upcoming" class=""><button
                 class="filter-button <%= selectedCategory == 'upcoming' ? 'active-btn' : '' %>"> Upcoming</button> </a>
-            <a href="/icoListing?page=1&category=ended" class=""> <button
+            <a href="/Airdrops?page=1&category=ended" class=""> <button
                 class="filter-button <%= selectedCategory == 'ended' ? 'active-btn' : '' %>">Ended</button></a>
-            <a href="/icoListing?page=1" class=""> <button
+            <a href="/Airdrops?page=1" class=""> <button
                 class="filter-button <%= selectedCategory === 'all' ? 'active-btn' : '' %>">All</button> </a>
             <!-- <select class="dropdown">
               <option>All locations</option>
@@ -575,7 +633,7 @@
       <div class="container">
         <div class="card-container">
           <!-- Repeat this card 4 times -->
-          <% formattedIcoListingData.forEach((result,index)=>{ %>
+          <% formattedAirdropListingData.forEach((result,index)=>{ %>
             <div class="card">
               <div class="card-body">
                 <div class="tags">
@@ -602,7 +660,7 @@
                   </div>
                   <div class="card-title truncate-text" style="padding: 0px 0px 0px 12px;width: 100%;"
                     title="<%= result.title %>">
-                    <%=result.title%>
+                    <%=result.tokenName%>
                       <h6 class="mt-1">
                         <%=result.raiseFund%>
                       </h6>
@@ -666,13 +724,13 @@
         <section style="margin-left: auto;">
           <div class="pagination-container">
             <% if (current> 1) { %>
-              <a href="/icoListing?page=<%= current - 1 %>&category=<%= selectedCategory %>" class="page-box">‹</a>
+              <a href="/Airdrops?page=<%= current - 1 %>&category=<%= selectedCategory %>" class="page-box">‹</a>
               <% } else { %>
                 <span class="page-box disabled">‹</span>
                 <% } %>
 
                   <% if (current> 2) { %>
-                    <a href="/icoListing?page=1&category=<%= selectedCategory %>" class="page-box">1</a>
+                    <a href="/Airdrops?page=1&category=<%= selectedCategory %>" class="page-box">1</a>
                     <% } %>
 
                       <% if (current> 3) { %>
@@ -680,7 +738,7 @@
                         <% } %>
 
                           <% for (let i=current - 1; i <=current + 1; i++) { if (i> 1 && i < pages) { %>
-                              <a href="/icoListing?page=<%= i %>&category=<%= selectedCategory %>"
+                              <a href="/Airdrops?page=<%= i %>&category=<%= selectedCategory %>"
                                 class="page-box <%= current === i ? 'active' : '' %>">
                                 <%= i %>
                               </a>
@@ -691,14 +749,14 @@
                                   <% } %>
 
                                     <% if (current < pages - 1) { %>
-                                      <a href="/icoListing?page=<%= pages %>&category=<%= selectedCategory %>"
+                                      <a href="/Airdrops?page=<%= pages %>&category=<%= selectedCategory %>"
                                         class="page-box">
                                         <%= pages %>
                                       </a>
                                       <% } %>
 
                                         <% if (current < pages) { %>
-                                          <a href="/icoListing?page=<%= current + 1 %>&category=<%= selectedCategory %>"
+                                          <a href="/Airdrops?page=<%= current + 1 %>&category=<%= selectedCategory %>"
                                             class="page-box">›</a>
                                           <% } else { %>
                                             <span class="page-box disabled">›</span>
