@@ -772,7 +772,7 @@ module.exports.airdropListing = async (req, res) => {
         endDateFormatted: moment(plain.endDate).format("MMMM Do, YYYY"),
       };
     });
-    console.log(formattedAirdropListingData)
+   // console.log(formattedAirdropListingData)
     res.render("frountend/airdrops.ejs", {
       formattedAirdropListingData,
       current: page,
