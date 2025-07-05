@@ -11,6 +11,17 @@ const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 
+app.get('/airdropListing', (req, res) => {
+  res.redirect(301, '/Airdrops');
+});
+
+app.get('/icoListing', (req, res) => {
+  res.redirect(301, '/ico');
+});
+
+app.get('/eventListing', (req, res) => {
+  res.redirect(301, '/events');
+});
 
 // Setup S3
 const s3 = new AWS.S3({
