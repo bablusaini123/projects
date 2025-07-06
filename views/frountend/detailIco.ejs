@@ -798,6 +798,179 @@
                 height: 300px;
             }
         }
+         /* Main header styling */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 48px;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+            /* Wrapping to allow proper stacking in mobile view */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #111;
+        }
+
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 30px;
+        }
+
+        /* Normal desktop navigation */
+        nav {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            white-space: nowrap;
+            justify-content: center;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #111;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #0b74de;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 10px 0;
+            z-index: 10;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            color: #111;
+        }
+
+        .dropdown-content a:hover {
+            background: #fafafa;
+            color: #0b74de;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 90%;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transform: translateX(-100%);
+            /* Sidebar hidden off-screen initially */
+            transition: transform 0.5s ease;
+            /* Smooth slide-in transition */
+        }
+
+        /* Active state (when sidebar is open) */
+        .sidebar.active {
+            transform: translateX(0);
+            /* Slide-in to the left side */
+        }
+
+        .sidebar-logo {
+
+            padding: 20px 12px;
+
+        }
+
+        .sidebar-logo img {
+            width: 65% !important;
+        }
+
+        .close-btn {
+            font-size: 30px;
+            color: #111;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+
+        /* Media Query for Mobile (Less than or equal to 768px) */
+        @media (max-width: 768px) {
+
+            /* Display the hamburger menu for mobile */
+            .hamburger-menu {
+                display: block;
+            }
+
+            /* Hide the normal desktop navigation */
+            nav {
+                display: none;
+            }
+
+            /* Sidebar active on mobile */
+            .sidebar.active {
+                display: block;
+            }
+
+            .logo a img {
+                width: 85% !important;
+            }
+
+            header {
+                align-items: unset !important;
+                flex-wrap: unset !important;
+                padding: 15px 14px;
+                flex-direction: unset;
+                border: 1px solid #eee;
+            }
+
+            .hamburger-menu {
+                font-size: 24px;
+            }
+
+            .logo {
+                margin-bottom: 0;
+            }
+
+            .dropdown {
+                background: #f6f6f6;
+            }
+
+        }
+
+        .dropdown {
+            position: relative;
+            /* color: #000; */
+            padding: 8px 10px;
+
+            margin-bottom: 11px;
+        }
+
+        .dropdown a {
+            text-decoration: none;
+            color: #000;
+        }
     </style>
 </head>
 
@@ -1148,6 +1321,21 @@
                 </div>
             </aside>
         </div>
+
+         <script>
+                // Hamburger Menu Toggle (for opening and closing the nav)
+                // Hamburger menu click (for opening the sidebar)
+                document.getElementById('hamburger-menu').addEventListener('click', function () {
+                    document.getElementById('sidebar').classList.add('active');
+                });
+
+                // Close button click (for closing the sidebar)
+                document.getElementById('close-btn').addEventListener('click', function () {
+                    document.getElementById('sidebar').classList.remove('active');
+                });
+
+
+            </script>
 </body>
 
 </html>

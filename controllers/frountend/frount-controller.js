@@ -890,6 +890,7 @@ module.exports.createAirdropSubmit = async (req, res) => {
 module.exports.influencers = async (req, res) => {
   try {
     const influencerData = (await Influencer.find()).reverse()
+    console.log(influencerData)
     res.render("frountend/influencer.ejs", { influencerData: influencerData })
   } catch (error) {
     res.status(500).json({
