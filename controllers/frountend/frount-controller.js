@@ -1062,3 +1062,34 @@ module.exports.DetailIco = async (req, res) => {
   }
 }
 
+
+module.exports.DetailAirdrop = async (req, res) => {
+  try {
+    const slug = req.params.slug
+    const airdropData = await Airdrop.find({ slug: slug })
+    const startDate = new Date(airdropData[0].startDate); // aapki db se aayi date
+    const formattedStartDate = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    }).format(startDate);
+
+    // console.log(formattedStartDate)
+  
+    const endDate = new Date(airdropData[0].endDate); // aapki db se aayi date
+    const formattendDate = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    }).format(endDate);
+  //  // console.log(formattendDate)
+    airdropData[0].formattedStartDate = formattedStartDate
+    airdropData[0].formattendDate = formattendDate
+    res.render("frountend/detailAirdrop.ejs", { airdropData: airdropData[0] })
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+}
+

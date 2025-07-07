@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- Meta Title & Description for ICO Detail Page -->
-<title><%= icoData.title %> ICO, Token Sale, Tokenomics, Team & Roadmap | KryptoDesk</title>
-<meta name="description" content="Get complete details of the <%= icoData.title %> ICO including tokenomics, fundraising, roadmap, and team. Participate in the <%= icoData.title %> token sale on KryptoDesk.">
+<title><%= airdropData.tokenName %> ICO, Token Sale, Tokenomics, Team & Roadmap | KryptoDesk</title>
+<meta name="description" content="Get complete details of the <%= airdropData.tokenName %> ICO including tokenomics, fundraising, roadmap, and team. Participate in the <%= airdropData.title %> token sale on KryptoDesk.">
 
 
 
@@ -14,22 +14,22 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "<%= icoData.title %> ICO",
-  "description": "<%= icoData.description?.replace(/(<([^>]+)>)/gi, '').substring(0, 300) || 'Explore detailed information about this crypto ICO including tokenomics, roadmap, and team.' %>",
-  "image": "<%= icoData.logo || 'https://kryptodesk.com/image/kryptodesk-logo.png' %>",
+  "name": "<%= airdropData.tokenName %> ICO",
+  "description": "<%= airdropData.projectDescription?.replace(/(<([^>]+)>)/gi, '').substring(0, 300) || 'Explore detailed information about this crypto ICO including tokenomics, roadmap, and team.' %>",
+  "image": "<%= airdropData.tokenImage || 'https://kryptodesk.com/image/kryptodesk-logo.png' %>",
   "brand": {
     "@type": "Organization",
-    "name": "<%= icoData.title %>"
+    "name": "<%= airdropData.tokenName %>"
   },
-  "releaseDate": "<%= icoData.startDate %>",
-  "url": "https://kryptodesk.com/ico/<%= icoData.slug %>",
+  "releaseDate": "<%= airdropData.startDate %>",
+  "url": "https://kryptodesk.com/Airdrops/<%= airdropData.slug %>",
   "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "price": "<%= icoData.rounds?.[0]?.price?.replace(/[^0-9.]/g, '') || '0.05' %>",
+  "price": 1,
   "availability": "https://schema.org/PreOrder",
-  "url": "https://kryptodesk.com/ico/<%= icoData.slug %>",
-  "priceValidUntil": "<%= icoData.endDate || new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] %>"
+  "url": "https://kryptodesk.com/Airdrops/<%= airdropData.slug %>",
+  "priceValidUntil": "<%= airdropData.endDate || new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] %>"
 },
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -971,8 +971,7 @@
             text-decoration: none;
             color: #000;
         }
-
-       .footer {
+         .footer {
       background: white;
       padding: 60px 0 40px;
       border-top: 1px solid #e2e8f0;
@@ -1341,16 +1340,16 @@
         <div class="container">
             <main class="main-content">
                 <div class="breadcrumb">
-                    <a href="/">Home</a> / <a href="/ico">ICO Listing</a> / <%=icoData.title%> • Waitlist
+                    <a href="/">Home</a> / <a href="/airdrop">Airdrop Listing</a> / <%=airdropData.tokenName%> • Waitlist
                 </div>
 
                 <div class="project-header">
                     <div class="project-logo">
-                        <img src="<%=icoData.logo%>" alt="">
+                        <img src="<%=airdropData.tokenImage%>" alt="">
                     </div>
                     <div class="project-title">
                         <h1>
-                            <%=icoData.title%>
+                            <%=airdropData.tokenName%> <%=airdropData.tokenSymbol%> 
                         </h1>
                     </div>
                     <a href="#" class="join-btn">Join</a>
@@ -1358,7 +1357,7 @@
 
                 <div class="project-meta">
                     <div class="meta-date">
-                        <%=icoData.formattedStartDate%> - <%=icoData.formattendDate%>
+                        <%=airdropData.formattedStartDate%> - <%=airdropData.formattendDate%>
                     </div>
                     <span class="status-badge easy">Easy</span>
                     <span class="status-badge high-reward">High Reward</span>
@@ -1368,7 +1367,10 @@
                 </div>
 
                 <div class="description">
-                    <%-icoData.smallDescription-%>
+                    <%-airdropData.projectDescription-%>
+                </div>
+                 <div class="description">
+                   <img src="<%=airdropData.bannerImage%>" alt="">
                 </div>
 
                 <div class="project-info">
@@ -1384,270 +1386,59 @@
 
                 <div class="overview-section">
                     <h2>
-                        <%=icoData.title%> - WAITLIST Overview
+                        <%=airdropData.tokenName%> - Overview
                     </h2>
                     <div class="overviewMain">
                         <div class="overview-item">
-                            <span class="info-label">Ticker:</span>
+                            <span class="info-label">Winning Date:</span>
                             <span class="info-value">
-                                <%=icoData.ticker%>
+                                <%=airdropData.winningDate%>
                             </span>
                         </div>
 
                         <div class="overview-item">
-                            <span class="info-label">Start Date:</span>
+                            <span class="info-label">Cryptocurrency Type:</span>
                             <span class="info-value">
-                                <%=icoData.formattedStartDate%>
+                                <%=airdropData.cryptocurrencyType%>
                             </span>
                         </div>
                         <div class="overview-item">
-                            <span class="info-label">End Date:</span>
+                            <span class="info-label">Coin/ Token Quantity:</span>
                             <span class="info-value">
-                                <%=icoData.formattedStartDate%>
+                                <%=airdropData.tokenQuantity%>
                             </span>
                         </div>
                         <div class="overview-item">
-                            <span class="info-label">Country:</span>
+                            <span class="info-label">Airdrop Quantity:</span>
                             <span class="info-value truncate-text">
-                                <%=icoData.country%>
+                                <%=airdropData.airdropQuantity%>
                             </span>
                         </div>
                         <div class="overview-item">
-                            <span class="info-label">Whitelist:</span>
+                            <span class="info-label">No of Winners:</span>
                             <span class="info-value">
-                                <%=icoData.whitelist%>
+                                <%=airdropData.noOfWinners%>
                             </span>
                         </div>
                         <div class="overview-item">
-                            <span class="info-label">KYC:</span>
+                            <span class="info-label">Project Based On:</span>
                             <span class="info-value">
-                                <%=icoData.kyc%>
+                                <%=airdropData.projectBasedOn%>
                             </span>
                         </div>
-                        <div class="overview-item">
-                            <span class="info-label">Bounty:</span>
-                            <span class="info-value">
-                                <%=icoData.bounty%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">MVP:</span>
-                            <span class="info-value">
-                                <%=icoData.mvp%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">Security Audit:</span>
-                            <span class="info-value">
-                                <%=icoData.securityAudit%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">Raise Fund:</span>
-                            <span class="info-value truncate-text">
-                                <%=icoData.raiseFund%>
-                            </span>
-                        </div>
-
-                        <div class="overview-item">
-                            <span class="info-label truncate-text">Block Chain:</span>
-                            <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
-                                <div class="blockchain-tags">
-                                    <% const maxVisible2=3; const blockChain=icoData.blockChain || []; const
-                                        blockChainTag=blockChain.slice(0, maxVisible2); const
-                                        remainingCount2=blockChain.length - blockChainTag.length; %>
-
-                                        <% blockChainTag.forEach(tag=> { %>
-                                            <span class="badge gray">
-                                                <%= tag %>
-                                            </span>
-                                            <% }) %>
-
-                                                <% if (remainingCount2> 0) { %>
-                                                    <span class="badge light">+<%= remainingCount2 %></span>
-                                                    <% } %>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label truncate-text">Industry:</span>
-                            <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
-                                <div class="blockchain-tags">
-                                    <% const maxVisible=1; const industry=icoData.industry || []; const
-                                        industryTag=industry.slice(0, maxVisible); const remainingCount=industry.length
-                                        - industryTag.length; %>
-
-                                        <% industryTag.forEach(tag=> { %>
-                                            <span class="badge gray truncate-text">
-                                                <%= tag %>
-                                            </span>
-                                            <% }) %>
-
-                                                <% if (remainingCount> 0) { %>
-                                                    <span class="badge light">+<%= remainingCount %></span>
-                                                    <% } %>
-                                </div>
-                            </span>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="overview-section">
                     <h2>
-                        <%=icoData.title%> - Review
+                        <%=airdropData.tokenName%> - Task Details
                     </h2>
                     <div>
-                        <%-icoData.tokenReview-%>
+                        <%-airdropData.taskDetails-%>
                     </div>
 
-                </div>
-                <div class="overview-section">
-                    <h2>
-                        <%=icoData.title%> - Token Economy
-                    </h2>
-                    <div class="overviewMain">
 
-                        <div class="overview-item">
-                            <span class="info-label">Total Raise:</span>
-                            <span class="info-value truncate-text">
-                                <%=icoData.totalRaise%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">Pre Sale:</span>
-                            <span class="info-value truncate-text">
-                                <%=icoData.preSale%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">FDV:</span>
-                            <span class="info-value truncate-text">
-                                <%=icoData.fdv%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">Total Supply:</span>
-                            <span class="info-value truncate-text">
-                                <%=icoData.totalSupply%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">Public Sale:</span>
-                            <span class="info-value truncate-text" title="<%=icoData.publicSale%>">
-                                <%=icoData.publicSale%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label truncate-text">Initial Circulation Supply:</span>
-                            <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
-                                <%=icoData.initialCirculationSupply%>
-                            </span>
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div class="overview-section">
-                    <h2>
-                        <%=icoData.title%> - Token Sale Rounds
-                    </h2>
-                    <% icoData.rounds?.forEach((result,index)=>{ %>
-                        <div class="overviewMain2">
-                            <div class="overview-item2">
-                                <span class="info-label">Price:</span>
-                                <span class="info-value truncate-text">
-                                    <%=result.price%>
-                                </span>
-                            </div>
-                            <div class="overview-item2">
-                                <span class="info-label">Tokens for sale:</span>
-                                <span class="info-value truncate-text">
-                                    <%=result.tokenForSale%>
-                                </span>
-                            </div>
-                            <div class="overview-item2">
-                                <span class="info-label">Raise:</span>
-                                <span class="info-value truncate-text">
-                                    <%=result.raisePrice%>
-                                </span>
-                            </div>
-
-                            <div class="overview-item2">
-                                <span class="info-label" style="width: 39%;">Lock-Up:</span>
-                                <span class="info-value truncate-text">
-                                    <%=result.lookUp%>
-                                </span>
-                            </div>
-                            <div class="overview-item2">
-                                <span class="info-label">Start Date:</span>
-                                <span class="info-value truncate-text">
-                                    <% const start=new Date(result.startDate); const end=new Date(result.endtDate);
-                                        const months=["Jan", "Feb" , "Mar" , "Apr" , "May" , "Jun" , "Jul" , "Aug"
-                                        , "Sep" , "Oct" , "Nov" , "Dec" ]; const formatDate=(date)=> {
-                                        const day = date.getDate().toString().padStart(2, '0');
-                                        const month = months[date.getMonth()];
-                                        const year = date.getFullYear();
-                                        return `${day} ${month} ${year}`;
-                                        };
-
-                                        const formattedStartDate = formatDate(start);
-                                        const formattedEndDate = formatDate(end);
-                                        %>
-
-                                        <p>
-                                            <%= formattedStartDate %>
-                                        </p>
-
-                                </span>
-                            </div>
-
-                            <div class="overview-item2">
-                                <span class="info-label">End Date:</span>
-                                <span class="info-value truncate-text">
-                                    <p>
-                                        <%= formattedEndDate %>
-                                    </p>
-                                </span>
-                            </div>
-                        </div>
-                        <% })%>
-                </div>
-
-                <div class="overview-section">
-                    <h2>
-                        <%=icoData.title%> - Team
-                    </h2>
-
-                    <div class="team-section">
-                        <div class="team-grid">
-
-                            <% icoData.teams?.forEach((result,index)=>{ %>
-                                <div class="team-member">
-                                    <div class="member-image-container">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
-                                            alt="Rahul Sharma" class="member-image">
-                                        <div class="social-overlay">
-                                            <a target="_blank" href="<%=result.twitter%>"
-                                                class="social-icon facebook"><i class="fa fa-twitter"
-                                                    aria-hidden="true"></i></a>
-                                            <a target="_blank" href="<%=result.telegram%>"
-                                                class="social-icon twitter"><i class="fa fa-telegram"
-                                                    aria-hidden="true"></i></a>
-                                            <a target="_blank" href="<%=result.website%>" class="social-icon twitter"><i
-                                                    class="fa fa-globe" aria-hidden="true"></i></a>
-
-                                        </div>
-                                    </div>
-                                    <h3 class="member-name">
-                                        <%=result.name%>
-                                    </h3>
-
-                                </div>
-                                <% })%>
-
-
-                        </div>
-                    </div>
+               
 
             </main>
 
@@ -1680,8 +1471,7 @@
             </aside>
         </div>
 
-        
-    <%- include("../../partials/frountFooter.ejs")%>
+         <%- include("../../partials/frountFooter.ejs")%>
 
          <script>
                 // Hamburger Menu Toggle (for opening and closing the nav)

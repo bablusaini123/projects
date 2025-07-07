@@ -268,6 +268,363 @@
             text-decoration: none;
             color: #000;
         }
+         .footer {
+      background: white;
+      padding: 60px 0 40px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .newsletter-section {
+      text-align: center;
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .newsletter-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0b74de;
+      margin-bottom: 30px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto 20px;
+      gap: 0;
+    }
+
+    .email-input {
+      flex: 1;
+      padding: 12px 20px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px 0 0 8px;
+      font-size: 14px;
+      outline: none;
+      border-right: none;
+    }
+
+    .email-input:focus {
+      border-color: #0b74de;
+    }
+
+    .subscribe-btn {
+      background: #0b74de;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .subscribe-btn:hover {
+      background: #0b74de;
+    }
+
+    .subscribe-btn::after {
+      content: '>';
+      font-weight: bold;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .checkbox {
+      width: 16px;
+      height: 16px;
+    }
+
+    .checkbox-label {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .privacy-text {
+      font-size: 12px;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+
+    .privacy-link {
+      color: #0b74de;
+      text-decoration: none;
+    }
+
+    .privacy-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: #0b74de;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      background: #f1f5f9;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-link:hover {
+      background: #0b74de;
+      color: white;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link {
+      color: #64748b;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: #0b74de;
+    }
+
+    .footer-bottom {
+      padding-top: 30px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copyright {
+      font-size: 14px;
+      color: #0b74de;
+    }
+
+    .scroll-top {
+      width: 40px;
+      height: 40px;
+      background: #0b74de;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .scroll-top:hover {
+      background: #0b74de;
+    }
+
+   @media (max-width: 768px) {
+      .footer-container {
+        padding: 0 20px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .email-input {
+        border-radius: 8px;
+        border-right: 1px solid #d1d5db;
+      }
+
+      .subscribe-btn {
+        border-radius: 8px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+       /* Display the hamburger menu for mobile */
+      .hamburger-menu {
+        display: block;
+      }
+
+      /* Hide the normal desktop navigation */
+      nav {
+        display: none;
+      }
+
+      /* Sidebar active on mobile */
+      .sidebar.active {
+        display: block;
+      }
+
+      .logo a img {
+        width: 85% !important;
+      }
+
+      header {
+        align-items: unset !important;
+        flex-wrap: unset !important;
+        padding: 15px 14px;
+        flex-direction: unset;
+        border: 1px solid #eee;
+      }
+
+      .hamburger-menu {
+        font-size: 24px;
+      }
+
+      .logo {
+        margin-bottom: 0;
+      }
+
+      .dropdown {
+        background: #f6f6f6;
+      }
+
+      .tab {
+        padding: 6px 16px;
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      .eventBtn {
+        padding: 0px 15px;
+        background: #55b1ed;
+        margin-left: auto;
+        color: #000;
+        text-decoration: none;
+        border-radius: 18px;
+        font-weight: 500;
+        font-size: 11px;
+        align-items: center;
+        display: flex;
+      }
+
+      .card-container {
+        flex-wrap: wrap;
+      }
+
+      .card {
+        max-width: 100%;
+      }
+
+      .bitcoin-guides {
+        margin: 0px 10px !important;
+        gap: 0 !important;
+      }
+
+      .footer-bottom {
+        padding-top: 0px;
+      }
+
+      .newsletter-section {
+        margin-bottom: 17px !important;
+        padding-bottom: 20px !important;
+      }
+      .newsletter-title{
+        margin-top: 30px;
+      }
+       .filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .create-search {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+    }
+
+    .newsletter-title{
+        margin-top: 30px;
+      }
   </style>
 
 </head>
@@ -319,6 +676,8 @@
 
     </section>
 
+    
+    <%- include("../../partials/frountFooter.ejs")%>
 
  <script>
                 // Hamburger Menu Toggle (for opening and closing the nav)

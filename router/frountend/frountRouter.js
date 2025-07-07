@@ -32,6 +32,9 @@ frountRouter
    .route("/Airdrops")
    .get(frountController.airdropListing)
 frountRouter
+   .route("/Airdrops/:slug")
+   .get(frountController.DetailAirdrop)
+frountRouter
    .route("/createAirdrop")
    .get(frountController.createAirdrop)
    .post(app.upload.fields([{name:'tokenImage'},{name:'bannerImage'}]),frountController.createAirdropSubmit)
