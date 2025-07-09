@@ -467,7 +467,7 @@ const Dashboard = () => {
   const abortControllerRef = useRef(new AbortController());
   const logoutTimerRef = useRef(null);
 
-const setupMidnightLogout = useCallback(() => {
+  const setupMidnightLogout = useCallback(() => {
   if (logoutTimerRef.current) {
     clearTimeout(logoutTimerRef.current);
     console.log('⏰ Cleared previous logout timer');
@@ -479,7 +479,7 @@ const setupMidnightLogout = useCallback(() => {
 
   // Set target to 1 minute from now for testing
   let target = new Date(nowIST);
-  target.setMinutes(nowIST.getMinutes() + 1, 0, 0); // Set to 1 minute from current time
+  target.setMinutes(nowIST.getMinutes() + 2, 0, 0); // Set to 1 minute from current time
 
   const timeUntilLogout = target.getTime() - nowIST.getTime();
   console.log(`⏰ Setting logout timer for ${target.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (in ${Math.round(timeUntilLogout / 1000)} seconds)`);
@@ -511,13 +511,13 @@ const setupMidnightLogout = useCallback(() => {
   }
 }, [navigate]);
 
-const cleanupMidnightLogout = useCallback(() => {
-  if (logoutTimerRef.current) {
-    clearTimeout(logoutTimerRef.current);
-    logoutTimerRef.current = null;
-    console.log('⏰ Cleanup: Logout timer cleared');
-  }
-}, []);
+  const cleanupMidnightLogout = useCallback(() => {
+    if (logoutTimerRef.current) {
+      clearTimeout(logoutTimerRef.current);
+      logoutTimerRef.current = null;
+      console.log('⏰ Cleanup: Logout timer cleared');
+    }
+  }, []);
 
   const fetchData = useCallback(async () => {
     const user = getCurrentUser();
@@ -1234,17 +1234,17 @@ const cleanupMidnightLogout = useCallback(() => {
                             </td>
                           </tr>
                         )) || (
-                          <tr>
-                            <td colSpan="2" className="p-2 sm:p-12 text-center">
-                              <div className="flex flex-col items-center">
-                                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
-                                  <History className="w-8 h-8 text-gray-400" />
+                            <tr>
+                              <td colSpan="2" className="p-2 sm:p-12 text-center">
+                                <div className="flex flex-col items-center">
+                                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
+                                    <History className="w-8 h-8 text-gray-400" />
+                                  </div>
+                                  <span className="text-gray-600 text-sm font-medium">No purchase history available.</span>
                                 </div>
-                                <span className="text-gray-600 text-sm font-medium">No purchase history available.</span>
-                              </div>
-                            </td>
-                          </tr>
-                        )}
+                              </td>
+                            </tr>
+                          )}
                       </tbody>
                     </table>
                   </div>
