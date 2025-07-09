@@ -468,48 +468,54 @@ const Dashboard = () => {
   const logoutTimerRef = useRef(null);
 
   const setupMidnightLogout = useCallback(() => {
-  if (logoutTimerRef.current) {
-    clearTimeout(logoutTimerRef.current);
-    console.log('⏰ Cleared previous logout timer');
-  }
+    if (logoutTimerRef.current) {
+      clearTimeout(logoutTimerRef.current);
+      console.log('⏰ Cleared previous logout timer');
+    }
 
-  const now = new Date();
-  const istOffset = 5.5 * 60 * 60 * 1000; // IST is UTC+5:30
-  const nowIST = new Date(now.getTime() + istOffset);
+    const now = new Date();
+    const istOffset = 5.5 * 60 * 60 * 1000; // IST is UTC+5:30
+    const nowIST = new Date(now.getTime() + istOffset);
 
-  // Set target to 1 minute from now for testing
-  let target = new Date(nowIST);
-  target.setMinutes(nowIST.getMinutes() + 2, 0, 0); // Set to 1 minute from current time
+    // Set target to 12:00 AM IST today
+    let target = new Date(nowIST);
+    target.setHours(0, 0, 0, 0); // Set to 12:00 AM today
 
-  const timeUntilLogout = target.getTime() - nowIST.getTime();
-  console.log(`⏰ Setting logout timer for ${target.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (in ${Math.round(timeUntilLogout / 1000)} seconds)`);
+    // If current time is past 12:00 AM IST, move to next day
+    if (nowIST >= target) {
+      target.setDate(target.getDate() + 1);
+      console.log('⏰ Current time is past 12:00 AM IST, scheduling logout for next day');
+    }
 
-  // Ensure timer is only set if timeUntilLogout is positive
-  if (timeUntilLogout > 0) {
-    logoutTimerRef.current = setTimeout(() => {
-      console.log('⏰ Test logout triggered - clearing session...');
-      localStorage.clear();
-      logout();
-      toast.success('Session expired - test logout triggered!');
-      navigate('/login');
-      // Reset timer for next day (optional for testing)
-      setupMidnightLogout();
-    }, timeUntilLogout);
-  } else {
-    console.error('⏰ Error: timeUntilLogout is negative or zero, scheduling for next minute');
-    target.setMinutes(target.getMinutes() + 1);
-    const newTimeUntilLogout = target.getTime() - nowIST.getTime();
-    logoutTimerRef.current = setTimeout(() => {
-      console.log('⏰ Test logout triggered - clearing session...');
-      localStorage.clear();
-      logout();
-      toast.success('Session expired - test logout triggered!');
-      navigate('/login');
-      setupMidnightLogout();
-    }, newTimeUntilLogout);
-    console.log(`⏰ Fallback: Set logout timer for ${target.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (in ${Math.round(newTimeUntilLogout / 1000)} seconds)`);
-  }
-}, [navigate]);
+    const timeUntilLogout = target.getTime() - nowIST.getTime();
+    console.log(`⏰ Setting logout timer for ${target.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (in ${Math.round(timeUntilLogout / 1000)} seconds)`);
+
+    // Ensure timer is only set if timeUntilLogout is positive
+    if (timeUntilLogout > 0) {
+      logoutTimerRef.current = setTimeout(() => {
+        console.log('⏰ Midnight 12:00 AM IST logout triggered - clearing session...');
+        localStorage.clear();
+        logout();
+        toast.success('Session expired - logged out at 12:00 AM IST!');
+        navigate('/login');
+        // Reset timer for next day
+        setupMidnightLogout();
+      }, timeUntilLogout);
+    } else {
+      console.error('⏰ Error: timeUntilLogout is negative or zero, scheduling for next day');
+      target.setDate(target.getDate() + 1);
+      const newTimeUntilLogout = target.getTime() - nowIST.getTime();
+      logoutTimerRef.current = setTimeout(() => {
+        console.log('⏰ Midnight 12:00 AM IST logout triggered - clearing session...');
+        localStorage.clear();
+        logout();
+        toast.success('Session expired - logged out at 12:00 AM IST!');
+        navigate('/login');
+        setupMidnightLogout();
+      }, newTimeUntilLogout);
+      console.log(`⏰ Fallback: Set logout timer for ${target.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (in ${Math.round(newTimeUntilLogout / 1000)} seconds)`);
+    }
+  }, [navigate]);
 
   const cleanupMidnightLogout = useCallback(() => {
     if (logoutTimerRef.current) {
