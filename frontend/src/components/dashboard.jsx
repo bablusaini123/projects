@@ -166,7 +166,7 @@ const DotsAnimation = () => {
       if (currentTime - lastTime >= 1000) {
         const fps = frameCount;
         frameCount = 0;
-        lastTime = currentTime;
+        lastTime = existingTime;
 
         if (fps < 30 && window.dotsAnimation) {
           const dots = document.querySelectorAll('.floating-dot');
@@ -416,86 +416,26 @@ const Dashboard = () => {
 
   const { walletBalance, paymentHistory, referrals, dashboardData } = dashboardState;
   const abortControllerRef = useRef(new AbortController());
-  const midnightLogoutTimerRef = useRef(null);
+  const autoLogoutTimerRef = useRef(null);
 
-  const getMillisecondsUntilMidnight = useCallback(() => {
-    const now = new Date();
-    const nextMidnight = new Date(now);
-    nextMidnight.setHours(24, 0, 0, 0);
-    return nextMidnight.getTime() - now.getTime();
-  }, []);
-
-  const FloatingDollarParticles = ({ count = 40 }) => {
-    const [isMobile, setIsMobile] = useState(false);
-    useEffect(() => {
-      setIsMobile(window.innerWidth < 640);
-    }, []);
-    const particleCount = isMobile ? 20 : count;
-
-    return (
-      <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
-        {[...Array(particleCount)].map((_, i) => {
-          const size = isMobile ? 6 + Math.random() * 4 : 8 + Math.random() * 6;
-          const opacity = 0.5 + Math.random() * 0.3;
-          return (
-            <motion.div
-              key={`particle-${i}`}
-              className="dollar-particle"
-              style={{
-                '--size': `${size}px`,
-                '--opacity': opacity,
-              }}
-              initial={{
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                y: (typeof window !== 'undefined' ? window.innerHeight : 1000),
-                rotate: Math.random() * 90 - 45,
-              }}
-              animate={{
-                x: [0, Math.random() * 80 - 40, 0],
-                y: [0, -100 - Math.random() * 150, -250],
-                rotate: [0, Math.random() * 90 - 45, 0],
-                scale: [1, 0.8 + Math.random() * 0.2, 1],
-                opacity: [0.5, 0.8, 0.4],
-              }}
-              transition={{
-                duration: 4 + Math.random() * 5,
-                repeat: Infinity,
-                repeatType: 'loop',
-                ease: 'easeInOut',
-                delay: Math.random() * 3,
-              }}
-            >
-              $
-            </motion.div>
-          );
-        })}
-      </div>
-    );
-  };
-
-  const setupMidnightLogout = useCallback(() => {
-    if (midnightLogoutTimerRef.current) {
-      clearTimeout(midnightLogoutTimerRef.current);
+  const setupAutoLogout = useCallback(() => {
+    if (autoLogoutTimerRef.current) {
+      clearTimeout(autoLogoutTimerRef.current);
     }
 
-    const msUntilMidnight = getMillisecondsUntilMidnight();
-    midnightLogoutTimerRef.current = setTimeout(() => {
-      console.log('🌙 Midnight logout triggered - clearing session...');
-      const withdrawalHistory = localStorage.getItem('withdrawalHistory');
+    autoLogoutTimerRef.current = setTimeout(() => {
+      console.log('⏰ 1-minute auto logout triggered - clearing session...');
       localStorage.clear();
-      if (withdrawalHistory) {
-        localStorage.setItem('withdrawalHistory', withdrawalHistory);
-      }
       logout();
-      toast.success('Daily session expired - logged out automatically!');
+      toast.success('Session expired - logged out automatically!');
       navigate('/login');
-    }, msUntilMidnight);
-  }, [navigate, getMillisecondsUntilMidnight]);
+    }, 60 * 1000); // 1 minute in milliseconds
+  }, [navigate]);
 
-  const cleanupMidnightLogout = useCallback(() => {
-    if (midnightLogoutTimerRef.current) {
-      clearTimeout(midnightLogoutTimerRef.current);
-      midnightLogoutTimerRef.current = null;
+  const cleanupAutoLogout = useCallback(() => {
+    if (autoLogoutTimerRef.current) {
+      clearTimeout(autoLogoutTimerRef.current);
+      autoLogoutTimerRef.current = null;
     }
   }, []);
 
@@ -584,22 +524,21 @@ const Dashboard = () => {
     }
 
     fetchData();
-    setupMidnightLogout();
+    setupAutoLogout();
 
     return () => {
       abortControllerRef.current.abort();
-      cleanupMidnightLogout();
+      cleanupAutoLogout();
     };
-  }, [navigate, fetchData, setupMidnightLogout, cleanupMidnightLogout]);
+  }, [navigate, fetchData, setupAutoLogout, cleanupAutoLogout]);
 
   const handleLogout = useCallback(() => {
-    cleanupMidnightLogout();
-    localStorage.clear()
-
+    cleanupAutoLogout();
+    localStorage.clear();
     logout();
     navigate('/login');
     toast.success('Logged out successfully!');
-  }, [navigate, cleanupMidnightLogout]);
+  }, [navigate, cleanupAutoLogout]);
 
   const handleWithdraw = useCallback(async () => {
     const user = getCurrentUser();
@@ -1038,12 +977,6 @@ const Dashboard = () => {
                                 <div className="grid gap-4 bonusHistory max-h-[99%] overflow-y-scroll  ">
                                   {bonusHistory.length > 0 ? (
                                     <table className="min-w-full text-left border-collapse text-xs sm:text-sm ">
-                                      {/* <thead>
-                                        <tr className="bg-gray-100">
-                                          <th className="p-2 sm:p-3 text-gray-700 font-semibold">Bonus Amount</th>
-                                          <th className="p-2 sm:p-3 text-gray-700 font-semibold">Bonus Type</th>
-                                        </tr>
-                                      </thead> */}
                                       <tbody>
                                         {bonusHistory.map((entry, index) => (
                                           <tr key={`bonus-${index}`} className="border-t hover:bg-gray-50 flex justify-between">
@@ -1355,7 +1288,9 @@ const Dashboard = () => {
                               <span>{(entry.amount || 0).toLocaleString()}</span>
                             </div>
                           </td>
-                          <td className={`p-3 sm:p-4 font-semibold text-sm ${entry.status === 'success' ? "text-green-800" : "text-yellow-500"}`}>
+                          <td className={`p-3 sm:p-4 font-semibold text-sm ${entry.status === 'success' 
+                            ? "text-green-800"
+                            : "text-yellow-500"}`}>
                             {entry.status || 'N/A'}
                           </td>
                         </tr>
@@ -1449,6 +1384,54 @@ const Dashboard = () => {
           </motion.div>
         </div>
       </div>
+    </div>
+  );
+};
+
+const FloatingDollarParticles = ({ count = 40 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 640);
+  }, []);
+  const particleCount = isMobile ? 20 : count;
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
+      {[...Array(particleCount)].map((_, i) => {
+        const size = isMobile ? 6 + Math.random() * 4 : 8 + Math.random() * 6;
+        const opacity = 0.5 + Math.random() * 0.3;
+        return (
+          <motion.div
+            key={`particle-${i}`}
+            className="dollar-particle"
+            style={{
+              '--size': `${size}px`,
+              '--opacity': opacity,
+            }}
+            initial={{
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+              y: (typeof window !== 'undefined' ? window.innerHeight : 1000),
+              rotate: Math.random() * 90 - 45,
+            }}
+            animate={{
+              x: [0, Math.random() * 80 - 40, 0],
+              y: [0, -100 - Math.random() * 150, -250],
+              rotate: [0, Math.random() * 90 - 45, 0],
+              scale: [1, 0.8 + Math.random() * 0.2, 1],
+              opacity: [0.5, 0.8, 0.4],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 5,
+              repeat: Infinity,
+              repeatType: 'loop',
+              ease: 'easeInOut',
+              delay: Math.random() * 3,
+            }}
+          >
+            $
+          </motion.div>
+        );
+      })}
     </div>
   );
 };
