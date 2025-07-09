@@ -45,6 +45,9 @@ const ProjectSchema = new mongoose.Schema({
   authorEmail:{ type: String,required: true },
   authorWhatsapp:{ type: String,required: true },
   authorTwitter:{ type: String,required: true },
+  logoAltText: String,
+  whitepaperAltText: String,
+  roadmapAltText: String,
 }, {
   timestamps: true
 });

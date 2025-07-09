@@ -4,13 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- Meta Title & Description for ICO Detail Page -->
-<title><%= icoData.title %> ICO, Token Sale, Tokenomics, Team & Roadmap | KryptoDesk</title>
-<meta name="description" content="Get complete details of the <%= icoData.title %> ICO including tokenomics, fundraising, roadmap, and team. Participate in the <%= icoData.title %> token sale on KryptoDesk.">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+         <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
+
+    <!-- Meta Title & Description for ICO Detail Page -->
+    <title>
+        <%= icoData.title %> ICO, Token Sale, Tokenomics, Team & Roadmap | KryptoDesk
+    </title>
+    <meta name="description"
+        content="Get complete details of the <%= icoData.title %> ICO including tokenomics, fundraising, roadmap, and team. Participate in the <%= icoData.title %> token sale on KryptoDesk.">
 
 
 
-   <script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -48,8 +55,10 @@
             box-sizing: border-box;
         }
 
+
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Unbounded', sans-serif;
             background-color: #ffffff;
             color: #000000;
             line-height: 1.5;
@@ -107,7 +116,7 @@
 
         .project-header {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 20px;
             margin-bottom: 28px;
         }
@@ -173,9 +182,7 @@
             gap: 6px;
         }
 
-        .meta-date::before {
-            content: "📅";
-        }
+
 
         .status-badge {
             padding: 4px 10px;
@@ -482,7 +489,7 @@
             /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
             background: #fff;
             color: #111;
-            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+            font-family: 'Unbounded', sans-serif;
             overflow-x: hidden;
             margin: 0;
 
@@ -493,7 +500,8 @@
         h3,
         p,
         span {
-            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+            font-family: 'Unbounded', sans-serif;
+            ;
 
         }
 
@@ -798,7 +806,8 @@
                 height: 300px;
             }
         }
-         /* Main header styling */
+
+        /* Main header styling */
         header {
             display: flex;
             align-items: center;
@@ -972,363 +981,385 @@
             color: #000;
         }
 
-       .footer {
-      background: white;
-      padding: 60px 0 40px;
-      border-top: 1px solid #e2e8f0;
-    }
+        .footer {
+            background: white;
+            padding: 60px 0 40px;
+            border-top: 1px solid #e2e8f0;
+        }
 
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
 
-    .newsletter-section {
-      text-align: center;
-      margin-bottom: 60px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid #e2e8f0;
-    }
+        .newsletter-section {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e2e8f0;
+        }
 
-    .newsletter-title {
-      font-size: 28px;
-      font-weight: 700;
-      color: #0b74de;
-      margin-bottom: 30px;
-    }
+        .newsletter-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0b74de;
+            margin-bottom: 30px;
+        }
 
-    .newsletter-form {
-      display: flex;
-      max-width: 500px;
-      margin: 0 auto 20px;
-      gap: 0;
-    }
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto 20px;
+            gap: 0;
+        }
 
-    .email-input {
-      flex: 1;
-      padding: 12px 20px;
-      border: 1px solid #d1d5db;
-      border-radius: 8px 0 0 8px;
-      font-size: 14px;
-      outline: none;
-      border-right: none;
-    }
+        .email-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px 0 0 8px;
+            font-size: 14px;
+            outline: none;
+            border-right: none;
+        }
 
-    .email-input:focus {
-      border-color: #0b74de;
-    }
+        .email-input:focus {
+            border-color: #0b74de;
+        }
 
-    .subscribe-btn {
-      background: #0b74de;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 0 8px 8px 0;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .subscribe-btn {
+            background: #0b74de;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .subscribe-btn:hover {
-      background: #0b74de;
-    }
+        .subscribe-btn:hover {
+            background: #0b74de;
+        }
 
-    .subscribe-btn::after {
-      content: '>';
-      font-weight: bold;
-    }
+        .subscribe-btn::after {
+            content: '>';
+            font-weight: bold;
+        }
 
-    .checkbox-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 15px;
-    }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
 
-    .checkbox {
-      width: 16px;
-      height: 16px;
-    }
+        .checkbox {
+            width: 16px;
+            height: 16px;
+        }
 
-    .checkbox-label {
-      font-size: 14px;
-      color: #64748b;
-    }
+        .checkbox-label {
+            font-size: 14px;
+            color: #64748b;
+        }
 
-    .privacy-text {
-      font-size: 12px;
-      color: #94a3b8;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.4;
-    }
+        .privacy-text {
+            font-size: 12px;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
 
-    .privacy-link {
-      color: #0b74de;
-      text-decoration: none;
-    }
+        .privacy-link {
+            color: #0b74de;
+            text-decoration: none;
+        }
 
-    .privacy-link:hover {
-      text-decoration: underline;
-    }
+        .privacy-link:hover {
+            text-decoration: underline;
+        }
 
-    .footer-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
 
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .logo-icon {
-      width: 32px;
-      height: 32px;
-      background: #0b74de;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 14px;
-    }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #0b74de;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
 
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: #1e293b;
-    }
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+        }
 
-    .social-links {
-      display: flex;
-      gap: 12px;
-    }
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
 
-    .social-link {
-      width: 36px;
-      height: 36px;
-      background: #f1f5f9;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #64748b;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
 
-    .social-link:hover {
-      background: #0b74de;
-      color: white;
-    }
+        .social-link:hover {
+            background: #0b74de;
+            color: white;
+        }
 
-    .footer-column {
-      display: flex;
-      flex-direction: column;
-    }
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .footer-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: #1e293b;
-      margin-bottom: 20px;
-    }
+        .footer-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
 
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-    .footer-link {
-      color: #64748b;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
+        .footer-link {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
 
-    .footer-link:hover {
-      color: #0b74de;
-    }
+        .footer-link:hover {
+            color: #0b74de;
+        }
 
-    .footer-bottom {
-      padding-top: 30px;
-      border-top: 1px solid #e2e8f0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .copyright {
-      font-size: 14px;
-      color: #0b74de;
-    }
+        .copyright {
+            font-size: 14px;
+            color: #0b74de;
+        }
 
-    .scroll-top {
-      width: 40px;
-      height: 40px;
-      background: #0b74de;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
+        .scroll-top {
+            width: 40px;
+            height: 40px;
+            background: #0b74de;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
 
-    .scroll-top:hover {
-      background: #0b74de;
-    }
+        .scroll-top:hover {
+            background: #0b74de;
+        }
 
-   @media (max-width: 768px) {
-      .footer-container {
-        padding: 0 20px;
-      }
+        @media (max-width: 768px) {
+            .footer-container {
+                padding: 0 20px;
+            }
 
-      .newsletter-form {
-        flex-direction: column;
-        gap: 12px;
-      }
+            .newsletter-form {
+                flex-direction: column;
+                gap: 12px;
+            }
 
-      .email-input {
-        border-radius: 8px;
-        border-right: 1px solid #d1d5db;
-      }
+            .email-input {
+                border-radius: 8px;
+                border-right: 1px solid #d1d5db;
+            }
 
-      .subscribe-btn {
-        border-radius: 8px;
-      }
+            .subscribe-btn {
+                border-radius: 8px;
+            }
 
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
 
-      .footer-bottom {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-      }
-       /* Display the hamburger menu for mobile */
-      .hamburger-menu {
-        display: block;
-      }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
 
-      /* Hide the normal desktop navigation */
-      nav {
-        display: none;
-      }
+            /* Display the hamburger menu for mobile */
+            .hamburger-menu {
+                display: block;
+            }
 
-      /* Sidebar active on mobile */
-      .sidebar.active {
-        display: block;
-      }
+            /* Hide the normal desktop navigation */
+            nav {
+                display: none;
+            }
 
-      .logo a img {
-        width: 85% !important;
-      }
+            /* Sidebar active on mobile */
+            .sidebar.active {
+                display: block;
+            }
 
-      header {
-        align-items: unset !important;
-        flex-wrap: unset !important;
-        padding: 15px 14px;
-        flex-direction: unset;
-        border: 1px solid #eee;
-      }
+            .logo a img {
+                width: 85% !important;
+            }
 
-      .hamburger-menu {
-        font-size: 24px;
-      }
+            header {
+                align-items: unset !important;
+                flex-wrap: unset !important;
+                padding: 15px 14px;
+                flex-direction: unset;
+                border: 1px solid #eee;
+            }
 
-      .logo {
-        margin-bottom: 0;
-      }
+            .hamburger-menu {
+                font-size: 24px;
+            }
 
-      .dropdown {
-        background: #f6f6f6;
-      }
+            .logo {
+                margin-bottom: 0;
+            }
 
-      .tab {
-        padding: 6px 16px;
-        font-weight: 600;
-        font-size: 13px;
-      }
+            .dropdown {
+                background: #f6f6f6;
+            }
 
-      .eventBtn {
-        padding: 0px 15px;
-        background: #55b1ed;
-        margin-left: auto;
-        color: #000;
-        text-decoration: none;
-        border-radius: 18px;
-        font-weight: 500;
-        font-size: 11px;
-        align-items: center;
-        display: flex;
-      }
+            .tab {
+                padding: 6px 16px;
+                font-weight: 600;
+                font-size: 13px;
+            }
 
-      .card-container {
-        flex-wrap: wrap;
-      }
+            .eventBtn {
+                padding: 0px 15px;
+                background: #55b1ed;
+                margin-left: auto;
+                color: #000;
+                text-decoration: none;
+                border-radius: 18px;
+                font-weight: 500;
+                font-size: 11px;
+                align-items: center;
+                display: flex;
+            }
 
-      .card {
-        max-width: 100%;
-      }
+            .card-container {
+                flex-wrap: wrap;
+            }
 
-      .bitcoin-guides {
-        margin: 0px 10px !important;
-        gap: 0 !important;
-      }
+            .card {
+                max-width: 100%;
+            }
 
-      .footer-bottom {
-        padding-top: 0px;
-      }
+            .bitcoin-guides {
+                margin: 0px 10px !important;
+                gap: 0 !important;
+            }
 
-      .newsletter-section {
-        margin-bottom: 17px !important;
-        padding-bottom: 20px !important;
-      }
-      .newsletter-title{
-        margin-top: 30px;
-      }
-       .filters {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-      }
+            .footer-bottom {
+                padding-top: 0px;
+            }
 
-      .create-search {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-      }
+            .newsletter-section {
+                margin-bottom: 17px !important;
+                padding-bottom: 20px !important;
+            }
 
-      .search-box {
-        width: 100%;
-      }
-    }
+            .newsletter-title {
+                margin-top: 30px;
+            }
 
-    .newsletter-title{
-        margin-top: 30px;
-      }
+            .filters {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .create-search {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+        }
+
+        .newsletter-title {
+            margin-top: 30px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .socialMediaIcon img {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .socialMediaIcon:hover.socialMediaIcon img {
+            transform: scale(1.1);
+        }
+        .websiteBtn{
+            transition: 0.2s;
+        }
+        .websiteBtn:hover{
+            box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.4);
+
+        }
+        .overview-item3{
+            width: 100% !important;
+        }
     </style>
 </head>
 
@@ -1340,31 +1371,80 @@
 
         <div class="container">
             <main class="main-content">
-                <div class="breadcrumb">
+                <div class="breadcrumb" style="align-items: center;display: flex;">
                     <a href="/">Home</a> / <a href="/ico">ICO Listing</a> / <%=icoData.title%> • Waitlist
+                        <a target="_blank" href="<%=icoData.twitterLink%>" style="margin-left: auto" class="socialMediaIcon">
+
+                            <img style="width: 30px;" src="../../image/twitter.png" alt="">
+                        </a>
+                        <a target="_blank" href="<%=icoData.TelegramChannel%>" style="margin-left: 10px;" class="socialMediaIcon">
+                            <img style="width: 30px;" src="../../image/telegram.png" alt="">
+                        </a>
+                        <a target="_blank" href="<%=icoData.twitterLink%>" style="margin-left: 10px;" class="socialMediaIcon">
+                            <img style="width: 30px;" src="../../image/discord.png" alt="">
+                        </a>
+                        <a target="_blank" href="<%=icoData.twitterLink%>" style="margin-left: 10px;" class="socialMediaIcon">
+                            <img style="width: 30px;" src="../../image/facebook.png" alt="">
+                        </a>
+                        <a target="_blank" href="<%=icoData.youtubeLink%>" style="margin-left: 10px;" class="socialMediaIcon">
+                            <img style="width: 30px;" src="../../image/youtube.png" alt="">
+                        </a>
+                        <a target="_blank" href="<%=icoData.instagramLink%>" style="margin-left: 10px;" class="socialMediaIcon">
+                            <img style="width: 30px;" src="../../image/instagram.png" alt="">
+                        </a>
+
                 </div>
 
                 <div class="project-header">
                     <div class="project-logo">
-                        <img src="<%=icoData.logo%>" alt="">
+                        <img src="<%=icoData.logo%>" alt="<%=icoData.logoAltText%>">
                     </div>
                     <div class="project-title">
                         <h1>
                             <%=icoData.title%>
                         </h1>
                     </div>
-                    <a href="#" class="join-btn">Join</a>
+                    <div class="meta-date">
+                        <span style="padding: 8px 23px;
+    background: #eeeeee;
+    border-radius: 17px;
+    color: #262626;
+    /* font-size: 17px; */
+    font-weight: 500;">
+                            <%=icoData.formattedStartDate%>
+                        </span> - <span style="padding: 8px 23px;
+    background: #eeeeee;
+    border-radius: 17px;
+    color: #262626;
+    /* font-size: 17px; */
+    font-weight: 500;">
+                            <%=icoData.formattendDate%>
+                        </span>
+                    </div>
                 </div>
 
                 <div class="project-meta">
-                    <div class="meta-date">
-                        <%=icoData.formattedStartDate%> - <%=icoData.formattendDate%>
-                    </div>
+
                     <span class="status-badge easy">Easy</span>
                     <span class="status-badge high-reward">High Reward</span>
                     <span class="status-badge hot">Hot</span>
                     <span class="status-badge epic">Epic</span>
                     <span class="status-badge limited">Limited</span>
+                    <a class="websiteBtn" target="_blank" href="<%=icoData.websiteLink%>" style="padding: 8px 16px;align-items: center;display: flex;
+    background: #eeeeee;
+    border-radius: 17px;
+    color: #262626;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: auto;">
+                        <span style="margin-right: 8px;align-items: center;display: flex;">
+                            <img style="width: 23px;" src="../../image/web.png" alt="">
+                        </span>
+                        <span>
+                            Visit Website
+                        </span>
+                    </a>
                 </div>
 
                 <div class="description">
@@ -1449,46 +1529,7 @@
                             </span>
                         </div>
 
-                        <div class="overview-item">
-                            <span class="info-label truncate-text">Block Chain:</span>
-                            <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
-                                <div class="blockchain-tags">
-                                    <% const maxVisible2=3; const blockChain=icoData.blockChain || []; const
-                                        blockChainTag=blockChain.slice(0, maxVisible2); const
-                                        remainingCount2=blockChain.length - blockChainTag.length; %>
-
-                                        <% blockChainTag.forEach(tag=> { %>
-                                            <span class="badge gray">
-                                                <%= tag %>
-                                            </span>
-                                            <% }) %>
-
-                                                <% if (remainingCount2> 0) { %>
-                                                    <span class="badge light">+<%= remainingCount2 %></span>
-                                                    <% } %>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label truncate-text">Industry:</span>
-                            <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
-                                <div class="blockchain-tags">
-                                    <% const maxVisible=1; const industry=icoData.industry || []; const
-                                        industryTag=industry.slice(0, maxVisible); const remainingCount=industry.length
-                                        - industryTag.length; %>
-
-                                        <% industryTag.forEach(tag=> { %>
-                                            <span class="badge gray truncate-text">
-                                                <%= tag %>
-                                            </span>
-                                            <% }) %>
-
-                                                <% if (remainingCount> 0) { %>
-                                                    <span class="badge light">+<%= remainingCount %></span>
-                                                    <% } %>
-                                </div>
-                            </span>
-                        </div>
+                      
                     </div>
                 </div>
                 <div class="overview-section">
@@ -1500,118 +1541,9 @@
                     </div>
 
                 </div>
-                <div class="overview-section">
-                    <h2>
-                        <%=icoData.title%> - Token Economy
-                    </h2>
-                    <div class="overviewMain">
+              
 
-                        <div class="overview-item">
-                            <span class="info-label">Total Raise:</span>
-                            <span class="info-value truncate-text">
-                                <%=icoData.totalRaise%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">Pre Sale:</span>
-                            <span class="info-value truncate-text">
-                                <%=icoData.preSale%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">FDV:</span>
-                            <span class="info-value truncate-text">
-                                <%=icoData.fdv%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">Total Supply:</span>
-                            <span class="info-value truncate-text">
-                                <%=icoData.totalSupply%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label">Public Sale:</span>
-                            <span class="info-value truncate-text" title="<%=icoData.publicSale%>">
-                                <%=icoData.publicSale%>
-                            </span>
-                        </div>
-                        <div class="overview-item">
-                            <span class="info-label truncate-text">Initial Circulation Supply:</span>
-                            <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
-                                <%=icoData.initialCirculationSupply%>
-                            </span>
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div class="overview-section">
-                    <h2>
-                        <%=icoData.title%> - Token Sale Rounds
-                    </h2>
-                    <% icoData.rounds?.forEach((result,index)=>{ %>
-                        <div class="overviewMain2">
-                            <div class="overview-item2">
-                                <span class="info-label">Price:</span>
-                                <span class="info-value truncate-text">
-                                    <%=result.price%>
-                                </span>
-                            </div>
-                            <div class="overview-item2">
-                                <span class="info-label">Tokens for sale:</span>
-                                <span class="info-value truncate-text">
-                                    <%=result.tokenForSale%>
-                                </span>
-                            </div>
-                            <div class="overview-item2">
-                                <span class="info-label">Raise:</span>
-                                <span class="info-value truncate-text">
-                                    <%=result.raisePrice%>
-                                </span>
-                            </div>
-
-                            <div class="overview-item2">
-                                <span class="info-label" style="width: 39%;">Lock-Up:</span>
-                                <span class="info-value truncate-text">
-                                    <%=result.lookUp%>
-                                </span>
-                            </div>
-                            <div class="overview-item2">
-                                <span class="info-label">Start Date:</span>
-                                <span class="info-value truncate-text">
-                                    <% const start=new Date(result.startDate); const end=new Date(result.endtDate);
-                                        const months=["Jan", "Feb" , "Mar" , "Apr" , "May" , "Jun" , "Jul" , "Aug"
-                                        , "Sep" , "Oct" , "Nov" , "Dec" ]; const formatDate=(date)=> {
-                                        const day = date.getDate().toString().padStart(2, '0');
-                                        const month = months[date.getMonth()];
-                                        const year = date.getFullYear();
-                                        return `${day} ${month} ${year}`;
-                                        };
-
-                                        const formattedStartDate = formatDate(start);
-                                        const formattedEndDate = formatDate(end);
-                                        %>
-
-                                        <p>
-                                            <%= formattedStartDate %>
-                                        </p>
-
-                                </span>
-                            </div>
-
-                            <div class="overview-item2">
-                                <span class="info-label">End Date:</span>
-                                <span class="info-value truncate-text">
-                                    <p>
-                                        <%= formattedEndDate %>
-                                    </p>
-                                </span>
-                            </div>
-                        </div>
-                        <% })%>
-                </div>
+               
 
                 <div class="overview-section">
                     <h2>
@@ -1648,42 +1580,171 @@
 
                         </div>
                     </div>
+                </div>
+                 <div class="overview-section">
+                    <h2>
+                         RoadMap
+                    </h2>
+
+                    <div class="">
+                        <div class="" style="text-align: center;">
+
+                        <img style="width: 100%;" src="<%=icoData.roadmap%>" alt="<%=icoData.roadmapAltText%>">
+
+                        </div>
+                    </div>
+                </div>
 
             </main>
 
-            <aside class="sidebar">
-                <div class="sidebar-card">
-                    <div class="sidebar-header">
-                        <span>Waitlist</span>
-                        <span class="report-issue">Report Issue</span>
-                    </div>
+           <div>
+             <div class="overview-section">
+                    <h2>
+                     Tokenomics
+                    </h2>
+                    <% icoData.rounds?.slice(0, 1).forEach((result,index)=>{ %>
+                        <div class="overviewMain2">
+                             <a class="websiteBtn"target="_blank" href="" style="padding: 8px 16px;align-items: center;display: flex;
+    background: #eeeeee;
+    border-radius: 17px;
+    color: #262626;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    margin: auto;
+    border: solid 1px #fff;
+    box-shadow: 0px 0px 8px 0px rgba(255,255,255,1);
+    margin-bottom: 10px;;
+">
+                        <span>
+                            <img style="width: 25px; margin-right: 7px;" src="../../image/document.png" alt="<%=icoData.whitepaperAltText%>">
+                        </span>
+                        <span>
+                            WhitePaper
+                        </span>
+                    </a>
+                            <div class="overview-item2 overview-item3">
+                                <span class="info-label">Price:</span>
+                                <span class="info-value truncate-text">
+                                    <%=result.price%>
+                                </span>
+                            </div>
+                             <div class="overview-item2 overview-item3">
+                                <span class="info-label">Ticker:</span>
+                                <span class="info-value truncate-text">
+                                    <%=icoData.ticker%>
+                                </span>
+                            </div>
 
-                    <div class="difficulty-section">
-                        <h4>Difficulty</h4>
-                        <div class="difficulty-badge">Easy</div>
+                              <div class="overview-item2 overview-item3">
+                            <span class="info-label truncate-text">Block Chain:</span>
+                            <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
+                                <div class="blockchain-tags">
+                                    <% const maxVisible2=3; const blockChain=icoData.blockChain || []; const
+                                        blockChainTag=blockChain.slice(0, maxVisible2); const
+                                        remainingCount2=blockChain.length - blockChainTag.length; %>
+
+                                        <% blockChainTag.forEach(tag=> { %>
+                                            <span class="badge gray">
+                                                <%= tag %>
+                                            </span>
+                                            <% }) %>
+
+                                                <% if (remainingCount2> 0) { %>
+                                                    <span class="badge light">+<%= remainingCount2 %></span>
+                                                    <% } %>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="overview-item2 overview-item3">
+                            <span class="info-label truncate-text">Industry:</span>
+                            <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
+                                <div class="blockchain-tags">
+                                    <% const maxVisible=1; const industry=icoData.industry || []; const
+                                        industryTag=industry.slice(0, maxVisible); const remainingCount=industry.length
+                                        - industryTag.length; %>
+
+                                        <% industryTag.forEach(tag=> { %>
+                                            <span class="badge gray truncate-text">
+                                                <%= tag %>
+                                            </span>
+                                            <% }) %>
+
+                                                <% if (remainingCount> 0) { %>
+                                                    <span class="badge light">+<%= remainingCount %></span>
+                                                    <% } %>
+                                </div>
+                            </span>
+                        </div>
+                            <div class="overview-item2 overview-item3">
+                                <span class="info-label">Sale Qty:</span>
+                                <span class="info-value truncate-text">
+                                    <%=result.tokenForSale%>
+                                </span>
+                            </div>
+                            <div class="overview-item2 overview-item3">
+                                <span class="info-label">Raise:</span>
+                                <span class="info-value truncate-text">
+                                    <%=result.raisePrice%>
+                                </span>
+                            </div>
+                            
+
+                          
+                           
+
+                           
+                        </div>
+                        <% })%>
+                </div>
+              <div class="overview-section">
+                    <h2>
+                        Economy
+                    </h2>
+                    <div class="overviewMain">
+
+                        <div class="overview-item overview-item3">
+                            <span class="info-label">Total Raise:</span>
+                            <span class="info-value truncate-text">
+                                <%=icoData.totalRaise%>
+                            </span>
+                        </div>
+                        <div class="overview-item overview-item3">
+                            <span class="info-label">Pre Sale:</span>
+                            <span class="info-value truncate-text">
+                                <%=icoData.preSale%>
+                            </span>
+                        </div>
+                        <div class="overview-item overview-item3">
+                            <span class="info-label">FDV:</span>
+                            <span class="info-value truncate-text">
+                                <%=icoData.fdv%>
+                            </span>
+                        </div>
+                        <div class="overview-item overview-item3">
+                            <span class="info-label">Total Supply:</span>
+                            <span class="info-value truncate-text">
+                                <%=icoData.totalSupply%>
+                            </span>
+                        </div>
+                        <div class="overview-item overview-item3">
+                            <span class="info-label">Public Sale:</span>
+                            <span class="info-value truncate-text" title="<%=icoData.publicSale%>">
+                                <%=icoData.publicSale%>
+                            </span>
+                        </div>
+                       
+
+
                     </div>
                 </div>
-
-                <div class="sidebar-card countdown-card">
-                    <div class="countdown-timer">-518 : 09 : 13 : 49</div>
-                    <div class="countdown-label">days - hours - min - sec</div>
-
-                    <div class="more-about">More about goodcryptoX</div>
-
-                    <div class="social-buttons">
-                        <a href="#" class="social-btn">🔗</a>
-                        <a href="#" class="social-btn">🐦</a>
-                        <a href="#" class="social-btn">💬</a>
-                        <a href="#" class="social-btn">📱</a>
-                    </div>
-                </div>
-            </aside>
+           </div>
         </div>
 
-        
-    <%- include("../../partials/frountFooter.ejs")%>
 
-         <script>
+        <%- include("../../partials/frountFooter.ejs")%>
+
+            <script>
                 // Hamburger Menu Toggle (for opening and closing the nav)
                 // Hamburger menu click (for opening the sidebar)
                 document.getElementById('hamburger-menu').addEventListener('click', function () {

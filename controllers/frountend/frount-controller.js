@@ -355,6 +355,9 @@ module.exports.detailEventListing = async (req, res) => {
 
 module.exports.IcoListing = async (req, res) => {
   try {
+
+    
+    
     const perPage = 20;
     const page = parseInt(req.query.page) || 1;
     const category = req.query.category || 'all';
@@ -408,6 +411,7 @@ module.exports.IcoListing = async (req, res) => {
 
 module.exports.createIcoListing = async (req, res) => {
   try {
+    
     //  const adminData = await Admin.find()
     res.render("frountend/createIcoListing.ejs")
   } catch (error) {
@@ -483,8 +487,8 @@ module.exports.createIcoListingSubmit = async (req, res) => {
     const whitepaperUrl = req.files.whitepaper ? req.files.whitepaper[0]?.location : null;
     const roadmapUrl = req.files.roadmap ? req.files.roadmap[0]?.location : null;
     const projectScreeshot = req.files.projectSreenshot ? req.files.projectSreenshot.map(file => file.location) : [];
-   // // console.log("=========", req.files)
-   // // console.log("==================", req.body)
+    // // console.log("=========", req.files)
+    // // console.log("==================", req.body)
 
     // for rounds
 
@@ -515,7 +519,7 @@ module.exports.createIcoListingSubmit = async (req, res) => {
         rounds.push(roundObj);
       }
     });
-  //  // console.log("Rounds=========", rounds)
+    //  // console.log("Rounds=========", rounds)
 
 
     // for teams
@@ -547,7 +551,7 @@ module.exports.createIcoListingSubmit = async (req, res) => {
       }
     });
 
-  //  // console.log("teams=========", team)
+    //  // console.log("teams=========", team)
 
 
     // for influencers section
@@ -584,7 +588,7 @@ module.exports.createIcoListingSubmit = async (req, res) => {
       }
     });
 
-  //  // console.log("influencers=========", influencers)
+    //  // console.log("influencers=========", influencers)
 
 
     // for partners section
@@ -676,6 +680,43 @@ module.exports.createIcoListingSubmit = async (req, res) => {
       slug = title.replace(/\s+/g, '-') + Math.floor(100 + Math.random() * 900);
     }
 
+
+    // for alt text
+
+
+    function stripHtml(html) {
+      return html.replace(/<[^>]*>?/gm, '').toLowerCase();
+    }
+
+    function detectAssetType(description) {
+      const plain = stripHtml(description || '');
+
+      const keywords = [
+        { keyword: 'oil', label: 'Oil-Backed' },
+        { keyword: 'gas', label: 'Gas-Backed' },
+        { keyword: 'real estate', label: 'Real Estate-Backed' },
+        { keyword: 'carbon', label: 'Carbon Credit' },
+        { keyword: 'ai', label: 'AI-Based' },
+        { keyword: 'defi', label: 'DeFi Token' },
+        { keyword: 'nft', label: 'NFT Project' },
+        { keyword: 'blockchain', label: 'Blockchain-Based' }
+      ];
+
+      for (const item of keywords) {
+        if (plain.includes(item.keyword)) {
+          return item.label;
+        }
+      }
+
+      return 'Crypto';
+    }
+
+    const assetType = detectAssetType(smallDescription);
+    const year = new Date().getFullYear();
+    const logoAltText = `${title} – Best Upcoming ${assetType} Crypto Logo of ${year} | Trending ICO Project`
+    const whitepaperAltText = `Download ${title} Whitepaper – Explore Latest ${assetType} Crypto ICO Project with Real Asset Backing (${year})`;
+    const roadmapAltText =`${title} Roadmap – Upcoming ${assetType} Token’s Vision, Milestones & Plans for ${year}`;
+
     // save data
 
 
@@ -722,7 +763,10 @@ module.exports.createIcoListingSubmit = async (req, res) => {
       authorName: authorName,
       authorEmail: authorEmail,
       authorWhatsapp: authorWhatsapp,
-      authorTwitter: authorTwitter
+      authorTwitter: authorTwitter,
+      logoAltText: logoAltText,
+      whitepaperAltText: whitepaperAltText,
+      roadmapAltText: roadmapAltText,
     });
     const SavedIco = await newIco.save();
     res.redirect(`/icoUnderProcess/:${SavedIco._id}?message=${"ICO"}`)
@@ -772,7 +816,7 @@ module.exports.airdropListing = async (req, res) => {
         endDateFormatted: moment(plain.endDate).format("MMMM Do, YYYY"),
       };
     });
-   // console.log(formattedAirdropListingData)
+    // console.log(formattedAirdropListingData)
     res.render("frountend/airdrops.ejs", {
       formattedAirdropListingData,
       current: page,
@@ -1044,14 +1088,14 @@ module.exports.DetailIco = async (req, res) => {
     }).format(startDate);
 
     // console.log(formattedStartDate)
-  
+
     const endDate = new Date(icoData[0].endDate); // aapki db se aayi date
     const formattendDate = new Intl.DateTimeFormat('en-GB', {
       day: '2-digit',
       month: 'short',
       year: 'numeric',
     }).format(endDate);
-  //  // console.log(formattendDate)
+    //  // console.log(formattendDate)
     icoData[0].formattedStartDate = formattedStartDate
     icoData[0].formattendDate = formattendDate
     res.render("frountend/detailIco.ejs", { icoData: icoData[0] })
@@ -1075,14 +1119,14 @@ module.exports.DetailAirdrop = async (req, res) => {
     }).format(startDate);
 
     // console.log(formattedStartDate)
-  
+
     const endDate = new Date(airdropData[0].endDate); // aapki db se aayi date
     const formattendDate = new Intl.DateTimeFormat('en-GB', {
       day: '2-digit',
       month: 'short',
       year: 'numeric',
     }).format(endDate);
-  //  // console.log(formattendDate)
+    //  // console.log(formattendDate)
     airdropData[0].formattedStartDate = formattedStartDate
     airdropData[0].formattendDate = formattendDate
     res.render("frountend/detailAirdrop.ejs", { airdropData: airdropData[0] })
