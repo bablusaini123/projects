@@ -28,6 +28,54 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
 
+const FloatingDollarParticles = ({ count = 40 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 640);
+  }, []);
+  const particleCount = isMobile ? 20 : count;
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
+      {[...Array(particleCount)].map((_, i) => {
+        const size = isMobile ? 6 + Math.random() * 4 : 8 + Math.random() * 6;
+        const opacity = 0.5 + Math.random() * 0.3;
+        return (
+          <motion.div
+            key={`particle-${i}`}
+            className="dollar-particle"
+            style={{
+              '--size': `${size}px`,
+              '--opacity': opacity,
+            }}
+            initial={{
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+              y: (typeof window !== 'undefined' ? window.innerHeight : 1000),
+              rotate: Math.random() * 90 - 45,
+            }}
+            animate={{
+              x: [0, Math.random() * 80 - 40, 0],
+              y: [0, -100 - Math.random() * 150, -250],
+              rotate: [0, Math.random() * 90 - 45, 0],
+              scale: [1, 0.8 + Math.random() * 0.2, 1],
+              opacity: [0.5, 0.8, 0.4],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 5,
+              repeat: Infinity,
+              repeatType: 'loop',
+              ease: 'easeInOut',
+              delay: Math.random() * 3,
+            }}
+          >
+            $
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+};
+
 const DotsAnimation = () => {
   useEffect(() => {
     class DotsAnimation {
@@ -166,7 +214,7 @@ const DotsAnimation = () => {
       if (currentTime - lastTime >= 1000) {
         const fps = frameCount;
         frameCount = 0;
-        lastTime = existingTime;
+        lastTime = currentTime;
 
         if (fps < 30 && window.dotsAnimation) {
           const dots = document.querySelectorAll('.floating-dot');
@@ -181,13 +229,14 @@ const DotsAnimation = () => {
       requestAnimationFrame(monitorPerformance);
     }
 
-    requestAnimationFrame(monitorPerformance);
+    const animationFrameId = requestAnimationFrame(monitorPerformance);
 
     return () => {
       document.body.removeEventListener('click', handleClick);
       if (window.dotsAnimation) {
         window.dotsAnimation.stopAnimation();
       }
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
@@ -283,17 +332,17 @@ const receivedBonus = async (userId, amount, level) => {
       bonusAmount: amount,
       bonusId: level
     });
-    if (response.data.message == "Bonus received") {
-      localStorage.removeItem('currentUser')
-      localStorage.setItem('currentUser', JSON.stringify(response.data.user))
+    if (response.data.message === "Bonus received") {
+      localStorage.removeItem('currentUser');
+      localStorage.setItem('currentUser', JSON.stringify(response.data.user));
       const bonusHistoryResponse = await api.post('/bonusHistory', {
         userId,
         bonusAmount: amount,
         bonusType: "Invitation Bonus"
       });
-      if (bonusHistoryResponse.data.message == 'Bonus history saved') {
-        localStorage.setItem('bonusHistory', JSON.stringify(bonusHistoryResponse.data.bonusHistory))
-        window.location.reload()
+      if (bonusHistoryResponse.data.message === 'Bonus history saved') {
+        localStorage.setItem('bonusHistory', JSON.stringify(bonusHistoryResponse.data.bonusHistory));
+        window.location.reload();
       }
     }
     return response.data;
@@ -342,7 +391,7 @@ const BonusCard = ({ bonusLevel, amount, invitees, rechargePerPerson, inviteesPr
   }, [userId, amount, bonusLevel, isCompleted, isClaiming, isClaimed, onClaimSuccess]);
 
   return (
-    <div className={` rounded-lg p-4 mb-4 text-black ${isClaimed ? "bg-green-100" : "bg-red-100"}`}>
+    <div className={`rounded-lg p-4 mb-4 text-black ${isClaimed ? "bg-green-100" : "bg-red-100"}`}>
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center bg-green-600 px-3 py-2 rounded-tl-2xl rounded-br-2xl">
           <span className="bg-green-600 text-white rounded-full px-2 py-1 text-xs font-semibold mr-2">Bonus {bonusLevel}</span>
@@ -354,7 +403,7 @@ const BonusCard = ({ bonusLevel, amount, invitees, rechargePerPerson, inviteesPr
             <span className="text-red-600 text-md rounded-[50%] p-1 bg-white"><X size={14} /></span>
           )}
         </div>
-        <span className="text-lg font-bold flex items-center "><IndianRupee size={20} className='font-semibold' />{amount.toLocaleString()}</span>
+        <span className="text-lg font-bold flex items-center"><IndianRupee size={20} className='font-semibold' />{amount.toLocaleString()}</span>
       </div>
       <div className="text-sm space-y-1">
         <div className="flex justify-between">
@@ -416,28 +465,59 @@ const Dashboard = () => {
 
   const { walletBalance, paymentHistory, referrals, dashboardData } = dashboardState;
   const abortControllerRef = useRef(new AbortController());
-  const autoLogoutTimerRef = useRef(null);
+  const logoutTimerRef = useRef(null);
 
-  const setupAutoLogout = useCallback(() => {
-    if (autoLogoutTimerRef.current) {
-      clearTimeout(autoLogoutTimerRef.current);
-    }
+const setupMidnightLogout = useCallback(() => {
+  if (logoutTimerRef.current) {
+    clearTimeout(logoutTimerRef.current);
+    console.log('⏰ Cleared previous logout timer');
+  }
 
-    autoLogoutTimerRef.current = setTimeout(() => {
-      console.log('⏰ 1-minute auto logout triggered - clearing session...');
+  const now = new Date();
+  const istOffset = 5.5 * 60 * 60 * 1000; // IST is UTC+5:30
+  const nowIST = new Date(now.getTime() + istOffset);
+
+  // Set target to 1 minute from now for testing
+  let target = new Date(nowIST);
+  target.setMinutes(nowIST.getMinutes() + 1, 0, 0); // Set to 1 minute from current time
+
+  const timeUntilLogout = target.getTime() - nowIST.getTime();
+  console.log(`⏰ Setting logout timer for ${target.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (in ${Math.round(timeUntilLogout / 1000)} seconds)`);
+
+  // Ensure timer is only set if timeUntilLogout is positive
+  if (timeUntilLogout > 0) {
+    logoutTimerRef.current = setTimeout(() => {
+      console.log('⏰ Test logout triggered - clearing session...');
       localStorage.clear();
       logout();
-      toast.success('Session expired - logged out automatically!');
+      toast.success('Session expired - test logout triggered!');
       navigate('/login');
-    }, 60 * 1000); // 1 minute in milliseconds
-  }, [navigate]);
+      // Reset timer for next day (optional for testing)
+      setupMidnightLogout();
+    }, timeUntilLogout);
+  } else {
+    console.error('⏰ Error: timeUntilLogout is negative or zero, scheduling for next minute');
+    target.setMinutes(target.getMinutes() + 1);
+    const newTimeUntilLogout = target.getTime() - nowIST.getTime();
+    logoutTimerRef.current = setTimeout(() => {
+      console.log('⏰ Test logout triggered - clearing session...');
+      localStorage.clear();
+      logout();
+      toast.success('Session expired - test logout triggered!');
+      navigate('/login');
+      setupMidnightLogout();
+    }, newTimeUntilLogout);
+    console.log(`⏰ Fallback: Set logout timer for ${target.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (in ${Math.round(newTimeUntilLogout / 1000)} seconds)`);
+  }
+}, [navigate]);
 
-  const cleanupAutoLogout = useCallback(() => {
-    if (autoLogoutTimerRef.current) {
-      clearTimeout(autoLogoutTimerRef.current);
-      autoLogoutTimerRef.current = null;
-    }
-  }, []);
+const cleanupMidnightLogout = useCallback(() => {
+  if (logoutTimerRef.current) {
+    clearTimeout(logoutTimerRef.current);
+    logoutTimerRef.current = null;
+    console.log('⏰ Cleanup: Logout timer cleared');
+  }
+}, []);
 
   const fetchData = useCallback(async () => {
     const user = getCurrentUser();
@@ -524,21 +604,21 @@ const Dashboard = () => {
     }
 
     fetchData();
-    setupAutoLogout();
+    setupMidnightLogout();
 
     return () => {
       abortControllerRef.current.abort();
-      cleanupAutoLogout();
+      cleanupMidnightLogout();
     };
-  }, [navigate, fetchData, setupAutoLogout, cleanupAutoLogout]);
+  }, [navigate, fetchData, setupMidnightLogout, cleanupMidnightLogout]);
 
   const handleLogout = useCallback(() => {
-    cleanupAutoLogout();
+    cleanupMidnightLogout();
     localStorage.clear();
     logout();
     navigate('/login');
     toast.success('Logged out successfully!');
-  }, [navigate, cleanupAutoLogout]);
+  }, [navigate, cleanupMidnightLogout]);
 
   const handleWithdraw = useCallback(async () => {
     const user = getCurrentUser();
@@ -620,7 +700,7 @@ const Dashboard = () => {
 
   const initialBonusData = [
     { level: 1, amount: 155, invitees: 2, rechargePerPerson: 500, inviteesProgress: 0, depositProgress: 0 },
-    { level: 2, amount: 555, invitees: 2, rechargePerPerson: 500, inviteesProgress: 0, depositProgress: 0 },
+    { level: 2, amount: 555, invitees: 10, rechargePerPerson: 500, inviteesProgress: 0, depositProgress: 0 },
     { level: 3, amount: 1555, invitees: 30, rechargePerPerson: 500, inviteesProgress: 0, depositProgress: 0 },
     { level: 4, amount: 3555, invitees: 70, rechargePerPerson: 500, inviteesProgress: 0, depositProgress: 0 },
     { level: 5, amount: 10955, invitees: 200, rechargePerPerson: 500, inviteesProgress: 0, depositProgress: 0 },
@@ -630,7 +710,6 @@ const Dashboard = () => {
     { level: 9, amount: 755555, invitees: 10000, rechargePerPerson: 500, inviteesProgress: 0, depositProgress: 0 },
     { level: 10, amount: 1555555, invitees: 20000, rechargePerPerson: 500, inviteesProgress: 0, depositProgress: 0 },
   ];
-
   const bonusData = useMemo(() => {
     if (!dashboardData) return initialBonusData;
 
@@ -825,8 +904,8 @@ const Dashboard = () => {
                 <Wallet className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 -mr-1 sm:mr-3" aria-hidden="true" />
                 <h2 className="text-xl sm:text-2xl font-bold">Wallet</h2>
               </div>
-              <div className="text-center p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg mb-4 flex  flex-col items-center">
-                <div className="text-[23px]  sm:text-4xl text-blue-600 font-semibold flex items-center">
+              <div className="text-center p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg mb-4 flex flex-col items-center">
+                <div className="text-[23px] sm:text-4xl text-blue-600 font-semibold flex items-center">
                   <span><IndianRupee size={20} className='!font-bold' /></span>
                   {(dashboardData?.userWallet || currentUser?.userWallet || 0).toLocaleString()}
                 </div>
@@ -836,21 +915,21 @@ const Dashboard = () => {
                 This wallet shows your earnings from referrals. Withdraw funds after reaching the minimum limit.
               </p>
               <div className='flex gap-2'>
-                <Drawer >
+                <Drawer>
                   <DrawerTrigger asChild>
                     <button
-                      className="w-full bg-gradient-to-r from-blue-600 to-red-500 text-white px-4  sm:px-6 sm:py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
+                      className="w-full bg-gradient-to-r from-blue-600 to-red-500 text-white px-4 sm:px-6 sm:py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
                       aria-label="Withdraw Funds"
                     >
                       Withdraw Funds
                     </button>
                   </DrawerTrigger>
-                  <DrawerContent className=" overflow-y-scroll max-h-[50px] bg-gradient-to-br from-blue-50 to-red-50 text-white p-0">
+                  <DrawerContent className="overflow-y-scroll max-h-[50px] bg-gradient-to-br from-blue-50 to-red-50 text-white p-0">
                     <DrawerHeader>
                       <DrawerTitle className="text-xl font-bold text-black">Withdraw Funds</DrawerTitle>
                       <DrawerDescription className="text-gray-600">Enter your withdrawal details below</DrawerDescription>
                     </DrawerHeader>
-                    <div className="px-4  space-y-2">
+                    <div className="px-4 space-y-2">
                       <div>
                         <label className="block text-sm font-medium text-black">Amount</label>
                         <input
@@ -956,10 +1035,10 @@ const Dashboard = () => {
                       Invitation Bonus
                     </button>
                   </DrawerTrigger>
-                  <DrawerContent className="  bg-gradient-to-br from-blue-50 to-red-50 text-white p-0">
+                  <DrawerContent className="bg-gradient-to-br from-blue-50 to-red-50 text-white p-0">
                     <DrawerHeader>
                       <div className='flex justify-between items-center'>
-                        <DrawerTitle className="text-md sm:text-xl  font-bold text-black text-start">Invitation Bonus
+                        <DrawerTitle className="text-md sm:text-xl font-bold text-black text-start">Invitation Bonus
                           <DrawerDescription className="text-gray-600 text-xs sm:text-md">View your invitation bonus progress</DrawerDescription>
                         </DrawerTitle>
                         <div className='flex justify-end'>
@@ -968,15 +1047,15 @@ const Dashboard = () => {
                               <DialogTrigger asChild>
                                 <Button className='bg-gradient-to-r from-blue-600 to-red-500'>View Bonus History</Button>
                               </DialogTrigger>
-                              <DialogContent className="sm:max-w-[425px] ">
+                              <DialogContent className="sm:max-w-[425px]">
                                 <DialogHeader>
                                   <DialogDescription className='text-[#000] text-lg'>
                                     Your Received Bonus History.
                                   </DialogDescription>
                                 </DialogHeader>
-                                <div className="grid gap-4 bonusHistory max-h-[99%] overflow-y-scroll  ">
+                                <div className="grid gap-4 bonusHistory max-h-[99%] overflow-y-scroll">
                                   {bonusHistory.length > 0 ? (
-                                    <table className="min-w-full text-left border-collapse text-xs sm:text-sm ">
+                                    <table className="min-w-full text-left border-collapse text-xs sm:text-sm">
                                       <tbody>
                                         {bonusHistory.map((entry, index) => (
                                           <tr key={`bonus-${index}`} className="border-t hover:bg-gray-50 flex justify-between">
@@ -1044,7 +1123,7 @@ const Dashboard = () => {
               <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                 <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg">
                   <div className="text-lg sm:text-lg font-normal text-blue-600 flex items-center justify-center">
-                    <span><IndianRupee size={15} className=' font-semibold' /></span>{(walletBalance.balance || 0).toLocaleString()}
+                    <span><IndianRupee size={15} className='font-semibold' /></span>{(walletBalance.balance || 0).toLocaleString()}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600">Total Earnings</div>
                 </div>
@@ -1155,17 +1234,17 @@ const Dashboard = () => {
                             </td>
                           </tr>
                         )) || (
-                            <tr>
-                              <td colSpan="2" className="p-2 sm:p-12 text-center">
-                                <div className="flex flex-col items-center">
-                                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
-                                    <History className="w-8 h-8 text-gray-400" />
-                                  </div>
-                                  <span className="text-gray-600 text-sm font-medium">No purchase history available.</span>
+                          <tr>
+                            <td colSpan="2" className="p-2 sm:p-12 text-center">
+                              <div className="flex flex-col items-center">
+                                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
+                                  <History className="w-8 h-8 text-gray-400" />
                                 </div>
-                              </td>
-                            </tr>
-                          )}:
+                                <span className="text-gray-600 text-sm font-medium">No purchase history available.</span>
+                              </div>
+                            </td>
+                          </tr>
+                        )}
                       </tbody>
                     </table>
                   </div>
@@ -1187,7 +1266,6 @@ const Dashboard = () => {
                 </div>
                 <h2 className="text-xl font-semibold text-gray-800 ml-3 sm:ml-4">Commission History</h2>
               </div>
-
               <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="overflow-x-auto max-h-[200px]">
                   <table className="min-w-full text-left border-collapse text-xs sm:text-sm">
@@ -1209,7 +1287,6 @@ const Dashboard = () => {
                           </td>
                           <td className="p-3 sm:p-4 text-gray-700 font-medium text-sm">
                             <div className="flex items-center">
-
                               <span>{entry.buyerName || 'N/A'}</span>
                             </div>
                           </td>
@@ -1288,9 +1365,7 @@ const Dashboard = () => {
                               <span>{(entry.amount || 0).toLocaleString()}</span>
                             </div>
                           </td>
-                          <td className={`p-3 sm:p-4 font-semibold text-sm ${entry.status === 'success' 
-                            ? "text-green-800"
-                            : "text-yellow-500"}`}>
+                          <td className={`p-3 sm:p-4 font-semibold text-sm ${entry.status === 'success' ? 'text-green-800' : 'text-yellow-500'}`}>
                             {entry.status || 'N/A'}
                           </td>
                         </tr>
@@ -1325,7 +1400,7 @@ const Dashboard = () => {
                   <LinkIcon className="w-7 h-6 sm:w-8 sm:h-8 text-blue-600 mr-2 sm:mr-3" aria-hidden="true" />
                   <h2 className="text-[12px] whitespace-break-spaces sm:text-2xl font-semibold">Your Referral Code</h2>
                 </div>
-                <div className="w-full gap-3 sm:flex-row sm:items-center sm:gap-4 ">
+                <div className="w-full gap-3 sm:flex-row sm:items-center sm:gap-4">
                   <input
                     type="text"
                     value={referralCode}
@@ -1344,7 +1419,7 @@ const Dashboard = () => {
                     </button>
                   </div>
                 </div>
-                <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base  ">
+                <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base">
                   Share this code to earn up to <span><IndianRupee size={16} className='font-semibold inline-block' /></span>500 per successful course purchase!
                 </p>
               </div>
@@ -1384,54 +1459,6 @@ const Dashboard = () => {
           </motion.div>
         </div>
       </div>
-    </div>
-  );
-};
-
-const FloatingDollarParticles = ({ count = 40 }) => {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 640);
-  }, []);
-  const particleCount = isMobile ? 20 : count;
-
-  return (
-    <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
-      {[...Array(particleCount)].map((_, i) => {
-        const size = isMobile ? 6 + Math.random() * 4 : 8 + Math.random() * 6;
-        const opacity = 0.5 + Math.random() * 0.3;
-        return (
-          <motion.div
-            key={`particle-${i}`}
-            className="dollar-particle"
-            style={{
-              '--size': `${size}px`,
-              '--opacity': opacity,
-            }}
-            initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-              y: (typeof window !== 'undefined' ? window.innerHeight : 1000),
-              rotate: Math.random() * 90 - 45,
-            }}
-            animate={{
-              x: [0, Math.random() * 80 - 40, 0],
-              y: [0, -100 - Math.random() * 150, -250],
-              rotate: [0, Math.random() * 90 - 45, 0],
-              scale: [1, 0.8 + Math.random() * 0.2, 1],
-              opacity: [0.5, 0.8, 0.4],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 5,
-              repeat: Infinity,
-              repeatType: 'loop',
-              ease: 'easeInOut',
-              delay: Math.random() * 3,
-            }}
-          >
-            $
-          </motion.div>
-        );
-      })}
     </div>
   );
 };
