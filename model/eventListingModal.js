@@ -26,7 +26,8 @@ const eventListingSchema = new mongoose.Schema({
   authorName:String,
   authorEmail:String,
   authorWhatsapp:String,
-  authorTwitter:String
+  authorTwitter:String,
+  altText: { type: String, default: '' },  // ye update karna hai
 }, { timestamps: true });
 
 module.exports = mongoose.model('eventListing', eventListingSchema);

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const AirdropSchema = new mongoose.Schema({
-  tokenName: { type: String , required: true },
-  tokenImage: { type: String , required: true},           // URL or file path
-  bannerImage: { type: String , required: true },          // URL or file path
+  tokenName: { type: String, required: true },
+  tokenImage: { type: String, required: true },           // URL or file path
+  bannerImage: { type: String, required: true },          // URL or file path
   tokenSymbol: { type: String },
   country: { type: String },
   startDate: { type: Date },
@@ -30,7 +30,9 @@ const AirdropSchema = new mongoose.Schema({
   authorEmail: { type: String },
   authorWhatsapp: { type: String },
   authorTwitter: { type: String },
-  slug: { type: String }
+  slug: { type: String },
+  tokenImageAlt: { type: String, default: '' },    // alt text for token image
+  bannerImageAlt: { type: String, default: '' },   // alt text for banner image
 }, { timestamps: true });
 
 module.exports = mongoose.model('Airdrop', AirdropSchema);

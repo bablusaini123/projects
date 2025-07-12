@@ -286,6 +286,9 @@ module.exports.createEventListingSubmit = async (req, res) => {
       slug = title.replace(/\s+/g, '-') + Math.floor(100 + Math.random() * 900);
     }
 
+  const altText = `Discover the latest, upcoming, and ongoing events for ${title} featuring official token and banner images`;
+
+
     // save data
 
 
@@ -314,7 +317,8 @@ module.exports.createEventListingSubmit = async (req, res) => {
       authorName: authorName,
       authorEmail: authorEmail,
       authorWhatsapp: authorWhatsapp,
-      authorTwitter: authorTwitter
+      authorTwitter: authorTwitter,
+      altText:altText
     });
     const savedEvent = await newEvent.save();
     res.redirect('/eventListing')
@@ -889,6 +893,8 @@ module.exports.createAirdropSubmit = async (req, res) => {
     // Utility to sanitize null or "" to "N/A"
     const sanitize = (val) => (val === '' || val === null || val === undefined) ? 'N/A' : val;
 
+     const altText = `Discover the latest, upcoming, and ongoing airdrops for ${tokenName} featuring official token and banner images`;
+
     const newAirdrop = new Airdrop({
       tokenName: sanitize(tokenName),
       tokenImage: sanitize(tokenImage),
@@ -919,7 +925,9 @@ module.exports.createAirdropSubmit = async (req, res) => {
       authorEmail: sanitize(authorEmail),
       authorWhatsapp: sanitize(authorWhatsapp),
       authorTwitter: sanitize(authorTwitter),
-      slug: slug
+      slug: slug,
+      tokenImageAlt:altText,
+      bannerImageAlt:altText
     });
     await newAirdrop.save();
     res.redirect(`/icoUnderProcess/${newAirdrop._id}?message=${"Airdrop"}`);
@@ -1080,6 +1088,7 @@ module.exports.DetailIco = async (req, res) => {
   try {
     const slug = req.params.slug
     const icoData = await IcoListing.find({ slug: slug })
+    console.log("-----",icoData)
     const startDate = new Date(icoData[0].startDate); // aapki db se aayi date
     const formattedStartDate = new Intl.DateTimeFormat('en-GB', {
       day: '2-digit',
