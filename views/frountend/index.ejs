@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)https://asicmarketplace.com/ -->
+<html lang="en-US" prefix="og: https://ogp.me/ns#" class="no-js">
+
+<head>
+	<link rel="preload" href="../../image/banner-v1.webp" as="image">
+	<link rel="preload" href="../../image/logo.svg" as="image" fetchpriority="high">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link data-minify="1" rel="stylesheet" id="woocommerce-layout-css" href="../../css/woocommerce-layout.css"
+		media="all">
+	<link data-minify="1" rel="stylesheet" id="woocommerce-smallscreen-css" href="../../css/woocommerce-smallscreen.css"
+		media="only screen and (max-width: 768px)">
+	<link data-minify="1" rel="stylesheet" id="woocommerce-general-css" href="../../css/woocommerce.css" media="all">
+	<link data-minify="1" rel="stylesheet" id="trp-language-switcher-style-css"
+		href="../../css/trp-language-switcher.css" media="all">
+	<link data-minify="1" rel="stylesheet" id="trp-popup-style-css" href="../../css/trp-popup.css" media="all">
+	<link data-minify="1" rel="stylesheet" id="brands-styles-css" href="../../css/brands.css" media="all">
+	<link data-minify="1" rel="stylesheet" id="bootstrap-css" href="../../css/bootstrap.css" media="all">
+
+	<link data-minify="1" rel="stylesheet" id="select2-css" href="../../css/select2.css" media="all">
+
+	<link data-minify="1" rel="stylesheet" id="style-css" href="../../css/style.css" media="all">
+	<link rel="stylesheet" id="ald-styles-css" href="../../css/styles.min.css" media="all">
+
+	<script src="../../js/jquery.min.js" id="jquery-js"></script>
+	<title>Buy Crypto Miners Online | Bitcoin & ASIC Miners for Best Profit 2025</title>
+
+	<meta name="description"
+		content="Buy Bitcoin, ASIC & GPU crypto miners online. Compare mining rigs by price, algorithm, blockchain, electricity cost, profit & revenue. Best crypto miner deals 2025.">
+
+	<link rel="canonical" href="https://czminers.com" />
+
+	<script>
+		// Base64 se product data decode karo (server side se aise milta hai)
+		const encodedProductData = '<%- Buffer.from(JSON.stringify(productData || [])).toString("base64") %>';
+		const decodedProducts = JSON.parse(atob(encodedProductData));
+
+		const structuredData = [];
+
+		// Organization
+		structuredData.push({
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Blockchain Miners",
+			"url": "https://czminers.com",
+			"logo": "https://czminers.com/logo.png", // Make sure yeh valid URL ho
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+1-000-000-0000",
+				"contactType": "Customer Support",
+				"email": "support@czminers.com"
+			},
+			"sameAs": [
+				"https://twitter.com/blockchainminers",
+				"https://facebook.com/blockchainminers"
+			]
+		});
+
+		// WebSite with SearchAction
+		structuredData.push({
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "Blockchain Miners",
+			"url": "https://czminers.com",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://czminers.com/miner?brand={search_term_string}",
+				"query-input": "required name=search_term_string"
+			}
+		});
+
+		// WebPage
+		structuredData.push({
+			"@context": "https://schema.org",
+			"@type": "WebPage",
+			"name": "Blockchain Miners - Crypto Mining Hardware",
+			"url": "https://czminers.com",
+			"description": "Buy top crypto miners including Bitcoin, Dogecoin, and other altcoin mining rigs at czminers.com.",
+			"inLanguage": "en-US"
+		});
+
+		// BreadcrumbList
+		structuredData.push({
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{
+					"@type": "ListItem",
+					"position": 1,
+					"name": "Home",
+					"item": "https://czminers.com"
+				},
+				{
+					"@type": "ListItem",
+					"position": 2,
+					"name": "Miners",
+					"item": "https://czminers.com/miner"
+				}
+			]
+		});
+
+		// ItemList with Products (including image and offers)
+		structuredData.push({
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			"name": "Crypto Miners",
+			"url": "https://czminers.com/miner",
+			"itemListElement": decodedProducts.map((product, index) => ({
+				"@type": "ListItem",
+				"position": index + 1,
+				"item": {
+					"@type": "Product",
+					"name": product.title || "Unknown Product",
+					"url": `https://czminers.com/miner/${product.slug}`,
+					"image": Array.isArray(product.productImages) && product.productImages.length > 0
+						? product.productImages[0]
+						: "https://czminers.com/default-product-image.png",  // Fallback image URL (change as needed)
+					"description": product.overview
+						? product.overview.replace(/(<([^>]+)>)/gi, '').replace(/\n/g, ' ').trim()
+						: "No description available.",
+					"sku": product.slug || "",
+					"mpn": product._id || "",
+					"brand": {
+						"@type": "Brand",
+						"name": product.brand || "Blockchain Miners"
+					},
+					"offers": {
+						"@type": "Offer",
+						"url": `https://czminers.com/miner/${product.slug}`,
+						"priceCurrency": "USD",
+						"price": product.sellPrice ? product.sellPrice.replace(/[^0-9.]/g, '') : "0",
+						"availability": "https://schema.org/InStock",
+						"itemCondition": "https://schema.org/NewCondition"
+					},
+					"aggregateRating": {
+						"@type": "AggregateRating",
+						"ratingValue": product.ratingValue || "4.5",
+						"reviewCount": product.reviewCount || "25"
+					}
+				}
+			}))
+		});
+
+		// Render the combined JSON-LD into <head>
+		const jsonLdScript = document.createElement("script");
+		jsonLdScript.type = "application/ld+json";
+		jsonLdScript.text = JSON.stringify(structuredData, null, 2);
+		document.head.appendChild(jsonLdScript);
+	</script>
+
+
+
+
+
+</head>
+<style>
+	.product {
+		width: 24%;
+		margin-bottom: 20px;
+	}
+
+	.woocommerce-loop-product__title {
+		height: 48px;
+	}
+
+	.dealLi {
+		width: 49%;
+	}
+</style>
+
+<body>
+
+
+
+
+
+	<!-- header start -->
+
+	<%- include("../../partials/frountHeader.ejs")%>
+		<!-- header end -->
+
+		<div class="slider sky">
+			<canvas width="100%" height="273" style="position: absolute; top: 0px; left: 0px;"></canvas>
+			<div class="container-fluid">
+				<div class="bg-black p-5" data-rocket-lazy-bg-26c6ef10-7435-4d62-b890-e5b625e23f36="loaded">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-7 text-md-left text-center">
+								<h1>Get Your First <span>MINING</span> Output Today. Get a Piece of the Future.</h1>
+								<p>Our goal is to provide high quality cryptocurrency miners at best rate possible to
+									our
+									clients.</p>
+								<a class="btn-bluebg" href="https://asicmarketplace.com/shop/?orderby=date">View Latest
+									Miners</a>
+								<a class="btn-white ml-lg-4 ml-md-0 ml-sm-2 mt-lg-0 mt-md-3 mt-sm-0 mt-2"
+									href="https://asicmarketplace.com/offers-and-deals"><img width="20"
+										src="../../image/offer.svg"
+										data-lazy-src="https://asicmarketplace.com/wp-content/uploads/2025/01/offer.svg"
+										data-ll-status="loaded" class="entered lazyloaded"><noscript><img width="20"
+											src="https://asicmarketplace.com/wp-content/uploads/2025/01/offer.svg"></noscript>
+									<span>Check Our Latest Offers</span></a>
+							</div>
+							<div class="col-md-5 text-center right">
+								<img class="unzip entered lazyloaded" alt="asicminer" width="475" height="453"
+									src="../../image/banner-v1.webp"
+									data-lazy-src="https://asicmarketplace.com/wp-content/uploads/2023/01/banner-v1.webp"
+									data-ll-status="loaded"><noscript><img class="unzip" alt="asicminer" width="475"
+										height="453"
+										src="https://asicmarketplace.com/wp-content/uploads/2023/01/banner-v1.webp"></noscript>
+							</div>
+						</div>
+					</div>
+					<div class="block"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="review pt-4 pb-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<ul>
+							<li>
+								<h2>12800+</h2>
+								<p>Mining <br>Hardware Sold</p>
+							</li>
+							<li>
+								<h2>4300+</h2>
+								<p>Happy Customers <br>around the World</p>
+							</li>
+							<li>
+								<h2>80+</h2>
+								<p>Countries <br>delivered to</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="deals pt-lg-5 pb-md-5">
+			<div class="container">
+				<div class="bg-black pl-5 pr-5">
+					<div class="row">
+						<div class="col-lg-5 my-auto">
+							<div class="d-inline-block position-relative">
+								<h2>Deal of the <br>week</h2>
+								<img alt="deals" class="d-lg-block d-none entered lazyloaded"
+									src="../../image/deals-arrow.webp"
+									data-lazy-src="https://asicmarketplace.com/wp-content/uploads/2023/01/deals-arrow.webp"
+									data-ll-status="loaded"><noscript><img alt="deals" class="d-lg-block d-none"
+										src="https://asicmarketplace.com/wp-content/uploads/2023/01/deals-arrow.webp"></noscript>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<ul class="products columns-3 d-flex" style="flex-wrap: wrap;    flex-wrap: wrap;
+    justify-content: space-between;">
+
+								<% productData.slice(9,11).forEach(result=> { %>
+									<li class="dealLi product type-product post-24783 status-publish first instock product_cat-microbt-whatsminer has-post-thumbnail featured shipping-taxable purchasable product-type-variable has-default-attributes"
+										style="display: flex;">
+										<a href="/miner/<%=result.slug%>"
+											class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img
+												width="300" height="300" src="<%=result.productImages[0]%>"
+												class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail entered lazyloaded"
+												alt="<%=result.altText%>" decoding="async" fetchpriority="high"
+												sizes="(max-width: 300px) 100vw, 300px"
+												src="<%=result.productImages[0]%>"
+												class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+												alt="<%=result.altText%>" decoding="async" fetchpriority="high"
+												sizes="(max-width: 300px) 100vw, 300px" /></noscript>
+											<h2 class="woocommerce-loop-product__title">
+												<%=result.title%>
+											</h2>
+											<div style="padding: 10px 10px;">
+												<ul style="display: flex; justify-content: space-between;">
+
+													<li style="display: flex;">
+														<img alt="bolt" src="../../image/thunder.png"
+															style="width: 20px;">
+														<%=result.power%>
+													</li>
+													<li style="display: flex;">
+														<img alt="bolt" src="../../image/microchip-solid-final.webp"
+															style="width: 14px;height: 14px;margin-top: 3px;
+    margin-right: 3px;">
+														<%=result.hashRate%>
+													</li>
+												</ul>
+											</div>
+
+											<span class="price"><span
+													class="woocommerce-Price-amount amount"><bdi></span>
+												<span class="woocommerce-Price-amount amount"><bdi><span
+															class="woocommerce-Price-currencySymbol">
+															<%=result.sellPrice%></bdi></span></span>
+										</a><a href=""
+											aria-describedby="woocommerce_loop_add_to_cart_link_describedby_24783"
+											data-quantity="1" class="button product_type_variable add_to_cart_button"
+											data-product_id="24783" data-product_sku="WM61S"
+											aria-label="Elige las opciones para “MicroBT Whatsminer M61S Bitcoin Miner”"
+											rel="nofollow">Seleccionar opciones</a> <span
+											id="woocommerce_loop_add_to_cart_link_describedby_24783"
+											class="screen-reader-text">
+											This product has multiple variants. The options may be
+											chosen on
+											the
+											product page </span>
+										<div class="fav_cart">
+											<a href="" class="button add_to_cart_button ajax_add_to_cart"><img
+													alt="cart" src="../../image/shopping-cart.svg" width="24"
+													height="25"></a>
+										</div>
+									</li>
+									<% }) %>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="featured-pro pt-5 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 mb-5 text-center">
+						<h2><strong data-rocket-lazy-bg-1d0fac1c-5fb3-4c9f-ab1e-fdcd0973373e="loaded">Featured
+								Products</strong></h2>
+					</div>
+				</div>
+				<div class="row">
+					<ul class="products columns-3 d-flex" style="flex-wrap: wrap;    flex-wrap: wrap;
+    justify-content: space-between;">
+
+						<% productData.forEach(result=> { %>
+							<li class="product type-product post-24783 status-publish first instock product_cat-microbt-whatsminer has-post-thumbnail featured shipping-taxable purchasable product-type-variable has-default-attributes"
+								style="display: flex;">
+								<a href="/miner/<%=result.slug%>"
+									class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300"
+										height="300" src="<%=result.productImages[0]%>"
+										class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail entered lazyloaded"
+										alt="<%=result.altText%>" decoding="async" fetchpriority="high"
+										sizes="(max-width: 300px) 100vw, 300px" src="<%=result.productImages[0]%>"
+										class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+										alt="<%=result.altText%>" decoding="async" fetchpriority="high"
+										sizes="(max-width: 300px) 100vw, 300px" /></noscript>
+									<h2 class="woocommerce-loop-product__title">
+										<%=result.title%>
+									</h2>
+									<div style="padding: 10px 10px;">
+										<ul style="display: flex; justify-content: space-between;">
+
+											<li style="display: flex;">
+												<img alt="bolt" src="../../image/thunder.png" style="width: 20px;">
+												<%=result.power%>
+											</li>
+											<li style="display: flex;">
+												<img alt="bolt" src="../../image/microchip-solid-final.webp" style="width: 14px;height: 14px;margin-top: 3px;
+    margin-right: 3px;">
+												<%=result.hashRate%>
+											</li>
+										</ul>
+									</div>
+
+									<span class="price"><span class="woocommerce-Price-amount amount"><bdi></span>
+										<span class="woocommerce-Price-amount amount"><bdi><span
+													class="woocommerce-Price-currencySymbol">
+													<%=result.sellPrice%></bdi></span></span>
+								</a><a href="" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_24783"
+									data-quantity="1" class="button product_type_variable add_to_cart_button"
+									data-product_id="24783" data-product_sku="WM61S"
+									aria-label="Elige las opciones para “MicroBT Whatsminer M61S Bitcoin Miner”"
+									rel="nofollow">Seleccionar opciones</a> <span
+									id="woocommerce_loop_add_to_cart_link_describedby_24783" class="screen-reader-text">
+									This product has multiple variants. The options may be
+									chosen on
+									the
+									product page </span>
+								<div class="fav_cart">
+									<a href="" class="button add_to_cart_button ajax_add_to_cart"><img alt="cart"
+											src="../../image/shopping-cart.svg" width="24" height="25"></a>
+								</div>
+							</li>
+							<% }) %>
+					</ul>
+
+					<div class="mb-5 text-center col-12">
+						<a style="padding: 8px 22px;" class="btn-grey" href="/products">View All Products</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="featured-pro pt-5 pb-5 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 mb-5 text-center">
+						<h2><strong data-rocket-lazy-bg-1d0fac1c-5fb3-4c9f-ab1e-fdcd0973373e="loaded">Solo
+								Miner's</strong>
+						</h2>
+					</div>
+				</div>
+				<div class="row">
+					<ul class="products columns-3 d-flex" style="flex-wrap: wrap;    flex-wrap: wrap;
+    justify-content: space-between;">
+
+						<% productData2.forEach(result=> { %>
+							<li class="product type-product post-24783 status-publish first instock product_cat-microbt-whatsminer has-post-thumbnail featured shipping-taxable purchasable product-type-variable has-default-attributes"
+								style="display: flex;">
+								<a href="/miner/<%=result.slug%>"
+									class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="300"
+										height="300" src="<%=result.productImages[0]%>"
+										class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail entered lazyloaded"
+										alt="<%=result.altText%>" decoding="async" fetchpriority="high"
+										sizes="(max-width: 300px) 100vw, 300px" src="<%=result.productImages[0]%>"
+										class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+										alt="<%=result.altText%>" decoding="async" fetchpriority="high"
+										sizes="(max-width: 300px) 100vw, 300px" /></noscript>
+									<h2 class="woocommerce-loop-product__title">
+										<%=result.title%>
+									</h2>
+									<div style="padding: 10px 10px;">
+										<ul style="display: flex; justify-content: space-between;">
+
+											<li style="display: flex;">
+												<img alt="bolt" src="../../image/thunder.png" style="width: 20px;">
+												<%=result.power%>
+											</li>
+											<li style="display: flex;">
+												<img alt="bolt" src="../../image/microchip-solid-final.webp" style="width: 14px;height: 14px;margin-top: 3px;
+    margin-right: 3px;">
+												<%=result.hashRate%>
+											</li>
+										</ul>
+									</div>
+
+									<span class="price"><span class="woocommerce-Price-amount amount"><bdi></span>
+										<span class="woocommerce-Price-amount amount"><bdi><span
+													class="woocommerce-Price-currencySymbol">
+													<%=result.sellPrice%></bdi></span></span>
+								</a><a href="" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_24783"
+									data-quantity="1" class="button product_type_variable add_to_cart_button"
+									data-product_id="24783" data-product_sku="WM61S"
+									aria-label="Elige las opciones para “MicroBT Whatsminer M61S Bitcoin Miner”"
+									rel="nofollow">Seleccionar opciones</a> <span
+									id="woocommerce_loop_add_to_cart_link_describedby_24783" class="screen-reader-text">
+									This product has multiple variants. The options may be
+									chosen on
+									the
+									product page </span>
+								<div class="fav_cart">
+									<a href="" class="button add_to_cart_button ajax_add_to_cart"><img alt="cart"
+											src="../../image/shopping-cart.svg" width="24" height="25"></a>
+								</div>
+							</li>
+							<% }) %>
+					</ul>
+
+				</div>
+				<div class="row">
+					<div class="text-center w-100">
+						<a class="btn-grey" href="/products">View All Solo Miner’s</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+		<div data-wpr-lazyrender="1" class="support pt-5 mb-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 text-center mb-5">
+						<h2><strong data-rocket-lazy-bg-1d0fac1c-5fb3-4c9f-ab1e-fdcd0973373e="loaded">Why Choose Asic
+								Marketplace</strong></h2>
+						<p>Our goal is to provide high quality cryptocurrency miners at best rate <br>possible to our
+							clients.</p>
+					</div>
+				</div>
+				<div class="row block">
+					<div class="col">
+						<div class="border">
+							<span>
+								<img src="../../image/support-svgrepo-com.svg" alt="">
+							</span>
+							<h4>24/7 Support</h4>
+							<p>When You're online. No matter the time, We're there for you.</p>
+						</div>
+					</div>
+					<div class="col">
+						<div class="border">
+							<span>
+								<img src="../../image/payment-method-svgrepo-com.webp" alt="">
+							</span>
+							<h4>Payments</h4>
+							<p>Pay with Peace of mind - Secure System With Bank (T/T) And Crypto Payment Gateway</p>
+						</div>
+					</div>
+					<div class="col">
+						<div class="border">
+							<span>
+								<img src="../../image/plug-svgrepo-com.webp" alt="">
+							</span>
+							<h4>PSU</h4>
+							<p>A Miner That Comes With Free Power Supply Unit</p>
+						</div>
+					</div>
+					<div class="col">
+						<div class="border">
+							<span>
+								<img src="../../image/delivery-truck-svgrepo-com_1.webp" alt="">
+							</span>
+							<h4>Delivery</h4>
+							<p>Ship with Smooth and Speedy Process from our Warehouse to Your Doorstep</p>
+						</div>
+					</div>
+					<div class="col">
+						<div class="border">
+							<span>
+								<img src="../../image/money-svgrepo-com.webp" alt="">
+							</span>
+							<h4>Import Tax &amp; Duty</h4>
+							<p>Get a Low-Value Declaration with us to Save Tax or DDP Service</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- footer start -->
+
+		<%- include("../../partials/frountFooter.ejs")%>
+			<!-- footer end -->
+
+
+
+			<!-- Do not Delete Cookies Message -->
+
+			<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+			<script src="../../js/bootstrap.js"></script>
+			<script src="../../js/owl.carousel.js"></script>
+			<script src="../../js/selectWoo.full.js"></script>
+			<script src="../../js/script.js"></script>
+			<script src="../../js/widgets.js" charset="utf-8" data-cfasync="false" data-no-optimize="1"
+				data-no-defer="1" data-no-minify="1" data-rocketlazyloadscript="1"></script>
+
+
+
+
+
+
+
+
+
+
+			<link data-minify="1" rel="stylesheet" id="wc-blocks-style-css" href="../../image/wc-blocks.css"
+				media="all">
+
+
+
+			<script src="../../js/scripts.js" id="ald-scripts-js"></script>
+
+			<script src="../../js/loader.js" id="goaffpro_ref_tracking-js">
+			</script>
+
+			<script data-no-minify="1" async="" src="../../js/lazyload.min.js"></script>
+
+</body>
+
+</html>

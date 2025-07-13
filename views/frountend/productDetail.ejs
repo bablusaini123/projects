@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#" class="no-js">
+
+<head>
+
+    <link rel="preload" href="../../image/banner-v1.webp" as="image">
+    <link rel="preload" href="../../image/logo.svg" as="image" fetchpriority="high">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link data-minify="1" rel="stylesheet" id="woocommerce-layout-css" href="../../css/woocommerce-layout.css"
+        media="all">
+    <link data-minify="1" rel="stylesheet" id="woocommerce-smallscreen-css" href="../../css/woocommerce-smallscreen.css"
+        media="only screen and (max-width: 768px)">
+    <link data-minify="1" rel="stylesheet" id="woocommerce-general-css" href="../../css/woocommerce.css" media="all">
+
+    <link data-minify="1" rel="stylesheet" id="trp-language-switcher-style-css"
+        href="../../css/trp-language-switcher.css" media="all">
+    <link data-minify="1" rel="stylesheet" id="trp-popup-style-css" href="../../css/trp-popup.css" media="all">
+    <link data-minify="1" rel="stylesheet" id="brands-styles-css" href="../../css/brands.css" media="all">
+    <link data-minify="1" rel="stylesheet" id="bootstrap-css" href="../../css/bootstrap.css" media="all">
+
+    <link data-minify="1" rel="stylesheet" id="select2-css" href="../../css/select2.css" media="all">
+
+    <link data-minify="1" rel="stylesheet" id="style-css" href="../../css/style.css" media="all">
+    <link rel="stylesheet" id="ald-styles-css" href="../../css/styles.min.css" media="all">
+    <script src="../../js/jquery.min.js.download" id="jquery-js"></script>
+    <script src="../../js/rcfwc.js.download" id="rcfwc-js-js" defer="defer" data-wp-strategy="defer"></script>
+    <script src="../../js/api.js.download" id="recaptcha-js" defer="defer" data-wp-strategy="defer" data-cfasync="false"
+        data-no-optimize="1" data-no-defer="1" data-no-minify="1" data-rocketlazyloadscript="1"></script>
+    <script src="../../js/asicm-bb476010.js.download" id="gsfwc-script-js" data-cfasync="false" data-no-optimize="1"
+        data-no-defer="1" data-no-minify="1" data-rocketlazyloadscript="1"></script>
+    <script src="../../js/jquery.blockUI.min.js.download" id="jquery-blockui-js" defer="defer"
+        data-wp-strategy="defer"></script>
+
+    <script src="../../js/add-to-cart.min.js.download" id="wc-add-to-cart-js" defer="defer"
+        data-wp-strategy="defer"></script>
+    <script src="../../js/jquery.zoom.min.js.download" id="zoom-js" defer="defer" data-wp-strategy="defer"></script>
+   
+    <script src="../../js/single-product.min.js.download" id="wc-single-product-js" defer="defer"
+        data-wp-strategy="defer"></script>
+
+    <script src="../../js/trp-language-cookie.js.download" id="trp-language-cookie-js"></script>
+    </noscript>
+   <link href="../../js/asicm-bb476010.js.download" rel="preload" as="script">
+    <link href="../../js/widgets.js.download" rel="preload" as="script">
+    <link href="../../js/23446194(2).js.download" rel="preload" as="script">
+    <link href="../../js/api.js.download" rel="preload" as="script">
+    <link href="../../js/v2.js.download" rel="preload" as="script">
+    <script src="../../js/js"></script>
+    <script type="text/javascript" async="" src="../../js/f.txt"></script>
+    <script type="text/javascript" async="" src="../../js/f(1).txt"></script>
+    <script type="text/javascript" async="" src="../../js/f(2).txt"></script>
+
+    <!-- views/partials/meta-tags.ejs -->
+<title><%= productDetail.title %> | Buy <%= productDetail.coin[0] %> <%= productDetail.algorithm.toUpperCase() %> ASIC Miner</title>
+
+<meta name="description" content="Buy <%= productDetail.title %> with <%= productDetail.hashRate.trim() %> hashrate, <%= productDetail.power.trim() %> power, <%= productDetail.algorithm.toUpperCase() %> algorithm. Compare price, profit & electricity cost.">
+
+<link rel="canonical" href="https://czminers.com/miner/<%= productDetail.slug %>" />
+
+    <script type="application/ld+json">
+<%- JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": productDetail.title,
+  "url": `https://czminers.com/miner/${productDetail.slug}`,
+  "image": productDetail.productImages[0] || [],
+  "description": productDetail.overview
+    ? productDetail.overview.replace(/(<([^>]+)>)/gi, '').replace(/\n/g, ' ').replace(/"/g, '\\"')
+    : '',
+  "sku": productDetail.slug,
+  "mpn": productDetail._id,
+  "brand": {
+    "@type": "Brand",
+    "name": productDetail.brand
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Algorithm",
+      "value": productDetail.algorithm
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Coins Supported",
+      "value": (productDetail.coin || []).join(', ')
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Power",
+      "value": productDetail.power
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Hash Rate",
+      "value": productDetail.hashRate
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Product Type",
+      "value": productDetail.productType
+    }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "url": `https://czminers.com/miner/${productDetail.slug}`,
+    "priceCurrency": "USD",
+    "price": (productDetail.sellPrice || '0').replace(/[^0-9.]/g, ''),
+    "priceValidUntil": "2025-12-31",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Blockchain Miners"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "USD"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "US"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "value": 2,
+          "unitCode": "d"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "value": 5,
+          "unitCode": "d"
+        }
+      }
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "reviewCount": "25"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Molly li"
+      },
+      "datePublished": "2024-04-01",
+      "reviewBody": "Excellent miner with great performance.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    }
+  ],
+  "warranty": {
+    "@type": "WarrantyPromise",
+    "durationOfWarranty": "P1Y",
+    "warrantyScope": "https://schema.org/LimitedWarranty"
+  }
+}, null, 2) %>
+
+
+    </script>
+
+
+</head>
+
+<body
+    class="wp-singular product-template-default single single-product postid-24783   woocommerce woocommerce-page woocommerce-js translatepress-en_US microbt-whatsminer-m61s-bitcoin-miner"
+    data-new-gr-c-s-check-loaded="14.1241.0" data-gr-ext-installed="" cz-shortcut-listen="true">
+
+
+
+    <!-- header start -->
+
+    <%- include("../../partials/frountHeader.ejs")%>
+        <!-- header end -->
+
+
+
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main" role="main">
+                <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a>&nbsp;/&nbsp;<a
+                        href="/">Whatsminer</a>&nbsp;/&nbsp;MicroBT
+                    Whatsminer M61S Bitcoin Miner</nav>
+
+                <div class="woocommerce-notices-wrapper"></div>
+                <div class="page-title mb-4">
+                    <div class="container">
+                        <nav aria-label="breadcrumbs" class="rank-math-breadcrumb">
+                            <p><a href="/">Home</a><span class="separator"> &gt; </span><a
+                                    href="/products?page=1&brand=<%=productDetail.brand%>&algorithm=">
+                                    <%=productDetail.brand%>
+                                </a><span class="separator"> &gt; </span><span class="last">
+                                    <%=productDetail.title%>
+                                </span></p>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="product-24783"
+                                class="product type-product post-24783 status-publish first instock product_cat-microbt-whatsminer has-post-thumbnail featured shipping-taxable purchasable product-type-variable has-default-attributes">
+
+                                <div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images"
+                                    data-columns="4" style="opacity: 1; transition: opacity 0.25s ease-in-out;">
+
+                                    <figure class="woocommerce-product-gallery__wrapper">
+
+                                        <img src="<%=productDetail.productImages[0]%>" alt="<%=result.altText%>">
+
+
+
+                                    </figure>
+
+
+
+                                </div>
+                                <div class="summary entry-summary">
+                                    <h1>
+                                        <%=productDetail.title%>
+                                    </h1>
+                                    <div class="product_meta">
+                                        <span class="sku_wrapper">
+                                            SKU:
+                                            <span class="sku" data-o_content="WM61S">WM61S</span>
+                                        </span>
+                                        <span class="posted_in">Brand: <a href="#" rel="tag">
+                                                <%=productDetail.brand%>
+                                            </a></span> <span class="posted_in">Brand: <a href=""
+                                                rel="tag">Asicxxxxxxxxxxxxxxxxxxxxxx
+                                                Miners</a></span>
+                                    </div>
+                                    <p class="rangePrice price"><span class="woocommerce-Price-amount amount"
+                                            style="text-decoration: line-through;"><bdi>
+                                                <%=productDetail.mrp%></span>
+                                        – <span class="woocommerce-Price-amount amount">
+                                            <%=productDetail.sellPrice%>
+                                        </span>
+                                    </p>
+
+
+
+
+
+                                    <div class="single_variation_wrap"
+                                        style="justify-content: space-between;display: flex;">
+                                        <ul class="outerUl" style="display: flex;margin-left: 0;">
+                                             <li class="innerLi" style="margin-right: 55px;">
+                                                <h6 style="color: #49a4d8;margin: 0;" class="add-heading">Algorithm</h6>
+                                               
+                                                <%=productDetail.algorithm%>
+                                            </li>
+                                            <li class="innerLi" style="margin-right: 55px;">
+                                                <h6 style="color: #49a4d8;margin: 0;" class="add-heading">Power</h6>
+                                                <img alt="bolt" src="../../image/thunder.png" width="14" height="16"
+                                                    data-lazy-src="" data-ll-status="loaded"
+                                                    class="entered lazyloaded"><noscript><img alt="bolt"
+                                                        src="../../image/thunder.png" width="14" height="16"></noscript>
+                                                <%=productDetail.power%>
+                                            </li>
+                                            <li class="innerLi">
+                                                <h6 class="add-heading" style="color: #49a4d8;margin: 0;">Hashrate</h6>
+                                                <img alt="microchip" src="../../image/microchip-solid-final.webp"
+                                                    width="16" height="16" data-lazy-src="" data-ll-status="loaded"
+                                                    class="entered lazyloaded"><noscript><img alt="microchip"
+                                                        src="../../image/microchip-solid-final.webp" width="16"
+                                                        height="16"></noscript>
+                                               <%=productDetail.hashRate%>
+                                            </li>
+                                        </ul>
+                                         <a href="/checkout/<%=productDetail.slug%>">
+                                            <button class="single_add_to_cart_button button alt">Buy Now</button>
+                                        </a>
+                                    </div>
+                                      <div class="single_variation_wrap"
+                                        style="justify-content: space-between;display: flex;">
+
+
+                                       
+
+
+                                        <ul class="outerUl" style="display: flex;width: 100%;margin-left: 0;margin-top: 10px;">
+                                           
+                                            <li style="width: 100%;display: flex;" class="innerLi">
+                                                <h6 class="add-heading" style="color: #49a4d8;margin: 0;margin-right: 10px;">Minable Coins:</h6>
+                                               <% productDetail.coin.forEach(result=> { %>
+                                                   <span style="margin-right: 6px;font-weight: bold;"> <%=result%>,</span>
+                                                 <% }) %>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="mt-5 single-pro-data top">
+                            <div class="row">
+                                <div class="col-md-4 single-left-menu">
+                                    <ul>
+                                        <li class="active"><a href="javascript:void(0);"
+                                                data-val="description">Description</a></li>
+                                        <li><a href="javascript:void(0);" data-val="reviews-sec">Customer
+                                                Reviews</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-8 single-right">
+                                    <div id="description" class="border p-4 mb-4 active">
+                                        <h3 class="d-md-none d-block"
+                                            data-rocket-lazy-bg-08ada2be-b7ed-4dc5-a201-f016b68c92de="loaded"
+                                            data-rocket-lazy-bg-d8e2cfdf-fe0e-403c-9999-4f66d7fcb2f6="loaded">
+                                            Description</h3>
+                                        <div class="sub-hide">
+
+                                            <h3 style="text-align: center;"
+                                                data-rocket-lazy-bg-08ada2be-b7ed-4dc5-a201-f016b68c92de="loaded"
+                                                data-rocket-lazy-bg-d8e2cfdf-fe0e-403c-9999-4f66d7fcb2f6="loaded">
+                                                OVERVIEW</h3>
+                                            <div>
+                                                <%-productDetail.overview%>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div id="reviews-sec" class="border p-4 mb-5 review-list d-none">
+                                        <h3 class="d-md-none d-block"
+                                            data-rocket-lazy-bg-08ada2be-b7ed-4dc5-a201-f016b68c92de="loaded">
+                                            Customer
+                                            Reviews</h3>
+                                        <div class="sub-hide">
+                                            <div id="reviews" class="woocommerce-Reviews">
+                                                <div id="comments">
+                                                    <h2 class="woocommerce-Reviews-title">
+                                                        Reviews </h2>
+
+                                                    <p class="woocommerce-noreviews">There are no reviews yet.</p>
+                                                </div>
+
+                                                <div id="review_form_wrapper">
+                                                    <div id="review_form">
+                                                        <div id="respond" class="comment-respond">
+                                                            <span id="reply-title" class="comment-reply-title">Be
+                                                                the
+                                                                first to review “MicroBT Whatsminer M61S Bitcoin
+                                                                Miner”
+                                                                <small><a rel="nofollow" id="cancel-comment-reply-link"
+                                                                        href="" style="display:none;">Cancel
+                                                                        reply</a></small></span>
+                                                            <p class="must-log-in">You must be <a href="">logged
+                                                                    in</a> to post a review.</p>
+                                                        </div><!-- #respond -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-5 single-pro-data bottom">
+                            <div class="row">
+                                <div class="col-md-4 single-left-menu">
+                                    <ul>
+                                        <li class="active"><a href="javascript:void(0);"
+                                                data-val="processing">Processing &amp; Shipping Time</a></li>
+                                        <li><a href="javascript:void(0);" data-val="payment">Payment Methods</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);" data-val="support">Support and
+                                                Warranty</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);" data-val="taxes">Taxes and Custom
+                                                Duties</a>
+                                        </li>
+                                        <li><a href="javascript:void(0);" data-val="packing">Packing and
+                                                Shipping</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-8 single-right">
+                                    <div id="processing" class="border p-4 mb-4 active">
+                                        <h3 data-rocket-lazy-bg-08ada2be-b7ed-4dc5-a201-f016b68c92de="loaded"
+                                            data-rocket-lazy-bg-d8e2cfdf-fe0e-403c-9999-4f66d7fcb2f6="loaded">
+                                            Processing
+                                            and Shipping Time</h3>
+                                        <ol>
+                                            <li>In-stock models will be shipped within 48-72 hours from our Hong
+                                                Kong
+                                                warehouse.</li>
+                                            <li>All miners are shipped via DHL, FedEx, UPS, EMS, etc.</li>
+                                            <li>A tracking number will be provided within 24-48 hours after the
+                                                goods
+                                                are shipped from our warehouse.</li>
+                                            <li>Shipments typically take 5-7 days to reach any destination worldwide
+                                                via
+                                                express shipping from Hong Kong.</li>
+                                            <li>You will receive regular updates about your order via email.</li>
+                                        </ol>
+                                    </div>
+                                    <div id="payment" class="border p-4 mb-4 d-none">
+                                        <h3 style="text-align: left;"
+                                            data-rocket-lazy-bg-08ada2be-b7ed-4dc5-a201-f016b68c92de="loaded">
+                                            Payment
+                                            Methods</h3>
+                                        <p>We provide a variety of flexible payment options to suit your needs:</p>
+                                        <ol style="margin-bottom:1rem">
+                                            <li style="text-align: left;">Wire Transfer via Bank</li>
+                                            <li style="text-align: left;">Cryptocurrency: Bitcoin, Ethereum, Bitcoin
+                                                Cash, Litecoin, Kaspa, Dogecoin, and more</li>
+                                        </ol>
+                                        <p>All prices are listed in US Dollars. If you choose to pay with
+                                            cryptocurrency, the final amount will be calculated at checkout based on
+                                            the
+                                            current market rate.</p>
+                                        <p>Please note: Machine prices may fluctuate with market trends.</p>
+                                    </div>
+                                    <div id="support" class="border p-4 mb-4 d-none">
+                                        <h3 style="text-align: left;"
+                                            data-rocket-lazy-bg-08ada2be-b7ed-4dc5-a201-f016b68c92de="loaded">
+                                            Support
+                                            &amp; Warranty</h3>
+                                        <ol>
+                                            <li style="text-align: left;">All brand new miners come with a 180-365
+                                                day
+                                                manufacturer warranty.</li>
+                                            <li style="text-align: left;">Our technical team is available 24/7 to
+                                                assist
+                                                you with any issues via TeamViewer.</li>
+                                        </ol>
+                                    </div>
+                                    <div id="taxes" class="border p-4 mb-4 d-none">
+                                        <h3 style="text-align: left;"
+                                            data-rocket-lazy-bg-08ada2be-b7ed-4dc5-a201-f016b68c92de="loaded">Taxes
+                                            and
+                                            Custom Duties</h3>
+                                        <ol>
+                                            <li style="text-align: left;">We ship using DHL Express, FedEx, UPS.
+                                            </li>
+                                            <li style="text-align: left;">DDP (Delivery Duty Paid) service is
+                                                available
+                                                for select countries, covering customs, duties, and taxes.</li>
+                                            <li style="text-align: left;">Request DDP service in advance via <a
+                                                    href="">support@asicminerearning.com</a>.
+                                            </li>
+                                            <li style="text-align: left;">For non-DDP countries, we can help reduce
+                                                taxes by shipping with a lower invoice.</li>
+                                            <li style="text-align: left;">Notify us promptly if your customs
+                                                authority
+                                                requires documents to avoid delays.</li>
+                                            <li style="text-align: left;">Return shipping to Hong Kong is the
+                                                client’s
+                                                responsibility if necessary.</li>
+                                        </ol>
+                                    </div>
+                                    <div id="packing" class="border p-4 d-none">
+                                        <h3 style="text-align: left;"
+                                            data-rocket-lazy-bg-08ada2be-b7ed-4dc5-a201-f016b68c92de="loaded">
+                                            Packing
+                                            and Shipping</h3>
+                                        <ol>
+                                            <li style="text-align: left;">Each miner includes the necessary PSU and
+                                                is
+                                                shipped in the original manufacturer's packaging.</li>
+                                            <li style="text-align: left;">"FRAGILE" stickers are applied on all
+                                                sides
+                                                for added protection during transit.</li>
+                                            <li style="text-align: left;">To ensure factory-sealed integrity, we do
+                                                not
+                                                open the box to add a power cord unless provided by the
+                                                manufacturer. If
+                                                a power cord is not included, please source one locally.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <style>
+                            #description h2 {
+                                display: none
+                            }
+                        </style>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+        </div>
+
+        <div class="connected pb-5 pt-5 border-top">
+            <div class="container">
+                <div class="bg-black p-md-4 p-3">
+                    <div class="bg-color"></div>
+                    <div class="row pl-lg-5 pr-lg-5">
+                        <div class="col-12">
+                            <div class="text-center mb-4">
+                                <h2>Dedicated to the highest standards. <br>Globally Connected</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" style="margin: auto;">
+                            <div class="bg-white pl-md-4 pr-md-4 pl-2 pr-2 pt-md-4 pb-md-4 pt-4 pb-4 text-center">
+                                <p>Trusted by</p>
+                                <ul>
+                                    <li>
+                                        <a target="_blank" href="">
+                                            <img src="../../image/fdf.webp" alt="">
+                                            <h4>Asic Miner Value</h4>
+                                            <img src="../../image/export-circle.svg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="">
+                                            <img src="../../image/nicehash-1.webp" alt="">
+                                            <h4>Nicehash</h4>
+                                            <img src="../../image/export-circle.svg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="">
+                                            <img src="../../image/crypto.webp" alt="">
+                                            <h4>CryptoCompare</h4>
+                                            <img src="../../image/export-circle.svg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="">
+                                            <img src="../../image/trust.webp" alt="">
+                                            <h4>Trustpilot</h4>
+                                            <img src="../../image/export-circle.svg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </main>
+        </div>
+
+        <!-- footer start -->
+
+        <%- include("../../partials/frountFooter.ejs")%>
+            <!-- footer end -->
+
+
+
+
+            <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+            <script src="../../js/bootstrap.js.download"></script>
+            <script src="../../js/owl.carousel.js.download"></script>
+            <script src="../../js/selectWoo.full.js.download"></script>
+            <script src="../../js/script.js.download"></script>
+            <script src="../../js/widgets.js.download" charset="utf-8" data-cfasync="false" data-no-optimize="1"
+                data-no-defer="1" data-no-minify="1" data-rocketlazyloadscript="1"></script>
+
+
+
+
+
+
+
+
+
+            <link data-minify="1" rel="stylesheet" id="wc-blocks-style-css"
+                href="./product detail page_files/wc-blocks.css" media="all">
+            <style id="global-styles-inline-css" type="text/css">
+                :where(.is-layout-flex) {
+                    gap: 0.5em;
+                }
+
+                :where(.is-layout-grid) {
+                    gap: 0.5em;
+                }
+
+                body .is-layout-flex {
+                    display: flex;
+                }
+
+                .is-layout-flex {
+                    flex-wrap: wrap;
+                    align-items: center;
+                }
+
+                .is-layout-flex> :is(*, div) {
+                    margin: 0;
+                }
+
+                body .is-layout-grid {
+                    display: grid;
+                }
+
+                .is-layout-grid> :is(*, div) {
+                    margin: 0;
+                }
+            </style>
+
+
+            <div id="smartyContainer"
+                style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;">
+                <template shadowrootmode="open">
+                    <style>
+                        @font-face {
+                            font-family: 'Poppins';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-display: swap;
+                            src: url(https://fonts.gstatic.com/s/poppins/v23/pxiEyp8kv8JHgFVrJJfedw.ttf) format('truetype');
+                        }
+
+                        @media screen and (max-width: 812px) {
+                            #sm-coupon-container {
+                                position: fixed;
+                                bottom: -6000px;
+                                z-index: 2147483647;
+                                -webkit-transition: all 0.8s;
+                                -moz-transition: all 0.8s;
+                                -o-transition: all 0.8s;
+                                transition: all 0.8s;
+                            }
+                        }
+                    </style>
+                </template>
+            </div>
+
+</html>

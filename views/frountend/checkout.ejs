@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#" class="no-js">
+
+<head>
+    <link rel="preload" href="../../image/banner-v1.webp" as="image">
+    <link rel="preload" href="../../image/logo.svg" as="image" fetchpriority="high">
+    <link data-minify="1" rel="stylesheet" id="woocommerce-layout-css" href="../../css/woocommerce-layout.css"
+        media="all">
+    <link data-minify="1" rel="stylesheet" id="woocommerce-smallscreen-css" href="../../css/woocommerce-smallscreen.css"
+        media="only screen and (max-width: 768px)">
+    <link data-minify="1" rel="stylesheet" id="woocommerce-general-css" href="../../css/woocommerce.css" media="all">
+    <style id="woocommerce-inline-inline-css" type="text/css">
+        .woocommerce form .form-row .required {
+            visibility: visible;
+        }
+    </style>
+    <link data-minify="1" rel="stylesheet" id="trp-language-switcher-style-css"
+        href="../../css/trp-language-switcher.css" media="all">
+
+    <link data-minify="1" rel="stylesheet" id="bootstrap-css" href="../../css/bootstrap.css" media="all">
+
+    <link data-minify="1" rel="stylesheet" id="select2-css" href="../../css/select2.css" media="all">
+
+    <link data-minify="1" rel="stylesheet" id="style-css" href="../../css/style.css" media="all">
+    <link rel="stylesheet" id="ald-styles-css" href="../../css/styles.min.css" media="all">
+
+
+    <title>Top Cryptocurrency News, Airdrops, ICOs, NFT Trends, DeFi & Crypto Jobs Today.</title>
+    <meta name="description"
+        content="Stay updated with the latest crypto airdrops, ICO launches, and blockchain events. KryptoDesk brings you verified opportunities to earn and invest in crypto.">
+    <meta name="keywords"
+        content="ICO, Crypto, Blockchain, NFTs, Coin Predictions, Crypto News, Airdrops, Crypto Courses">
+    <meta name="author" content="Kryptodesk">
+    <link rel="canonical" href="https://kryptodesk.com/" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+
+</head>
+
+<body>
+
+    <!-- header start -->
+
+    <%- include("../../partials/frountHeader.ejs")%>
+        <!-- header end -->
+
+
+
+
+        <div class="content-area mt-3 mb-5">
+            <div class="container">
+                <form id="checkoutForm" action="/checkout/<%=productDetail._id%>" method="post"
+                    enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <div class="row g-4">
+                                <!-- Billing Address Section -->
+                                <div class="col-lg-7">
+                                    <div class="card shadow-sm">
+                                        <div class="card-body p-4">
+                                            <h5
+                                                style="color: #0d6efd; font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5rem;">
+                                                Billing Address</h5>
+
+
+                                            <!-- Email -->
+                                            <div class="mb-3">
+                                                <label class="form-label"
+                                                    style="font-weight: 500; color: #495057;">Email
+                                                    address <span style="color: #dc3545;">*</span></label>
+                                                <input type="email" class="form-control" name="email" required>
+                                            </div>
+
+                                            <!-- First Name & Last Name -->
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label"
+                                                        style="font-weight: 500; color: #495057;">First name <span
+                                                            style="color: #dc3545;">*</span></label>
+                                                    <input type="text" class="form-control" name="firstName" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label"
+                                                        style="font-weight: 500; color: #495057;">Last
+                                                        name <span style="color: #dc3545;">*</span></label>
+                                                    <input type="text" class="form-control" name="lastName" required>
+                                                </div>
+                                            </div>
+
+                                            <!-- Company & Country -->
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label"
+                                                        style="font-weight: 500; color: #495057;">Company name
+                                                        (optional)</label>
+                                                    <input type="text" class="form-control" name="company">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label"
+                                                        style="font-weight: 500; color: #495057;">Country <span
+                                                            style="color: #dc3545;">*</span></label>
+                                                    <select class="form-select form-control" name="country" required>
+                                                        <option value="">Select a country ...</option>
+                                                        <option value="IN">India</option>
+                                                        <option value="US">United States</option>
+                                                        <option value="UK">United Kingdom</option>
+                                                        <option value="CA">Canada</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Street & Apartment -->
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label"
+                                                        style="font-weight: 500; color: #495057;">Street address <span
+                                                            style="color: #dc3545;">*</span></label>
+                                                    <input type="text" class="form-control" name="street" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label"
+                                                        style="font-weight: 500; color: #495057;">Apartment, suite, etc.
+                                                        (optional)</label>
+                                                    <input type="text" class="form-control" name="apartment">
+                                                </div>
+                                            </div>
+
+                                            <!-- Town & Region -->
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label"
+                                                        style="font-weight: 500; color: #495057;">Town
+                                                        / District <span style="color: #dc3545;">*</span></label>
+                                                    <input type="text" class="form-control" name="town" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label"
+                                                        style="font-weight: 500; color: #495057;">Region <span
+                                                            style="color: #dc3545;">*</span></label>
+                                                    <select class="form-select form-control" name="region" required>
+                                                        <option value="">Select an option...</option>
+                                                        <option value="rajasthan">Rajasthan</option>
+                                                        <option value="delhi">Delhi</option>
+                                                        <option value="mumbai">Mumbai</option>
+                                                        <option value="gujarat">Gujarat</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Postcode & Phone -->
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label"
+                                                        style="font-weight: 500; color: #495057;">Postcode / ZIP
+                                                        (optional)</label>
+                                                    <input type="text" class="form-control" name="postcode">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label"
+                                                        style="font-weight: 500; color: #495057;">Phone <span
+                                                            style="color: #dc3545;">*</span></label>
+                                                    <input type="tel" class="form-control" name="phone" required>
+                                                </div>
+                                            </div>
+
+
+
+                                            <!-- Order Notes -->
+                                            <div class="mb-3">
+                                                <label class="form-label"
+                                                    style="font-weight: 500; color: #495057;">Order
+                                                    notes (optional)</label>
+                                                <textarea class="form-control" name="orderNotes" rows="3"
+                                                    placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Order Summary Section -->
+                                <div class="col-lg-5">
+                                    <div class="card shadow-sm">
+                                        <div class="card-body p-4">
+                                            <!-- Product Info -->
+                                            <div
+                                                style="display: flex; align-items: center; gap: 15px; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #dee2e6;">
+                                                <div
+                                                    style="width: 60px; height: 60px; background: #f8f9fa; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #6c757d; border: 1px solid #dee2e6;">
+                                                    <i class="fas fa-microchip"></i>
+                                                    <img src="<%=productDetail.productImages[0]%>" alt="">
+                                                </div>
+                                                <div>
+                                                    <h6
+                                                        style="font-size: 14px; color: #212529; margin-bottom: 5px; font-weight: 500;">
+                                                        <%=productDetail.title%> - End July Delivery
+                                                    </h6>
+                                                    <div style="color: #0d6efd; font-weight: 600;">Price:
+                                                        <%=productDetail.sellPrice%>
+                                                    </div>
+                                                    <div style="font-size: 12px; color: #6c757d;">Delivery Batch: End
+                                                        July
+                                                        Delivery</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Order Totals -->
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span>Subtotal</span>
+                                                    <span>
+                                                        <%=productDetail.sellPrice%>
+                                                    </span>
+                                                </div>
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span>Shipping</span>
+                                                    <span style="font-size: 12px; color: #6c757d;">Enter your address to
+                                                        view shipping options.</span>
+                                                </div>
+                                                <hr>
+                                                <div class="d-flex justify-content-between fw-bold fs-5">
+                                                    <span>Total</span>
+                                                    <span>
+                                                        <%=productDetail.sellPrice%>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+
+
+                                            <!-- Payment Methods -->
+                                            <div class="mb-3">
+                                                <h5 class="mb-4">Select Payment Method</h5>
+
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="radio" name="payment"
+                                                        id="bankTransfer" value="bank"
+                                                        onchange="showPaymentDetails(this.value)">
+                                                    <label class="form-check-label fw-semibold" for="bankTransfer">
+                                                        <i class="fas fa-university me-2"></i>Direct bank transfer
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="radio" name="payment"
+                                                        id="paypal" value="paypal"
+                                                        onchange="showPaymentDetails(this.value)">
+                                                    <label class="form-check-label fw-semibold" for="paypal">
+                                                        <i class="fab fa-paypal me-2"></i>PayPal Payment
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="radio" name="payment"
+                                                        id="crypto" value="crypto"
+                                                        onchange="showPaymentDetails(this.value)">
+                                                    <label class="form-check-label fw-semibold" for="crypto">
+                                                        <i class="fab fa-bitcoin me-2"></i>Cryptocurrency Payment
+                                                        (Bitcoin,
+                                                        ETH, USDT, USDC, KASPA and many more)
+                                                    </label>
+                                                </div>
+
+                                                <!-- Bank Transfer Details -->
+                                                <div id="bankDetails"
+                                                    style="display: none; margin-top: 15px; padding: 20px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #0d6efd;">
+                                                    <div
+                                                        style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 15px; border: 1px solid #dee2e6;">
+                                                        <h6 style="color: #0d6efd; margin-bottom: 15px;"><i
+                                                                class="fas fa-bank me-2"></i>Continue For Pyment</h6>
+                                                        <a href="" style="width:100%;padding:8px 0px; background:rgb(81, 140, 217);color: #fff;justify-content: center;display: flex;">
+                                                            Pay Now
+                                                        </a>
+
+                                                    </div>
+
+                                                    <div id="bankInputs">
+
+
+                                                    </div>
+                                                </div>
+
+                                                <!-- PayPal Payment Details -->
+                                                <div id="paypalDetails"
+                                                    style="display: none; margin-top: 15px; padding: 20px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #0070ba;">
+                                                    <div
+                                                        style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 15px; border: 1px solid #dee2e6;">
+                                                        <h6 style="color: #0070ba; margin-bottom: 15px;"><i
+                                                                class="fab fa-paypal me-2"></i>PayPal Payment Details
+                                                        </h6>
+                                                        <div style="font-size: 14px; line-height: 1.8;">
+                                                            <strong>PayPal Email:</strong> <span
+                                                                style="color: #0070ba;">payments@yourcompany.com</span><br>
+                                                            <strong>Payment Type:</strong> Send as Friends & Family<br>
+                                                            <strong>Note:</strong> Please include your order number in
+                                                            the payment note
+                                                        </div>
+                                                        <div class="alert alert-info py-2 mt-3"
+                                                            style="font-size: 12px;">
+                                                            <i class="fas fa-info-circle me-1"></i>
+                                                            <strong>Instructions:</strong> Send payment to the above
+                                                            PayPal email and upload screenshot below
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="paypalInputs">
+
+
+                                                    </div>
+                                                </div>
+
+                                                <!-- Crypto Payment Details -->
+                                                <div id="cryptoDetails"
+                                                    style="display: none; margin-top: 15px; padding: 20px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #0d6efd;">
+                                                    <div style="text-align: center;">
+                                                        <h6 style="color: #0d6efd;"><i
+                                                                class="fab fa-bitcoin me-2"></i>USDT
+                                                            Payment (TRC20)</h6>
+                                                        <div
+                                                            style="width: 200px; height: 200px; background: #ffffff; border: 2px solid #dee2e6; border-radius: 8px; margin: 15px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6c757d;">
+                                                            <i class="fas fa-qrcode fa-3x mb-2"></i>
+                                                            <small>QR Code Scanner</small>
+                                                        </div>
+                                                        <div
+                                                            style="background: white; padding: 12px; border: 1px solid #dee2e6; border-radius: 6px; font-family: monospace; font-size: 12px; word-break: break-all; margin: 15px 0;">
+                                                            <strong>USDT Address (TRC20):</strong><br>
+                                                            TQn9Y2khEsLJW1ChVVFMSMeRDow5KcbLSE
+                                                        </div>
+                                                        <div class="alert alert-warning py-2" style="font-size: 12px;">
+                                                            <i class="fas fa-exclamation-triangle me-1"></i>
+                                                            <strong>Warning:</strong> Send only USDT (TRC20) to this
+                                                            address
+                                                        </div>
+                                                    </div>
+                                                    <div id="cryptoInputs">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Terms Checkbox -->
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" id="agreeTerms"
+                                                    name="agreeTerms" required>
+                                                <label class="form-check-label" for="agreeTerms"
+                                                    style="font-size: 14px;">
+                                                    I have read and agree to the website <a href="#"
+                                                        class="text-decoration-none">terms and conditions</a> <span
+                                                        style="color: #dc3545;">*</span>
+                                                </label>
+                                            </div>
+
+                                            <!-- Submit Button -->
+                                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold">
+                                                <i class="fas fa-credit-card me-2"></i>I have Transfered
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <style>
+        </style>
+        <script>
+        </script>
+
+
+        <!-- footer start -->
+
+        <%- include("../../partials/frountFooter.ejs")%>
+            <!-- footer end -->
+
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+            <script>
+                function showPaymentDetails(paymentType) {
+                    const allMethods = ['bank', 'paypal', 'crypto'];
+
+                    // Clear all inputs
+                    allMethods.forEach(method => {
+                        document.getElementById(method + 'Details').style.display = 'none';
+                        document.getElementById(method + 'Inputs').innerHTML = '';
+                    });
+
+                    // Show selected section
+                    document.getElementById(paymentType + 'Details').style.display = 'block';
+
+                    // Define dynamic input HTMLs
+                    const inputTemplates = {
+                        bank: `
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Transaction ID <span style="color:red">*</span></label>
+                    <input type="text" class="form-control" name="transactionId" placeholder="Enter your transaction ID" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Upload Payment Screenshot <span style="color:red">*</span></label>
+                    <input type="file" class="form-control" name="paymentScreenshot" required>
+                </div>
+            `,
+                        paypal: `
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">PayPal Transaction ID <span style="color:red">*</span></label>
+                    <input type="text" class="form-control" name="transactionId" placeholder="Enter PayPal transaction ID" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Upload Payment Screenshot <span style="color:red">*</span></label>
+                    <input type="file" class="form-control" name="paymentScreenshot" required>
+                </div>
+            `,
+                        crypto: `
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Transaction Hash/ID <span style="color:red">*</span></label>
+                    <input type="text" class="form-control" name="transactionId" placeholder="Enter your transaction hash/ID" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Upload Payment Screenshot <span style="color:red">*</span></label>
+                    <input type="file" class="form-control" name="paymentScreenshot" required>
+                </div>
+            `
+                    };
+
+                    // Insert selected input set
+                    document.getElementById(paymentType + 'Inputs').innerHTML = inputTemplates[paymentType];
+                }
+
+                function printBankDetails() {
+                    // Create a new window for printing
+                    const printWindow = window.open('', '_blank');
+                    const bankDetailsContent = `
+                <html>
+                <head>
+                  
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; }
+                        .bank-info { line-height: 2; font-size: 16px; }
+                        h2 { color: #0d6efd; margin-bottom: 20px; }
+                    </style>
+                </head>
+                <body>
+                    <h2>Continue Your Payment</h2>
+                    <button style="width:100%;padding:8px 0px; background:#ccc">
+                        Pay Now
+                    </button>
+                </body>
+                </html>
+            `;
+                    printWindow.document.write(bankDetailsContent);
+                    printWindow.document.close();
+                    printWindow.print();
+                }
+            </script>
+          
+
+            </div>
+
+</html>
