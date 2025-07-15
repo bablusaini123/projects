@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- Meta Title & Description for ICO Detail Page -->
 <title><%= airdropData.tokenName %> ICO, Token Sale, Tokenomics, Team & Roadmap | KryptoDesk</title>
-<meta name="description" content="Get complete details of the <%= airdropData.tokenName %> ICO including tokenomics, fundraising, roadmap, and team. Participate in the <%= airdropData.title %> token sale on KryptoDesk.">
+<meta name="description" content="Get complete details of the <%= airdropData.tokenName %> ICO including tokenomics, fundraising, roadmap, and team. Participate in the <%= airdropData.tokenName %> token sale on KryptoDesk.">
  <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
 
    <script type="application/ld+json">
@@ -49,7 +51,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+           font-family: 'Unbounded', sans-serif;
             background-color: #ffffff;
             color: #000000;
             line-height: 1.5;
@@ -411,7 +413,7 @@
             font-weight: bold;
             color: #333;
             margin-bottom: 8px;
-            font-family: 'Courier New', monospace;
+           font-family: 'Unbounded', sans-serif;
         }
 
         .countdown-label {
@@ -482,7 +484,7 @@
             /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
             background: #fff;
             color: #111;
-            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+            font-family: 'Unbounded', sans-serif;
             overflow-x: hidden;
             margin: 0;
 
@@ -493,7 +495,7 @@
         h3,
         p,
         span {
-            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+            font-family: 'Unbounded', sans-serif;
 
         }
 
@@ -1370,7 +1372,7 @@
                     <%-airdropData.projectDescription-%>
                 </div>
                  <div class="description">
-                   <img src="<%=airdropData.bannerImage%>" alt="<%=airdropData.bannerImageAlt%>">
+                   <img style="width: 100%;" src="<%=airdropData.bannerImage%>" alt="<%=airdropData.bannerImageAlt%>">
                 </div>
 
                 <div class="project-info">
@@ -1392,7 +1394,7 @@
                         <div class="overview-item">
                             <span class="info-label">Winning Date:</span>
                             <span class="info-value">
-                                <%=airdropData.winningDate%>
+                                <%=airdropData.formattwinningDate%>
                             </span>
                         </div>
 

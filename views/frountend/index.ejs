@@ -1461,17 +1461,6 @@
 </head>
 
 <body>
-    <div class="slider-container">
-        <div class="slider-wrapper">
-            <% response.forEach((result,index)=>{ %>
-                <div class="slide">
-                    <img src="<%=result.image%>" alt="">
-                    <div class="slide-content">ETH <span style="color: #ff0000;">-3.24%</span> $2,407.83</div>
-                </div>
-                <% })%>
-        </div>
-    </div>
-
     <!-- header start -->
 
     <%- include("../../partials/frountHeader.ejs")%>
@@ -1483,7 +1472,7 @@
             <div style="width: 30%; height: 100%;" class="icoBox">
                 <div style="display: flex;justify-content: space-between;padding: 13px;">
                     <div>
-                        <h3 style="margin: 0;">ICO Listing</h3>
+                        <h3 style="margin: 0;">ICO</h3>
                     </div>
                     <div>
                         <a href="/ico"
@@ -1499,7 +1488,7 @@
 
 
                         <% formattedIcoListingData.forEach((result,index)=>{ %>
-                            <a href="/ICO/<%=result.slug%>" style="text-decoration: none;color: inherit;">
+                            <a href="/ICO/<%=result.slug%>" style="text-decoration: none;color: inherit;" target="_blank">
                                 <div
                                     style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
                                     <div style="width: 15%;">
@@ -1610,7 +1599,7 @@
             <div class="top-stories airdropBox" style="width: 30%; height: 100%; overflow-y: auto;">
                 <div style="display: flex;justify-content: space-between;padding: 13px;">
                     <div class="airdropHeading">
-                        <h3 style="margin: 0;">Airdrop Listing</h3>
+                        <h3 style="margin: 0;">Airdrops</h3>
                     </div>
                     <div style="align-items: center;display: flex;">
                         <a href="/Airdrops"
@@ -1624,7 +1613,8 @@
 
 
                     <% formattedAirdropData.forEach((result,index)=>{ %>
-                        <div
+                      <a href="/airdrops/<%=result.slug%>" style="text-decoration: none;" target="_blank">
+                          <div
                             style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
                             <div style="width: 15%;">
                                 <img src="<%=result.tokenImage%>" alt=""
@@ -1678,6 +1668,7 @@
 
                             </div>
                         </div>
+                      </a>
 
 
 
@@ -1734,7 +1725,8 @@
             <h1 style="color: blue;">Events</h1>
             <div class="bitcoin-guides" style="display: flex; flex-wrap: wrap; justify-content: start; gap: 2rem; ">
                 <% eventListingData.forEach((result,index)=>{ %>
-                    <div class="card">
+                   <a href="/events/<%=result.slug%>" style="text-decoration: none;color: #000;" target="_blank" class="card" >
+                     <div>
                         <div class="card-body">
                             <div>
                                 <img style="border-radius: 20px;" src="<%=result.bannerImage%>" alt="Blockchain Event">
@@ -1745,6 +1737,7 @@
                         </div>
 
                     </div>
+                   </a>
                     <% })%>
 
 

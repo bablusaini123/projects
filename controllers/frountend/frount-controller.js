@@ -126,22 +126,11 @@ module.exports.frountHomePage = async (req, res) => {
       .limit(12);
     // // console.log("======", formattedAirdropData)
 
-    // crypto coins
-
-    const response = await axios.get(
-      'https://api.coingecko.com/api/v3/coins/markets',
-      {
-        params: {
-          vs_currency: 'usd',
-        }
-      }
-    );
     // console.log(response.data)
     res.render("frountend/index.ejs", {
       formattedIcoListingData,
       formattedAirdropData,
-      eventListingData,
-      response: response.data
+      eventListingData
     })
   } catch (error) {
     res.status(500).json({
@@ -1189,9 +1178,17 @@ module.exports.DetailAirdrop = async (req, res) => {
       month: 'short',
       year: 'numeric',
     }).format(endDate);
+
+    const winningDate = new Date(airdropData[0].winningDate); // aapki db se aayi date
+    const formattwinningDate = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    }).format(winningDate);
     //  // console.log(formattendDate)
     airdropData[0].formattedStartDate = formattedStartDate
     airdropData[0].formattendDate = formattendDate
+    airdropData[0].formattwinningDate = formattwinningDate
     res.render("frountend/detailAirdrop.ejs", { airdropData: airdropData[0] })
   } catch (error) {
     res.status(500).json({
