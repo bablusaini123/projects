@@ -12,7 +12,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
+    <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -1425,10 +1425,12 @@
                 margin: 0px 10px;
                 gap: 0 !important;
             }
-            .footer-bottom{
+
+            .footer-bottom {
                 padding-top: 0px;
             }
-            .newsletter-section{
+
+            .newsletter-section {
                 margin-bottom: 17px;
                 padding-bottom: 20px;
             }
@@ -1451,12 +1453,117 @@
         .newsBox {
             width: 36% !important;
         }
-        .viewAllEvent{
+
+        .viewAllEvent {
             padding: 14px 0px 27px 0px;
         }
-         .newsletter-title{
-        margin-top: 30px;
-      }
+
+        .newsletter-title {
+            margin-top: 30px;
+        }
+        /* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* News Card Styles */
+.news-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: white;
+}
+
+.news-card__card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.news-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.news-card__text-wrapper {
+  position: absolute;
+  bottom: 0;
+  padding: 1rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.news-card__title {
+  font-size: 19px;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: #000000 1px 0 10px;
+}
+
+.news-card__post-date {
+  font-size: 0.8rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.news-card__details-wrapper {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.news-card:hover .news-card__details-wrapper {
+  max-height: 10rem;
+  opacity: 1;
+}
+
+.news-card__excerpt {
+  font-weight: 300;
+}
+
+.news-card__read-more {
+  background-color: #333;
+  color: #bbb;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.news-card__read-more i {
+  margin-left: 5px;
+}
+
+/* Hover Effects */
+.news-card:hover .news-card__image {
+  transform: scale(1.1);
+}
+
+.news-card:hover .news-card__text-wrapper {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
     </style>
 </head>
 
@@ -1488,7 +1595,8 @@
 
 
                         <% formattedIcoListingData.forEach((result,index)=>{ %>
-                            <a href="/ICO/<%=result.slug%>" style="text-decoration: none;color: inherit;" target="_blank">
+                            <a href="/ICO/<%=result.slug%>" style="text-decoration: none;color: inherit;"
+                                target="_blank">
                                 <div
                                     style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
                                     <div style="width: 15%;">
@@ -1580,18 +1688,121 @@
             <div class="newsBox"
                 style="width: 40%; height: 100%; display: flex; gap: 1px; background-color: whitesmoke; border-radius: 2%;">
                 <div style="width: 50%; height: 100%; position: relative; border-radius: 10px; overflow: hidden;">
-                    <!-- <img src="https://KryptoDesk.com/wp-content/uploads/2025/05/How-to-buy-Notcoin-3-350x197.jpg" alt="News 1" style="width: 100%; height: 100%; object-fit: cover;"> -->
-                    <!-- <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 20px; color: white;">
-                    <h3 style="margin: 0; font-size: 16px;">Breaking News Title 1</h3>
-                    <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.9;">Latest crypto developments and market updates</p>
-                </div> -->
+                    <div class="news-card">
+                        <a href="#" class="news-card__card-link"></a>
+                        <img src="https://99bitcoins.com/wp-content/uploads/2017/02/shutterstock_574719532.jpg"
+                            alt="" class="news-card__image">
+                        <div class="news-card__text-wrapper">
+                            <h6 class="news-card__title">Amazing Second Title that </h6>
+                            <div class="news-card__details-wrapper">
+                                <p class="news-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Ullam obcaecati ex natus nulla rem sequi laborum quod fugit&hellip;</p>
+                                <a href="#" class="news-card__read-more">Read more <i
+                                        class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="news-card">
+                        <a href="#" class="news-card__card-link"></a>
+                        <img src="	https://99bitcoins.com/wp-content/uploads/2024/09/Best-no-kyc-crypto-exchanges-768x439.jpg"
+                            alt="" class="news-card__image">
+                        <div class="news-card__text-wrapper">
+                            <h6 class="news-card__title">Amazing Second Title that </h6>
+                            <div class="news-card__details-wrapper">
+                                <p class="news-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Ullam obcaecati ex natus nulla rem sequi laborum quod fugit&hellip;</p>
+                                <a href="#" class="news-card__read-more">Read more <i
+                                        class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="news-card">
+                        <a href="#" class="news-card__card-link"></a>
+                        <img src="https://99bitcoins.com/wp-content/uploads/2024/09/Best-no-kyc-crypto-exchanges-768x439.jpg"
+                            alt="" class="news-card__image">
+                        <div class="news-card__text-wrapper">
+                            <h6 class="news-card__title">Amazing Second Title that </h6>
+                            <div class="news-card__details-wrapper">
+                                <p class="news-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Ullam obcaecati ex natus nulla rem sequi laborum quod fugit&hellip;</p>
+                                <a href="#" class="news-card__read-more">Read more <i
+                                        class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="news-card">
+                        <a href="#" class="news-card__card-link"></a>
+                        <img src="https://99bitcoins.com/wp-content/uploads/2022/07/crypto-betting-768x399.jpg"
+                            alt="" class="news-card__image">
+                        <div class="news-card__text-wrapper">
+                            <h6 class="news-card__title">Amazing Second Title that </h6>
+                            <div class="news-card__details-wrapper">
+                                <p class="news-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Ullam obcaecati ex natus nulla rem sequi laborum quod fugit&hellip;</p>
+                                <a href="#" class="news-card__read-more">Read more <i
+                                        class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div style="width: 50%; height: 100%; position: relative; border-radius: 10px; overflow: hidden;">
-                    <!-- <img src="https://KryptoDesk.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" alt="News 2" style="width: 100%; height: 100%; object-fit: cover;"> -->
-                    <!-- <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 20px; color: white;">
-                    <h3 style="margin: 0; font-size: 16px;">Breaking News Title 2</h3>
-                    <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.9;">Market analysis and trading insights</p>
-                </div> -->
+                   <div class="news-card">
+                        <a href="#" class="news-card__card-link"></a>
+                        <img src="https://99bitcoins.com/wp-content/uploads/2024/12/Best-Bitcoin-Casinos-300x296.jpg"
+                            alt="" class="news-card__image">
+                        <div class="news-card__text-wrapper">
+                            <h6 class="news-card__title">Amazing Second Title that </h6>
+                            <div class="news-card__details-wrapper">
+                                <p class="news-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Ullam obcaecati ex natus nulla rem sequi laborum quod fugit&hellip;</p>
+                                <a href="#" class="news-card__read-more">Read more <i
+                                        class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                   
+                     <div class="news-card">
+                        <a href="#" class="news-card__card-link"></a>
+                        <img src="https://99bitcoins.com/wp-content/uploads/2025/05/How-to-Buy-Bitcoin-Anonymously-300x300.jpg"
+                            alt="" class="news-card__image">
+                        <div class="news-card__text-wrapper">
+                            <h6 class="news-card__title">Amazing Second Title that </h6>
+                            <div class="news-card__details-wrapper">
+                                <p class="news-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Ullam obcaecati ex natus nulla rem sequi laborum quod fugit&hellip;</p>
+                                <a href="#" class="news-card__read-more">Read more <i
+                                        class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="news-card">
+                        <a href="#" class="news-card__card-link"></a>
+                        <img src="https://99bitcoins.com/wp-content/uploads/2024/11/What-is-Bitcoin-300x300.jpeg"
+                            alt="" class="news-card__image">
+                        <div class="news-card__text-wrapper">
+                            <h6 class="news-card__title">Amazing Second Title that </h6>
+                            <div class="news-card__details-wrapper">
+                                <p class="news-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Ullam obcaecati ex natus nulla rem sequi laborum quod fugit&hellip;</p>
+                                <a href="#" class="news-card__read-more">Read more <i
+                                        class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="news-card">
+                        <a href="#" class="news-card__card-link"></a>
+                        <img src="	https://99bitcoins.com/wp-content/uploads/2024/11/Best-Bitcoin-Wallets-300x300.jpeg"
+                            alt="" class="news-card__image">
+                        <div class="news-card__text-wrapper">
+                            <h6 class="news-card__title">Amazing Second Title that </h6>
+                            <div class="news-card__details-wrapper">
+                                <p class="news-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Ullam obcaecati ex natus nulla rem sequi laborum quod fugit&hellip;</p>
+                                <a href="#" class="news-card__read-more">Read more <i
+                                        class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1613,62 +1824,62 @@
 
 
                     <% formattedAirdropData.forEach((result,index)=>{ %>
-                      <a href="/airdrops/<%=result.slug%>" style="text-decoration: none;" target="_blank">
-                          <div
-                            style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
-                            <div style="width: 15%;">
-                                <img src="<%=result.tokenImage%>" alt=""
-                                    style="width: 50px; height: 50px; border-radius: 20%;">
-                            </div>
+                        <a href="/airdrops/<%=result.slug%>" style="text-decoration: none;" target="_blank">
                             <div
-                                style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height:16px;width: 85%;">
-                                <h4 style="margin: 0px !important;justify-content: space-between;display: flex;">
-                                    <div class="truncate-text" style="width: 60%;" title="<%=result.tokenName%>">
-                                        <%=result.tokenName%>
-                                    </div>
-                                    <div style="width: 40%;text-align: right;" class="icons">
-                                        <span style="margin: 0px 2px;">
-                                            <i class="bi bi-globe"
-                                                style="font-size: 20px;color: #4891db;font-weight: bolder;"></i>
-                                        </span>
-                                        <span style="margin: 0px 2px;">
-                                            <i class="bi bi-twitter-x" style="font-size: 20px;;color: #4891db"></i>
-                                        </span>
-                                        <span style="margin: 0px 2px;">
-                                            <i class="bi bi-telegram" style="font-size: 21px;;color: #4891db"></i>
-                                        </span>
-                                        <span style="margin: 0px 2px;">
-                                            <i class="bi bi-facebook" style="font-size: 21px;;color: #4891db"></i>
-                                        </span>
-                                    </div>
-
-                                </h4>
-                                <div
-                                    style="font-size: 14px; margin: 0px !important; margin-top: 7px !important;    display: flex;align-items: center;justify-content: space-between;">
-                                    <div style="width: 32%;; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
-                                        class="truncate-text">
-
-                                        <%=result.startDateFormatted%>
-                                    </div>
-                                    <div style="width: 32%;text-align: right;; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
-                                        class="truncate-text">
-                                        <span style="font-weight: 600;">
-                                            Qty.
-                                        </span>
-                                        <%=result.airdropQuantity%>
-                                    </div>
-                                    <div style="width: 32%;text-align: right; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
-                                        class="truncate-text">
-                                        <span style="font-weight: 600;">
-                                            Winners.
-                                        </span>
-                                        <%=result.noOfWinners%>
-                                    </div>
+                                style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
+                                <div style="width: 15%;">
+                                    <img src="<%=result.tokenImage%>" alt=""
+                                        style="width: 50px; height: 50px; border-radius: 20%;">
                                 </div>
+                                <div
+                                    style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height:16px;width: 85%;">
+                                    <h4 style="margin: 0px !important;justify-content: space-between;display: flex;">
+                                        <div class="truncate-text" style="width: 60%;" title="<%=result.tokenName%>">
+                                            <%=result.tokenName%>
+                                        </div>
+                                        <div style="width: 40%;text-align: right;" class="icons">
+                                            <span style="margin: 0px 2px;">
+                                                <i class="bi bi-globe"
+                                                    style="font-size: 20px;color: #4891db;font-weight: bolder;"></i>
+                                            </span>
+                                            <span style="margin: 0px 2px;">
+                                                <i class="bi bi-twitter-x" style="font-size: 20px;;color: #4891db"></i>
+                                            </span>
+                                            <span style="margin: 0px 2px;">
+                                                <i class="bi bi-telegram" style="font-size: 21px;;color: #4891db"></i>
+                                            </span>
+                                            <span style="margin: 0px 2px;">
+                                                <i class="bi bi-facebook" style="font-size: 21px;;color: #4891db"></i>
+                                            </span>
+                                        </div>
 
+                                    </h4>
+                                    <div
+                                        style="font-size: 14px; margin: 0px !important; margin-top: 7px !important;    display: flex;align-items: center;justify-content: space-between;">
+                                        <div style="width: 32%;; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
+                                            class="truncate-text">
+
+                                            <%=result.startDateFormatted%>
+                                        </div>
+                                        <div style="width: 32%;text-align: right;; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
+                                            class="truncate-text">
+                                            <span style="font-weight: 600;">
+                                                Qty.
+                                            </span>
+                                            <%=result.airdropQuantity%>
+                                        </div>
+                                        <div style="width: 32%;text-align: right; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
+                                            class="truncate-text">
+                                            <span style="font-weight: 600;">
+                                                Winners.
+                                            </span>
+                                            <%=result.noOfWinners%>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
-                      </a>
+                        </a>
 
 
 
@@ -1725,19 +1936,21 @@
             <h1 style="color: blue;">Events</h1>
             <div class="bitcoin-guides" style="display: flex; flex-wrap: wrap; justify-content: start; gap: 2rem; ">
                 <% eventListingData.forEach((result,index)=>{ %>
-                   <a href="/events/<%=result.slug%>" style="text-decoration: none;color: #000;" target="_blank" class="card" >
-                     <div>
-                        <div class="card-body">
-                            <div>
-                                <img style="border-radius: 20px;" src="<%=result.bannerImage%>" alt="Blockchain Event">
+                    <a href="/events/<%=result.slug%>" style="text-decoration: none;color: #000;" target="_blank"
+                        class="card">
+                        <div>
+                            <div class="card-body">
+                                <div>
+                                    <img style="border-radius: 20px;" src="<%=result.bannerImage%>"
+                                        alt="Blockchain Event">
+                                </div>
+                                <div class="card-title truncate-text" title="<%= result.title %>">
+                                    <%=result.title%>
+                                </div>
                             </div>
-                            <div class="card-title truncate-text" title="<%= result.title %>">
-                                <%=result.title%>
-                            </div>
-                        </div>
 
-                    </div>
-                   </a>
+                        </div>
+                    </a>
                     <% })%>
 
 
@@ -1752,57 +1965,57 @@
             </a>
         </div>
 
-          <!-- header start -->
+        <!-- header start -->
 
-    <%- include("../../partials/frountFooter.ejs")%>
-        <!-- header end -->
+        <%- include("../../partials/frountFooter.ejs")%>
+            <!-- header end -->
 
-        <script>
-            let currentSlide = 0;
-            const slider = document.getElementById('slider');
-            const totalSlides = 2;
+            <script>
+                let currentSlide = 0;
+                const slider = document.getElementById('slider');
+                const totalSlides = 2;
 
-            function updateDots() {
-                for (let i = 0; i < totalSlides; i++) {
-                    const dot = document.getElementById('dot' + i);
-                    if (i === currentSlide) {
-                        dot.style.backgroundColor = 'white';
-                    } else {
-                        dot.style.backgroundColor = 'transparent';
+                function updateDots() {
+                    for (let i = 0; i < totalSlides; i++) {
+                        const dot = document.getElementById('dot' + i);
+                        if (i === currentSlide) {
+                            dot.style.backgroundColor = 'white';
+                        } else {
+                            dot.style.backgroundColor = 'transparent';
+                        }
                     }
                 }
-            }
 
-            function goToSlide(slideIndex) {
-                currentSlide = slideIndex;
-                const slideWidth = (220 + 16) * 3; // 3 cards per slide (220px width + 16px gap)
-                const translateX = -slideIndex * slideWidth;
-                slider.style.transform = `translateX(${translateX}px)`;
+                function goToSlide(slideIndex) {
+                    currentSlide = slideIndex;
+                    const slideWidth = (220 + 16) * 3; // 3 cards per slide (220px width + 16px gap)
+                    const translateX = -slideIndex * slideWidth;
+                    slider.style.transform = `translateX(${translateX}px)`;
+                    updateDots();
+                }
+
+                // Initialize first slide
                 updateDots();
-            }
-
-            // Initialize first slide
-            updateDots();
-        </script>
+            </script>
 
 
 
-       
-
-        <script>
-            // Hamburger Menu Toggle (for opening and closing the nav)
-            // Hamburger menu click (for opening the sidebar)
-            document.getElementById('hamburger-menu').addEventListener('click', function () {
-                document.getElementById('sidebar').classList.add('active');
-            });
-
-            // Close button click (for closing the sidebar)
-            document.getElementById('close-btn').addEventListener('click', function () {
-                document.getElementById('sidebar').classList.remove('active');
-            });
 
 
-        </script>
+            <script>
+                // Hamburger Menu Toggle (for opening and closing the nav)
+                // Hamburger menu click (for opening the sidebar)
+                document.getElementById('hamburger-menu').addEventListener('click', function () {
+                    document.getElementById('sidebar').classList.add('active');
+                });
+
+                // Close button click (for closing the sidebar)
+                document.getElementById('close-btn').addEventListener('click', function () {
+                    document.getElementById('sidebar').classList.remove('active');
+                });
+
+
+            </script>
 
 </body>
 
