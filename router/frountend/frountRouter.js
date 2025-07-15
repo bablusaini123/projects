@@ -30,4 +30,8 @@ frountRouter
 
 
 
+frountRouter.all('*', (req, res) => {
+  res.redirect('/'); // Redirect invalid routes to home page
+});
+
 module.exports = frountRouter;
