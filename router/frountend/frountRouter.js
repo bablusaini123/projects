@@ -2,10 +2,16 @@ const frountRouter = require("express").Router();
 const frountController = require("../../controllers/frountend/frount-controller");
 const app = require("../../app")
 
+
+frountRouter
+   .route('/sitemap.xml')
+   .get(frountController.getSitemap);
+
+
+
 frountRouter
    .route("/")
    .get(frountController.frountHomePage)
-
 frountRouter
    .route("/miner")
    .get(frountController.products)

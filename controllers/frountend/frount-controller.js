@@ -5,8 +5,43 @@ const nodemailer = require('nodemailer')
 const Product = require('../../model/productModal');
 const slugify = require('slugify');
 
+// Sitemap
+  
+module.exports.getSitemap = async (req, res) => {
+    try {
+        const products = await Product.find({}, 'slug');
+        console.log(products.length)
 
+        let urls = products.map(product => {
+            
+            return `
+                <url>
+                    <loc>https://czminers.com/miner/${product.slug}</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+            `;
+        });
 
+        const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+                <url>
+                    <loc>https://czminers.com/</loc>
+                    <changefreq>daily</changefreq>
+                    <priority>1.0</priority>
+                </url>
+                ${urls.join('\n')}
+            </urlset>
+        `;
+
+        res.header('Content-Type', 'application/xml');
+        res.status(200).send(sitemap);
+
+    } catch (err) {
+        console.error('Error generating sitemap:', err);
+        res.status(500).send('Internal Server Error');
+    }
+};
 
 
 

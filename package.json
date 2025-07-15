@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
+     "purge": "node purgecss.js",
     "client": "cd ../reactfrontends && npm start",
     "server": "cd ../getPro && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -44,5 +45,8 @@
     "slugify": "^1.6.6",
     "socket.io": "^4.5.4",
     "stripe": "^11.2.0"
+  },
+  "devDependencies": {
+    "purgecss": "^7.0.2"
   }
 }

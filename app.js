@@ -13,6 +13,15 @@ const multerS3 = require('multer-s3');
 
 
 
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send(`User-agent: *
+Allow: /
+Sitemap: https://czminers.com/sitemap.xml`);
+});
+
+
+
 // Setup S3
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
