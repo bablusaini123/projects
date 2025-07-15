@@ -8,10 +8,64 @@ const News = require('../../model/newsModal')
 const moment = require("moment");
 const axios = require('axios');
 
+// Sitemap
 
+// Utility function to escape special XML characters
+function escapeXML(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+  
+module.exports.getSitemap = async (req, res) => {
+   try {
+  // Fetch slugs from all models
+    const eventSlugs = await EventListing.find({}, 'slug');
+    const icoSlugs = await IcoListing.find({}, 'slug');
+    const airdropSlugs = await Airdrop.find({}, 'slug');
+    const newsSlugs = await News.find({}, 'slug');
 
+    // Prepare sitemap URLs from slugs
+    const eventUrls = eventSlugs.map(slug => {
+      return `<url><loc>https://kryptodesk.com/event/${escapeXML(slug.slug)}</loc></url>`;
+    }).join('');
 
+    const icoUrls = icoSlugs.map(slug => {
+      return `<url><loc>https://kryptodesk.com/ico/${escapeXML(slug.slug)}</loc></url>`;
+    }).join('');
 
+    const airdropUrls = airdropSlugs.map(slug => {
+      return `<url><loc>https://kryptodesk.com/airdrops/${escapeXML(slug.slug)}</loc></url>`;
+    }).join('');
+
+    const newsUrls = newsSlugs.map(slug => {
+      return `<url><loc>https://kryptodesk.com/news/${escapeXML(slug.slug)}</loc></url>`;
+    }).join('');
+
+    // Combine all URLs
+    const sitemapContent = `
+      <?xml version="1.0" encoding="UTF-8"?>
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        ${eventUrls}
+        ${icoUrls}
+        ${airdropUrls}
+        ${newsUrls}
+      </urlset>
+    `;
+
+    // Set the correct content-type header before sending the response
+    res.setHeader('Content-Type', 'application/xml');
+    
+    // Ensure no unwanted characters are sent before the XML declaration
+    res.send(sitemapContent.trim()); // `trim()` ensures no extra spaces before the XML declaration
+  } catch (err) {
+        console.error('Error generating sitemap:', err);
+        res.status(500).send('Internal Server Error');
+    }
+};
 
 
 module.exports.frountHomePage = async (req, res) => {

@@ -11,6 +11,14 @@ const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 
+
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send(`User-agent: *
+Allow: /
+Sitemap: https://kryptodesk.com/sitemap.xml`);
+});
+
 app.get('/airdropListing', (req, res) => {
   res.redirect(301, '/Airdrops');
 });
@@ -22,6 +30,8 @@ app.get('/icoListing', (req, res) => {
 app.get('/eventListing', (req, res) => {
   res.redirect(301, '/events');
 });
+
+
 
 // Setup S3
 const s3 = new AWS.S3({

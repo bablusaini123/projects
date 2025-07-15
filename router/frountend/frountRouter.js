@@ -2,6 +2,14 @@ const frountRouter = require("express").Router();
 const frountController = require("../../controllers/frountend/frount-controller");
 const app = require("../../app")
 
+
+frountRouter
+   .route('/sitemap.xml')
+   .get(frountController.getSitemap);
+
+
+   
+
 frountRouter
    .route("/")
    .get(frountController.frountHomePage)
@@ -59,6 +67,8 @@ frountRouter
 
 
 
-
+frountRouter.all('*', (req, res) => {
+  res.redirect('/'); // Redirect invalid routes to home page
+});
 
 module.exports = frountRouter;
