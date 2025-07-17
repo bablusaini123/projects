@@ -8,6 +8,7 @@ const NewsSchema = new mongoose.Schema({
   category: { type: [],default:[] },
   tags: { type: [],default:[] },
   description: { type: String,required: true },
+  shortDescription: { type: String },
   status:{type:String}
 });
 

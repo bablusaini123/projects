@@ -9,8 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=DM+Sans:wght@400;500&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-   <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
-  
+  <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
+
 
   <title>Airdrops Listing</title>
   <style>
@@ -18,7 +18,7 @@
       box-sizing: border-box;
     }
 
-  
+
 
     .card-container {
       display: flex;
@@ -246,16 +246,17 @@
     }
 
     .eventBtn {
-       padding: 10px 29px;
-    background: #655de6;
-    margin-left: auto;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 18px;
-    font-weight: 600;
+      padding: 10px 29px;
+      background: #655de6;
+      margin-left: auto;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 18px;
+      font-weight: 600;
     }
-     .eventBtn:hover {
-    color: #fff;
+
+    .eventBtn:hover {
+      color: #fff;
     }
 
     .pagination-container {
@@ -354,201 +355,265 @@
       background-color: #ffe9ba;
       color: #9c6b00;
     }
-     body {
-            /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-            background: #fff;
-            color: #111;
-            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
-            overflow-x: hidden;
-            margin: 0;
 
-        }
+    body {
+      /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+      background: #fff;
+      color: #111;
+      font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+      overflow-x: hidden;
+      margin: 0;
 
-        h1,
-        h2,
-        h3,
-        p,
-        span {
-            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+    }
 
-        }
+    h1,
+    h2,
+    h3,
+    p,
+    span {
+      font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
 
-
-
-
-      /* Main header styling */
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 48px;
-            border-bottom: 1px solid #eee;
-            flex-wrap: wrap;
-            /* Wrapping to allow proper stacking in mobile view */
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 32px;
-            font-weight: bold;
-            color: #111;
-        }
-
-        .hamburger-menu {
-            display: none;
-            cursor: pointer;
-            font-size: 30px;
-        }
-
-        /* Normal desktop navigation */
-        nav {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-            white-space: nowrap;
-            justify-content: center;
-        }
-
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #111;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            color: #0b74de;
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 10px 0;
-            z-index: 10;
-        }
-
-        .dropdown-content a {
-            display: block;
-            padding: 10px 15px;
-            color: #111;
-        }
-
-        .dropdown-content a:hover {
-            background: #fafafa;
-            color: #0b74de;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Sidebar Styling */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 90%;
-            height: 100%;
-            background: #fff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transform: translateX(-100%);
-            /* Sidebar hidden off-screen initially */
-            transition: transform 0.5s ease;
-            /* Smooth slide-in transition */
-        }
-
-        /* Active state (when sidebar is open) */
-        .sidebar.active {
-            transform: translateX(0);
-            /* Slide-in to the left side */
-        }
-
-        .sidebar-logo {
-
-            padding: 20px 12px;
-
-        }
-
-        .sidebar-logo img {
-            width: 65% !important;
-        }
-
-        .close-btn {
-            font-size: 30px;
-            color: #111;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-        }
+    }
 
 
-        /* Media Query for Mobile (Less than or equal to 768px) */
-        @media (max-width: 768px) {
 
-            /* Display the hamburger menu for mobile */
-            .hamburger-menu {
-                display: block;
-            }
 
-            /* Hide the normal desktop navigation */
-            nav {
-                display: none;
-            }
+    /* Main header styling */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 48px;
+      border-bottom: 1px solid #eee;
+      flex-wrap: wrap;
+      /* Wrapping to allow proper stacking in mobile view */
+    }
 
-            /* Sidebar active on mobile */
-            .sidebar.active {
-                display: block;
-            }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: #111;
+    }
 
-            .logo a img {
-                width: 85% !important;
-            }
+    .hamburger-menu {
+      display: none;
+      cursor: pointer;
+      font-size: 30px;
+    }
 
-            header {
-                align-items: unset !important;
-                flex-wrap: unset !important;
-                padding: 15px 14px;
-                flex-direction: unset;
-                border: 1px solid #eee;
-            }
+    /* Normal desktop navigation */
+    nav {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      white-space: nowrap;
+      justify-content: center;
+    }
 
-            .hamburger-menu {
-                font-size: 24px;
-            }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+    }
 
-            .logo {
-                margin-bottom: 0;
-            }
+    nav a:hover {
+      color: #0b74de;
+    }
 
-            .dropdown {
-                background: #f6f6f6;
-            }
+    .dropdown {
+      position: relative;
+    }
 
-        }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 10px 0;
+      z-index: 10;
+    }
 
-        .dropdown {
-            position: relative;
-            /* color: #000; */
-            padding: 8px 10px;
+    .dropdown-content a {
+      display: block;
+      padding: 10px 15px;
+      color: #111;
+    }
 
-            margin-bottom: 11px;
-        }
+    .dropdown-content a:hover {
+      background: #fafafa;
+      color: #0b74de;
+    }
 
-        .dropdown a {
-            text-decoration: none;
-            color: #000;
-        }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 90%;
+      height: 100%;
+      background: #fff;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transform: translateX(-100%);
+      /* Sidebar hidden off-screen initially */
+      transition: transform 0.5s ease;
+      /* Smooth slide-in transition */
+    }
+
+    /* Active state (when sidebar is open) */
+    .sidebar.active {
+      transform: translateX(0);
+      /* Slide-in to the left side */
+    }
+
+    .sidebar-logo {
+
+      padding: 20px 12px;
+
+    }
+
+    .sidebar-logo img {
+      width: 65% !important;
+    }
+
+    .close-btn {
+      font-size: 30px;
+      color: #111;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+
+    /* Media Query for Mobile (Less than or equal to 768px) */
+    @media (max-width: 768px) {
+
+      /* Display the hamburger menu for mobile */
+      .hamburger-menu {
+        display: block;
+      }
+
+      /* Hide the normal desktop navigation */
+      nav {
+        display: none;
+      }
+
+      /* Sidebar active on mobile */
+      .sidebar.active {
+        display: block;
+      }
+
+      .logo a img {
+        width: 85% !important;
+      }
+
+      header {
+        align-items: unset !important;
+        flex-wrap: unset !important;
+        padding: 15px 14px;
+        flex-direction: unset;
+        border: 1px solid #eee;
+      }
+
+      .hamburger-menu {
+        font-size: 24px;
+      }
+
+      .logo {
+        margin-bottom: 0;
+      }
+
+      .dropdown {
+        background: #f6f6f6;
+      }
+
+    }
+
+    .dropdown {
+      position: relative;
+      /* color: #000; */
+      padding: 8px 10px;
+
+      margin-bottom: 11px;
+    }
+
+    .dropdown a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .category-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .category-toggle {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .category-dropdown {
+      display: none;
+      position: absolute;
+      top: 110%;
+      left: 0;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      z-index: 999;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      min-width: 700px;
+    }
+
+    .category-wrapper:hover .category-dropdown {
+      display: block;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      /* 4 columns */
+      gap: 20px;
+    }
+
+    .category-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+      .category-dropdown {
+        min-width: 100%;
+        padding: 15px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -562,30 +627,130 @@
     <section>
       <div class="container">
         <div class="breadcrumb">
-          <a href="/" style="color: #555;">Home</a> > <a href="#"> News</a>
+          <a href="/" style="color: #555;">Home</a> > <a href="/news"> News</a> > <span>
+            <%=selectedCategory%>
+          </span>
         </div>
 
         <div class="container">
           <div class="tabs">
-            <div class="tab active">All News</div>
+            <div class="tab active">
+              <%=selectedCategory%>
+            </div>
+
+
             <!-- <div class="tab">Organizers</div>
             <div class="tab">Speakers</div> -->
             <a href="/addNews" class="eventBtn">News</a>
           </div>
         </div>
 
-
-
-        <h2>All News</h2>
-
-       
     </section>
 
 
     <section class="listingSection">
       <div class="container">
-       
-    </div>
+
+        <div class="row">
+          <div class="col-md-9">
+            <% newsData.forEach((result,index)=>{ %>
+              <a href="/news/<%=result.slug%>"
+                style="text-decoration: none;color: unset;margin-bottom: 11px;display: inline-block;width: 100%;">
+                <div class="card" style="max-width: unset;flex-direction: unset;background: #f0f0f0;">
+                  <div style="width: 34%;">
+                    <img src="<%=result.newsBanner%>" class="card-img-top" alt="...">
+                  </div>
+                  <div class="card-body" style="width: 66%;padding-left: 17px;">
+                    <h2 class="card-title truncate-text" style="font-size: 19px;">
+                      <%=result.title%>
+                    </h2>
+                    <p class="card-text" style="color: #575757;"><%-result.shortDescription%></p>
+                    <div>
+                      <% result.tags.slice(0, 3).forEach((result2,index)=>{ %>
+                        <span style="padding: 4px 12px;
+    background: #e7e5e5;
+    text-align: center;
+    border-radius: 10px;color: #575757;margin-left: 5px;">
+                          <%=result2%>
+                        </span>
+                        <% })%>
+                          <span style="float: right;margin-right: 10px;color: #575757;">
+                            <%=result.publishDate%>
+                          </span>
+
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <% })%>
+          </div>
+          <div class="col-md-3">
+
+            <% newsData.forEach((result,index)=>{ %>
+              <a href="/news/<%=result.slug%>"
+                style="text-decoration: none;color: unset;margin-bottom: 11px;display: inline-block;width: 100%;border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);    background: #dddada;">
+                <div class="" style="max-width: unset;flex-direction: unset;display: unset;">
+                  <div style="width: 100%;">
+                    <img style="border-radius: 10px;" src="<%=result.newsBanner%>" class="card-img-top" alt="...">
+                  </div>
+                  <div class="card-body" style="width: 100%;padding-left: 17px;">
+                    <h2 class="card-title" style="font-size: 19px;">
+                      <%=result.title%>
+                    </h2>
+                    
+                  </div>
+                </div>
+              </a>
+              <% })%>
+
+          </div>
+        </div>
+
+        <section style="margin-left: auto;">
+          <div class="pagination-container">
+            <% if (current> 1) { %>
+              <a href="/news?page=<%= current - 1 %>&category=<%= selectedCategory %>" class="page-box">‹</a>
+              <% } else { %>
+                <span class="page-box disabled">‹</span>
+                <% } %>
+
+                  <% if (current> 2) { %>
+                    <a href="/news?page=1&category=<%= selectedCategory %>" class="page-box">1</a>
+                    <% } %>
+
+                      <% if (current> 3) { %>
+                        <span class="page-box dots">...</span>
+                        <% } %>
+
+                          <% for (let i=current - 1; i <=current + 1; i++) { if (i> 1 && i < pages) { %>
+                              <a href="/news?page=<%= i %>&category=<%= selectedCategory %>"
+                                class="page-box <%= current === i ? 'active' : '' %>">
+                                <%= i %>
+                              </a>
+                              <% } } %>
+
+                                <% if (current < pages - 2) { %>
+                                  <span class="page-box dots">...</span>
+                                  <% } %>
+
+                                    <% if (current < pages - 1) { %>
+                                      <a href="/news?page=<%= pages %>&category=<%= selectedCategory %>"
+                                        class="page-box">
+                                        <%= pages %>
+                                      </a>
+                                      <% } %>
+
+                                        <% if (current < pages) { %>
+                                          <a href="/news?page=<%= current + 1 %>&category=<%= selectedCategory %>"
+                                            class="page-box">›</a>
+                                          <% } else { %>
+                                            <span class="page-box disabled">›</span>
+                                            <% } %>
+          </div>
+
+        </section>
+
+      </div>
 
     </section>
 
@@ -610,20 +775,20 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"></script>
 
-       <script>
-                // Hamburger Menu Toggle (for opening and closing the nav)
-                // Hamburger menu click (for opening the sidebar)
-                document.getElementById('hamburger-menu').addEventListener('click', function () {
-                    document.getElementById('sidebar').classList.add('active');
-                });
+    <script>
+      // Hamburger Menu Toggle (for opening and closing the nav)
+      // Hamburger menu click (for opening the sidebar)
+      document.getElementById('hamburger-menu').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.add('active');
+      });
 
-                // Close button click (for closing the sidebar)
-                document.getElementById('close-btn').addEventListener('click', function () {
-                    document.getElementById('sidebar').classList.remove('active');
-                });
+      // Close button click (for closing the sidebar)
+      document.getElementById('close-btn').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.remove('active');
+      });
 
 
-            </script>
+    </script>
 
 </body>
 

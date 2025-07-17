@@ -61,6 +61,9 @@ frountRouter
    .route("/addNews")
    .get(frountController.addNews)
    .post(app.upload.fields([{name:'newsBanner'},{name:'file'}]),frountController.addNewsSubmit)
+frountRouter
+   .route("/news/:slug")
+   .get(frountController.DetailNews)
 
 
 

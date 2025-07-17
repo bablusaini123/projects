@@ -1,3 +1,45 @@
+<style>
+    .news-dropdown {
+  position: relative;
+}
+
+.news-category-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.news-dropdown:hover .news-category-dropdown {
+  display: block;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.category-col a {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.category-col a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+</style>
+
 <header>
     <!-- Main Logo -->
     <div class="logo">
@@ -16,11 +58,38 @@
                 <a href="/airdrops">Airdrops</a>
             </div>
         </div>
-        <div class="dropdown">
-            <a href="/news">News</a>
+        <div class="dropdown news-dropdown">
+    <a href="/news">News</a>
+    <div class="news-category-dropdown">
+        <div class="category-grid">
+            <% 
+              const chunk = (arr, size) =>
+                arr.reduce((acc, _, i) => (i % size === 0 ? [...acc, arr.slice(i, i + size)] : acc), []);
+              const categories = [
+                "Crypto News", "Press Release", "Price Prediction", "Sponsored", "Guest Post", "Crypto Blogs",
+                "Research Paper", "Monthly Bulletin", "Bitcoin", "Ethereum", "Altcoin", "Meme Coin", "Blockchain",
+                "Exchanges", "NFTs", "Metaverse", "GameFi", "Projects", "Top Memecoins", "Crypto Airdrops",
+                "Best Crypto Presale", "Web3", "Artificial Intelligence", "Hamster Kombat", "Pi Coin", "Tapcoin",
+                "DeFi", "DAOs", "Stablecoins", "Crypto Wallets", "Mining & Staking", "Crypto Regulation", "CBDCs",
+                "Tokenomics", "ICO/IDO/IEO Updates", "RWA", "Solana Ecosystem", "Arbitrum & Optimism", "Security & Hacks",
+                "Privacy Coins"
+              ];
+              const categoryChunks = chunk(categories, Math.ceil(categories.length / 4));
+            %>
+
+            <% categoryChunks.forEach(col => { %>
+              <div class="category-col">
+                <% col.forEach(cat => { %>
+                 <a href="/news?category=<%= cat.replace(/\s+/g, '-') %>"><%= cat %></a>
+                <% }) %>
+              </div>
+            <% }) %>
         </div>
+    </div>
+</div>
+
         <div class="dropdown">
-            <a href="#">Coin predictions</a>
+            <a href="/news?category=Price-Prediction">Coin Prediction</a>
         </div>
         <div class="dropdown">
             <a href="/influencers">Influencers</a>
@@ -76,6 +145,7 @@
         </div>
     </div>
     <div class="dropdown">
+
         <a href="/news">News</a>
     </div>
     <div class="dropdown">
@@ -110,3 +180,7 @@
         </div>
     </div>
 </div>
+
+
+
+ 

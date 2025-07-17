@@ -19,10 +19,10 @@ function escapeXML(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
 }
-  
+
 module.exports.getSitemap = async (req, res) => {
-   try {
-  // Fetch slugs from all models
+  try {
+    // Fetch slugs from all models
     const eventSlugs = await EventListing.find({}, 'slug');
     const icoSlugs = await IcoListing.find({}, 'slug');
     const airdropSlugs = await Airdrop.find({}, 'slug');
@@ -58,13 +58,13 @@ module.exports.getSitemap = async (req, res) => {
 
     // Set the correct content-type header before sending the response
     res.setHeader('Content-Type', 'application/xml');
-    
+
     // Ensure no unwanted characters are sent before the XML declaration
     res.send(sitemapContent.trim()); // `trim()` ensures no extra spaces before the XML declaration
   } catch (err) {
-        console.error('Error generating sitemap:', err);
-        res.status(500).send('Internal Server Error');
-    }
+    console.error('Error generating sitemap:', err);
+    res.status(500).send('Internal Server Error');
+  }
 };
 
 
@@ -329,7 +329,7 @@ module.exports.createEventListingSubmit = async (req, res) => {
       slug = title.replace(/\s+/g, '-') + Math.floor(100 + Math.random() * 900);
     }
 
-  const altText = `Discover the latest, upcoming, and ongoing events for ${title} featuring official token and banner images`;
+    const altText = `Discover the latest, upcoming, and ongoing events for ${title} featuring official token and banner images`;
 
 
     // save data
@@ -361,7 +361,7 @@ module.exports.createEventListingSubmit = async (req, res) => {
       authorEmail: authorEmail,
       authorWhatsapp: authorWhatsapp,
       authorTwitter: authorTwitter,
-      altText:altText
+      altText: altText
     });
     const savedEvent = await newEvent.save();
     res.redirect('/eventListing')
@@ -403,8 +403,8 @@ module.exports.detailEventListing = async (req, res) => {
 module.exports.IcoListing = async (req, res) => {
   try {
 
-    
-    
+
+
     const perPage = 20;
     const page = parseInt(req.query.page) || 1;
     const category = req.query.category || 'all';
@@ -458,7 +458,7 @@ module.exports.IcoListing = async (req, res) => {
 
 module.exports.createIcoListing = async (req, res) => {
   try {
-    
+
     //  const adminData = await Admin.find()
     res.render("frountend/createIcoListing.ejs")
   } catch (error) {
@@ -762,7 +762,7 @@ module.exports.createIcoListingSubmit = async (req, res) => {
     const year = new Date().getFullYear();
     const logoAltText = `${title} – Best Upcoming ${assetType} Crypto Logo of ${year} | Trending ICO Project`
     const whitepaperAltText = `Download ${title} Whitepaper – Explore Latest ${assetType} Crypto ICO Project with Real Asset Backing (${year})`;
-    const roadmapAltText =`${title} Roadmap – Upcoming ${assetType} Token’s Vision, Milestones & Plans for ${year}`;
+    const roadmapAltText = `${title} Roadmap – Upcoming ${assetType} Token’s Vision, Milestones & Plans for ${year}`;
 
     // save data
 
@@ -936,7 +936,7 @@ module.exports.createAirdropSubmit = async (req, res) => {
     // Utility to sanitize null or "" to "N/A"
     const sanitize = (val) => (val === '' || val === null || val === undefined) ? 'N/A' : val;
 
-     const altText = `Discover the latest, upcoming, and ongoing airdrops for ${tokenName} featuring official token and banner images`;
+    const altText = `Discover the latest, upcoming, and ongoing airdrops for ${tokenName} featuring official token and banner images`;
 
     const newAirdrop = new Airdrop({
       tokenName: sanitize(tokenName),
@@ -969,8 +969,8 @@ module.exports.createAirdropSubmit = async (req, res) => {
       authorWhatsapp: sanitize(authorWhatsapp),
       authorTwitter: sanitize(authorTwitter),
       slug: slug,
-      tokenImageAlt:altText,
-      bannerImageAlt:altText
+      tokenImageAlt: altText,
+      bannerImageAlt: altText
     });
     await newAirdrop.save();
     res.redirect(`/icoUnderProcess/${newAirdrop._id}?message=${"Airdrop"}`);
@@ -1062,7 +1062,52 @@ module.exports.createInfluencerSubmit = async (req, res) => {
 
 module.exports.allNews = async (req, res) => {
   try {
-    res.render("frountend/news.ejs")
+    const perPage = 20;
+    const page = parseInt(req.query.page) || 1;
+    let selectedCategory = req.query.category || 'all'; // Single string
+    const now = new Date();
+    
+
+    // Filter: Only approved news
+    let filter = {
+      status: 'approved'
+    };
+
+    // Filter by category if not "all"
+    if (selectedCategory !== 'all') {
+      selectedCategory = selectedCategory.replace(/-/g, ' ');
+      console.log(selectedCategory)
+      filter.category = { $in: [selectedCategory] }; // Match array field
+    }
+
+    console.log(filter)
+
+    // Get total count
+    const totalCount = await News.countDocuments(filter);
+
+    // Get paginated and sorted data
+    const newsData = await News.find(filter)
+      .sort({ createdAt: -1 }) // Latest first
+      .skip((page - 1) * perPage)
+      .limit(perPage);
+
+      const formattednewsData = newsData.map(event => {
+      const plain = event.toObject();
+      return {
+        ...plain,
+        publishDate: moment(plain.publishDate).format("MMMM Do, YYYY"),
+      };
+    });
+
+    console.log(formattednewsData)
+
+    // Render to frontend
+    res.render("frountend/news.ejs", {
+      newsData:formattednewsData,
+      current: page,
+      pages: Math.ceil(totalCount / perPage),
+      selectedCategory
+    });
   } catch (error) {
     res.status(500).json({
       error: error.message,
@@ -1108,6 +1153,21 @@ module.exports.addNewsSubmit = async (req, res) => {
       slug = title.replace(/\s+/g, '-') + Math.floor(100 + Math.random() * 900);
     }
 
+  // create short desc
+
+
+    const stripHtml = html => html.replace(/<[^>]*>/g, '');
+    const getSnippet = (html, maxLines = 2, maxLength = 200) => {
+      const plainText = stripHtml(html || "");
+      const lines = plainText.split('\n').map(l => l.trim()).filter(Boolean);
+      const snippet = lines.slice(0, maxLines).join(' ');
+      return snippet.length > maxLength ? snippet.slice(0, maxLength) + '...' : snippet;
+    };
+
+    const shortDescription = getSnippet(description);
+
+    // save data
+
     const newNews = new News({
       title: title,
       category: category,
@@ -1115,10 +1175,32 @@ module.exports.addNewsSubmit = async (req, res) => {
       description: description,
       slug: slug,
       newsBanner: newsBanner,
+      shortDescription:shortDescription,
       status: "approved"
     });
     const saved = await newNews.save();
     res.redirect("/news")
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+}
+
+module.exports.DetailNews = async (req, res) => {
+  try {
+    const slug = req.params.slug
+    const newsData = await News.find({ slug: slug })
+    const publishDate = new Date(newsData[0].publishDate); // aapki db se aayi date
+    const formattedPublishDate = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    }).format(publishDate);
+
+   
+    newsData[0].formattedPublishDate = formattedPublishDate
+    res.render("frountend/detailNews.ejs", { newsData: newsData[0] })
   } catch (error) {
     res.status(500).json({
       error: error.message,
@@ -1131,7 +1213,7 @@ module.exports.DetailIco = async (req, res) => {
   try {
     const slug = req.params.slug
     const icoData = await IcoListing.find({ slug: slug })
-    console.log("-----",icoData)
+    console.log("-----", icoData)
     const startDate = new Date(icoData[0].startDate); // aapki db se aayi date
     const formattedStartDate = new Intl.DateTimeFormat('en-GB', {
       day: '2-digit',
