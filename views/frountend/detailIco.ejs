@@ -6,9 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-         <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
+    <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
 
     <!-- Meta Title & Description for ICO Detail Page -->
+    <!-- Open Graph Meta Tags for WhatsApp & Social Sharing -->
+    <meta property="og:title" content="<%= icoData.title %>" />
+    <meta property="og:description"
+        content="Get complete details of the <%= icoData.title %> ICO including tokenomics, fundraising, roadmap, and team. Participate in the <%= icoData.title %> token sale on KryptoDesk." />
+    <meta property="og:url" content="https://kryptodesk.com/ico/<%= icoData.slug %>" />
+    <meta property="og:image" content="<%= icoData.logo || 'https://kryptodesk.com/image/kryptodesk-logo.png' %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="KryptoDesk" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%= icoData.title %>" />
+    <meta name="twitter:description" content="Check out this ICO project on Kryptodesk!" />
+    <meta name="twitter:image" content="<%= icoData.logo || 'https://kryptodesk.com/image/kryptodesk-logo.png' %>" />
     <title>
         <%= icoData.title %> ICO, Token Sale, Tokenomics, Team & Roadmap | KryptoDesk
     </title>
@@ -1350,14 +1363,17 @@
         .socialMediaIcon:hover.socialMediaIcon img {
             transform: scale(1.1);
         }
-        .websiteBtn{
+
+        .websiteBtn {
             transition: 0.2s;
         }
-        .websiteBtn:hover{
-            box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.4);
+
+        .websiteBtn:hover {
+            box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.4);
 
         }
-        .overview-item3{
+
+        .overview-item3 {
             width: 100% !important;
         }
     </style>
@@ -1373,23 +1389,29 @@
             <main class="main-content">
                 <div class="breadcrumb" style="align-items: center;display: flex;">
                     <a href="/">Home</a> / <a href="/ico">ICO Listing</a> / <%=icoData.title%> • Waitlist
-                        <a target="_blank" href="<%=icoData.twitterLink%>" style="margin-left: auto" class="socialMediaIcon">
+                        <a target="_blank" href="<%=icoData.twitterLink%>" style="margin-left: auto"
+                            class="socialMediaIcon">
 
                             <img style="width: 30px;" src="../../image/twitter.png" alt="">
                         </a>
-                        <a target="_blank" href="<%=icoData.TelegramChannel%>" style="margin-left: 10px;" class="socialMediaIcon">
+                        <a target="_blank" href="<%=icoData.TelegramChannel%>" style="margin-left: 10px;"
+                            class="socialMediaIcon">
                             <img style="width: 30px;" src="../../image/telegram.png" alt="">
                         </a>
-                        <a target="_blank" href="<%=icoData.twitterLink%>" style="margin-left: 10px;" class="socialMediaIcon">
+                        <a target="_blank" href="<%=icoData.twitterLink%>" style="margin-left: 10px;"
+                            class="socialMediaIcon">
                             <img style="width: 30px;" src="../../image/discord.png" alt="">
                         </a>
-                        <a target="_blank" href="<%=icoData.twitterLink%>" style="margin-left: 10px;" class="socialMediaIcon">
+                        <a target="_blank" href="<%=icoData.twitterLink%>" style="margin-left: 10px;"
+                            class="socialMediaIcon">
                             <img style="width: 30px;" src="../../image/facebook.png" alt="">
                         </a>
-                        <a target="_blank" href="<%=icoData.youtubeLink%>" style="margin-left: 10px;" class="socialMediaIcon">
+                        <a target="_blank" href="<%=icoData.youtubeLink%>" style="margin-left: 10px;"
+                            class="socialMediaIcon">
                             <img style="width: 30px;" src="../../image/youtube.png" alt="">
                         </a>
-                        <a target="_blank" href="<%=icoData.instagramLink%>" style="margin-left: 10px;" class="socialMediaIcon">
+                        <a target="_blank" href="<%=icoData.instagramLink%>" style="margin-left: 10px;"
+                            class="socialMediaIcon">
                             <img style="width: 30px;" src="../../image/instagram.png" alt="">
                         </a>
 
@@ -1529,7 +1551,7 @@
                             </span>
                         </div>
 
-                      
+
                     </div>
                 </div>
                 <div class="overview-section">
@@ -1541,9 +1563,9 @@
                     </div>
 
                 </div>
-              
 
-               
+
+
 
                 <div class="overview-section">
                     <h2>
@@ -1581,15 +1603,15 @@
                         </div>
                     </div>
                 </div>
-                 <div class="overview-section">
+                <div class="overview-section">
                     <h2>
-                         RoadMap
+                        RoadMap
                     </h2>
 
                     <div class="">
                         <div class="" style="text-align: center;">
 
-                        <img style="width: 100%;" src="<%=icoData.roadmap%>" alt="<%=icoData.roadmapAltText%>">
+                            <img style="width: 100%;" src="<%=icoData.roadmap%>" alt="<%=icoData.roadmapAltText%>">
 
                         </div>
                     </div>
@@ -1597,14 +1619,14 @@
 
             </main>
 
-           <div>
-             <div class="overview-section">
+            <div>
+                <div class="overview-section">
                     <h2>
-                     Tokenomics
+                        Tokenomics
                     </h2>
                     <% icoData.rounds?.slice(0, 1).forEach((result,index)=>{ %>
                         <div class="overviewMain2">
-                             <a class="websiteBtn"target="_blank" href="" style="padding: 8px 16px;align-items: center;display: flex;
+                            <a class="websiteBtn" target="_blank" href="" style="padding: 8px 16px;align-items: center;display: flex;
     background: #eeeeee;
     border-radius: 17px;
     color: #262626;
@@ -1616,66 +1638,67 @@
     box-shadow: 0px 0px 8px 0px rgba(255,255,255,1);
     margin-bottom: 10px;;
 ">
-                        <span>
-                            <img style="width: 25px; margin-right: 7px;" src="../../image/document.png" alt="<%=icoData.whitepaperAltText%>">
-                        </span>
-                        <span>
-                            WhitePaper
-                        </span>
-                    </a>
+                                <span>
+                                    <img style="width: 25px; margin-right: 7px;" src="../../image/document.png"
+                                        alt="<%=icoData.whitepaperAltText%>">
+                                </span>
+                                <span>
+                                    WhitePaper
+                                </span>
+                            </a>
                             <div class="overview-item2 overview-item3">
                                 <span class="info-label">Price:</span>
                                 <span class="info-value truncate-text">
                                     <%=result.price%>
                                 </span>
                             </div>
-                             <div class="overview-item2 overview-item3">
+                            <div class="overview-item2 overview-item3">
                                 <span class="info-label">Ticker:</span>
                                 <span class="info-value truncate-text">
                                     <%=icoData.ticker%>
                                 </span>
                             </div>
 
-                              <div class="overview-item2 overview-item3">
-                            <span class="info-label truncate-text">Block Chain:</span>
-                            <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
-                                <div class="blockchain-tags">
-                                    <% const maxVisible2=3; const blockChain=icoData.blockChain || []; const
-                                        blockChainTag=blockChain.slice(0, maxVisible2); const
-                                        remainingCount2=blockChain.length - blockChainTag.length; %>
+                            <div class="overview-item2 overview-item3">
+                                <span class="info-label truncate-text">Block Chain:</span>
+                                <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
+                                    <div class="blockchain-tags">
+                                        <% const maxVisible2=3; const blockChain=icoData.blockChain || []; const
+                                            blockChainTag=blockChain.slice(0, maxVisible2); const
+                                            remainingCount2=blockChain.length - blockChainTag.length; %>
 
-                                        <% blockChainTag.forEach(tag=> { %>
-                                            <span class="badge gray">
-                                                <%= tag %>
-                                            </span>
-                                            <% }) %>
+                                            <% blockChainTag.forEach(tag=> { %>
+                                                <span class="badge gray">
+                                                    <%= tag %>
+                                                </span>
+                                                <% }) %>
 
-                                                <% if (remainingCount2> 0) { %>
-                                                    <span class="badge light">+<%= remainingCount2 %></span>
-                                                    <% } %>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="overview-item2 overview-item3">
-                            <span class="info-label truncate-text">Industry:</span>
-                            <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
-                                <div class="blockchain-tags">
-                                    <% const maxVisible=1; const industry=icoData.industry || []; const
-                                        industryTag=industry.slice(0, maxVisible); const remainingCount=industry.length
-                                        - industryTag.length; %>
+                                                    <% if (remainingCount2> 0) { %>
+                                                        <span class="badge light">+<%= remainingCount2 %></span>
+                                                        <% } %>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="overview-item2 overview-item3">
+                                <span class="info-label truncate-text">Industry:</span>
+                                <span class="info-value truncate-text" title="<%=icoData.initialCirculationSupply%>">
+                                    <div class="blockchain-tags">
+                                        <% const maxVisible=1; const industry=icoData.industry || []; const
+                                            industryTag=industry.slice(0, maxVisible); const
+                                            remainingCount=industry.length - industryTag.length; %>
 
-                                        <% industryTag.forEach(tag=> { %>
-                                            <span class="badge gray truncate-text">
-                                                <%= tag %>
-                                            </span>
-                                            <% }) %>
+                                            <% industryTag.forEach(tag=> { %>
+                                                <span class="badge gray truncate-text">
+                                                    <%= tag %>
+                                                </span>
+                                                <% }) %>
 
-                                                <% if (remainingCount> 0) { %>
-                                                    <span class="badge light">+<%= remainingCount %></span>
-                                                    <% } %>
-                                </div>
-                            </span>
-                        </div>
+                                                    <% if (remainingCount> 0) { %>
+                                                        <span class="badge light">+<%= remainingCount %></span>
+                                                        <% } %>
+                                    </div>
+                                </span>
+                            </div>
                             <div class="overview-item2 overview-item3">
                                 <span class="info-label">Sale Qty:</span>
                                 <span class="info-value truncate-text">
@@ -1688,16 +1711,16 @@
                                     <%=result.raisePrice%>
                                 </span>
                             </div>
-                            
 
-                          
-                           
 
-                           
+
+
+
+
                         </div>
                         <% })%>
                 </div>
-              <div class="overview-section">
+                <div class="overview-section">
                     <h2>
                         Economy
                     </h2>
@@ -1733,12 +1756,12 @@
                                 <%=icoData.publicSale%>
                             </span>
                         </div>
-                       
+
 
 
                     </div>
                 </div>
-           </div>
+            </div>
         </div>
 
 
