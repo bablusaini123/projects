@@ -69,52 +69,52 @@ export const TESTIMONIALS = [
 
 export const FAQS = [
   {
-    question: 'How much commission do I earn per referral?',
-    answer: 'You earn up to 80% commission on every successful course purchase through your referral link.',
+    question: ' How do I start learning & earning on EarnScop?',
+    answer: 'Click “Join Free” and create your account with your name, email, mobile number and a secure password. Browse courses, enroll in at least one to understand the platform, then activate your Affiliate / Referral Dashboard to start sharing your unique referral links. When someone buys a course using your link, you earn commission',
   },
   {
-    question: 'When do I receive my earnings?',
-    answer: 'Earnings are processed within 24-48 hours and transferred to your registered bank account or wallet.',
+    question: ' Do I have to purchase a course to become an affiliate?',
+    answer: 'We recommend enrolling in at least one course so you can promote authentically. Some higher‑tier commissions may unlock only after your first purchase or verification step. (You can set this policy explicitly.)',
   },
   {
-    question: 'Is there a limit to how much I can earn?',
-    answer: "No limits! The more you refer, the more you earn. Sky's the limit with SkillEarn.",
+    question: 'What devices can I use?',
+    answer: "Any modern smartphone, tablet, or desktop with an updated browser. A stable internet connection is recommended for HD video streaming.",
   },
   {
-    question: 'Do I need to buy a course first?',
-    answer: 'Yes, you need to purchase at least one course to unlock your referral link and start earning.',
+    question: ' How much can I earn per referral?',
+    answer: 'You can earn up to ₹2,800 per successful referral or up to 80% commission on eligible course tiers (whichever applies). Actual commission depends on course category, pricing tier, active promos and your affiliate level.',
   },
 ];
 
-export  const INFLUENCERS = [
-        {
-            name: 'Priya Sharma',
-            handle: '@PriyaLearns',
-            platform: 'Instagram',
-            icon: 'Instagram',
-            reach: '150K followers',
-            bio: 'Sharing SkillEarn’s courses on Instagram Reels, helping thousands learn and earn!',
-            image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-            link: 'https://instagram.com/priyalearns',
-        },
-        {
-            name: 'Arjun Patel',
-            handle: '@TechWithArjun',
-            platform: 'YouTube',
-            icon: 'Youtube',
-            reach: '80K subscribers',
-            bio: 'Tech tutorials and SkillEarn promos driving huge course sign-ups!',
-            image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-            link: 'https://youtube.com/techwitharjun',
-        },
-        {
-            name: 'Neha Gupta',
-            handle: '@NehaInspires',
-            platform: 'Twitter',
-            icon: 'Twitter',
-            reach: '50K followers',
-            bio: 'Tweeting about SkillEarn’s referral program, spreading the word!',
-            image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-            link: 'https://twitter.com/nehainspires',
-        },
-    ];
+export const INFLUENCERS = [
+  {
+    name: 'Priya Sharma',
+    handle: '@PriyaLearns',
+    platform: 'Instagram',
+    icon: 'Instagram',
+    reach: '150K followers',
+    bio: 'Sharing SkillEarn’s courses on Instagram Reels, helping thousands learn and earn!',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+    link: 'https://instagram.com/priyalearns',
+  },
+  {
+    name: 'Arjun Patel',
+    handle: '@TechWithArjun',
+    platform: 'YouTube',
+    icon: 'Youtube',
+    reach: '80K subscribers',
+    bio: 'Tech tutorials and SkillEarn promos driving huge course sign-ups!',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+    link: 'https://youtube.com/techwitharjun',
+  },
+  {
+    name: 'Neha Gupta',
+    handle: '@NehaInspires',
+    platform: 'Twitter',
+    icon: 'Twitter',
+    reach: '50K followers',
+    bio: 'Tweeting about SkillEarn’s referral program, spreading the word!',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+    link: 'https://twitter.com/nehainspires',
+  },
+];

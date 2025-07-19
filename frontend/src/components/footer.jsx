@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 export default function Footer() {
     return (
@@ -28,32 +30,32 @@ export default function Footer() {
                     <div>
                         <h4 className="font-bold mb-4">Quick Links</h4>
                         <ul className="space-y-2 text-gray-400">
-                            <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Courses</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">How It Works</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Success Stories</a></li>
+                            <li><Link to='/about-us' className="hover:text-white transition-colors">About Us</Link></li>
+                            <li><HashLink smooth to='/#courses' className="hover:text-white transition-colors">Courses</HashLink></li>
+                            <li><HashLink to="/#how-it-works"className="hover:text-white transition-colors">How It Works</HashLink></li>
+                            <li><HashLink to="/#testimonials" className="hover:text-white transition-colors">Success Stories</HashLink></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="font-bold mb-4">Support</h4>
                         <ul className="space-y-2 text-gray-400">
-                            <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><Link to='/frequently-asked-questions' className="hover:text-white transition-colors">Help Center</Link></li>
+                            <li><Link className="hover:text-white transition-colors">Contact Us</Link></li>
+                            <li><Link to='/terms&condition' className="hover:text-white transition-colors">Terms & Conditions</Link></li>
+                            <li><Link to='/privacy' className="hover:text-white transition-colors">Privacy Policy</Link></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="font-bold mb-4">Contact</h4>
                         <div className="text-gray-400 space-y-2">
                             <p>support@earnscop.com</p>
-                            <p>+91 98765 43210</p>
+                            <p>+91 6350086242</p>
                             <p>Mon-Fri: 9AM-6PM IST</p>
                         </div>
                     </div>
                 </div>
                 <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                    <p>&copy; 2025 earnscop. All rights reserved.</p>
+                    <p>&copy; 2025 Earnscop. All rights reserved.</p>
                 </div>
             </div>
       </footer >

@@ -1426,7 +1426,7 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base">
-                  Share this code to earn up to <span><IndianRupee size={16} className='font-semibold inline-block' /></span>500 per successful course purchase!
+                  Share this code to earn up to <span><IndianRupee size={16} className='font-semibold inline-block' /></span>600 per successful course purchase!
                 </p>
               </div>
               <div className="bg-white rounded-2xl p-4 sm:p-6 hover:shadow-xl transition-all duration-300 w-full flex flex-col lg:w-[40%]">

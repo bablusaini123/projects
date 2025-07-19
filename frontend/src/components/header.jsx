@@ -40,10 +40,10 @@ export default function Header() {
                             <div className="flex items-center space-x-4">
                                 <Link to="/dashboard">
                                     <div className="flex items-center space-x-2">
-                                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-red-500 flex items-center justify-center text-white font-semibold">
+                                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-red-500 flex items-center justify-center text-white font-semibold ">
                                             {(currentUser.name || currentUser.firstName || 'U')[0].toUpperCase()}
                                         </div>
-                                        <span className="text-gray-700 font-medium">
+                                        <span className="text-gray-700 font-medium uppercase">
                                             {currentUser.name || currentUser.firstName || 'User'}
                                         </span>
                                     </div>

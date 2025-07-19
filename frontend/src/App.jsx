@@ -17,6 +17,8 @@ import './App.css';
 import { Book, DollarSignIcon, ExternalLink, Outdent, User, Users, Wallet } from 'lucide-react';
 import { HashLink } from 'react-router-hash-link';
 import ScrollToTop from './components/scroll';
+import Questions from './components/questions';
+import About from './components/about_us';
 const ProtectedRoute = ({ element }) => {
   return isAuthenticated() ? element : <Navigate to="/login" state={{ from: window.location.pathname }} replace />;
 };
@@ -54,6 +56,10 @@ const App = () => {
             <Route path="/dashboard" element={<ProtectedRoute element={<UserDashboard />} />} />
             <Route path="/" element={<EarnscopLanding />} />
             <Route path="/success" element={<PurchaseProtectedRoute element={<SuccessPage />} />} />
+            <Route path="/frequently-asked-questions" element={<Questions />} />
+            <Route path="/about-us" element={<About />} />
+
+
           </Routes>
           <Footer />
           {

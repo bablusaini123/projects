@@ -20,8 +20,8 @@ export const getPaymentHistory = async (userId) => {
             id: 'tx1',
             date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
             courseTitle: 'Digital Marketing Mastery',
-            amount: 799,
-            commission: 479,
+            amount: 999,
+            commission: 599,
           },
           {
             id: 'tx2',

@@ -536,7 +536,7 @@ const SignupPage = () => {
                 Phone Number
               </label>
               <div className="relative">
-                <Phone className="absolute left-3 top-2 text-gray-400" />
+                <Phone className="absolute left-3 top-2 text-gray-400 " />
                 <input
                   id="phone"
                   name="phone"
@@ -545,7 +545,7 @@ const SignupPage = () => {
                   value={signupForm.phone}
                   onChange={handleSignupChange}
                   className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                  placeholder="+91 98765 43210"
+                  placeholder="+91"
                 />
               </div>
             </div>

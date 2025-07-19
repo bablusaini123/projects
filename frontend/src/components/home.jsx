@@ -10,6 +10,7 @@ import { COURSES, TESTIMONIALS, FAQS, INFLUENCERS } from './constants';
 import { createOrder, purchaseCourse } from './api';
 import { isAuthenticated, getCurrentUser } from './auth';
 import '../App.css';
+import { Button } from './ui/button';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -202,6 +203,7 @@ const EarnscopLanding = () => {
   const [openFaq, setOpenFaq] = useState(null);
   const [referrals, setReferrals] = useState(30);
   const [isLoading, setIsLoading] = useState(false);
+  const [isloggin, setIsloggin] = useState('')
   const [purchaseHistory, setPurchaseHistory] = useState([]);
   const navigate = useNavigate();
   const hasFetchedData = useRef(false);
@@ -257,6 +259,7 @@ const EarnscopLanding = () => {
       if (hasFetchedData.current) return;
 
       const cachedData = localStorage.getItem('dashboardData');
+      setIsloggin(cachedData)
       if (cachedData) {
         try {
           const { data, timestamp } = JSON.parse(cachedData);
@@ -355,7 +358,7 @@ const EarnscopLanding = () => {
           key: 'rzp_test_yGCAXsBibCoK0y',
           amount,
           currency,
-          name: 'earnscop',
+          name: 'Earnscop',
           description: `Purchase: ${course.title}`,
           order_id: orderId,
           handler: async (response) => {
@@ -407,7 +410,7 @@ const EarnscopLanding = () => {
             }
           },
           prefill: {
-            name: currentUser.name || 'earnscop User',
+            name: currentUser.name || 'Earnscop User',
             email: currentUser.email || 'user@example.com',
             contact: currentUser.contact || '9999999999',
           },
@@ -783,7 +786,7 @@ const EarnscopLanding = () => {
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
                 >
-                  <span className="bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">
+                   <span className="bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">
                     Learn & Earn
                   </span>
                   <br />
@@ -798,8 +801,8 @@ const EarnscopLanding = () => {
                 <ParticleBurst trigger={(e) => children.props.onClick(e)}>
                   <Link to="/signup">
                     <button
-                      className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-red-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300"
-                      aria-label="Join earnscop"
+                      className={`w-full sm:w-auto bg-gradient-to-r from-blue-600 to-red-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300"
+                      aria-label="Join Earnscop ${isloggin ? "hidden" : ""} `}
                     >
                       Join Now
                     </button>
@@ -877,13 +880,13 @@ const EarnscopLanding = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center">
                       <div>
                         <div className="text-xl sm:text-2xl font-bold shimmer">
-                          ₹<CountUp end={referrals * 700} duration={1} separator="," />
+                          ₹<CountUp end={referrals * 1679} duration={1} separator="," />
                         </div>
                         <div className="text-white/80 text-sm">Monthly Earnings</div>
                       </div>
                       <div>
                         <div className="text-xl sm:text-2xl font-bold shimmer">
-                          ₹<CountUp end={referrals * 700 * 12} duration={1.5} separator="," />
+                          ₹<CountUp end={referrals * 1679 * 12} duration={1.5} separator="," />
                         </div>
                         <div className="text-white/80 text-sm">Yearly Earnings</div>
                       </div>
@@ -894,7 +897,7 @@ const EarnscopLanding = () => {
                     </div>
                   </motion.div>
                   <p className="text-white sm:text-xl opacity-90">
-                    Based on average course price of ₹1000 with up to 80% commission
+                    Based on average course price of ₹2399 with up to 80% commission
                   </p>
                 </div>
               </section>
@@ -1032,14 +1035,14 @@ const EarnscopLanding = () => {
                       </button>
                     ) : (
                       // <ParticleBurst trigger={() => handlePayment(course)}>
-                        <button
-                          disabled={isLoading}
-                          onClick={() => handlePayment(course)}
-                          className={`bg-gradient-to-r from-blue-600 to-red-500 text-white px-4 sm:px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-200 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
-                          aria-label={`Purchase ${course.title}`}
-                        >
-                          {isLoading ? 'Processing...' : 'Buy Now'}
-                        </button>
+                      <button
+                        disabled={isLoading}
+                        onClick={() => handlePayment(course)}
+                        className={`bg-gradient-to-r from-blue-600 to-red-500 text-white px-4 sm:px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-200 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                        aria-label={`Purchase ${course.title}`}
+                      >
+                        {isLoading ? 'Processing...' : 'Buy Now'}
+                      </button>
                       // </ParticleBurst>
                     )}
                   </div>
@@ -1118,7 +1121,7 @@ const EarnscopLanding = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Why Choose earnscop?</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Why Choose Earnscop?</h2>
             <p className="text-lg sm:text-xl text-gray-600">Join thousands of successful learners and earners</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -1131,7 +1134,7 @@ const EarnscopLanding = () => {
               {
                 icon: <Calculator className="w-6 sm:w-8 h-6 sm:h-8 text-red-500" />,
                 title: 'Earn Up to 80% Per Referral!',
-                description: 'Get the highest cashback in the industry – ₹479 to ₹2800 per course sale.',
+                description: 'Get the highest cashback in the industry – ₹600 to ₹2800 per course sale.',
               },
               {
                 icon: <Shield className="w-6 sm:w-8 h-6 sm:h-8 text-blue-600" />,
@@ -1179,7 +1182,7 @@ const EarnscopLanding = () => {
               Meet Our Influencers
             </h2>
             <p className="text-lg sm:text-xl text-gray-600">
-              Discover the creators promoting earnscop and inspiring thousands!
+              Discover the creators promoting Earnscop and inspiring thousands!
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -1218,25 +1221,25 @@ const EarnscopLanding = () => {
                 <p className="text-blue-600 font-semibold text-sm sm:text-base mb-4">{influencer.reach}</p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   {/* <ParticleBurst trigger={() => handleSocialClick(influencer.platform, influencer.handle)}> */}
-                    <a
-                      href={influencer.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center justify-center ${getPlatformColor(influencer.platform)} text-white px-4 py-2 rounded-lg text-sm sm:text-base font-semibold hover:opacity-90 transition-all duration-300`}
-                      aria-label={`Follow ${influencer.name} on ${influencer.platform}`}
-                    >
-                      {getPlatformIcon(influencer.platform)}
-                      <span className="ml-2">Follow</span>
-                    </a>
+                  <a
+                    href={influencer.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center justify-center ${getPlatformColor(influencer.platform)} text-white px-4 py-2 rounded-lg text-sm sm:text-base font-semibold hover:opacity-90 transition-all duration-300`}
+                    aria-label={`Follow ${influencer.name} on ${influencer.platform}`}
+                  >
+                    {getPlatformIcon(influencer.platform)}
+                    <span className="ml-2">Follow</span>
+                  </a>
                   {/* </ParticleBurst> */}
                   {/* <ParticleBurst trigger={(e) => children.props.onClick(e)}> */}
-                    <Link
-                      to="/signup"
-                      className="flex items-center justify-center bg-gradient-to-r from-blue-600 to-red-500 text-white px-4 py-2 rounded-lg text-sm sm:text-base font-semibold hover:shadow-lg transition-all duration-300"
-                      aria-label="Join earnscop Now"
-                    >
-                      Join Now
-                    </Link>
+                  <Link
+                    to="/signup"
+                    className="flex items-center justify-center bg-gradient-to-r from-blue-600 to-red-500 text-white px-4 py-2 rounded-lg text-sm sm:text-base font-semibold hover:shadow-lg transition-all duration-300"
+                    aria-label="Join Earnscop Now"
+                  >
+                    Join Now
+                  </Link>
                   {/* </ParticleBurst> */}
                 </div>
               </motion.div>
@@ -1256,7 +1259,7 @@ const EarnscopLanding = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg sm:text-xl text-gray-600">Everything you need to know about earnscop</p>
+            <p className="text-lg sm:text-xl text-gray-600">Everything you need to know about Earnscop</p>
           </motion.div>
           <div className="space-y-4">
             {FAQS.map((faq, index) => (
@@ -1303,6 +1306,10 @@ const EarnscopLanding = () => {
               </motion.div>
             ))}
           </div>
+          <Link to='/frequently-asked-questions'>
+            <Button className='text-center text-lg bg-gradient-to-r from-blue-600 to-red-500 text-white mt-4 hover:text-primary w-full' size='lg'>Know More</Button>
+          </Link>
+
         </div>
       </section>
 
@@ -1329,15 +1336,15 @@ const EarnscopLanding = () => {
             Join thousands of successful learners and start earning today!
           </motion.p>
           {/* <ParticleBurst trigger={(e) => children.props.onClick(e)}> */}
-            <Link to="/signup">
-              <button
+          <Link to="/signup">
+            <button
               onClick={(e) => children.props.onClick(e)}
-                className="bg-white text-blue-600 px-8 sm:px-12 py-3 sm:py-4 rounded-lg text-lg sm:text-xl font-bold hover:shadow-2xl transition-all duration-300"
-                aria-label="Join earnscop Now"
-              >
-                Join earnscop Now
-              </button>
-            </Link>
+              className="bg-white text-blue-600 px-8 sm:px-12 py-3 sm:py-4 rounded-lg text-lg sm:text-xl font-bold hover:shadow-2xl transition-all duration-300"
+              aria-label="Join Earnscop Now"
+            >
+              Join Earnscop Now
+            </button>
+          </Link>
           {/* </ParticleBurst> */}
           <motion.div
             className="mt-6 sm:mt-8   flex gap-4 sm:flex-row items-center justify-center sm:space-x-6 text-xs sm:text-sm"
