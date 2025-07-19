@@ -18,6 +18,18 @@
 <title><%= eventListingData.title %> - Blockchain & Crypto Event Details | KryptoDesk</title>
 <meta name="description" content="Join <%= eventListingData.title %> in <%= eventListingData.country %>. Learn, network, and grow with top speakers and blockchain professionals. Find all details now on KryptoDesk.">
 
+<meta property="og:title" content="<%= eventListingData.title %>" />
+    <meta property="og:description"
+        content="Join <%= eventListingData.title %> in <%= eventListingData.country %>. Learn, network, and grow with top speakers and blockchain professionals. Find all details now on KryptoDesk." />
+    <meta property="og:url" content="https://kryptodesk.com/events/<%= eventListingData.slug %>" />
+    <meta property="og:image" content="<%= eventListingData.bannerImage || 'https://kryptodesk.com/image/kryptodesk-logo.png' %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="KryptoDesk" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%= eventListingData.title %>" />
+    <meta name="twitter:description" content="Join <%= eventListingData.title %> in <%= eventListingData.country %>. Learn, network, and grow with top speakers and blockchain professionals. Find all details now on KryptoDesk." />
+    <meta name="twitter:image" content="<%= eventListingData.bannerImage || 'https://kryptodesk.com/image/kryptodesk-logo.png' %>" />
 
 <script type="application/ld+json">
 {

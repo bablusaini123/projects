@@ -1368,6 +1368,7 @@
                     <span class="tag">
                       <%=result.eventType%>
                     </span>
+                    <span>🎟 <%=result.entryType%></span>
                     <span class="ms-auto">
                       <a href="">
                         <img style="width: 33px;opacity: 0.8;"
@@ -1391,8 +1392,44 @@
                   <%=result.location%>
                 </div>
                 <div class="card-footer">
-                  <span>🎟 <%=result.entryType%></span>
-                  <a href="events/<%=result.slug%>" class="link">View Details</a>
+
+                    <!-- Share This Project -->
+                <div class="card-share" style="margin-top: 15px;    margin-top: 15px;
+    display: flex
+;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+">
+                  <span style="font-weight: 500; font-size: 14px;">Share project:</span>
+                  <!-- 🌐 Social Share Buttons -->
+                  <!-- Twitter -->
+                  <a href="javascript:window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.origin + '/events/<%= result.slug %>') + '&text=' + encodeURIComponent('<%= result.title %> - 🚀 New Event Launched! Check us out on KryptoDesk!'), '_blank')"
+                    title="Share on Twitter">
+                    <i class="fab fa-twitter" style="font-size: 18px; color: #1DA1F2;"></i>
+                  </a>
+
+                  <!-- Facebook -->
+                  <a href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.origin + '/events/<%= result.slug %>'), '_blank')"
+                    title="Share on Facebook">
+                    <i class="fab fa-facebook" style="font-size: 18px; color: #4267B2;"></i>
+                  </a>
+
+
+                  <!-- WhatsApp -->
+                  <a href="javascript:window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('<%= result.title %>\n\n' + '🚀 New Event Launched! Check us out on KryptoDesk!' + '\n🌐 ' + window.location.origin + '/events/<%= result.slug %>'), '_blank')"
+                    title="Share on WhatsApp">
+                    <i class="fab fa-whatsapp" style="font-size: 18px; color: #25D366;"></i>
+                  </a>
+
+                  <!-- Copy Link -->
+                  <a href="javascript:void(0);"
+                    onclick="copyToClipboard(window.location.origin + '/events/<%= result.slug %>')" title="Copy Link">
+                    <i class="fas fa-link" style="font-size: 18px; color: #555;"></i>
+                  </a>
+                </div>
+                  
+                  <!-- <a href="events/<%=result.slug%>" class="link">View Details</a> -->
                 </div>
               </div>
             </div>
@@ -1489,8 +1526,13 @@
         document.getElementById('close-btn').addEventListener('click', function () {
           document.getElementById('sidebar').classList.remove('active');
         });
-
-
+      </script>
+       <script>
+        function copyToClipboard(text) {
+          navigator.clipboard.writeText(text)
+            .then(() => alert('Link copied!'))
+            .catch(err => alert('Failed to copy!'));
+        }
       </script>
 
 </body>
