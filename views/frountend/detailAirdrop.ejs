@@ -5,11 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- Meta Title & Description for ICO Detail Page -->
-<title><%= airdropData.tokenName %> ICO, Token Sale, Tokenomics, Team & Roadmap | KryptoDesk</title>
-<meta name="description" content="Get complete details of the <%= airdropData.tokenName %> ICO including tokenomics, fundraising, roadmap, and team. Participate in the <%= airdropData.tokenName %> token sale on KryptoDesk.">
+<title><%= airdropData.tokenName %> ($<%= airdropData.tokenSymbol.replace('$', '') %>) Airdrop | New & Ongoing Crypto Airdrop 2025 | Claim Free Tokens - KryptoDesk</title>
+<meta name="description" content="Looking for new crypto airdrops? Claim free <%= airdropData.tokenSymbol %> tokens from the <%= airdropData.tokenName %> airdrop 2025. Built on Ethereum & IPFS. Explore tokenomics, roadmap, and how to participate — only on KryptoDesk.">
  <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+        <!-- Open Graph Meta Tags for WhatsApp & Social Sharing -->
+    <meta property="og:title" content="<%= airdropData.tokenName %>" />
+    <meta property="og:description"
+        content="Looking for new crypto airdrops? Claim free <%= airdropData.tokenSymbol %> tokens from the <%= airdropData.tokenName %> airdrop 2025. Built on Ethereum & IPFS. Explore tokenomics, roadmap, and how to participate — only on KryptoDesk." />
+    <meta property="og:url" content="https://kryptodesk.com/airdrops/<%= airdropData.slug %>" />
+    <meta property="og:image" content="<%= airdropData.bannerImage || 'https://kryptodesk.com/image/kryptodesk-logo.png' %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="KryptoDesk" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%= airdropData.tokenName %>" />
+    <meta name="twitter:description" content="🚀 New AirDrop Launched! Check us out on KryptoDesk!" />
+    <meta name="twitter:image" content="<%= airdropData.bannerImage || 'https://kryptodesk.com/image/kryptodesk-logo.png' %>" />
 
 
    <script type="application/ld+json">
@@ -17,7 +31,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "<%= airdropData.tokenName %> ICO",
-  "description": "<%= airdropData.projectDescription?.replace(/(<([^>]+)>)/gi, '').substring(0, 300) || 'Explore detailed information about this crypto ICO including tokenomics, roadmap, and team.' %>",
+  "description": "<%= airdropData.projectDescription?.replace(/(<([^>]+)>)/gi, '').substring(0, 300) || 'Explore detailed information about this crypto AirDrop including tokenomics, roadmap, and team.' %>",
   "image": "<%= airdropData.tokenImage || 'https://kryptodesk.com/image/kryptodesk-logo.png' %>",
   "brand": {
     "@type": "Organization",
