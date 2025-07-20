@@ -66,7 +66,7 @@ const App = () => {
             isLogin ? (
               <div className='md:hidden z-50 sm:flex flex justify-between gap-5 bg-gray-200 text-black fixed bottom-0 w-full pb-2 pt-3 px-2'>
                 <HashLink to='/' className='flex justify-center flex-col items-center text-center gap-1 text-xs font-bold'>
-                  <FontAwesomeIcon icon={faHouse} className='text-2xl'/>
+                  <FontAwesomeIcon icon={faHouse} className='text-2xl' />
                   <div className='font-medium'>Home</div>
                 </HashLink>
                 <HashLink to="/dashboard#wallet" className='flex justify-center flex-col gap-1 items-center text-center text-xs font-bold'>
@@ -75,18 +75,16 @@ const App = () => {
                 </HashLink>
 
                 <HashLink to="/dashboard#affiliate" className='flex justify-center flex-col gap-1 items-center text-center text-xs font-bold'>
-                  <FontAwesomeIcon icon={faPeopleGroup} className='text-2xl'/>
+                  <FontAwesomeIcon icon={faPeopleGroup} className='text-2xl' />
                   <div className='font-medium'>Affiliate</div>
                 </HashLink>
-
-
                 <HashLink smooth to='/#courses' className='flex justify-center flex-col gap-1 items-center text-center text-xs font-bold'>
-                  <FontAwesomeIcon icon={faBook} className='text-2xl'/>
+                  <FontAwesomeIcon icon={faBook} className='text-2xl' />
                   <div className='font-medium'>Courses</div>
                 </HashLink>
 
                 <HashLink to='/dashboard#reffer' className='flex justify-center flex-col items-center gap-1 text-center text-xs font-bold'>
-                  <FontAwesomeIcon icon={faUser} className='text-2xl'/>
+                  <FontAwesomeIcon icon={faUser} className='text-2xl' />
                   <div className='font-medium'>Profile</div>
                 </HashLink>
               </div>
@@ -94,7 +92,7 @@ const App = () => {
 
               <div className='md:hidden z-50 sm:flex flex justify-between gap-5 bg-gray-200 text-black fixed bottom-0 w-full pb-2 pt-3 px-2'>
                 <HashLink to='/' className='flex justify-center flex-col items-center text-center gap-1 text-xs font-bold'>
-                  <FontAwesomeIcon icon={faHouse} className='text-2xl'/>
+                  <FontAwesomeIcon icon={faHouse} className='text-2xl' />
                   <div className='font-medium'>Home</div>
                 </HashLink>
                 <HashLink to="/login" className='flex justify-center flex-col gap-1 items-center text-center text-xs font-bold'>
@@ -103,18 +101,18 @@ const App = () => {
                 </HashLink>
 
                 <HashLink to="/login" className='flex justify-center flex-col gap-1 items-center text-center text-xs font-bold'>
-                  <FontAwesomeIcon icon={faPeopleGroup} className='text-2xl'/>
+                  <FontAwesomeIcon icon={faPeopleGroup} className='text-2xl' />
                   <div className='font-medium'>Affiliate</div>
                 </HashLink>
 
 
                 <HashLink smooth to='/login' className='flex justify-center flex-col gap-1 items-center text-center text-xs font-bold'>
-                  <FontAwesomeIcon icon={faBook} className='text-2xl'/>
+                  <FontAwesomeIcon icon={faBook} className='text-2xl' />
                   <div className='font-medium'>Courses</div>
                 </HashLink>
 
                 <HashLink to='/login' className='flex justify-center flex-col items-center gap-1 text-center text-xs font-bold'>
-                  <FontAwesomeIcon icon={faUser} className='text-2xl'/>
+                  <FontAwesomeIcon icon={faUser} className='text-2xl' />
                   <div className='font-medium'>Profile</div>
                 </HashLink>
               </div>

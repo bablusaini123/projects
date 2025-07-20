@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -199,11 +198,150 @@ const DotsAnimation = () => {
   );
 };
 
+// Floating Dollar Coins Component
+const FloatingCoins = ({ count = 20 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 640);
+  }, []);
+  const coinCount = isMobile ? 10 : count;
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
+      {[...Array(coinCount)].map((_, i) => {
+        const size = isMobile ? 12 + Math.random() * 8 : 16 + Math.random() * 12;
+        const opacity = 0.7 + Math.random() * 0.2;
+        return (
+          <motion.div
+            key={i}
+            className="dollar-coin"
+            style={{
+              '--size': `${size}px`,
+              '--opacity': opacity,
+            }}
+            initial={{
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+              y: (typeof window !== 'undefined' ? window.innerHeight : 1000),
+              rotate: Math.random() * 360,
+            }}
+            animate={{
+              x: [0, Math.random() * 60 - 30, 0],
+              y: [0, -150 - Math.random() * 100, -300],
+              rotate: [0, Math.random() * 60 - 30, 0],
+              scale: [1, 0.9 + Math.random() * 0.3, 1],
+              opacity: [0.7, 0.9, 0.5],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 4,
+              repeat: Infinity,
+              repeatType: 'loop',
+              ease: 'easeInOut',
+              delay: Math.random() * 2,
+            }}
+          >
+            $
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+};
+
+// Floating Dollar Particles Component
+const FloatingDollarParticles = ({ count = 40 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 640);
+  }, []);
+  const particleCount = isMobile ? 20 : count;
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
+      {[...Array(particleCount)].map((_, i) => {
+        const size = isMobile ? 6 + Math.random() * 4 : 8 + Math.random() * 6;
+        const opacity = 0.5 + Math.random() * 0.3;
+        return (
+          <motion.div
+            key={`particle-${i}`}
+            className="dollar-particle"
+            style={{
+              '--size': `${size}px`,
+              '--opacity': opacity,
+            }}
+            initial={{
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+              y: (typeof window !== 'undefined' ? window.innerHeight : 1000),
+              rotate: Math.random() * 90 - 45,
+            }}
+            animate={{
+              x: [0, Math.random() * 80 - 40, 0],
+              y: [0, -100 - Math.random() * 150, -250],
+              rotate: [0, Math.random() * 90 - 45, 0],
+              scale: [1, 0.8 + Math.random() * 0.2, 1],
+              opacity: [0.5, 0.8, 0.4],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 5,
+              repeat: Infinity,
+              repeatType: 'loop',
+              ease: 'easeInOut',
+              delay: Math.random() * 3,
+            }}
+          >
+            $
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+};
+
+// Particle Burst Component
+const ParticleBurst = ({ trigger, children }) => {
+  const [isTriggered, setIsTriggered] = useState(false);
+
+  const handleTrigger = (e) => {
+    setIsTriggered(true);
+    setTimeout(() => setIsTriggered(false), 1000);
+    trigger(e);
+  };
+
+  return (
+    <div className="relative inline-block">
+      {isTriggered && (
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="dollar-coin w-2 h-2 sm:w-3 sm:h-3"
+              style={{
+                '--tx': `${Math.cos((i * Math.PI) / 4) * 50}px`,
+                '--ty': `${Math.sin((i * Math.PI) / 4) * 50}px`,
+                '--size': `${8 + Math.random() * 4}px`,
+                '--opacity': 0.8,
+              }}
+              initial={{ opacity: 1, x: 0, y: 0 }}
+              animate={{ opacity: 0, x: 'var(--tx)', y: 'var(--ty)' }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+              $
+            </motion.div>
+          ))}
+        </div>
+      )}
+      {React.cloneElement(children, {
+        onClick: handleTrigger,
+        className: `${children.props.className} pulse`,
+      })}
+    </div>
+  );
+};
+
 const EarnscopLanding = () => {
   const [openFaq, setOpenFaq] = useState(null);
   const [referrals, setReferrals] = useState(30);
   const [isLoading, setIsLoading] = useState(false);
-  const [isloggin, setIsloggin] = useState('')
+  const [isloggin, setIsloggin] = useState('');
   const [purchaseHistory, setPurchaseHistory] = useState([]);
   const navigate = useNavigate();
   const hasFetchedData = useRef(false);
@@ -259,7 +397,7 @@ const EarnscopLanding = () => {
       if (hasFetchedData.current) return;
 
       const cachedData = localStorage.getItem('dashboardData');
-      setIsloggin(cachedData)
+      setIsloggin(cachedData);
       if (cachedData) {
         try {
           const { data, timestamp } = JSON.parse(cachedData);
@@ -475,145 +613,6 @@ const EarnscopLanding = () => {
     return purchaseHistory.some((purchase) => purchase.courseTitle === courseTitle);
   };
 
-  // Floating Dollar Coins Component
-  const FloatingCoins = ({ count = 20 }) => {
-    const [isMobile, setIsMobile] = useState(false);
-    useEffect(() => {
-      setIsMobile(window.innerWidth < 640);
-    }, []);
-    const coinCount = isMobile ? 10 : count;
-
-    return (
-      <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
-        {[...Array(coinCount)].map((_, i) => {
-          const size = isMobile ? 12 + Math.random() * 8 : 16 + Math.random() * 12;
-          const opacity = 0.7 + Math.random() * 0.2;
-          return (
-            <motion.div
-              key={i}
-              className="dollar-coin"
-              style={{
-                '--size': `${size}px`,
-                '--opacity': opacity,
-              }}
-              initial={{
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                y: (typeof window !== 'undefined' ? window.innerHeight : 1000),
-                rotate: Math.random() * 360,
-              }}
-              animate={{
-                x: [0, Math.random() * 60 - 30, 0],
-                y: [0, -150 - Math.random() * 100, -300],
-                rotate: [0, Math.random() * 60 - 30, 0],
-                scale: [1, 0.9 + Math.random() * 0.3, 1],
-                opacity: [0.7, 0.9, 0.5],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 4,
-                repeat: Infinity,
-                repeatType: 'loop',
-                ease: 'easeInOut',
-                delay: Math.random() * 2,
-              }}
-            >
-              $
-            </motion.div>
-          );
-        })}
-      </div>
-    );
-  };
-
-  // Floating Dollar Particles Component
-  const FloatingDollarParticles = ({ count = 40 }) => {
-    const [isMobile, setIsMobile] = useState(false);
-    useEffect(() => {
-      setIsMobile(window.innerWidth < 640);
-    }, []);
-    const particleCount = isMobile ? 20 : count;
-
-    return (
-      <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
-        {[...Array(particleCount)].map((_, i) => {
-          const size = isMobile ? 6 + Math.random() * 4 : 8 + Math.random() * 6;
-          const opacity = 0.5 + Math.random() * 0.3;
-          return (
-            <motion.div
-              key={`particle-${i}`}
-              className="dollar-particle"
-              style={{
-                '--size': `${size}px`,
-                '--opacity': opacity,
-              }}
-              initial={{
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                y: (typeof window !== 'undefined' ? window.innerHeight : 1000),
-                rotate: Math.random() * 90 - 45,
-              }}
-              animate={{
-                x: [0, Math.random() * 80 - 40, 0],
-                y: [0, -100 - Math.random() * 150, -250],
-                rotate: [0, Math.random() * 90 - 45, 0],
-                scale: [1, 0.8 + Math.random() * 0.2, 1],
-                opacity: [0.5, 0.8, 0.4],
-              }}
-              transition={{
-                duration: 4 + Math.random() * 5,
-                repeat: Infinity,
-                repeatType: 'loop',
-                ease: 'easeInOut',
-                delay: Math.random() * 3,
-              }}
-            >
-              $
-            </motion.div>
-          );
-        })}
-      </div>
-    );
-  };
-
-  // Particle Burst Component
-  const ParticleBurst = ({ trigger, children }) => {
-    const [isTriggered, setIsTriggered] = useState(false);
-
-    const handleTrigger = (e) => {
-      setIsTriggered(true);
-      setTimeout(() => setIsTriggered(false), 1000);
-      trigger(e);
-    };
-
-    return (
-      <div className="relative inline-block">
-        {isTriggered && (
-          <div className="absolute inset-0 pointer-events-none">
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="dollar-coin w-2 h-2 sm:w-3 sm:h-3"
-                style={{
-                  '--tx': `${Math.cos((i * Math.PI) / 4) * 50}px`,
-                  '--ty': `${Math.sin((i * Math.PI) / 4) * 50}px`,
-                  '--size': `${8 + Math.random() * 4}px`,
-                  '--opacity': 0.8,
-                }}
-                initial={{ opacity: 1, x: 0, y: 0 }}
-                animate={{ opacity: 0, x: 'var(--tx)', y: 'var(--ty)' }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-              >
-                $
-              </motion.div>
-            ))}
-          </div>
-        )}
-        {React.cloneElement(children, {
-          onClick: handleTrigger,
-          className: `${children.props.className} pulse`,
-        })}
-      </div>
-    );
-  };
-
   return (
     <div className="min-h-screen font-['Outfit'] overflow-x-hidden relative">
       <style>
@@ -770,7 +769,7 @@ const EarnscopLanding = () => {
       <FloatingDollarParticles />
       <FloatingCoins />
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50  py-6 sm:py-10">
+      <section className="relative bg-gradient-to-br from-blue-50 py-6 sm:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <motion.div
@@ -786,7 +785,7 @@ const EarnscopLanding = () => {
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
                 >
-                   <span className="bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">
                     Learn & Earn
                   </span>
                   <br />
@@ -798,16 +797,14 @@ const EarnscopLanding = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-                <ParticleBurst trigger={(e) => children.props.onClick(e)}>
-                  <Link to="/signup">
-                    <button
-                      className={`w-full sm:w-auto bg-gradient-to-r from-blue-600 to-red-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300"
-                      aria-label="Join Earnscop ${isloggin ? "hidden" : ""} `}
-                    >
-                      Join Now
-                    </button>
-                  </Link>
-                </ParticleBurst>
+                <Link to="/signup">
+                  <button
+                    className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-red-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300"
+                    aria-label={`Join Earnscop ${isloggin ? 'hidden' : ''}`}
+                  >
+                    Join Now
+                  </button>
+                </Link>
                 <motion.a
                   href="#courses"
                   whileHover={{ scale: 1.05 }}
@@ -1034,7 +1031,6 @@ const EarnscopLanding = () => {
                         Purchased
                       </button>
                     ) : (
-                      // <ParticleBurst trigger={() => handlePayment(course)}>
                       <button
                         disabled={isLoading}
                         onClick={() => handlePayment(course)}
@@ -1043,7 +1039,6 @@ const EarnscopLanding = () => {
                       >
                         {isLoading ? 'Processing...' : 'Buy Now'}
                       </button>
-                      // </ParticleBurst>
                     )}
                   </div>
                 </div>
@@ -1220,7 +1215,6 @@ const EarnscopLanding = () => {
                 <p className="text-gray-600 text-sm sm:text-base mb-4">{influencer.bio}</p>
                 <p className="text-blue-600 font-semibold text-sm sm:text-base mb-4">{influencer.reach}</p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  {/* <ParticleBurst trigger={() => handleSocialClick(influencer.platform, influencer.handle)}> */}
                   <a
                     href={influencer.link}
                     target="_blank"
@@ -1231,8 +1225,6 @@ const EarnscopLanding = () => {
                     {getPlatformIcon(influencer.platform)}
                     <span className="ml-2">Follow</span>
                   </a>
-                  {/* </ParticleBurst> */}
-                  {/* <ParticleBurst trigger={(e) => children.props.onClick(e)}> */}
                   <Link
                     to="/signup"
                     className="flex items-center justify-center bg-gradient-to-r from-blue-600 to-red-500 text-white px-4 py-2 rounded-lg text-sm sm:text-base font-semibold hover:shadow-lg transition-all duration-300"
@@ -1240,7 +1232,6 @@ const EarnscopLanding = () => {
                   >
                     Join Now
                   </Link>
-                  {/* </ParticleBurst> */}
                 </div>
               </motion.div>
             ))}
@@ -1309,52 +1300,75 @@ const EarnscopLanding = () => {
           <Link to='/frequently-asked-questions'>
             <Button className='text-center text-lg bg-gradient-to-r from-blue-600 to-red-500 text-white mt-4 hover:text-primary w-full' size='lg'>Know More</Button>
           </Link>
-
         </div>
       </section>
 
-      {/* Join Now Section */}
+      {/* Founders Section */}
       <section className="relative py-6 sm:py-10 bg-gradient-to-r from-blue-600 to-red-500 text-white">
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
-            className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-4 sm:mb-6"
+            className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-4 sm:mb-6 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Ready to Start Your Journey?
+            Meet Our Founders
           </motion.h2>
           <motion.p
-            className="text-base sm:text-xl mb-6 sm:mb-8 opacity-90"
+            className="text-base sm:text-xl mb-6 sm:mb-8 opacity-90 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Join thousands of successful learners and start earning today!
+            The visionaries behind EarnScop, driving innovation and empowerment
           </motion.p>
-          {/* <ParticleBurst trigger={(e) => children.props.onClick(e)}> */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-8">
+            {[
+              {
+                name: 'Anirban Bhattacharjee',
+                role: 'Founder & CEO',
+                bio: 'Entrepreneur & digital strategist with expertise in SEO, cybersecurity, and web development. Focused on building scalable systems for learner success.',
+              },
+              {
+                name: 'Bablu Saini',
+                role: 'Founder & COO',
+                bio: 'Operations & growth specialist passionate about scaling communities and optimizing user experiences. Oversees platform operations and affiliate networks.',
+              },
+              {
+                name: 'Aman Gouri',
+                role: 'Founder & CPO',
+                bio: 'Product innovator focused on curriculum strategy and learning experience design. Drives creation of market-aligned, engaging courses.',
+              },
+            ].map((founder, index) => (
+              <motion.div
+                key={index}
+                className="bg-white/10 backdrop-blur-sm rounded-lg p-4 sm:p-6 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{founder.name}</h3>
+                <p className="text-sm sm:text-base text-white/80 mb-3">{founder.role}</p>
+                <p className="text-xs sm:text-sm text-white/70">{founder.bio}</p>
+              </motion.div>
+            ))}
+          </div>
           <Link to="/signup">
-            <button
-              onClick={(e) => children.props.onClick(e)}
-              className="bg-white text-blue-600 px-8 sm:px-12 py-3 sm:py-4 rounded-lg text-lg sm:text-xl font-bold hover:shadow-2xl transition-all duration-300"
-              aria-label="Join Earnscop Now"
-            >
-              Join Earnscop Now
-            </button>
+          
           </Link>
-          {/* </ParticleBurst> */}
           <motion.div
-            className="mt-6 sm:mt-8   flex gap-4 sm:flex-row items-center justify-center sm:space-x-6 text-xs sm:text-sm"
+            className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center sm:space-x-6 text-xs sm:text-sm"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <motion.div
-              className="flex items-center  space-x-2"
+              className="flex items-center space-x-2"
               whileHover={{ scale: 1.1 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
