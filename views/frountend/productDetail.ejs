@@ -2,7 +2,6 @@
 <html lang="en-US" prefix="og: https://ogp.me/ns#" class="no-js">
 
 <head>
-
     <link rel="preload" href="../../image/banner-v1.webp" as="image">
     <link rel="preload" href="../../image/logo.svg" as="image" fetchpriority="high">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,15 +10,12 @@
     <link data-minify="1" rel="stylesheet" id="woocommerce-smallscreen-css" href="../../css/woocommerce-smallscreen.css"
         media="only screen and (max-width: 768px)">
     <link data-minify="1" rel="stylesheet" id="woocommerce-general-css" href="../../css/woocommerce.css" media="all">
-
     <link data-minify="1" rel="stylesheet" id="trp-language-switcher-style-css"
         href="../../css/trp-language-switcher.css" media="all">
     <link data-minify="1" rel="stylesheet" id="trp-popup-style-css" href="../../css/trp-popup.css" media="all">
     <link data-minify="1" rel="stylesheet" id="brands-styles-css" href="../../css/brands.css" media="all">
     <link data-minify="1" rel="stylesheet" id="bootstrap-css" href="../../css/bootstrap.css" media="all">
-
     <link data-minify="1" rel="stylesheet" id="select2-css" href="../../css/select2.css" media="all">
-
     <link data-minify="1" rel="stylesheet" id="style-css" href="../../css/style.css" media="all">
     <link rel="stylesheet" id="ald-styles-css" href="../../css/styles.min.css" media="all">
     <script src="../../js/jquery.min.js.download" id="jquery-js"></script>
@@ -30,17 +26,13 @@
         data-no-defer="1" data-no-minify="1" data-rocketlazyloadscript="1"></script>
     <script src="../../js/jquery.blockUI.min.js.download" id="jquery-blockui-js" defer="defer"
         data-wp-strategy="defer"></script>
-
     <script src="../../js/add-to-cart.min.js.download" id="wc-add-to-cart-js" defer="defer"
         data-wp-strategy="defer"></script>
     <script src="../../js/jquery.zoom.min.js.download" id="zoom-js" defer="defer" data-wp-strategy="defer"></script>
-   
     <script src="../../js/single-product.min.js.download" id="wc-single-product-js" defer="defer"
         data-wp-strategy="defer"></script>
-
     <script src="../../js/trp-language-cookie.js.download" id="trp-language-cookie-js"></script>
-    </noscript>
-   <link href="../../js/asicm-bb476010.js.download" rel="preload" as="script">
+    <link href="../../js/asicm-bb476010.js.download" rel="preload" as="script">
     <link href="../../js/widgets.js.download" rel="preload" as="script">
     <link href="../../js/23446194(2).js.download" rel="preload" as="script">
     <link href="../../js/api.js.download" rel="preload" as="script">
@@ -51,157 +43,166 @@
     <script type="text/javascript" async="" src="../../js/f(2).txt"></script>
 
     <!-- views/partials/meta-tags.ejs -->
-<title><%= productDetail.title %> | Buy <%= productDetail.coin[0] %> <%= productDetail.algorithm.toUpperCase() %> ASIC Miner</title>
+    <title>
+        <%= productDetail.title %> | Buy <%= productDetail.coin[0] %>
+                <%= productDetail.algorithm.toUpperCase() %> ASIC Miner
+    </title>
+    <meta name="description"
+        content="Buy <%= productDetail.title %> with <%= productDetail.hashRate.trim() %> hashrate, <%= productDetail.power.trim() %> power, <%= productDetail.algorithm.toUpperCase() %> algorithm. Compare price, profit & electricity cost.">
+    <link rel="canonical" href="https://czminers.com/miner/<%= productDetail.slug %>" />
 
-<meta name="description" content="Buy <%= productDetail.title %> with <%= productDetail.hashRate.trim() %> hashrate, <%= productDetail.power.trim() %> power, <%= productDetail.algorithm.toUpperCase() %> algorithm. Compare price, profit & electricity cost.">
+    <style>
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
 
-<link rel="canonical" href="https://czminers.com/miner/<%= productDetail.slug %>" />
+        .table-responsive table {
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+        }
+        @media (max-width: 768px) {
+            .connected{
+                display: none;
+            }
+        }
+    </style>
 
     <script type="application/ld+json">
-<%- JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": productDetail.title,
-  "url": `https://czminers.com/miner/${productDetail.slug}`,
-  "image": productDetail.productImages[0] || [],
-  "description": productDetail.overview
-    ? productDetail.overview.replace(/(<([^>]+)>)/gi, '').replace(/\n/g, ' ').replace(/"/g, '\\"')
-    : '',
-  "sku": productDetail.slug,
-  "mpn": productDetail._id,
-  "brand": {
-    "@type": "Brand",
-    "name": productDetail.brand
-  },
-  "additionalProperty": [
-    {
-      "@type": "PropertyValue",
-      "name": "Algorithm",
-      "value": productDetail.algorithm
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Coins Supported",
-      "value": (productDetail.coin || []).join(', ')
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Power",
-      "value": productDetail.power
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Hash Rate",
-      "value": productDetail.hashRate
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Product Type",
-      "value": productDetail.productType
-    }
-  ],
-  "offers": {
-    "@type": "Offer",
-    "url": `https://czminers.com/miner/${productDetail.slug}`,
-    "priceCurrency": "USD",
-    "price": (productDetail.sellPrice || '0').replace(/[^0-9.]/g, ''),
-    "priceValidUntil": "2025-12-31",
-    "itemCondition": "https://schema.org/NewCondition",
-    "availability": "https://schema.org/InStock",
-    "seller": {
-      "@type": "Organization",
-      "name": "Blockchain Miners"
-    },
-    "shippingDetails": {
-      "@type": "OfferShippingDetails",
-      "shippingRate": {
-        "@type": "MonetaryAmount",
-        "value": "0",
-        "currency": "USD"
-      },
-      "shippingDestination": {
-        "@type": "DefinedRegion",
-        "addressCountry": "US"
-      },
-      "deliveryTime": {
-        "@type": "ShippingDeliveryTime",
-        "handlingTime": {
-          "@type": "QuantitativeValue",
-          "value": 2,
-          "unitCode": "d"
-        },
-        "transitTime": {
-          "@type": "QuantitativeValue",
-          "value": 5,
-          "unitCode": "d"
-        }
-      }
-    }
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.5",
-    "reviewCount": "25"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": {
-        "@type": "Person",
-        "name": "Molly li"
-      },
-      "datePublished": "2024-04-01",
-      "reviewBody": "Excellent miner with great performance.",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      }
-    }
-  ],
-  "warranty": {
-    "@type": "WarrantyPromise",
-    "durationOfWarranty": "P1Y",
-    "warrantyScope": "https://schema.org/LimitedWarranty"
-  }
-}, null, 2) %>
-
-
+        <%- JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": productDetail.title,
+          "url": `https://czminers.com/miner/${productDetail.slug}`,
+          "image": productDetail.productImages[0] || [],
+          "description": productDetail.overview
+            ? productDetail.overview.replace(/(<([^>]+)>)/gi, '').replace(/\n/g, ' ').replace(/"/g, '\\"')
+            : '',
+          "sku": productDetail.slug,
+          "mpn": productDetail._id,
+          "brand": {
+            "@type": "Brand",
+            "name": productDetail.brand
+          },
+          "additionalProperty": [
+            {
+              "@type": "PropertyValue",
+              "name": "Algorithm",
+              "value": productDetail.algorithm
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Coins Supported",
+              "value": (productDetail.coin || []).join(', ')
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Power",
+              "value": productDetail.power
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Hash Rate",
+              "value": productDetail.hashRate
+            },
+            {
+              "@type": "PropertyValue",
+              "name": "Product Type",
+              "value": productDetail.productType
+            }
+          ],
+          "offers": {
+            "@type": "Offer",
+            "url": `https://czminers.com/miner/${productDetail.slug}`,
+            "priceCurrency": "USD",
+            "price": (productDetail.sellPrice || '0').replace(/[^0-9.]/g, ''),
+            "priceValidUntil": "2025-12-31",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "Organization",
+              "name": "Blockchain Miners"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "USD"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "US"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "value": 2,
+                  "unitCode": "d"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "value": 5,
+                  "unitCode": "d"
+                }
+              }
+            }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.5",
+            "reviewCount": "25"
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "Molly li"
+              },
+              "datePublished": "2024-04-01",
+              "reviewBody": "Excellent miner with great performance.",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+              }
+            }
+          ],
+          "warranty": {
+            "@type": "WarrantyPromise",
+            "durationOfWarranty": "P1Y",
+            "warrantyScope": "https://schema.org/LimitedWarranty"
+          }
+        }, null, 2) %>
     </script>
-
-
 </head>
 
 <body
-    class="wp-singular product-template-default single single-product postid-24783   woocommerce woocommerce-page woocommerce-js translatepress-en_US microbt-whatsminer-m61s-bitcoin-miner"
+    class="wp-singular product-template-default single single-product postid-24783 woocommerce woocommerce-page woocommerce-js translatepress-en_US microbt-whatsminer-m61s-bitcoin-miner"
     data-new-gr-c-s-check-loaded="14.1241.0" data-gr-ext-installed="" cz-shortcut-listen="true">
 
-
-
     <!-- header start -->
-
     <%- include("../../partials/frountHeader.ejs")%>
         <!-- header end -->
 
-
-
         <div id="primary" class="content-area">
             <main id="main" class="site-main" role="main">
-                <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a>&nbsp;/&nbsp;<a
-                        href="/">Whatsminer</a>&nbsp;/&nbsp;MicroBT
-                    Whatsminer M61S Bitcoin Miner</nav>
+                <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a
+                        href="/">Whatsminer</a> / MicroBT Whatsminer M61S Bitcoin Miner</nav>
 
                 <div class="woocommerce-notices-wrapper"></div>
                 <div class="page-title mb-4">
                     <div class="container">
                         <nav aria-label="breadcrumbs" class="rank-math-breadcrumb">
-                            <p><a href="/">Home</a><span class="separator"> &gt; </span><a
+                            <p><a href="/">Home</a><span class="separator"> > </span><a
                                     href="/products?page=1&brand=<%=productDetail.brand%>&algorithm=">
                                     <%=productDetail.brand%>
-                                </a><span class="separator"> &gt; </span><span class="last">
+                                </a><span class="separator"> > </span><span class="last">
                                     <%=productDetail.title%>
                                 </span></p>
-                        </nav>
                     </div>
                 </div>
 
@@ -210,20 +211,11 @@
                         <div class="col-sm-12">
                             <div id="product-24783"
                                 class="product type-product post-24783 status-publish first instock product_cat-microbt-whatsminer has-post-thumbnail featured shipping-taxable purchasable product-type-variable has-default-attributes">
-
                                 <div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images"
                                     data-columns="4" style="opacity: 1; transition: opacity 0.25s ease-in-out;">
-
                                     <figure class="woocommerce-product-gallery__wrapper">
-
                                         <img src="<%=productDetail.productImages[0]%>" alt="<%=productDetail.altText%>">
-
-
-
                                     </figure>
-
-
-
                                 </div>
                                 <div class="summary entry-summary">
                                     <h1>
@@ -237,8 +229,7 @@
                                         <span class="posted_in">Brand: <a href="#" rel="tag">
                                                 <%=productDetail.brand%>
                                             </a></span> <span class="posted_in">Brand: <a href=""
-                                                rel="tag">Asicxxxxxxxxxxxxxxxxxxxxxx
-                                                Miners</a></span>
+                                                rel="tag">Asicxxxxxxxxxxxxxxxxxxxxxx Miners</a></span>
                                     </div>
                                     <p class="rangePrice price"><span class="woocommerce-Price-amount amount"
                                             style="text-decoration: line-through;"><bdi>
@@ -247,17 +238,11 @@
                                             <%=productDetail.sellPrice%>
                                         </span>
                                     </p>
-
-
-
-
-
                                     <div class="single_variation_wrap"
                                         style="justify-content: space-between;display: flex;">
                                         <ul class="outerUl" style="display: flex;margin-left: 0;">
-                                             <li class="innerLi" style="margin-right: 55px;">
+                                            <li class="innerLi" style="margin-right: 55px;">
                                                 <h6 style="color: #49a4d8;margin: 0;" class="add-heading">Algorithm</h6>
-                                               
                                                 <%=productDetail.algorithm%>
                                             </li>
                                             <li class="innerLi" style="margin-right: 55px;">
@@ -275,36 +260,30 @@
                                                     class="entered lazyloaded"><noscript><img alt="microchip"
                                                         src="../../image/microchip-solid-final.webp" width="16"
                                                         height="16"></noscript>
-                                               <%=productDetail.hashRate%>
+                                                <%=productDetail.hashRate%>
                                             </li>
                                         </ul>
-                                         <a href="/checkout/<%=productDetail.slug%>">
+                                        <a href="/checkout/<%=productDetail.slug%>">
                                             <button class="single_add_to_cart_button button alt">Buy Now</button>
                                         </a>
                                     </div>
-                                      <div class="single_variation_wrap"
+                                    <div class="single_variation_wrap"
                                         style="justify-content: space-between;display: flex;">
-
-
-                                       
-
-
-                                        <ul class="outerUl" style="display: flex;width: 100%;margin-left: 0;margin-top: 10px;">
-                                           
+                                        <ul class="outerUl"
+                                            style="display: flex;width: 100%;margin-left: 0;margin-top: 10px;">
                                             <li style="width: 100%;display: flex;" class="innerLi">
-                                                <h6 class="add-heading" style="color: #49a4d8;margin: 0;margin-right: 10px;">Minable Coins:</h6>
-                                               <% productDetail.coin.forEach(result=> { %>
-                                                   <span style="margin-right: 6px;font-weight: bold;"> <%=result%>,</span>
-                                                 <% }) %>
+                                                <h6 class="add-heading"
+                                                    style="color: #49a4d8;margin: 0;margin-right: 10px;">Minable Coins:
+                                                </h6>
+                                                <% productDetail.coin.forEach(result=> { %>
+                                                    <span style="margin-right: 6px;font-weight: bold;">
+                                                        <%=result%>,
+                                                    </span>
+                                                    <% }) %>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
-
-                                
-
-
-
                             </div>
                         </div>
 
@@ -326,15 +305,13 @@
                                             data-rocket-lazy-bg-d8e2cfdf-fe0e-403c-9999-4f66d7fcb2f6="loaded">
                                             Description</h3>
                                         <div class="sub-hide">
-
                                             <h3 style="text-align: center;"
                                                 data-rocket-lazy-bg-08ada2be-b7ed-4dc5-a201-f016b68c92de="loaded"
                                                 data-rocket-lazy-bg-d8e2cfdf-fe0e-403c-9999-4f66d7fcb2f6="loaded">
                                                 OVERVIEW</h3>
-                                            <div>
+                                            <div class="table-responsive">
                                                 <%-productDetail.overview%>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div id="reviews-sec" class="border p-4 mb-5 review-list d-none">
@@ -347,10 +324,8 @@
                                                 <div id="comments">
                                                     <h2 class="woocommerce-Reviews-title">
                                                         Reviews </h2>
-
                                                     <p class="woocommerce-noreviews">There are no reviews yet.</p>
                                                 </div>
-
                                                 <div id="review_form_wrapper">
                                                     <div id="review_form">
                                                         <div id="respond" class="comment-respond">
@@ -366,7 +341,6 @@
                                                         </div><!-- #respond -->
                                                     </div>
                                                 </div>
-
                                                 <div class="clear"></div>
                                             </div>
                                         </div>
@@ -375,13 +349,12 @@
                             </div>
                         </div>
 
-
                         <div class="mb-5 single-pro-data bottom">
                             <div class="row">
                                 <div class="col-md-4 single-left-menu">
                                     <ul>
                                         <li class="active"><a href="javascript:void(0);"
-                                                data-val="processing">Processing &amp; Shipping Time</a></li>
+                                                data-val="processing">Processing & Shipping Time</a></li>
                                         <li><a href="javascript:void(0);" data-val="payment">Payment Methods</a>
                                         </li>
                                         <li><a href="javascript:void(0);" data-val="support">Support and
@@ -436,7 +409,7 @@
                                         <h3 style="text-align: left;"
                                             data-rocket-lazy-bg-08ada2be-b7ed-4dc5-a201-f016b68c92de="loaded">
                                             Support
-                                            &amp; Warranty</h3>
+                                            & Warranty</h3>
                                         <ol>
                                             <li style="text-align: left;">All brand new miners come with a 180-365
                                                 day
@@ -491,103 +464,72 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-
-
-                        <style>
-                            #description h2 {
-                                display: none
-                            }
-                        </style>
-
-
-
-
-
-
-
-                    </div>
-                </div>
-        </div>
-
-        <div class="connected pb-5 pt-5 border-top">
-            <div class="container">
-                <div class="bg-black p-md-4 p-3">
-                    <div class="bg-color"></div>
-                    <div class="row pl-lg-5 pr-lg-5">
-                        <div class="col-12">
-                            <div class="text-center mb-4">
-                                <h2>Dedicated to the highest standards. <br>Globally Connected</h2>
+                            <div class="connected pb-5 pt-5 border-top">
+                                <div class="container">
+                                    <div class="bg-black p-md-4 p-3">
+                                        <div class="bg-color"></div>
+                                        <div class="row pl-lg-5 pr-lg-5">
+                                            <div class="col-12">
+                                                <div class="text-center mb-4">
+                                                    <h2>Dedicated to the highest standards. <br>Globally Connected</h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6" style="margin: auto;">
+                                                <div
+                                                    class="bg-white pl-md-4 pr-md-4 pl-2 pr-2 pt-md-4 pb-md-4 pt-4 pb-4 text-center">
+                                                    <p>Trusted by</p>
+                                                    <ul>
+                                                        <li>
+                                                            <a target="_blank" href="">
+                                                                <img src="../../image/fdf.webp" alt="">
+                                                                <h4>Asic Miner Value</h4>
+                                                                <img src="../../image/export-circle.svg" alt="">
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a target="_blank" href="">
+                                                                <img src="../../image/nicehash-1.webp" alt="">
+                                                                <h4>Nicehash</h4>
+                                                                <img src="../../image/export-circle.svg" alt="">
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a target="_blank" href="">
+                                                                <img src="../../image/crypto.webp" alt="">
+                                                                <h4>CryptoCompare</h4>
+                                                                <img src="../../image/export-circle.svg" alt="">
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a target="_blank" href="">
+                                                                <img src="../../image/trust.webp" alt="">
+                                                                <h4>Trustpilot</h4>
+                                                                <img src="../../image/export-circle.svg" alt="">
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6" style="margin: auto;">
-                            <div class="bg-white pl-md-4 pr-md-4 pl-2 pr-2 pt-md-4 pb-md-4 pt-4 pb-4 text-center">
-                                <p>Trusted by</p>
-                                <ul>
-                                    <li>
-                                        <a target="_blank" href="">
-                                            <img src="../../image/fdf.webp" alt="">
-                                            <h4>Asic Miner Value</h4>
-                                            <img src="../../image/export-circle.svg" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" href="">
-                                            <img src="../../image/nicehash-1.webp" alt="">
-                                            <h4>Nicehash</h4>
-                                            <img src="../../image/export-circle.svg" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" href="">
-                                            <img src="../../image/crypto.webp" alt="">
-                                            <h4>CryptoCompare</h4>
-                                            <img src="../../image/export-circle.svg" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" href="">
-                                            <img src="../../image/trust.webp" alt="">
-                                            <h4>Trustpilot</h4>
-                                            <img src="../../image/export-circle.svg" alt="">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
-            </div>
-        </div>
-
-        </main>
+            </main>
         </div>
 
         <!-- footer start -->
-
         <%- include("../../partials/frountFooter.ejs")%>
             <!-- footer end -->
 
-
-
-
-            <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
             <script src="../../js/bootstrap.js.download"></script>
             <script src="../../js/owl.carousel.js.download"></script>
             <script src="../../js/selectWoo.full.js.download"></script>
             <script src="../../js/script.js.download"></script>
             <script src="../../js/widgets.js.download" charset="utf-8" data-cfasync="false" data-no-optimize="1"
                 data-no-defer="1" data-no-minify="1" data-rocketlazyloadscript="1"></script>
-
-
-
-
-
-
-
-
 
             <link data-minify="1" rel="stylesheet" id="wc-blocks-style-css"
                 href="./product detail page_files/wc-blocks.css" media="all">
@@ -622,19 +564,258 @@
                 }
             </style>
 
+            <style>
+                /* Existing styles */
+                #description h2 {
+                    display: none;
+                }
+
+                /* General responsive styles */
+                .content-area {
+                    width: 100%;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 15px;
+                }
+
+                .container {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+
+                /* Product Gallery */
+                .woocommerce-product-gallery {
+                    width: 100%;
+                }
+
+                .woocommerce-product-gallery__wrapper img {
+                    max-width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                }
+
+                /* Product Summary */
+                .summary.entry-summary {
+                    width: 100%;
+                    padding: clamp(1rem, 2vw, 1.5rem);
+                }
+
+                .summary h1 {
+                    font-size: clamp(1.5rem, 3vw, 2rem);
+                    word-break: break-word;
+                }
+
+                .product_meta,
+                .rangePrice {
+                    font-size: clamp(0.9rem, 2vw, 1rem);
+                }
+
+                .single_variation_wrap {
+                    flex-direction: column !important;
+                    align-items: flex-start !important;
+                }
+
+                .outerUl {
+                    flex-wrap: wrap !important;
+                    gap: 10px;
+                    width: 100% !important;
+                }
+
+                .innerLi {
+                    flex: 1 1 auto;
+                    margin-right: 0 !important;
+                    font-size: clamp(0.85rem, 2vw, 0.95rem);
+                }
+
+                .innerLi h6 {
+                    font-size: clamp(0.9rem, 2vw, 1rem);
+                }
+
+                .innerLi img {
+                    max-width: 16px;
+                    height: auto;
+                }
+
+                .single_add_to_cart_button {
+                    width: 100%;
+                    font-size: clamp(0.9rem, 2.5vw, 1rem);
+                    padding: clamp(8px, 2vw, 12px);
+                    margin-top: 10px;
+                }
+
+                /* Description and Reviews Section */
+                .single-pro-data.top,
+                .single-pro-data.bottom {
+                    width: 100%;
+                }
+
+                .single-left-menu ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    padding: 0;
+                }
+
+                .single-left-menu li {
+                    flex: 1 1 100%;
+                    font-size: clamp(0.9rem, 2vw, 1rem);
+                }
+
+                .single-right .border {
+                    padding: clamp(1rem, 2vw, 1.5rem);
+                }
+
+                .single-right h3 {
+                    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+                }
+
+                .single-right p,
+                .single-right ol li {
+                    font-size: clamp(0.85rem, 2vw, 0.95rem);
+                    word-break: break-word;
+                }
+
+                #description div {
+                    word-break: break-word;
+                    overflow-wrap: break-word;
+                }
+
+                /* Connected Section */
+                .connected {
+                    padding: clamp(1rem, 3vw, 2rem) 0;
+                }
+
+                .connected .bg-black {
+                    padding: clamp(1rem, 2vw, 1.5rem);
+                }
+
+                .connected h2 {
+                    font-size: clamp(1.5rem, 3vw, 2rem);
+                    line-height: 1.4;
+                }
+
+                .connected .bg-white {
+                    padding: clamp(1rem, 2vw, 1.5rem);
+                }
+
+                .connected ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    justify-content: center;
+                }
+
+                .connected ul li {
+                    flex: 1 1 40%;
+                    text-align: center;
+                }
+
+                .connected ul li img {
+                    max-width: 100%;
+                    height: auto;
+                }
+
+                .connected ul li h4 {
+                    font-size: clamp(0.9rem, 2vw, 1rem);
+                }
+
+                /* Tablet (≤768px) */
+                @media (max-width: 768px) {
+
+                    .col-sm-12,
+                    .col-md-4,
+                    .col-md-8,
+                    .col-lg-6 {
+                        flex: 0 0 100%;
+                        max-width: 100%;
+                    }
+
+                    .woocommerce-product-gallery,
+                    .summary.entry-summary {
+                        margin-bottom: 1rem;
+                    }
+
+                    .single-left-menu ul {
+                        flex-direction: column;
+                    }
+
+                    .single-right .border {
+                        padding: 1rem;
+                    }
+
+                    .connected ul li {
+                        flex: 1 1 45%;
+                    }
+                    footer{
+			padding-top: 10px !important;
+		}
+		footer img{
+			width: 30% !important;
+		}
+		footer a{
+			text-align: left;
+		}
+		
+		footer .footerLogo{
+			width: 70% !important;
+		}
+		footer .weChatImg{
+			width: 25px !important;
+		}
+		.slider .bg-black:after{
+			display: none !important;
+		}
+                }
+
+                /* Mobile (≤576px) */
+                @media (max-width: 576px) {
+                    .content-area {
+                        padding: 0 10px;
+                    }
+
+                    .summary h1 {
+                        font-size: 1.2rem;
+                    }
+
+                    .product_meta,
+                    .rangePrice,
+                    .innerLi,
+                    .single-right p,
+                    .single-right ol li {
+                        font-size: 0.8rem;
+                    }
+
+                    .single_add_to_cart_button {
+                        font-size: 0.8rem;
+                        padding: 8px;
+                    }
+
+                    .single-left-menu li {
+                        font-size: 0.85rem;
+                    }
+
+                    .single-right h3 {
+                        font-size: 1.1rem;
+                    }
+
+                    .connected h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    .connected ul li {
+                        flex: 1 1 100%;
+                    }
+
+                    .connected ul li img {
+                        max-width: 80px;
+                    }
+                }
+            </style>
 
             <div id="smartyContainer"
                 style="position: absolute; top: 0px; right: 0px; line-height: initial; z-index: 2147483647; width: auto; font-size: initial;">
                 <template shadowrootmode="open">
                     <style>
-                        @font-face {
-                            font-family: 'Poppins';
-                            font-style: normal;
-                            font-weight: 400;
-                            font-display: swap;
-                            src: url(https://fonts.gstatic.com/s/poppins/v23/pxiEyp8kv8JHgFVrJJfedw.ttf) format('truetype');
-                        }
-
                         @media screen and (max-width: 812px) {
                             #sm-coupon-container {
                                 position: fixed;
@@ -649,5 +830,6 @@
                     </style>
                 </template>
             </div>
+</body>
 
 </html>

@@ -36,8 +36,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
+    <style>
+        @media (max-width: 768px) {
+            footer{
+			padding-top: 10px !important;
+		}
+		footer img{
+			width: 30% !important;
+		}
+		footer a{
+			text-align: left;
+		}
+		
+		footer .footerLogo{
+			width: 70% !important;
+		}
+		footer .weChatImg{
+			width: 25px !important;
+		}
+        }
+    </style>
 
 
 
@@ -106,13 +124,7 @@
                                                     <label class="form-label"
                                                         style="font-weight: 500; color: #495057;">Country <span
                                                             style="color: #dc3545;">*</span></label>
-                                                    <select class="form-select form-control" name="country" required>
-                                                        <option value="">Select a country ...</option>
-                                                        <option value="IN">India</option>
-                                                        <option value="US">United States</option>
-                                                        <option value="UK">United Kingdom</option>
-                                                        <option value="CA">Canada</option>
-                                                    </select>
+                                                    <input type="text" class="form-control" name="country">
                                                 </div>
                                             </div>
 
@@ -144,13 +156,7 @@
                                                     <label class="form-label"
                                                         style="font-weight: 500; color: #495057;">Region <span
                                                             style="color: #dc3545;">*</span></label>
-                                                    <select class="form-select form-control" name="region" required>
-                                                        <option value="">Select an option...</option>
-                                                        <option value="rajasthan">Rajasthan</option>
-                                                        <option value="delhi">Delhi</option>
-                                                        <option value="mumbai">Mumbai</option>
-                                                        <option value="gujarat">Gujarat</option>
-                                                    </select>
+                                                     <input type="text" class="form-control" name="region">
                                                 </div>
                                             </div>
 
@@ -164,7 +170,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label"
-                                                        style="font-weight: 500; color: #495057;">Phone <span
+                                                        style="font-weight: 500; color: #495057;">Phone With Code <span
                                                             style="color: #dc3545;">*</span></label>
                                                     <input type="tel" class="form-control" name="phone" required>
                                                 </div>
@@ -325,13 +331,13 @@
                                                             Payment (TRC20)</h6>
                                                         <div
                                                             style="width: 200px; height: 200px; background: #ffffff; border: 2px solid #dee2e6; border-radius: 8px; margin: 15px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6c757d;">
-                                                            <i class="fas fa-qrcode fa-3x mb-2"></i>
-                                                            <small>QR Code Scanner</small>
+                                                            <img src="../../image/czminers-usdt-address.jpeg" alt="">
+                                                           
                                                         </div>
                                                         <div
                                                             style="background: white; padding: 12px; border: 1px solid #dee2e6; border-radius: 6px; font-family: monospace; font-size: 12px; word-break: break-all; margin: 15px 0;">
                                                             <strong>USDT Address (TRC20):</strong><br>
-                                                            TQn9Y2khEsLJW1ChVVFMSMeRDow5KcbLSE
+                                                            <span>TSVHQu7V4bWyR7Hpgv5fY4HcuyBQeLKVVx</span>
                                                         </div>
                                                         <div class="alert alert-warning py-2" style="font-size: 12px;">
                                                             <i class="fas fa-exclamation-triangle me-1"></i>

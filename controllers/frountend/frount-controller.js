@@ -4,6 +4,56 @@ const moment = require("moment");
 const nodemailer = require('nodemailer')
 const Product = require('../../model/productModal');
 const slugify = require('slugify');
+const { Parser } = require("json2csv");
+const fs = require("fs");
+
+
+// // ======= Generate CSV function =======
+// async function generateFeed() {
+//   try {
+
+//     const products = await Product.find();
+
+//     const feedData = products.map(product => ({
+//       id: product._id.toString(),
+//       title: product.title,
+//       description: product.altText || product.overview?.replace(/(<([^>]+)>)/gi, "").slice(0, 500) || "High-performance ASIC miner",
+//       link: `https://czminers.com/miner/${product.slug}`,
+//       image_link: product.productImages?.[0] || "",
+//       availability: "in stock",
+//       price: product.sellPrice?.replace("US$", "").replace(",", "").trim() + " USD",
+//       brand: product.brand || "Unknown",
+//       condition: product.productType?.toLowerCase() || "new",
+//       mpn: product._id.toString()
+//     }));
+
+//     const fields = [
+//       "id",
+//       "title",
+//       "description",
+//       "link",
+//       "image_link",
+//       "availability",
+//       "price",
+//       "brand",
+//       "condition",
+//       "mpn"
+//     ];
+
+//     const parser = new Parser({ fields });
+//     const csv = parser.parse(feedData);
+
+//     fs.writeFileSync("merchant-products-feed.csv", csv);
+//     console.log("✅ Google Merchant CSV feed generated: merchant-products-feed.csv");
+
+//     process.exit(0);
+//   } catch (err) {
+//     console.error("❌ Error generating feed:", err);
+//     process.exit(1);
+//   }
+// }
+
+// generateFeed();
 
 // Sitemap
   

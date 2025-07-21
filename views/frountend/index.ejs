@@ -29,9 +29,17 @@
 		content="Buy Bitcoin, ASIC & GPU crypto miners online. Compare mining rigs by price, algorithm, blockchain, electricity cost, profit & revenue. Best crypto miner deals 2025.">
 
 	<link rel="canonical" href="https://czminers.com" />
-	 <!-- Google Verification -->
+	<!-- Google Verification -->
 	<meta name="google-site-verification" content="CrjgqxHV4lSY2DsH1_KKIuxSee1nYFzFgTWqoSY5F1U" />
 	<meta name="google-site-verification" content="Ma-euCjB9J45XE_z1trMRMvV0vCJyfw-glSe4hounBQ" />
+
+
+
+
+
+
+
+
 
 	<script>
 		// Base64 se product data decode karo (server side se aise milta hai)
@@ -169,6 +177,91 @@
 	.dealLi {
 		width: 49%;
 	}
+
+	@media (max-width: 768px) {
+
+		.dealsProduct {
+			padding-left: 4px !important;
+			padding-right: 4px !important;
+		}
+
+		.products.columns-3 li {
+			width: 49% !important;
+			margin: 0 !important;
+			display: block !important;
+			text-align: center;
+			margin-bottom: 12px !important;
+		}
+
+		.products.columns-3 li a {
+			padding: 0px 4px !important;
+		}
+
+		.product-css a .img img,
+		.products.columns-3 li .size-woocommerce_thumbnail {
+			margin-bottom: 0 !important;
+		}
+
+		.products.columns-3 li h2,
+		body .brand-sec h3 {
+			font-size: 16px !important;
+			padding: 0;
+			margin: 0;
+		}
+		
+		.hashrateLi{
+			width: 100% !important;
+			margin: 0 !important;
+		}
+		.powerLi{
+			margin: 0 !important;
+		}
+		li.hashrateLi h6{
+			font-size: 12px !important;
+		}
+		li.powerLi h6{
+			font-size: 12px !important;
+		}
+		body .product-css h3, body .products.columns-3 li h2, body .brand-sec h3{
+			font-size: 13px !important;
+			margin-bottom: 0 !important;
+		}
+		.rateMain{
+			padding: 0px 6px !important;
+		}
+		.product-css .price, .products.columns-3 li .price{
+			padding: 8px 2px 32px 2px !important; 
+		}
+		.getYour{
+			display: none;
+		}
+		.slider .col-md-5{
+			padding: 0 !important;
+		}
+		
+		footer{
+			padding-top: 10px !important;
+		}
+		footer img{
+			width: 30% !important;
+		}
+		footer a{
+			text-align: left;
+		}
+		
+		footer .footerLogo{
+			width: 70% !important;
+		}
+		footer .weChatImg{
+			width: 25px !important;
+		}
+		.slider .bg-black:after{
+			display: none !important;
+		}
+		
+
+
+	}
 </style>
 
 <body>
@@ -188,16 +281,15 @@
 				<div class="bg-black p-5" data-rocket-lazy-bg-26c6ef10-7435-4d62-b890-e5b625e23f36="loaded">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-7 text-md-left text-center">
-								<h1>Get Your First <span>MINING</span> Output Today. Get a Piece of the Future.</h1>
+							<div class="col-md-7 text-md-left text-center getYour">
+								<h1>Get Your First Mining Output Today. Get a Piece of the Future.</h1>
 								<p>Our goal is to provide high quality cryptocurrency miners at best rate possible to
 									our
 									clients.</p>
-								<a class="btn-bluebg" href="">View Latest
+								<a class="btn-bluebg" href="/miner">View Latest
 									Miners</a>
-								<a class="btn-white ml-lg-4 ml-md-0 ml-sm-2 mt-lg-0 mt-md-3 mt-sm-0 mt-2"
-									href="#"><img width="20"
-										src="../../image/offer.svg"
+								<a class="btn-white ml-lg-4 ml-md-0 ml-sm-2 mt-lg-0 mt-md-3 mt-sm-0 mt-2" href="/miner"><img
+										width="20" src="../../image/offer.svg"
 										data-lazy-src="https://asicmarketplace.com/wp-content/uploads/2025/01/offer.svg"
 										data-ll-status="loaded" class="entered lazyloaded"><noscript><img width="20"
 											src="https://asicmarketplace.com/wp-content/uploads/2025/01/offer.svg"></noscript>
@@ -245,7 +337,7 @@
 			<div class="container">
 				<div class="bg-black pl-5 pr-5">
 					<div class="row">
-						<div class="col-lg-5 my-auto">
+						<div class="col-lg-5 my-auto dealsText">
 							<div class="d-inline-block position-relative">
 								<h2>Deal of the <br>week</h2>
 								<img alt="deals" class="d-lg-block d-none entered lazyloaded"
@@ -255,7 +347,7 @@
 										src="https://asicmarketplace.com/wp-content/uploads/2023/01/deals-arrow.webp"></noscript>
 							</div>
 						</div>
-						<div class="col-lg-7">
+						<div class="col-lg-7 dealsProduct">
 							<ul class="products columns-3 d-flex" style="flex-wrap: wrap;    flex-wrap: wrap;
     justify-content: space-between;">
 
@@ -275,19 +367,19 @@
 											<h2 class="woocommerce-loop-product__title">
 												<%=result.title%>
 											</h2>
-											<div style="padding: 10px 10px;">
+											<div style="padding: 10px 10px;" class="rateMain">
 												<ul style="display: flex; justify-content: space-between;">
 
-													<li style="display: flex;">
+													<li style="display: flex;" class="powerLi">
 														<img alt="bolt" src="../../image/thunder.png"
 															style="width: 20px;">
-														<%=result.power%>
+														<h6><%=result.power%></h6>
 													</li>
-													<li style="display: flex;">
+													<li style="display: flex;" class="hashrateLi">
 														<img alt="bolt" src="../../image/microchip-solid-final.webp"
 															style="width: 14px;height: 14px;margin-top: 3px;
     margin-right: 3px;">
-														<%=result.hashRate%>
+														<h6><%=result.hashRate%></h6>
 													</li>
 												</ul>
 											</div>
@@ -310,7 +402,7 @@
 											the
 											product page </span>
 										<div class="fav_cart">
-											<a href="" class="button add_to_cart_button ajax_add_to_cart"><img
+											<a href="/checkout/<%=result.slug%>" class="button add_to_cart_button ajax_add_to_cart"><img
 													alt="cart" src="../../image/shopping-cart.svg" width="24"
 													height="25"></a>
 										</div>
@@ -332,7 +424,8 @@
 					</div>
 				</div>
 				<div class="row">
-					<ul class="products columns-3 d-flex" style="flex-wrap: wrap;    flex-wrap: wrap;
+					<div class="col-md-12">
+						<ul class="products columns-3 d-flex" style="flex-wrap: wrap;    flex-wrap: wrap;
     justify-content: space-between;">
 
 						<% productData.forEach(result=> { %>
@@ -350,20 +443,22 @@
 									<h2 class="woocommerce-loop-product__title">
 										<%=result.title%>
 									</h2>
-									<div style="padding: 10px 10px;">
-										<ul style="display: flex; justify-content: space-between;">
+									<div style="padding: 10px 10px;" class="rateMain">
+												<ul style="display: flex; justify-content: space-between;">
 
-											<li style="display: flex;">
-												<img alt="bolt" src="../../image/thunder.png" style="width: 20px;">
-												<%=result.power%>
-											</li>
-											<li style="display: flex;">
-												<img alt="bolt" src="../../image/microchip-solid-final.webp" style="width: 14px;height: 14px;margin-top: 3px;
+													<li style="display: flex;" class="powerLi">
+														<img alt="bolt" src="../../image/thunder.png"
+															style="width: 20px;">
+														<h6><%=result.power%></h6>
+													</li>
+													<li style="display: flex;" class="hashrateLi">
+														<img alt="bolt" src="../../image/microchip-solid-final.webp"
+															style="width: 14px;height: 14px;margin-top: 3px;
     margin-right: 3px;">
-												<%=result.hashRate%>
-											</li>
-										</ul>
-									</div>
+														<h6><%=result.hashRate%></h6>
+													</li>
+												</ul>
+											</div>
 
 									<span class="price"><span class="woocommerce-Price-amount amount"><bdi></span>
 										<span class="woocommerce-Price-amount amount"><bdi><span
@@ -380,7 +475,7 @@
 									the
 									product page </span>
 								<div class="fav_cart">
-									<a href="" class="button add_to_cart_button ajax_add_to_cart"><img alt="cart"
+									<a href="/checkout/<%=result.slug%>" class="button add_to_cart_button ajax_add_to_cart"><img alt="cart"
 											src="../../image/shopping-cart.svg" width="24" height="25"></a>
 								</div>
 							</li>
@@ -388,7 +483,8 @@
 					</ul>
 
 					<div class="mb-5 text-center col-12">
-						<a style="padding: 8px 22px;" class="btn-grey" href="/products">View All Products</a>
+						<a style="padding: 8px 22px;" class="btn-grey" href="/miner">View All Products</a>
+					</div>
 					</div>
 				</div>
 			</div>
@@ -405,7 +501,8 @@
 					</div>
 				</div>
 				<div class="row">
-					<ul class="products columns-3 d-flex" style="flex-wrap: wrap;    flex-wrap: wrap;
+					<div class="col-md-12">
+						<ul class="products columns-3 d-flex" style="flex-wrap: wrap;    flex-wrap: wrap;
     justify-content: space-between;">
 
 						<% productData2.forEach(result=> { %>
@@ -423,20 +520,22 @@
 									<h2 class="woocommerce-loop-product__title">
 										<%=result.title%>
 									</h2>
-									<div style="padding: 10px 10px;">
-										<ul style="display: flex; justify-content: space-between;">
+									<div style="padding: 10px 10px;" class="rateMain">
+												<ul style="display: flex; justify-content: space-between;">
 
-											<li style="display: flex;">
-												<img alt="bolt" src="../../image/thunder.png" style="width: 20px;">
-												<%=result.power%>
-											</li>
-											<li style="display: flex;">
-												<img alt="bolt" src="../../image/microchip-solid-final.webp" style="width: 14px;height: 14px;margin-top: 3px;
+													<li style="display: flex;" class="powerLi">
+														<img alt="bolt" src="../../image/thunder.png"
+															style="width: 20px;">
+														<h6><%=result.power%></h6>
+													</li>
+													<li style="display: flex;" class="hashrateLi">
+														<img alt="bolt" src="../../image/microchip-solid-final.webp"
+															style="width: 14px;height: 14px;margin-top: 3px;
     margin-right: 3px;">
-												<%=result.hashRate%>
-											</li>
-										</ul>
-									</div>
+														<h6><%=result.hashRate%></h6>
+													</li>
+												</ul>
+											</div>
 
 									<span class="price"><span class="woocommerce-Price-amount amount"><bdi></span>
 										<span class="woocommerce-Price-amount amount"><bdi><span
@@ -453,17 +552,18 @@
 									the
 									product page </span>
 								<div class="fav_cart">
-									<a href="" class="button add_to_cart_button ajax_add_to_cart"><img alt="cart"
+									<a href="/checkout/<%=result.slug%>" class="button add_to_cart_button ajax_add_to_cart"><img alt="cart"
 											src="../../image/shopping-cart.svg" width="24" height="25"></a>
 								</div>
 							</li>
 							<% }) %>
 					</ul>
+					</div>
 
 				</div>
 				<div class="row">
 					<div class="text-center w-100">
-						<a class="btn-grey" href="/products">View All Solo Miner’s</a>
+						<a class="btn-grey" href="/miner">View All Solo Miner’s</a>
 					</div>
 				</div>
 			</div>
