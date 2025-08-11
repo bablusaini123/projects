@@ -1189,10 +1189,10 @@
       }
       .card-footer{
         flex-direction: unset !important;
-        padding: 6px !important;
+        padding: 3px 2px !important;
       }
       .icons i{
-        font-size: 15px !important;
+        font-size: 13px !important;
       }
       .all_event_h2{
         font-size: 13px !important;
@@ -1211,6 +1211,72 @@
         width: 70% !important;
     }
     }
+
+      .slider-container {
+            width: 100%;
+
+            overflow: hidden;
+            position: relative;
+            margin-top: 15px;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-track img {
+            width: 20%;
+            object-fit: cover;
+            border-radius: 10px;
+            padding: 5px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 25px;
+        }
+
+        .slider-track img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            background: rgba(0, 0, 0, 0.801);
+            color: rgb(241, 15, 15);
+            border: none;
+            border-radius: 50%;
+            padding: 7px 15px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .nav.prev {
+            left: 10px;
+        }
+
+        .nav.next {
+            right: 10px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+        .overlay.show {
+            display: flex;
+        }
   </style>
 </head>
 
@@ -1221,24 +1287,20 @@
   <%- include("../../partials/frountHeader.ejs")%>
     <!-- header end -->
 
+      <div class="slider-container" id="slider-container">
+            <button class="nav prev">&#10094;</button>
+            <div class="slider-track" id="slider-track">
+                <% airdropSliderData.forEach((result,index)=>{ %>
+                       <img src="<%=result.bannerImage%>" />
+                    <% })%>
+
+            </div>
+            <button class="nav next">&#10095;</button>
+        </div>
+
     <section>
       <div class="container">
-        <div class="breadcrumb">
-          <a href="/" style="color: #555;">Home</a> > <a href="#"> Airdrops</a>
-        </div>
 
-        <div class="">
-          <div class="tabs">
-            <div class="tab active">All Airdrops Listing</div>
-            <!-- <div class="tab">Organizers</div>
-            <div class="tab">Speakers</div> -->
-            <a href="/createAirdrop" class="eventBtn">List Airdrop</a>
-          </div>
-        </div>
-
-
-
-        <h2 class="secondIcoHeading">All Airdrops Listing</h2>
 
         <div class="filters">
           <div class="filter-group">
@@ -1308,7 +1370,7 @@
           <% formattedAirdropListingData.forEach((result,index)=>{ %>
             <div class="card">
               <div class="card-body">
-                <div class="tags">
+                <div class="tags truncate-text">
                   <% let categoryClass='' ; if (selectedCategory==='upcoming' ) categoryClass='upcomingTeg' ; else if
                     (selectedCategory==='ongoing' ) categoryClass='ongoingTeg' ; else if (selectedCategory==='ended' )
                     categoryClass='endTeg' ; %>
@@ -1414,49 +1476,54 @@
               <!-- Copy this card 3 more times for 4 cards -->
               <!-- Paste here 3 more identical .card blocks if needed -->
         </div>
-        <section style="margin-left: auto;">
-          <div class="pagination-container">
-            <% if (current> 1) { %>
-              <a href="/Airdrops?page=<%= current - 1 %>&category=<%= selectedCategory %>" class="page-box">‹</a>
-              <% } else { %>
-                <span class="page-box disabled">‹</span>
-                <% } %>
+      <section style="margin-left: auto;">
+  <div class="pagination-container">
 
-                  <% if (current> 2) { %>
-                    <a href="/Airdrops?page=1&category=<%= selectedCategory %>" class="page-box">1</a>
-                    <% } %>
+    <!-- Previous Button -->
+    <% if (current > 1) { %>
+      <a href="/Airdrops?page=<%= current - 1 %>&category=<%= selectedCategory %>" class="page-box">‹</a>
+    <% } else { %>
+      <span class="page-box disabled">‹</span>
+    <% } %>
 
-                      <% if (current> 3) { %>
-                        <span class="page-box dots">...</span>
-                        <% } %>
+    <!-- First Page -->
+    <% if (current > 2) { %>
+      <a href="/Airdrops?page=1&category=<%= selectedCategory %>" class="page-box">1</a>
+    <% } %>
 
-                          <% for (let i=current - 1; i <=current + 1; i++) { if (i> 1 && i < pages) { %>
-                              <a href="/Airdrops?page=<%= i %>&category=<%= selectedCategory %>"
-                                class="page-box <%= current === i ? 'active' : '' %>">
-                                <%= i %>
-                              </a>
-                              <% } } %>
+    <!-- Left Ellipsis -->
+    <% if (current > 3) { %>
+      <span class="page-box dots">...</span>
+    <% } %>
 
-                                <% if (current < pages - 2) { %>
-                                  <span class="page-box dots">...</span>
-                                  <% } %>
+    <!-- Current Page + Next 5 Pages -->
+    <% for (let i = current; i <= current + 5 && i <= pages; i++) { %>
+      <a href="/Airdrops?page=<%= i %>&category=<%= selectedCategory %>" 
+         class="page-box <%= current === i ? 'active' : '' %>">
+        <%= i %>
+      </a>
+    <% } %>
 
-                                    <% if (current < pages - 1) { %>
-                                      <a href="/Airdrops?page=<%= pages %>&category=<%= selectedCategory %>"
-                                        class="page-box">
-                                        <%= pages %>
-                                      </a>
-                                      <% } %>
+    <!-- Right Ellipsis -->
+    <% if (current + 5 < pages - 1) { %>
+      <span class="page-box dots">...</span>
+    <% } %>
 
-                                        <% if (current < pages) { %>
-                                          <a href="/Airdrops?page=<%= current + 1 %>&category=<%= selectedCategory %>"
-                                            class="page-box">›</a>
-                                          <% } else { %>
-                                            <span class="page-box disabled">›</span>
-                                            <% } %>
-          </div>
+    <!-- Last Page -->
+    <% if (current + 5 < pages) { %>
+      <a href="/Airdrops?page=<%= pages %>&category=<%= selectedCategory %>" class="page-box"><%= pages %></a>
+    <% } %>
 
-        </section>
+    <!-- Next Button -->
+    <% if (current < pages) { %>
+      <a href="/Airdrops?page=<%= current + 1 %>&category=<%= selectedCategory %>" class="page-box">›</a>
+    <% } else { %>
+      <span class="page-box disabled">›</span>
+    <% } %>
+
+  </div>
+</section>
+
       </div>
     </section>
 
@@ -1497,6 +1564,140 @@
 
 
       </script>
+
+
+
+  <script>
+        function toggleMenu() {
+          const nav = document.getElementById('nav');
+          nav.classList.toggle('show');
+        }
+      </script>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+      <script>
+        // Hamburger Menu Toggle (for opening and closing the nav)
+        // Hamburger menu click (for opening the sidebar)
+        document.getElementById('hamburger-menu').addEventListener('click', function () {
+          document.getElementById('sidebar').classList.add('active');
+        });
+
+        // Close button click (for closing the sidebar)
+        document.getElementById('close-btn').addEventListener('click', function () {
+          document.getElementById('sidebar').classList.remove('active');
+        });
+
+
+      </script>
+
+      <script>
+        function copyToClipboard(text) {
+          navigator.clipboard.writeText(text)
+            .then(() => alert('Link copied!'))
+            .catch(err => alert('Failed to copy!'));
+        }
+      </script>
+
+      <script>
+    const track = document.getElementById("slider-track");
+    const overlay = document.getElementById("overlay");
+    const card = document.getElementById("card-content");
+    const container = document.getElementById("slider-container");
+    const images = Array.from(track.querySelectorAll("img"));
+    const visibleSlides = 5;
+    let currentIndex = 0;
+    let autoSlide;
+
+    for (let i = 0; i < visibleSlides; i++) {
+        const clone = images[i].cloneNode(true);
+        clone.classList.add("clone");
+        track.appendChild(clone);
+    }
+
+    const allImages = Array.from(track.querySelectorAll("img"));
+
+    function slideTo(index) {
+        track.style.transition = "transform 0.5s ease-in-out";
+        track.style.transform = `translateX(-${index * 20}%)`;
+        currentIndex = index;
+    }
+
+    function nextSlide() {
+        if (currentIndex >= images.length) {
+            track.style.transition = "none";
+            track.style.transform = `translateX(0%)`;
+            currentIndex = 0;
+            setTimeout(() => slideTo(1), 20);
+        } else {
+            slideTo(currentIndex + 1);
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex <= 0) {
+            track.style.transition = "none";
+            track.style.transform = `translateX(-${images.length * 20}%)`;
+            currentIndex = images.length;
+            setTimeout(() => slideTo(images.length - 1), 20);
+        } else {
+            slideTo(currentIndex - 1);
+        }
+    }
+
+    document.querySelector(".nav.next").onclick = nextSlide;
+    document.querySelector(".nav.prev").onclick = prevSlide;
+
+    function startAutoSlide() {
+        stopAutoSlide();
+        autoSlide = setInterval(() => nextSlide(), 4000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlide);
+    }
+
+    startAutoSlide();
+
+    allImages.forEach((img) => {
+        img.addEventListener("click", () => {
+            stopAutoSlide();
+            const templateId = img.getAttribute("data-card");
+            const template = document.getElementById(templateId);
+            card.innerHTML = template?.innerHTML || "<p>Geen content gevonden.</p>";
+            overlay.classList.add("show");
+        });
+    });
+
+    overlay.addEventListener("click", (e) => {
+        if (e.target === overlay || e.target.classList.contains("close-btn")) {
+            overlay.classList.remove("show");
+            startAutoSlide();
+        }
+    });
+
+    let startX = 0;
+    container.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    });
+    container.addEventListener("touchend", (e) => {
+        const diff = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diff) > 50) {
+            diff > 0 ? prevSlide() : nextSlide();
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const track = document.querySelector(".slider-track");
+
+        track.addEventListener("mouseover", stopAutoSlide);
+        track.addEventListener("mouseout", startAutoSlide);
+    });
+
+</script>
 
 </body>
 

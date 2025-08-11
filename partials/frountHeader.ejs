@@ -38,6 +38,28 @@
   text-decoration: underline;
 }
 
+  .dropdown a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 700;
+            color: #031129;
+           font-size: 18px;
+               font-family: "Outfit", sans-serif;
+
+        }
+        .dropdown{
+            margin: 0;
+        }
+        .logo {
+    display: flex
+;
+    align-items: center;
+    font-size: 0px;
+    font-weight: bold;
+    color: #111;
+}
+
+
 </style>
 
 <header>
@@ -51,12 +73,13 @@
     <!-- Navigation Menu (hidden on mobile, visible on desktop) -->
     <nav id="nav-bar">
         <div class="dropdown">
-            <a href="#">ICO</a>
-            <div class="dropdown-content">
-                <a href="/events">Events</a>
-                <a href="/ico">ICO</a>
-                <a href="/airdrops">Airdrops</a>
-            </div>
+            <a href="/ico">ICO</a>
+        </div>
+         <div class="dropdown">
+            <a href="/airdrops">Airdrops</a>
+        </div>
+        <div class="dropdown">
+            <a href="/events">Events</a>
         </div>
         <div class="dropdown news-dropdown">
     <a href="/news">News</a>
@@ -100,25 +123,10 @@
         <div class="dropdown">
             <a href="#">Media</a>
         </div>
-        <div class="dropdown">
-            <a href="#">Defi</a>
-        </div>
-        <div class="dropdown">
-            <a href="#">NFT's</a>
-            <div class="dropdown-content">
-                <a href="#">NFT Market</a>
-                <a href="#">NFT Token</a>
-                <a href="#">NFT Airdrop</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <a href="#">Earn</a>
-            <div class="dropdown-content">
-                <a href="#">Crypto Courses</a>
-                <a href="#">Crypto Jobs</a>
-                <a href="#">Free to Earn</a>
-            </div>
-        </div>
+       
+       
+       
+      
     </nav>
 
     <!-- Hamburger Menu for mobile view -->

@@ -402,7 +402,7 @@ module.exports.detailEventListing = async (req, res) => {
 
 module.exports.IcoListing = async (req, res) => {
   try {
-    const perPage = 700;
+    const perPage = 20;
     const page = parseInt(req.query.page) || 1;
     const category = req.query.category || 'all';
     const now = new Date();
@@ -439,11 +439,16 @@ module.exports.IcoListing = async (req, res) => {
         endDateFormatted: moment(plain.endDate).format("MMMM Do, YYYY"),
       };
     });
+    const icoSliderData = await IcoListing.find()
+  .sort({ createdAt: -1 }) // Get latest entries first
+  .limit(20);
+  console.log(icoSliderData[0])
     res.render("frountend/icoListing.ejs", {
       formattedIcoListingData,
       current: page,
       pages: Math.ceil(totalCount / perPage),
-      selectedCategory: category
+      selectedCategory: category,
+      icoSliderData:icoSliderData
     })
   } catch (error) {
     res.status(500).json({
@@ -860,12 +865,18 @@ module.exports.airdropListing = async (req, res) => {
         endDateFormatted: moment(plain.endDate).format("MMMM Do, YYYY"),
       };
     });
+
+     const airdropSliderData = await Airdrop.find()
+      .sort({ createdAt: 1 }) // -1 means latest first, use 1 for oldest first
+      .skip((page - 1) * perPage)
+      .limit(perPage);
     // console.log(formattedAirdropListingData)
     res.render("frountend/airdrops.ejs", {
       formattedAirdropListingData,
       current: page,
       pages: Math.ceil(totalCount / perPage),
-      selectedCategory: category
+      selectedCategory: category,
+      airdropSliderData:airdropSliderData
     })
   } catch (error) {
     res.status(500).json({

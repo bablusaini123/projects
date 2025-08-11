@@ -341,7 +341,7 @@
             padding: 1rem;
             display: flex;
             flex-direction: column;
-            height: 170px;
+          
         }
 
         .category {
@@ -1223,7 +1223,7 @@
         .logo {
             display: flex;
             align-items: center;
-            font-size: 32px;
+            font-size: 0px;
             font-weight: bold;
             color: #111;
         }
@@ -1561,12 +1561,15 @@
             /* color: #000; */
             padding: 8px 10px;
 
-            margin-bottom: 11px;
         }
 
         .dropdown a {
             text-decoration: none;
             color: #000;
+            font-weight: 700;
+            color: #031129;
+           font-size: 18px;
+
         }
 
         .newsBox {
@@ -1586,12 +1589,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Open Sans", sans-serif;
+            font-family: "Outfit", sans-serif;
         }
 
         body {
             background-color: #f1f1f1;
-            padding: 20px;
+            padding: 0 20px;
         }
 
         /* News Card Styles */
@@ -1841,7 +1844,7 @@
 
             .card {
                 max-width: 90%;
-                padding: 20px;
+                padding: 7px;
                 font-size: 0.95rem;
             }
 
@@ -1850,7 +1853,7 @@
             }
 
             h3 {
-                font-size: 0.6rem;
+                font-size: 0.9rem;
             }
         }
 
@@ -1861,7 +1864,7 @@
 
             .card {
                 max-width: 95%;
-                padding: 15px;
+                padding: 3px;
                 font-size: 0.9rem;
             }
         }
@@ -1894,6 +1897,146 @@
         ul {
             padding-left: 20px;
         }
+
+        .outerAirdrop{
+            border: 1px solid #eee;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    display: flex
+;
+    flex-direction: column;
+    height: 100%;
+    background-color: #fafafa;
+        }
+        /* News Section Styles */
+.news-section {
+    display: flex;
+    padding: 0px 55px;
+    gap: 40px;
+}
+
+.top-news {
+    padding: 60px 0px;
+}
+
+.top-news h4 {
+    font-weight: 800;
+    font-size: 25px;
+    color: #0b74de;
+    margin-bottom: 20px;
+}
+
+.story-item {
+    display: flex;
+    margin-bottom: 18px;
+    align-items: center;
+}
+
+.story-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.story-item .text {
+    font-size: 14px;
+    line-height: 1.3;
+    flex: 1;
+}
+
+.story-item .text span {
+    display: block;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Bitcoin Section Styles */
+.bitcoin-section {
+    background-color: #f2f7fa;
+}
+
+.bitcoin-section h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e1e1e;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.bitcoin-guides {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 2rem;
+    max-width: 100%;
+    margin: 0px;
+}
+
+.bitcoin-art {
+    width: 350px;
+    height: 350px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bitcoin-art:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.bitcoin-art img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 170px;
+}
+
+.category {
+    font-size: 0.8rem;
+    color: #0b74de;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e1e1e;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.meta {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 50px;
+}
+
+
+  .headings{
+    color: blue;
+    font-size: 30px;
+    margin: 15px 0;
+  }
     </style>
 </head>
 
@@ -1953,8 +2096,8 @@
 
         <div class="main-container"
             style="display: flex; gap: 20px; padding: 20px; font-family: Arial, sans-serif; height: 95vh;">
-            <div style="width: 30%; height: 100%;" class="icoBox">
-                <div class="icoIner" style="display: flex;justify-content: space-between;padding: 13px;">
+            <div style="width: 30%; height: 100%; overflow-y: hidden;" class="icoBox">
+                <div class="icoIner" style="display: flex;justify-content: space-between;padding: 13px;align-items: center;">
                     <div>
                         <h3 style="margin: 0;">ICO</h3>
                     </div>
@@ -1966,7 +2109,7 @@
                     </div>
                 </div>
                 <!-- <h7 style="font-weight: 700; margin-top: 0px !important; padding: 1px 9px !important;">Event Listing</h7> -->
-                <div class="article" style="overflow: hidden; height: 600px; position: relative;">
+                <div class="article" style="overflow: hidden; position: relative;">
                     <div class="content" style="padding: 8px; animation: scrollUp 10s linear infinite;">
                         <!-- Original tiles -->
                         <div class="tile-container">
@@ -2256,8 +2399,8 @@
             </div>
 
             <!-- Right Top Stories Section -->
-            <div class="top-stories airdropBox" style="width: 30%; height: 100%; overflow-y: auto;">
-                <div style="display: flex;justify-content: space-between;padding: 13px;" class="innerAirdrop">
+            <div class="top-stories airdropBox" style="width: 30%; height: 100%;overflow-y: hidden;">
+                <div style="display: flex;justify-content: space-between;padding: 13px;align-items: end;" class="innerAirdrop">
                     <div class="airdropHeading">
                         <h3 style="margin: 0;">Airdrops</h3>
                     </div>
@@ -2269,7 +2412,7 @@
                     </div>
                 </div>
                 <!-- <h4>Top Stories</h4> -->
-                <div class="outerAirdrop" style="overflow: hidden; height: 600px; position: relative;">
+                <div class="outerAirdrop" style="overflow: hidden; position: relative;">
                     <div class="content" style="padding: 8px; animation: scrollUp 10s linear infinite;">
                         <!-- Original tiles -->
                         <div class="tile-container">
@@ -2412,50 +2555,11 @@
             </div>
         </div>
 
-        <div class="extra-section">
-            <div class="extra-section">
-                <div class="extra-card">
-                    <div class="icon">👤➕</div>
-                    <div>
-                        <div class="extra-title">Follow Us →</div>
-                        <div class="extra-sub">Start learning crypto now</div>
-                    </div>
-                </div>
 
-                <div class="divider"></div>
-
-                <div class="extra-card">
-                    <div class="icon">📬</div>
-                    <div>
-                        <div class="extra-title">Our Newsletter →</div>
-                        <div class="extra-sub">Stay ahead in the crypto game!</div>
-                    </div>
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="extra-card">
-                    <div class="icon">▶️</div>
-                    <div>
-                        <div class="extra-title">Youtube Channel →</div>
-                        <div class="extra-sub">Exclusive insights, tips, and updates weekly!</div>
-                    </div>
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="extra-card">
-                    <div class="icon">💬99</div>
-                    <div>
-                        <div class="extra-title">Why trust KryptoDesk →</div>
-                        <div class="extra-sub">Understand how we collect our data and more</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="bitcoin-section" style="padding: 7px 0px;">
-            <h1 style="color: blue;">Events</h1>
+            <h2 class="headings" style="color: #0b74de;">Events</h2>
             <div class="bitcoin-guides" style="display: flex; flex-wrap: wrap; justify-content: start; gap: 2rem; ">
                 <% eventListingData.forEach((result,index)=>{ %>
                     <a href="/events/<%=result.slug%>" style="text-decoration: none;color: #000;" target="_blank"
@@ -2487,6 +2591,218 @@
             </a>
         </div>
 
+        <div class="news-section">
+    <div class="top-news">
+        <h4>Bitcoin News Today</h4>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/03/Margex-reviews-768x422.jpg" />
+            <div class="text">
+                <span>Sponsored</span>
+                Maximize Your Trading With Margex’s 20% Deposit Bonus
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" />
+            <div class="text">
+                <span>News</span>
+                What Are The Best New Presales to Buy in June 2025?
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/05/PUDGY-PENGUINS-WALLETS-39-350x263.png" />
+            <div class="text">
+                <span>Adoption</span>
+                CoinGecko Report Analysis: What Moved Crypto in Q1 2025?
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/04/Bitcoin-Bonuses-350x287.jpg" />
+            <div class="text">
+                <span>Cryptocurrency</span>
+                14 Best Crypto Bonuses in 2025 – Top Exchange Offers & Promotions
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/04/BingX-copy-trading-exclusive-300x267.jpg" />
+            <div class="text">
+                <span>Sponsored</span>
+                BingX Launches $10 Risk-Free Copy Trading Voucher for New Users
+            </div>
+        </div>
+    </div>
+    <div class="top-news">
+        <h4>Altcoin News Today</h4>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/03/Margex-reviews-768x422.jpg" />
+            <div class="text">
+                <span>Sponsored</span>
+                Maximize Your Trading With Margex’s 20% Deposit Bonus
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" />
+            <div class="text">
+                <span>News</span>
+                What Are The Best New Presales to Buy in June 2025?
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/05/PUDGY-PENGUINS-WALLETS-39-350x263.png" />
+            <div class="text">
+                <span>Adoption</span>
+                CoinGecko Report Analysis: What Moved Crypto in Q1 2025?
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/04/Bitcoin-Bonuses-350x287.jpg" />
+            <div class="text">
+                <span>Cryptocurrency</span>
+                14 Best Crypto Bonuses in 2025 – Top Exchange Offers & Promotions
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/04/BingX-copy-trading-exclusive-300x267.jpg" />
+            <div class="text">
+                <span>Sponsored</span>
+                BingX Launches $10 Risk-Free Copy Trading Voucher for New Users
+            </div>
+        </div>
+    </div>
+    <div class="top-news">
+        <h4>Presales</h4>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/03/Margex-reviews-768x422.jpg" />
+            <div class="text">
+                <span>Sponsored</span>
+                Maximize Your Trading With Margex’s 20% Deposit Bonus
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/03/Webp.net-resizeimage-23-768x576.jpg" />
+            <div class="text">
+                <span>News</span>
+                What Are The Best New Presales to Buy in June 2025?
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/05/PUDGY-PENGUINS-WALLETS-39-350x263.png" />
+            <div class="text">
+                <span>Adoption</span>
+                CoinGecko Report Analysis: What Moved Crypto in Q1 2025?
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/04/Bitcoin-Bonuses-350x287.jpg" />
+            <div class="text">
+                <span>Cryptocurrency</span>
+                14 Best Crypto Bonuses in 2025 – Top Exchange Offers & Promotions
+            </div>
+        </div>
+        <div class="story-item">
+            <img src="https://99bitcoins.com/wp-content/uploads/2025/04/BingX-copy-trading-exclusive-300x267.jpg" />
+            <div class="text">
+                <span>Sponsored</span>
+                BingX Launches $10 Risk-Free Copy Trading Voucher for New Users
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<section>
+    <div class="container">
+
+         <h2 class="headings" style="color: #0b74de;">Bitcoin Guides</h2>
+        
+        <div class="row">
+            <div class="bitcoin-guides" style="display: flex; flex-wrap: wrap; justify-content: start; gap: 1rem;justify-content: space-between;">
+    <div class="bitcoin-art"
+        style="width: 23%; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="https://99bitcoins.com/wp-content/uploads/2024/11/What-is-Bitcoin-300x300.jpeg"
+            alt="PancakeSwap Review" style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+        <div class="content">
+            <div class="category">Cryptocurrency</div>
+            <h3>PancakeSwap (CAKE) Review: A Beginner’s Guide</h3>
+            <div class="meta">June 6, 2025 | By Mensholong Lepcha</div>
+        </div>
+    </div>
+
+    <div class="bitcoin-art"
+        style="width: 23%; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="https://99bitcoins.com/wp-content/uploads/2017/02/shutterstock_574719532.jpg"
+            alt="Bitcoin Wallet Guide" style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+        <div class="content">
+            <div class="category">Cryptocurrency</div>
+            <h3>How to Choose the Best Bitcoin Wallet</h3>
+            <div class="meta">June 6, 2025 | By Jane Doe</div>
+        </div>
+    </div>
+    <div class="bitcoin-art"
+        style="width: 23%; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="https://99bitcoins.com/wp-content/uploads/2025/05/How-to-Buy-Bitcoin-Anonymously-300x300.jpg"
+            alt="Bitcoin Wallet Guide" style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+        <div class="content">
+            <div class="category">Cryptocurrency</div>
+            <h3>How to Choose the Best Bitcoin Wallet</h3>
+            <div class="meta">June 6, 2025 | By Jane Doe</div>
+        </div>
+    </div>
+    <div class="bitcoin-art"
+        style="width: 23%; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="https://99bitcoins.com/wp-content/uploads/2024/11/Best-Bitcoin-Wallets-300x300.jpeg"
+            alt="Bitcoin Wallet Guide" style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+        <div class="content">
+            <div class="category">Cryptocurrency</div>
+            <h3>How to Choose the Best Bitcoin Wallet</h3>
+            <div class="meta">June 6, 2025 | By Jane Doe</div>
+        </div>
+    </div>
+    <div class="bitcoin-art"
+        style="width: 23%; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="https://99bitcoins.com/wp-content/uploads/2024/11/What-is-Bitcoin-300x300.jpeg"
+            alt="PancakeSwap Review" style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+        <div class="content">
+            <div class="category">Cryptocurrency</div>
+            <h3>PancakeSwap (CAKE) Review: A Beginner’s Guide</h3>
+            <div class="meta">June 6, 2025 | By Mensholong Lepcha</div>
+        </div>
+    </div>
+
+    <div class="bitcoin-art"
+        style="width: 23%; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="https://99bitcoins.com/wp-content/uploads/2017/02/shutterstock_574719532.jpg"
+            alt="Bitcoin Wallet Guide" style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+        <div class="content">
+            <div class="category">Cryptocurrency</div>
+            <h3>How to Choose the Best Bitcoin Wallet</h3>
+            <div class="meta">June 6, 2025 | By Jane Doe</div>
+        </div>
+    </div>
+    <div class="bitcoin-art"
+        style="width: 23%; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="https://99bitcoins.com/wp-content/uploads/2025/05/How-to-Buy-Bitcoin-Anonymously-300x300.jpg"
+            alt="Bitcoin Wallet Guide" style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+        <div class="content">
+            <div class="category">Cryptocurrency</div>
+            <h3>How to Choose the Best Bitcoin Wallet</h3>
+            <div class="meta">June 6, 2025 | By Jane Doe</div>
+        </div>
+    </div>
+    <div class="bitcoin-art"
+        style="width: 23%; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="https://99bitcoins.com/wp-content/uploads/2024/11/Best-Bitcoin-Wallets-300x300.jpeg"
+            alt="Bitcoin Wallet Guide" style="width: 100%; height: 150px; object-fit: cover; display: block;" />
+        <div class="content">
+            <div class="category">Cryptocurrency</div>
+            <h3>How to Choose the Best Bitcoin Wallet</h3>
+            <div class="meta">June 6, 2025 | By Jane Doe</div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</section>
         <!-- header start -->
 
         <%- include("../../partials/frountFooter.ejs")%>
