@@ -8,7 +8,7 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-   <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
+  <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
 
 
 
@@ -92,17 +92,10 @@
       background-color: #f0f0f0;
     }
 
-
-
-
-
-
-
-
     .card-container {
       display: flex;
-      flex-wrap: wrap;
-
+      flex-wrap: wrap !important;
+      /* flex: 1; */
       gap: 33px;
       justify-content: start;
     }
@@ -306,7 +299,7 @@
       color: #888;
     }
 
- 
+
 
     .eventBtn {
       padding: 11px 36px;
@@ -531,7 +524,7 @@
     }
 
 
-   
+
 
     .dropdown {
       position: relative;
@@ -801,7 +794,8 @@
         gap: 20px;
         text-align: center;
       }
-       /* Display the hamburger menu for mobile */
+
+      /* Display the hamburger menu for mobile */
       .hamburger-menu {
         display: block;
       }
@@ -880,10 +874,12 @@
         margin-bottom: 17px !important;
         padding-bottom: 20px !important;
       }
-      .newsletter-title{
+
+      .newsletter-title {
         margin-top: 30px;
       }
-       .filters {
+
+      .filters {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
@@ -1132,7 +1128,7 @@
       background: #0b74de;
     }
 
-   @media (max-width: 768px) {
+    @media (max-width: 768px) {
       .footer-container {
         padding: 0 20px;
       }
@@ -1161,7 +1157,8 @@
         gap: 20px;
         text-align: center;
       }
-       /* Display the hamburger menu for mobile */
+
+      /* Display the hamburger menu for mobile */
       .hamburger-menu {
         display: block;
       }
@@ -1240,10 +1237,12 @@
         margin-bottom: 17px !important;
         padding-bottom: 20px !important;
       }
-      .newsletter-title{
+
+      .newsletter-title {
         margin-top: 30px;
       }
-       .filters {
+
+      .filters {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
@@ -1260,9 +1259,267 @@
       }
     }
 
-    .newsletter-title{
-        margin-top: 30px;
+    .newsletter-title {
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        padding: 0 15px;
       }
+
+      .newsletter-form {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .email-input {
+        border-radius: 6px;
+        border-right: 1px solid #d1d5db;
+      }
+
+      .subscribe-btn {
+        border-radius: 6px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      /* Hamburger menu for mobile */
+      .hamburger-menu {
+        display: block;
+      }
+
+      /* Hide desktop navigation */
+      nav {
+        display: none;
+      }
+
+      .sidebar.active {
+        display: block;
+      }
+
+      .logo a img {
+        width: 85% !important;
+      }
+
+      header {
+        align-items: unset !important;
+        flex-wrap: unset !important;
+        padding: 10px 12px;
+        flex-direction: unset;
+        border: 1px solid #eee;
+      }
+
+      .hamburger-menu {
+        font-size: 22px;
+      }
+
+      .logo {
+        margin-bottom: 0;
+      }
+
+      .dropdown {
+        background: #f6f6f6;
+      }
+
+      .tab {
+        padding: 5px 12px;
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      .eventBtn {
+        padding: 8px 12px;
+        background: #55b1ed;
+        margin-left: auto;
+        color: #000;
+        text-decoration: none;
+        border-radius: 15px;
+        font-weight: 500;
+        font-size: 10px;
+        align-items: center;
+        display: flex;
+      }
+
+      /* Card container adjustments for two cards per row */
+      .card-container {
+        flex-wrap: wrap;
+        gap: 10px;
+        /* Reduced gap for mobile */
+        justify-content: space-between;
+      }
+
+      .card {
+        max-width: calc(50% - 5px);
+        /* Two cards per row with small gap */
+        flex: 1 1 calc(50% - 5px);
+        border-radius: 8px;
+      }
+
+      .card-body {
+        padding: 10px 6px;
+        /* Reduced padding */
+      }
+
+      .card-body img {
+        border-radius: 5px !important;
+      }
+
+      .all_event_h2 {
+        font-size: 18px;
+      }
+
+      .card-title {
+        font-size: 14px;
+        /* Smaller font size */
+        margin: 5px 0 8px;
+      }
+
+      .card-info {
+        font-size: 12px;
+        /* Smaller font size */
+        margin-bottom: 8px;
+      }
+
+      .tags {
+        gap: 5px;
+        /* Reduced gap between tags */
+        margin-bottom: 7px;
+      }
+
+      .tag {
+        font-size: 10px;
+        /* Smaller font size for tags */
+        padding: 10px 6px;
+        border-radius: 50%;
+        background: #e0f7e9;
+        color: #2e7d32;
+      }
+
+      .type {
+        font-size: 11px;
+        padding-top: 4px;
+      }
+
+      .ms-auto img {
+        width: 10px;
+      }
+
+      .card-footer {
+        font-size: 10px;
+        padding: 2px !important;
+        display: flex;
+        flex-direction: column;
+
+        /* Smaller font size */
+      }
+
+      /* .card-footer.share-project {
+        display: none !important;
+      } */
+
+      .card-share span {
+        font-size: 12px;
+       display: none !important;
+        /* Smaller font size for share text */
+      }
+
+      .card-share i {
+        font-size: 16px;
+        /* display: flex; */
+        /* gap: 2px; */
+        text-decoration: none;
+        /* Slightly smaller icons */
+      }
+
+      .listingSection {
+        margin-top: 5px !important;
+      }
+
+      .bitcoin-guides {
+        margin: 0 10px !important;
+        gap: 0 !important;
+      }
+
+      .footer-bottom {
+        padding-top: 0;
+      }
+
+      .newsletter-section {
+        margin-bottom: 15px !important;
+        padding-bottom: 15px !important;
+      }
+
+      .newsletter-title {
+        font-size: 24px;
+        /* Smaller font size */
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .filters {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .filter-button {
+        font-size: 12px;
+        /* Smaller font size */
+        padding: 6px 10px;
+      }
+
+      .create-search {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .search-box input {
+        font-size: 12px;
+        /* Smaller font size */
+      }
+
+      .pagination-container {
+        gap: 5px;
+        /* Reduced gap */
+      }
+
+      .page-box {
+        font-size: 12px;
+        /* Smaller font size */
+        padding: 6px 10px;
+        min-width: 35px;
+      }
+      img.shareImg{
+        width: 24px !important;
+        height: 24px !important;
+      }
+      .tag {
+        font-size: 10px;
+        padding: 6px 4px;
+        border-radius: 25%;
+        background: #e0f7e9;
+        color: #2e7d32;
+    }
+    .logo a img {
+        width: 70% !important;
+    }
+
+    }
   </style>
 </head>
 
@@ -1288,7 +1545,7 @@
           </div>
         </div>
 
-        <h2>All Events</h2>
+        <h2 class="all_event_h2">All Events</h2>
 
         <div class="filters">
           <div class="filter-group">
@@ -1368,10 +1625,10 @@
                     <span class="tag">
                       <%=result.eventType%>
                     </span>
-                    <span>🎟 <%=result.entryType%></span>
+                    <span class="type">🎟 <%=result.entryType%></span>
                     <span class="ms-auto">
                       <a href="">
-                        <img style="width: 33px;opacity: 0.8;"
+                        <img class="shareImg" style="width: 33px;opacity: 0.8;"
                           src="../../image/pngtree-share-icon-button-png-image_6454552.png" alt="">
                       </a>
                     </span>
@@ -1393,54 +1650,50 @@
                 </div>
                 <div class="card-footer">
 
-                    <!-- Share This Project -->
-                <div class="card-share" style="margin-top: 15px;    margin-top: 15px;
-    display: flex
-;
+                  <!-- Share This Project -->
+                  <div class="card-share" style="margin-top: 15px; margin-top: 15px;
+      display: flex;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
 ">
-                  <span style="font-weight: 500; font-size: 14px;">Share project:</span>
-                  <!-- 🌐 Social Share Buttons -->
-                  <!-- Twitter -->
-                  <a href="javascript:window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.origin + '/events/<%= result.slug %>') + '&text=' + encodeURIComponent('<%= result.title %> - 🚀 New Event Launched! Check us out on KryptoDesk!'), '_blank')"
-                    title="Share on Twitter">
-                    <i class="fab fa-twitter" style="font-size: 18px; color: #1DA1F2;"></i>
-                  </a>
 
-                  <!-- Facebook -->
-                  <a href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.origin + '/events/<%= result.slug %>'), '_blank')"
-                    title="Share on Facebook">
-                    <i class="fab fa-facebook" style="font-size: 18px; color: #4267B2;"></i>
-                  </a>
+                      <span style="font-weight: 500; font-size: 14px;" class="share-project">Share project:</span>
+
+                      <!-- 🌐 Social Share Buttons -->
+                      <!-- Twitter -->
+                      <a href="javascript:window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.origin + '/events/<%= result.slug %>') + '&text=' + encodeURIComponent('<%= result.title %> - 🚀 New Event Launched! Check us out on KryptoDesk!'), '_blank')"
+                        title="Share on Twitter">
+                        <i class="fab fa-twitter" style="font-size: 18px; color: #1DA1F2;"></i>
+                      </a>
+
+                      <!-- Facebook -->
+                      <a href="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.origin + '/events/<%= result.slug %>'), '_blank')"
+                        title="Share on Facebook">
+                        <i class="fab fa-facebook" style="font-size: 18px; color: #4267B2;"></i>
+                      </a>
 
 
-                  <!-- WhatsApp -->
-                  <a href="javascript:window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('<%= result.title %>\n\n' + '🚀 New Event Launched! Check us out on KryptoDesk!' + '\n🌐 ' + window.location.origin + '/events/<%= result.slug %>'), '_blank')"
-                    title="Share on WhatsApp">
-                    <i class="fab fa-whatsapp" style="font-size: 18px; color: #25D366;"></i>
-                  </a>
+                      <!-- WhatsApp -->
+                      <a href="javascript:window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('<%= result.title %>\n\n' + '🚀 New Event Launched! Check us out on KryptoDesk!' + '\n🌐 ' + window.location.origin + '/events/<%= result.slug %>'), '_blank')"
+                        title="Share on WhatsApp">
+                        <i class="fab fa-whatsapp" style="font-size: 18px; color: #25D366;"></i>
+                      </a>
 
-                  <!-- Copy Link -->
-                  <a href="javascript:void(0);"
-                    onclick="copyToClipboard(window.location.origin + '/events/<%= result.slug %>')" title="Copy Link">
-                    <i class="fas fa-link" style="font-size: 18px; color: #555;"></i>
-                  </a>
-                </div>
-                  
+                      <!-- Copy Link -->
+                      <a href="javascript:void(0);"
+                        onclick="copyToClipboard(window.location.origin + '/events/<%= result.slug %>')"
+                        title="Copy Link">
+                        <i class="fas fa-link" style="font-size: 18px; color: #555;"></i>
+                      </a>
+
+                  </div>
+
                   <!-- <a href="events/<%=result.slug%>" class="link">View Details</a> -->
                 </div>
               </div>
             </div>
-
             <% })%>
-
-
-
-
-
-
               <!-- Copy this card 3 more times for 4 cards -->
               <!-- Paste here 3 more identical .card blocks if needed -->
         </div>
@@ -1493,16 +1746,6 @@
 
 
     <%- include("../../partials/frountFooter.ejs")%>
-
-
-
-
-
-
-
-
-
-
       <script>
         function toggleMenu() {
           const nav = document.getElementById('nav');
@@ -1527,7 +1770,7 @@
           document.getElementById('sidebar').classList.remove('active');
         });
       </script>
-       <script>
+      <script>
         function copyToClipboard(text) {
           navigator.clipboard.writeText(text)
             .then(() => alert('Link copied!'))

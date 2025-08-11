@@ -402,10 +402,7 @@ module.exports.detailEventListing = async (req, res) => {
 
 module.exports.IcoListing = async (req, res) => {
   try {
-
-
-
-    const perPage = 20;
+    const perPage = 700;
     const page = parseInt(req.query.page) || 1;
     const category = req.query.category || 'all';
     const now = new Date();

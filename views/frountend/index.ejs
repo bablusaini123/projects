@@ -85,10 +85,11 @@
         .main-container {
             display: flex;
             grid-template-columns: 3fr 5fr 3fr;
-            gap: 40px;
+            justify-content: space-between;
             padding: 30px 70px;
             align-items: start;
             flex-wrap: wrap;
+            gap: unset !important;
         }
 
         .article {
@@ -1369,7 +1370,6 @@
 
             .icoBox {
                 width: 100% !important;
-                height: 66vh !important;
             }
 
             .newsBox {
@@ -1435,6 +1435,125 @@
                 padding-bottom: 20px;
             }
 
+            .icoDiv {
+                padding: 4px 10px !important;
+            }
+
+            body {
+                background-color: #f1f1f1;
+                padding: 0px !important;
+            }
+
+            .article img {
+                width: 35px !important;
+                height: 35px !important;
+            }
+
+            .icoHeading {
+                font-size: 12px !important;
+            }
+
+            .badge {
+                font-size: 11px;
+                padding: 0px 8px;
+                border-radius: 12px;
+                background-color: #d6d6d6;
+                color: #333;
+            }
+
+            .icons span i {
+                font-size: 13px !important;
+            }
+
+            .newsBox {
+                width: 100% !important;
+                gap: 6px !important;
+            }
+
+            .news-card {
+                margin: 0 !important;
+                position: relative;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                overflow: hidden;
+                background-color: white;
+            }
+
+            .article {
+                height: 42vh !important;
+            }
+
+            .icoDate {
+                font-size: 11px;
+            }
+
+            .airdropBox {
+                height: unset !important;
+
+            }
+
+            .outerAirdrop {
+                height: 40vh !important;
+            }
+
+            .truncate-text.airdropGrayDiv {
+                font-size: 11px !important;
+                padding: 3px 0px !important;
+                font-weight: bold;
+            }
+
+            .card {
+                width: 32% !important;
+                margin-bottom: 13px;
+            }
+
+            .card-body {
+                padding: 0 !important;
+            }
+
+            .card-title {
+                font-size: 10px !important;
+                padding: 0px 4px !important;
+            }
+
+            .card-body img {
+                border-radius: 8px !important;
+            }
+
+            .bitcoin-guides {
+                flex-direction: unset;
+                align-items: center;
+                justify-content: space-between !important;
+            }
+
+            .icoIner {}
+
+            .leftImg img {
+                width: 35px !important;
+                height: 35px !important;
+            }
+
+            header {
+                padding-bottom: 0px !important;
+            }
+
+            .airdropHeading {
+                padding: 0px 12px !important;
+            }
+
+            .innerAirdrop {
+                padding: 7px 10px !important;
+                align-items: center;
+            }
+
+            .logo a img {
+                width: 70% !important;
+            }
+            .slider-track img {
+        width: 40% !important;
+    }
+
+
         }
 
         .dropdown {
@@ -1451,7 +1570,7 @@
         }
 
         .newsBox {
-            width: 36% !important;
+            width: 36%;
         }
 
         .viewAllEvent {
@@ -1461,109 +1580,320 @@
         .newsletter-title {
             margin-top: 30px;
         }
+
         /* Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Open Sans", sans-serif;
+        }
 
-body {
-  background-color: #f1f1f1;
-  padding: 20px;
-}
+        body {
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
 
-/* News Card Styles */
-.news-card {
-  width: 100%;
-  max-width: 400px;
-  margin: 1rem;
-  position: relative;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  background-color: white;
-}
+        /* News Card Styles */
+        .news-card {
+            width: 100%;
+            max-width: 400px;
+            margin: 1rem;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            background-color: white;
+        }
 
-.news-card__card-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
+        .news-card__card-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
 
-.news-card__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease-in-out;
-}
+        .news-card__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
 
-.news-card__text-wrapper {
-  position: absolute;
-  bottom: 0;
-  padding: 1rem;
-  color: white;
-  background: rgba(0, 0, 0, 0.3);
-  width: 100%;
-  transition: background-color 0.3s ease;
-  z-index: 2;
-}
+        .news-card__text-wrapper {
+            position: absolute;
+            bottom: 0;
+            padding: 1rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            transition: background-color 0.3s ease;
+            z-index: 2;
+        }
 
-.news-card__title {
-  font-size: 19px;
-  margin-bottom: 0.5rem;
-  color: #fff;
-  text-shadow: #000000 1px 0 10px;
-}
+        .news-card__title {
+            font-size: 19px;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            text-shadow: #000000 1px 0 10px;
+        }
 
-.news-card__post-date {
-  font-size: 0.8rem;
-  color: #ccc;
-  margin-bottom: 1rem;
-}
+        .news-card__post-date {
+            font-size: 0.8rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
 
-.news-card__details-wrapper {
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-}
+        .news-card__details-wrapper {
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+        }
 
-.news-card:hover .news-card__details-wrapper {
-  max-height: 10rem;
-  opacity: 1;
-}
+        .news-card:hover .news-card__details-wrapper {
+            max-height: 10rem;
+            opacity: 1;
+        }
 
-.news-card__excerpt {
-  font-weight: 300;
-}
+        .news-card__excerpt {
+            font-weight: 300;
+        }
 
-.news-card__read-more {
-  background-color: #333;
-  color: #bbb;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.3rem;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 0.9rem;
-}
+        .news-card__read-more {
+            background-color: #333;
+            color: #bbb;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.3rem;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
 
-.news-card__read-more i {
-  margin-left: 5px;
-}
+        .news-card__read-more i {
+            margin-left: 5px;
+        }
 
-/* Hover Effects */
-.news-card:hover .news-card__image {
-  transform: scale(1.1);
-}
+        /* Hover Effects */
+        .news-card:hover .news-card__image {
+            transform: scale(1.1);
+        }
 
-.news-card:hover .news-card__text-wrapper {
-  background-color: rgba(0, 0, 0, 0.7);
-}
+        .news-card:hover .news-card__text-wrapper {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .top {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+
+
+        .slider-container {
+            width: 100%;
+
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-track img {
+            width: 20%;
+            object-fit: cover;
+            border-radius: 10px;
+            padding: 5px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .slider-track img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            background: rgba(0, 0, 0, 0.801);
+            color: rgb(241, 15, 15);
+            border: none;
+            border-radius: 50%;
+            padding: 7px 15px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .nav.prev {
+            left: 10px;
+        }
+
+        .nav.next {
+            right: 10px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .overlay.show {
+            display: flex;
+        }
+
+
+
+        h2 {
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+            letter-spacing: 0.4px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 800;
+        }
+
+        .gerne {
+            padding: 3px 6px;
+            border-radius: 15px;
+            border: 1px solid rgb(214, 210, 209);
+            font-size: 0.7rem;
+            color: rgb(61, 61, 61);
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            background-color: rgb(220, 224, 224);
+            margin: 0 4px;
+        }
+
+        strong {
+            font-size: 0.7rem;
+            color: rgb(56, 55, 55);
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+        }
+
+        .specs {
+            font-size: 0.7rem;
+            color: rgb(66, 65, 65);
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 0;
+            right: 7px;
+            background: transparent;
+            border: none;
+            font-size: 1.7rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #050505;
+        }
+
+        .close-btn:hover {
+            color: rgb(231, 50, 18);
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slider-track img {
+                width: 50%;
+            }
+
+            .card {
+                max-width: 90%;
+                padding: 20px;
+                font-size: 0.95rem;
+            }
+
+            h1 {
+                font-size: 1rem;
+            }
+
+            h3 {
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider-track img {
+                width: 80%;
+            }
+
+            .card {
+                max-width: 95%;
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .play-button {
+            width: 44px;
+            height: 30px;
+            border-radius: 7px;
+            border: none;
+            background-color: rgb(231, 50, 18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .play-button::before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 10px solid rgb(253, 252, 252);
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            margin-left: 4px;
+            /* optioneel, om het icoon te centreren */
+        }
+
+        ul {
+            padding-left: 20px;
+        }
     </style>
 </head>
 
@@ -1574,10 +1904,57 @@ body {
         <!-- header end -->
 
 
+
+
+
+
+
+
+
+
+        <div class="slider-container" id="slider-container">
+            <button class="nav prev">&#10094;</button>
+            <div class="slider-track" id="slider-track">
+                <% eventListingData.forEach((result,index)=>{ %>
+                   
+                     <img src="<%=result.bannerImage%>" />
+                  
+
+                    <% })%>
+
+            </div>
+            <button class="nav next">&#10095;</button>
+        </div>
+
+
+
+
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="main-container"
             style="display: flex; gap: 20px; padding: 20px; font-family: Arial, sans-serif; height: 95vh;">
             <div style="width: 30%; height: 100%;" class="icoBox">
-                <div style="display: flex;justify-content: space-between;padding: 13px;">
+                <div class="icoIner" style="display: flex;justify-content: space-between;padding: 13px;">
                     <div>
                         <h3 style="margin: 0;">ICO</h3>
                     </div>
@@ -1589,109 +1966,194 @@ body {
                     </div>
                 </div>
                 <!-- <h7 style="font-weight: 700; margin-top: 0px !important; padding: 1px 9px !important;">Event Listing</h7> -->
-                <div class="article" style="overflow-y: auto;  ">
-
-                    <div class="content" style="padding: 8px;">
-
-
-                        <% formattedIcoListingData.forEach((result,index)=>{ %>
-                            <a href="/ICO/<%=result.slug%>" style="text-decoration: none;color: inherit;"
-                                target="_blank">
-                                <div
-                                    style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
-                                    <div style="width: 15%;">
-                                        <img src="<%=result.logo%>" alt=""
-                                            style="width: 50px; height: 50px; border-radius: 20%;">
-                                    </div>
-                                    <div
-                                        style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height:16px;width: 85%;">
-                                        <h4
-                                            style="margin: 0px !important;justify-content: space-between;display: flex;">
-                                            <div class="truncate-text" style="width: 60%;"
-                                                title="<%=result.title%> <%=result.ticker%>">
-                                                <%=result.title%>
-                                                    <%=result.ticker%>
-                                            </div>
-                                            <div style="width: 40%;text-align: right;" class="icons">
-                                                <span style="margin: 0px 2px;">
-                                                    <i class="bi bi-globe"
-                                                        style="font-size: 20px;color: #4891db;font-weight: bolder;"></i>
-                                                </span>
-                                                <span style="margin: 0px 2px;">
-                                                    <i class="bi bi-twitter-x"
-                                                        style="font-size: 20px;;color: #4891db"></i>
-                                                </span>
-                                                <span style="margin: 0px 2px;">
-                                                    <i class="bi bi-telegram"
-                                                        style="font-size: 21px;;color: #4891db"></i>
-                                                </span>
-                                                <span style="margin: 0px 2px;">
-                                                    <i class="bi bi-facebook"
-                                                        style="font-size: 21px;;color: #4891db"></i>
-                                                </span>
-                                            </div>
-
-                                        </h4>
-                                        <div
-                                            style="font-size: 14px; margin: 0px !important; margin-top: 7px !important;    display: flex;align-items: center;justify-content: space-between;">
-                                            <div>
-                                                <%=result.startDateFormatted%>
-                                            </div>
-                                            <div class="blockchain-tags">
-                                                <% const maxVisible2=1; const industry=result.industry || []; const
-                                                    visibleTags2=industry.slice(0, maxVisible2); const
-                                                    remainingCount2=industry.length - visibleTags2.length; %>
-
-                                                    <% visibleTags2.forEach(tag=> { %>
-                                                        <span class="badge gray truncate-text"
-                                                            style="width: 65px; text-align: center;">
-                                                            <%= tag %>
-                                                        </span>
-                                                        <% }) %>
-
-                                                            <% if (remainingCount2> 0) { %>
-                                                                <span class="badge light">+<%= remainingCount2 %></span>
-                                                                <% } %>
-                                            </div>
-                                            <div class="blockchain-tags">
-                                                <% const maxVisible=1; const blockchain=result.blockChain || []; const
-                                                    visibleTags=blockchain.slice(0, maxVisible); const
-                                                    remainingCount=blockchain.length - visibleTags.length; %>
-
-                                                    <% visibleTags.forEach(tag=> { %>
-                                                        <span class="badge gray">
-                                                            <%= tag %>
-                                                        </span>
-                                                        <% }) %>
-
-                                                            <% if (remainingCount> 0) { %>
-                                                                <span class="badge light">+<%= remainingCount %></span>
-                                                                <% } %>
-                                            </div>
-
+                <div class="article" style="overflow: hidden; height: 600px; position: relative;">
+                    <div class="content" style="padding: 8px; animation: scrollUp 10s linear infinite;">
+                        <!-- Original tiles -->
+                        <div class="tile-container">
+                            <% formattedIcoListingData.forEach((result, index)=> { %>
+                                <a href="/ICO/<%=result.slug%>" style="text-decoration: none; color: inherit;"
+                                    target="_blank">
+                                    <div class="icoDiv"
+                                        style="background-color: #fff; display: flex; align-items: center; padding: 10px; border-radius: 10px; box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15); margin-bottom: 6px;">
+                                        <div style="width: 15%;" class="leftImg">
+                                            <img src="<%=result.logo%>" alt=""
+                                                style="width: 50px; height: 50px; border-radius: 20%;">
                                         </div>
-
+                                        <div
+                                            style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height: 16px; width: 85%;">
+                                            <h4
+                                                style="margin: 0px !important; justify-content: space-between; display: flex;">
+                                                <div class="truncate-text icoHeading" style="width: 60%;"
+                                                    title="<%=result.title%> <%=result.ticker%>">
+                                                    <%=result.title%>
+                                                        <%=result.ticker%>
+                                                </div>
+                                                <div style="width: 40%; text-align: right;" class="icons">
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-globe"
+                                                            style="font-size: 20px; color: #4891db; font-weight: bolder;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-twitter-x"
+                                                            style="font-size: 20px; color: #4891db;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-telegram"
+                                                            style="font-size: 21px; color: #4891db;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-facebook"
+                                                            style="font-size: 21px; color: #4891db;"></i>
+                                                    </span>
+                                                </div>
+                                            </h4>
+                                            <div
+                                                style="font-size: 14px; margin: 0px !important; margin-top: 7px !important; display: flex; align-items: center; justify-content: space-between;">
+                                                <div class="icoDate">
+                                                    <%=result.startDateFormatted%>
+                                                </div>
+                                                <div class="blockchain-tags">
+                                                    <% const maxVisible2=1; const industry=result.industry || []; const
+                                                        visibleTags2=industry.slice(0, maxVisible2); const
+                                                        remainingCount2=industry.length - visibleTags2.length; %>
+                                                        <% visibleTags2.forEach(tag=> { %>
+                                                            <span class="badge gray truncate-text"
+                                                                style="width: 65px; text-align: center;">
+                                                                <%= tag %>
+                                                            </span>
+                                                            <% }) %>
+                                                                <% if (remainingCount2> 0) { %>
+                                                                    <span class="badge light">+<%= remainingCount2 %>
+                                                                    </span>
+                                                                    <% } %>
+                                                </div>
+                                                <div class="blockchain-tags">
+                                                    <% const maxVisible=1; const blockchain=result.blockChain || [];
+                                                        const visibleTags=blockchain.slice(0, maxVisible); const
+                                                        remainingCount=blockchain.length - visibleTags.length; %>
+                                                        <% visibleTags.forEach(tag=> { %>
+                                                            <span class="badge gray">
+                                                                <%= tag %>
+                                                            </span>
+                                                            <% }) %>
+                                                                <% if (remainingCount> 0) { %>
+                                                                    <span class="badge light">+<%= remainingCount %>
+                                                                    </span>
+                                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-
-                            <% })%>
-
+                                </a>
+                                <% }) %>
+                        </div>
+                        <!-- Duplicated tiles for seamless loop -->
+                        <div class="tile-container">
+                            <% formattedIcoListingData.forEach((result, index)=> { %>
+                                <a href="/ICO/<%=result.slug%>" style="text-decoration: none; color: inherit;"
+                                    target="_blank">
+                                    <div class="icoDiv"
+                                        style="background-color: #fff; display: flex; align-items: center; padding: 10px; border-radius: 10px; box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15); margin-bottom: 6px;">
+                                        <div style="width: 15%;" class="leftImg">
+                                            <img src="<%=result.logo%>" alt=""
+                                                style="width: 50px; height: 50px; border-radius: 20%;">
+                                        </div>
+                                        <div
+                                            style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height: 16px; width: 85%;">
+                                            <h4
+                                                style="margin: 0px !important; justify-content: space-between; display: flex;">
+                                                <div class="truncate-text icoHeading" style="width: 60%;"
+                                                    title="<%=result.title%> <%=result.ticker%>">
+                                                    <%=result.title%>
+                                                        <%=result.ticker%>
+                                                </div>
+                                                <div style="width: 40%; text-align: right;" class="icons">
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-globe"
+                                                            style="font-size: 20px; color: #4891db; font-weight: bolder;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-twitter-x"
+                                                            style="font-size: 20px; color: #4891db;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-telegram"
+                                                            style="font-size: 21px; color: #4891db;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-facebook"
+                                                            style="font-size: 21px; color: #4891db;"></i>
+                                                    </span>
+                                                </div>
+                                            </h4>
+                                            <div
+                                                style="font-size: 14px; margin: 0px !important; margin-top: 7px !important; display: flex; align-items: center; justify-content: space-between;">
+                                                <div class="icoDate">
+                                                    <%=result.startDateFormatted%>
+                                                </div>
+                                                <div class="blockchain-tags">
+                                                    <% const maxVisible2=1; const industry=result.industry || []; const
+                                                        visibleTags2=industry.slice(0, maxVisible2); const
+                                                        remainingCount2=industry.length - visibleTags2.length; %>
+                                                        <% visibleTags2.forEach(tag=> { %>
+                                                            <span class="badge gray truncate-text"
+                                                                style="width: 65px; text-align: center;">
+                                                                <%= tag %>
+                                                            </span>
+                                                            <% }) %>
+                                                                <% if (remainingCount2> 0) { %>
+                                                                    <span class="badge light">+<%= remainingCount2 %>
+                                                                    </span>
+                                                                    <% } %>
+                                                </div>
+                                                <div class="blockchain-tags">
+                                                    <% const maxVisible=1; const blockchain=result.blockChain || [];
+                                                        const visibleTags=blockchain.slice(0, maxVisible); const
+                                                        remainingCount=blockchain.length - visibleTags.length; %>
+                                                        <% visibleTags.forEach(tag=> { %>
+                                                            <span class="badge gray">
+                                                                <%= tag %>
+                                                            </span>
+                                                            <% }) %>
+                                                                <% if (remainingCount> 0) { %>
+                                                                    <span class="badge light">+<%= remainingCount %>
+                                                                    </span>
+                                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <% }) %>
+                        </div>
                     </div>
-
-
-
                 </div>
+
+                <style>
+                    @keyframes scrollUp {
+                        0% {
+                            transform: translateY(0);
+                        }
+
+                        100% {
+                            transform: translateY(-50%);
+                        }
+                    }
+
+                    .content:hover {
+                        animation-play-state: paused;
+                    }
+                </style>
             </div>
 
             <!-- Middle News Section with 2 images side by side -->
             <div class="newsBox"
-                style="width: 40%; height: 100%; display: flex; gap: 1px; background-color: whitesmoke; border-radius: 2%;">
+                style="width: 38%; height: 100%; display: flex; gap: 1px; background-color: whitesmoke; border-radius: 2%;">
                 <div style="width: 50%; height: 100%; position: relative; border-radius: 10px; overflow: hidden;">
                     <div class="news-card">
                         <a href="#" class="news-card__card-link"></a>
-                        <img src="https://99bitcoins.com/wp-content/uploads/2017/02/shutterstock_574719532.jpg"
-                            alt="" class="news-card__image">
+                        <img src="https://99bitcoins.com/wp-content/uploads/2017/02/shutterstock_574719532.jpg" alt=""
+                            class="news-card__image">
                         <div class="news-card__text-wrapper">
                             <h6 class="news-card__title">Amazing Second Title that </h6>
                             <div class="news-card__details-wrapper">
@@ -1702,7 +2164,7 @@ body {
                             </div>
                         </div>
                     </div>
-                     <div class="news-card">
+                    <div class="news-card">
                         <a href="#" class="news-card__card-link"></a>
                         <img src="	https://99bitcoins.com/wp-content/uploads/2024/09/Best-no-kyc-crypto-exchanges-768x439.jpg"
                             alt="" class="news-card__image">
@@ -1716,7 +2178,7 @@ body {
                             </div>
                         </div>
                     </div>
-                     <div class="news-card">
+                    <div class="news-card">
                         <a href="#" class="news-card__card-link"></a>
                         <img src="https://99bitcoins.com/wp-content/uploads/2024/09/Best-no-kyc-crypto-exchanges-768x439.jpg"
                             alt="" class="news-card__image">
@@ -1730,10 +2192,10 @@ body {
                             </div>
                         </div>
                     </div>
-                     <div class="news-card">
+                    <div class="news-card">
                         <a href="#" class="news-card__card-link"></a>
-                        <img src="https://99bitcoins.com/wp-content/uploads/2022/07/crypto-betting-768x399.jpg"
-                            alt="" class="news-card__image">
+                        <img src="https://99bitcoins.com/wp-content/uploads/2022/07/crypto-betting-768x399.jpg" alt=""
+                            class="news-card__image">
                         <div class="news-card__text-wrapper">
                             <h6 class="news-card__title">Amazing Second Title that </h6>
                             <div class="news-card__details-wrapper">
@@ -1746,7 +2208,7 @@ body {
                     </div>
                 </div>
                 <div style="width: 50%; height: 100%; position: relative; border-radius: 10px; overflow: hidden;">
-                   <div class="news-card">
+                    <div class="news-card">
                         <a href="#" class="news-card__card-link"></a>
                         <img src="https://99bitcoins.com/wp-content/uploads/2024/12/Best-Bitcoin-Casinos-300x296.jpg"
                             alt="" class="news-card__image">
@@ -1760,8 +2222,8 @@ body {
                             </div>
                         </div>
                     </div>
-                   
-                     <div class="news-card">
+
+                    <div class="news-card">
                         <a href="#" class="news-card__card-link"></a>
                         <img src="https://99bitcoins.com/wp-content/uploads/2025/05/How-to-Buy-Bitcoin-Anonymously-300x300.jpg"
                             alt="" class="news-card__image">
@@ -1775,10 +2237,10 @@ body {
                             </div>
                         </div>
                     </div>
-                     <div class="news-card">
+                    <div class="news-card">
                         <a href="#" class="news-card__card-link"></a>
-                        <img src="https://99bitcoins.com/wp-content/uploads/2024/11/What-is-Bitcoin-300x300.jpeg"
-                            alt="" class="news-card__image">
+                        <img src="https://99bitcoins.com/wp-content/uploads/2024/11/What-is-Bitcoin-300x300.jpeg" alt=""
+                            class="news-card__image">
                         <div class="news-card__text-wrapper">
                             <h6 class="news-card__title">Amazing Second Title that </h6>
                             <div class="news-card__details-wrapper">
@@ -1789,26 +2251,13 @@ body {
                             </div>
                         </div>
                     </div>
-                      <div class="news-card">
-                        <a href="#" class="news-card__card-link"></a>
-                        <img src="	https://99bitcoins.com/wp-content/uploads/2024/11/Best-Bitcoin-Wallets-300x300.jpeg"
-                            alt="" class="news-card__image">
-                        <div class="news-card__text-wrapper">
-                            <h6 class="news-card__title">Amazing Second Title that </h6>
-                            <div class="news-card__details-wrapper">
-                                <p class="news-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Ullam obcaecati ex natus nulla rem sequi laborum quod fugit&hellip;</p>
-                                <a href="#" class="news-card__read-more">Read more <i
-                                        class="fas fa-long-arrow-alt-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
             <!-- Right Top Stories Section -->
             <div class="top-stories airdropBox" style="width: 30%; height: 100%; overflow-y: auto;">
-                <div style="display: flex;justify-content: space-between;padding: 13px;">
+                <div style="display: flex;justify-content: space-between;padding: 13px;" class="innerAirdrop">
                     <div class="airdropHeading">
                         <h3 style="margin: 0;">Airdrops</h3>
                     </div>
@@ -1820,71 +2269,144 @@ body {
                     </div>
                 </div>
                 <!-- <h4>Top Stories</h4> -->
-                <div class="outerAirdrop">
-
-
-                    <% formattedAirdropData.forEach((result,index)=>{ %>
-                        <a href="/airdrops/<%=result.slug%>" style="text-decoration: none;" target="_blank">
-                            <div
-                                style="background-color: #fff;display: flex;align-items: center;padding: 10px !important;border-radius: 10px;box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);margin-bottom: 6px;">
-                                <div style="width: 15%;">
-                                    <img src="<%=result.tokenImage%>" alt=""
-                                        style="width: 50px; height: 50px; border-radius: 20%;">
-                                </div>
-                                <div
-                                    style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height:16px;width: 85%;">
-                                    <h4 style="margin: 0px !important;justify-content: space-between;display: flex;">
-                                        <div class="truncate-text" style="width: 60%;" title="<%=result.tokenName%>">
-                                            <%=result.tokenName%>
+                <div class="outerAirdrop" style="overflow: hidden; height: 600px; position: relative;">
+                    <div class="content" style="padding: 8px; animation: scrollUp 10s linear infinite;">
+                        <!-- Original tiles -->
+                        <div class="tile-container">
+                            <% formattedAirdropData.forEach((result, index)=> { %>
+                                <a href="/airdrops/<%=result.slug%>" style="text-decoration: none;" target="_blank">
+                                    <div class="icoDiv"
+                                        style="background-color: #fff; display: flex; align-items: center; padding: 10px; border-radius: 10px; box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15); margin-bottom: 6px;">
+                                        <div style="width: 15%;" class="leftImg">
+                                            <img src="<%=result.tokenImage%>" alt=""
+                                                style="width: 50px; height: 50px; border-radius: 20%;">
                                         </div>
-                                        <div style="width: 40%;text-align: right;" class="icons">
-                                            <span style="margin: 0px 2px;">
-                                                <i class="bi bi-globe"
-                                                    style="font-size: 20px;color: #4891db;font-weight: bolder;"></i>
-                                            </span>
-                                            <span style="margin: 0px 2px;">
-                                                <i class="bi bi-twitter-x" style="font-size: 20px;;color: #4891db"></i>
-                                            </span>
-                                            <span style="margin: 0px 2px;">
-                                                <i class="bi bi-telegram" style="font-size: 21px;;color: #4891db"></i>
-                                            </span>
-                                            <span style="margin: 0px 2px;">
-                                                <i class="bi bi-facebook" style="font-size: 21px;;color: #4891db"></i>
-                                            </span>
-                                        </div>
-
-                                    </h4>
-                                    <div
-                                        style="font-size: 14px; margin: 0px !important; margin-top: 7px !important;    display: flex;align-items: center;justify-content: space-between;">
-                                        <div style="width: 32%;; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
-                                            class="truncate-text">
-
-                                            <%=result.startDateFormatted%>
-                                        </div>
-                                        <div style="width: 32%;text-align: right;; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
-                                            class="truncate-text">
-                                            <span style="font-weight: 600;">
-                                                Qty.
-                                            </span>
-                                            <%=result.airdropQuantity%>
-                                        </div>
-                                        <div style="width: 32%;text-align: right; color: #515053;background: #e6e6e6;padding: 5px 0px;text-align: center;border-radius: 10px;"
-                                            class="truncate-text">
-                                            <span style="font-weight: 600;">
-                                                Winners.
-                                            </span>
-                                            <%=result.noOfWinners%>
+                                        <div
+                                            style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height: 16px; width: 85%;">
+                                            <h4
+                                                style="margin: 0px !important; justify-content: space-between; display: flex;">
+                                                <div class="truncate-text icoHeading" style="width: 60%;"
+                                                    title="<%=result.tokenName%>">
+                                                    <%=result.tokenName%>
+                                                </div>
+                                                <div style="width: 40%; text-align: right;" class="icons">
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-globe"
+                                                            style="font-size: 20px; color: #4891db; font-weight: bolder;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-twitter-x"
+                                                            style="font-size: 20px; color: #4891db;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-telegram"
+                                                            style="font-size: 21px; color: #4891db;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-facebook"
+                                                            style="font-size: 21px; color: #4891db;"></i>
+                                                    </span>
+                                                </div>
+                                            </h4>
+                                            <div
+                                                style="font-size: 14px; margin: 0px !important; margin-top: 7px !important; display: flex; align-items: center; justify-content: space-between;">
+                                                <div style="width: 32%; color: #515053; background: #e6e6e6; padding: 5px 0px; text-align: center; border-radius: 10px;"
+                                                    class="truncate-text airdropGrayDiv">
+                                                    <%=result.startDateFormatted%>
+                                                </div>
+                                                <div style="width: 32%; text-align: right; color: #515053; background: #e6e6e6; padding: 5px 0px; text-align: center; border-radius: 10px;"
+                                                    class="truncate-text airdropGrayDiv">
+                                                    <span style="font-weight: 600;">Qty.</span>
+                                                    <%=result.airdropQuantity%>
+                                                </div>
+                                                <div style="width: 32%; text-align: right; color: #515053; background: #e6e6e6; padding: 5px 0px; text-align: center; border-radius: 10px;"
+                                                    class="truncate-text airdropGrayDiv">
+                                                    <span style="font-weight: 600;">Winners.</span>
+                                                    <%=result.noOfWinners%>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                </div>
-                            </div>
-                        </a>
-
-
-
-                        <% })%>
+                                </a>
+                                <% }) %>
+                        </div>
+                        <!-- Duplicated tiles for seamless loop -->
+                        <div class="tile-container">
+                            <% formattedAirdropData.forEach((result, index)=> { %>
+                                <a href="/airdrops/<%=result.slug%>" style="text-decoration: none;" target="_blank">
+                                    <div class="icoDiv"
+                                        style="background-color: #fff; display: flex; align-items: center; padding: 10px; border-radius: 10px; box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15); margin-bottom: 6px;">
+                                        <div style="width: 15%;" class="leftImg">
+                                            <img src="<%=result.tokenImage%>" alt=""
+                                                style="width: 50px; height: 50px; border-radius: 20%;">
+                                        </div>
+                                        <div
+                                            style="display: flex; flex-direction: column; padding: 0px 8px !important; line-height: 16px; width: 85%;">
+                                            <h4
+                                                style="margin: 0px !important; justify-content: space-between; display: flex;">
+                                                <div class="truncate-text icoHeading" style="width: 60%;"
+                                                    title="<%=result.tokenName%>">
+                                                    <%=result.tokenName%>
+                                                </div>
+                                                <div style="width: 40%; text-align: right;" class="icons">
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-globe"
+                                                            style="font-size: 20px; color: #4891db; font-weight: bolder;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-twitter-x"
+                                                            style="font-size: 20px; color: #4891db;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-telegram"
+                                                            style="font-size: 21px; color: #4891db;"></i>
+                                                    </span>
+                                                    <span style="margin: 0px 2px;">
+                                                        <i class="bi bi-facebook"
+                                                            style="font-size: 21px; color: #4891db;"></i>
+                                                    </span>
+                                                </div>
+                                            </h4>
+                                            <div
+                                                style="font-size: 14px; margin: 0px !important; margin-top: 7px !important; display: flex; align-items: center; justify-content: space-between;">
+                                                <div style="width: 32%; color: #515053; background: #e6e6e6; padding: 5px 0px; text-align: center; border-radius: 10px;"
+                                                    class="truncate-text airdropGrayDiv">
+                                                    <%=result.startDateFormatted%>
+                                                </div>
+                                                <div style="width: 32%; text-align: right; color: #515053; background: #e6e6e6; padding: 5px 0px; text-align: center; border-radius: 10px;"
+                                                    class="truncate-text airdropGrayDiv">
+                                                    <span style="font-weight: 600;">Qty.</span>
+                                                    <%=result.airdropQuantity%>
+                                                </div>
+                                                <div style="width: 32%; text-align: right; color: #515053; background: #e6e6e6; padding: 5px 0px; text-align: center; border-radius: 10px;"
+                                                    class="truncate-text airdropGrayDiv">
+                                                    <span style="font-weight: 600;">Winners.</span>
+                                                    <%=result.noOfWinners%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <% }) %>
+                        </div>
+                    </div>
                 </div>
+
+                <style>
+                    @keyframes scrollUp {
+                        0% {
+                            transform: translateY(0);
+                        }
+
+                        100% {
+                            transform: translateY(-50%);
+                        }
+                    }
+
+                    .content:hover {
+                        animation-play-state: paused;
+                    }
+                </style>
 
 
             </div>
@@ -2018,5 +2540,103 @@ body {
             </script>
 
 </body>
+
+
+<script>
+    const track = document.getElementById("slider-track");
+    const overlay = document.getElementById("overlay");
+    const card = document.getElementById("card-content");
+    const container = document.getElementById("slider-container");
+    const images = Array.from(track.querySelectorAll("img"));
+    const visibleSlides = 5;
+    let currentIndex = 0;
+    let autoSlide;
+
+    for (let i = 0; i < visibleSlides; i++) {
+        const clone = images[i].cloneNode(true);
+        clone.classList.add("clone");
+        track.appendChild(clone);
+    }
+
+    const allImages = Array.from(track.querySelectorAll("img"));
+
+    function slideTo(index) {
+        track.style.transition = "transform 0.5s ease-in-out";
+        track.style.transform = `translateX(-${index * 20}%)`;
+        currentIndex = index;
+    }
+
+    function nextSlide() {
+        if (currentIndex >= images.length) {
+            track.style.transition = "none";
+            track.style.transform = `translateX(0%)`;
+            currentIndex = 0;
+            setTimeout(() => slideTo(1), 20);
+        } else {
+            slideTo(currentIndex + 1);
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex <= 0) {
+            track.style.transition = "none";
+            track.style.transform = `translateX(-${images.length * 20}%)`;
+            currentIndex = images.length;
+            setTimeout(() => slideTo(images.length - 1), 20);
+        } else {
+            slideTo(currentIndex - 1);
+        }
+    }
+
+    document.querySelector(".nav.next").onclick = nextSlide;
+    document.querySelector(".nav.prev").onclick = prevSlide;
+
+    function startAutoSlide() {
+        stopAutoSlide();
+        autoSlide = setInterval(() => nextSlide(), 4000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlide);
+    }
+
+    startAutoSlide();
+
+    allImages.forEach((img) => {
+        img.addEventListener("click", () => {
+            stopAutoSlide();
+            const templateId = img.getAttribute("data-card");
+            const template = document.getElementById(templateId);
+            card.innerHTML = template?.innerHTML || "<p>Geen content gevonden.</p>";
+            overlay.classList.add("show");
+        });
+    });
+
+    overlay.addEventListener("click", (e) => {
+        if (e.target === overlay || e.target.classList.contains("close-btn")) {
+            overlay.classList.remove("show");
+            startAutoSlide();
+        }
+    });
+
+    let startX = 0;
+    container.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    });
+    container.addEventListener("touchend", (e) => {
+        const diff = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diff) > 50) {
+            diff > 0 ? prevSlide() : nextSlide();
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const track = document.querySelector(".slider-track");
+
+        track.addEventListener("mouseover", stopAutoSlide);
+        track.addEventListener("mouseout", startAutoSlide);
+    });
+
+</script>
 
 </html>

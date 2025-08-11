@@ -922,6 +922,294 @@
     .newsletter-title {
       margin-top: 30px;
     }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        padding: 0 15px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .email-input {
+        border-radius: 6px;
+        border-right: 1px solid #d1d5db;
+      }
+
+      .subscribe-btn {
+        border-radius: 6px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      /* Hamburger menu for mobile */
+      .hamburger-menu {
+        display: block;
+      }
+
+      /* Hide desktop navigation */
+      nav {
+        display: none;
+      }
+
+      .sidebar.active {
+        display: block;
+      }
+
+      .logo a img {
+        width: 85% !important;
+      }
+
+      header {
+        align-items: unset !important;
+        flex-wrap: unset !important;
+        padding: 10px 12px;
+        flex-direction: unset;
+        border: 1px solid #eee;
+      }
+
+      .hamburger-menu {
+        font-size: 22px;
+      }
+
+      .logo {
+        margin-bottom: 0;
+      }
+
+      .dropdown {
+        background: #f6f6f6;
+      }
+
+      .tab {
+        padding: 5px 12px;
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      .eventBtn {
+        padding: 8px 12px;
+        background: #655de6;
+        margin-left: auto;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 15px;
+        font-weight: 500;
+        font-size: 10px;
+        align-items: center;
+        display: flex;
+      }
+
+      /* Card container adjustments for two cards per row */
+      .card-container {
+        flex-wrap: wrap;
+        gap: 10px;
+        /* Reduced gap for mobile */
+        justify-content: space-between;
+      }
+
+      .all_event_h2{
+        font-size: 18px !important;
+      }
+      .card {
+        max-width: calc(50% - 5px);
+        /* Two cards per row with small gap */
+        flex: 1 1 calc(50% - 5px);
+        border-radius: 8px;
+      }
+
+      .img_title {
+        display: block !important;
+
+      }
+
+      .img_title img {
+        height: 100% !important;
+        width: 100% !important;
+      }
+
+      .card-body {
+        padding: 10px 6px;
+        /* Reduced padding */
+      }
+
+      .card-title {
+        font-size: 14px;
+        /* Smaller font size */
+        margin: 5px 0 8px;
+      }
+
+      .card-title h6 {
+        font-size: 12px;
+        /* Smaller font size for raiseFund */
+      }
+
+      .card-info {
+        font-size: 12px;
+        /* Smaller font size */
+        margin-bottom: 8px;
+      }
+
+      .tags {
+        gap: 5px;
+        /* Reduced gap between tags */
+        margin-bottom: 8px;
+        
+      }
+
+      .tag {
+        font-size: 12px;
+        /* Smaller font size for tags */
+        padding: 4px 8px;
+      }
+
+      .blockchain-tags {
+        gap: 4px;
+        /* Reduced gap for blockchain tags */
+        margin-top: 4px;
+      }
+
+      .badge {
+        font-size: 12px;
+        /* Smaller font size for badges */
+        padding: 3px 6px;
+      }
+
+      .card-footer {
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: end;
+        padding: 0px !important;
+      }
+
+      .card-share span {
+        font-size: 12px;
+        display: none;
+        /* Smaller font size for share text */
+      }
+
+      .card-share i {
+        font-size: 16px;
+        /* Slightly smaller icons */
+      }
+
+      .icons i {
+        font-size: 18px;
+        /* Slightly smaller social icons */
+      }
+
+      .bitcoin-guides {
+        margin: 0 10px !important;
+        gap: 0 !important;
+      }
+
+      .footer-bottom {
+        padding-top: 0;
+      }
+
+      .newsletter-section {
+        margin-bottom: 15px !important;
+        padding-bottom: 15px !important;
+      }
+
+      .newsletter-title {
+        font-size: 24px;
+        /* Smaller font size */
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .filters {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .filter-button {
+        font-size: 12px;
+        /* Smaller font size */
+        padding: 6px 10px;
+      }
+
+      .create-search {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .search-box input {
+        font-size: 12px;
+        /* Smaller font size */
+      }
+
+      .pagination-container {
+        gap: 5px;
+        /* Reduced gap */
+      }
+
+      .page-box {
+        font-size: 12px;
+        /* Smaller font size */
+        padding: 6px 10px;
+        min-width: 35px;
+      }
+
+      /* Adjust logo image size in cards */
+      .card img {
+        width: 60px;
+        /* Reduced logo size */
+        height: 25px;
+        border-radius: 15px;
+      }
+      .listingSection{
+        margin-top: 5px !important;
+      }
+
+
+
+      .img_title{
+        display: flex !important;
+      }
+      .card-footer{
+        flex-direction: unset !important;
+        padding: 6px !important;
+      }
+      .icons i{
+        font-size: 15px !important;
+      }
+      .all_event_h2{
+        font-size: 13px !important;
+      }
+      .secondIcoHeading{
+        font-size: 17px !important;
+      }
+      .breadcrumb{
+        display: none !important;
+      }
+      img.shareImg{
+        width: 24px !important;
+        height: 24px !important;
+      }
+      .logo a img {
+        width: 70% !important;
+    }
+    }
   </style>
 </head>
 
@@ -938,18 +1226,18 @@
           <a href="/" style="color: #555;">Home</a> > <a href="#"> ICO</a>
         </div>
 
-        <div class="container">
+        <div class="">
           <div class="tabs">
-            <div class="tab active">All ICO Listing</div>
+            <div class="tab active">
+              <h2 class="all_event_h2">All ICO Listing
+                </h2>
+              </div>
             <!-- <div class="tab">Organizers</div>
             <div class="tab">Speakers</div> -->
             <a href="/createIcoListing" class="eventBtn">List Your ICO</a>
           </div>
         </div>
-
-
-
-        <h2>All ICO Listing</h2>
+        <h2 class="secondIcoHeading">All ICO Listing</h2>
 
         <div class="filters">
           <div class="filter-group">
@@ -1006,8 +1294,6 @@
             </div>
           </div> -->
           </div>
-
-
         </div>
     </section>
 
@@ -1044,12 +1330,12 @@
                     </div>
                     <span class="ms-auto">
                       <a href="/ico/<%=result.slug%>" target="_blank">
-                        <img style="width: 33px;opacity: 0.8;"
+                        <img class="shareImg" style="width: 33px;opacity: 0.8;"
                           src="../../image/pngtree-share-icon-button-png-image_6454552.png" alt="">
                       </a>
                     </span>
                 </div>
-                <div style="display: flex;">
+                <div style="display: flex;" class="img_title">
                   <div>
                     <a href="/ico/<%=result.slug%>" target="_blank">
                       <img style="border-radius: 20px;width: 80px;height: 80px;" src="<%= result.logo %>"
@@ -1059,7 +1345,7 @@
                   <div class="card-title truncate-text" style="padding: 0px 0px 0px 12px;width: 100%;"
                     title="<%= result.title %>">
                     <a href="/ico/<%=result.slug%>" style="text-decoration: none;color: #000;" target="_blank">
-                      <%=result.title%>
+                      l <%=result.title%>
                     </a>
                     <h6 class="mt-1">
                       <%=result.raiseFund%>
@@ -1112,7 +1398,8 @@
                     </a>
                   </div>
 
-                  <a href="/ico/<%=result.slug%>" class="link" target="_blank">View Details</a>
+                  <a href="/ico/<%=result.slug%>" class="link" target="_blank" style="text-align: center;">View
+                    Details</a>
 
                 </div>
                 <!-- Share This Project -->
