@@ -10,9 +10,14 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <link rel="icon" href="../../image/tRjsqSe3_400x400.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
-  <title>Airdrops Listing</title>
+  <title>Latest Cryptocurrency News, Prices & Market Updates (2025)</title>
+  <meta name="description"
+    content="Get real-time crypto news, new token listings, legit airdrop alerts & price updates. Trusted human-written content for traders & investors in 2025.">
+
   <style>
     * {
       box-sizing: border-box;
@@ -598,6 +603,503 @@
       cursor: pointer;
     }
 
+    /* General Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #fff;
+      color: #111;
+      font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    span {
+      font-family: inherit;
+    }
+
+    /* Header Styling */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 48px;
+      border-bottom: 1px solid #eee;
+      flex-wrap: wrap;
+      background: #fff;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo a img {
+      width: 100%;
+      max-width: 240px;
+    }
+
+    /* Desktop Navigation */
+    nav {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #0b74de;
+    }
+
+    /* Dropdown Styling */
+    .dropdown {
+      position: relative;
+      padding: 8px 10px;
+    }
+
+    .dropdown a {
+      color: #031129;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 10px 0;
+      z-index: 10;
+      min-width: 150px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 15px;
+      color: #111;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .dropdown-content a:hover {
+      background: #fafafa;
+      color: #0b74de;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* News Dropdown */
+    .news-dropdown .news-category-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    .news-dropdown:hover .news-category-dropdown {
+      display: block;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .category-col a {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .category-col a:hover {
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    /* Hamburger Menu */
+    .hamburger-menu {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #111;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 90%;
+      max-width: 300px;
+      height: 100%;
+      background: #fff;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      transform: translateX(0);
+    }
+
+    .sidebar-logo {
+      padding: 20px 12px;
+    }
+
+    .sidebar-logo img {
+      width: 80%;
+      max-width: 200px;
+    }
+
+    .close-btn {
+      font-size: 30px;
+      color: #111;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    .sidebar .dropdown {
+      background: #f6f6f6;
+      margin-bottom: 11px;
+    }
+
+    .sidebar .dropdown a {
+      display: block;
+      padding: 10px 15px;
+      font-size: 16px;
+    }
+
+    /* Footer Styling */
+    .footer {
+      background: #fff;
+      padding: 40px 0;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .newsletter-section {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .newsletter-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0b74de;
+      margin: 20px 0 30px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto 20px;
+      gap: 0;
+    }
+
+    .email-input {
+      flex: 1;
+      padding: 12px 20px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px 0 0 8px;
+      font-size: 14px;
+      outline: none;
+      border-right: none;
+    }
+
+    .email-input:focus {
+      border-color: #0b74de;
+    }
+
+    .subscribe-btn {
+      background: #0b74de;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .subscribe-btn:hover {
+      background: #005bb5;
+    }
+
+    .subscribe-btn::after {
+      content: '>';
+      font-weight: bold;
+      margin-left: 8px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .checkbox {
+      width: 16px;
+      height: 16px;
+    }
+
+    .checkbox-label {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .privacy-text {
+      font-size: 12px;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+
+    .privacy-link {
+      color: #0b74de;
+      text-decoration: none;
+    }
+
+    .privacy-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      background: #f1f5f9;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-link:hover {
+      background: #0b74de;
+      color: #fff;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link {
+      color: #64748b;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: #0b74de;
+    }
+
+    .footer-bottom {
+      padding-top: 30px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copyright {
+      font-size: 14px;
+      color: #0b74de;
+    }
+
+    /* Responsive Design */
+
+    /* Tablet (768px and below) */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 12px;
+        flex-wrap: nowrap;
+      }
+
+      .logo a img {
+        max-width: 180px;
+      }
+
+      .hamburger-menu {
+        display: block;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .sidebar.active {
+        display: block;
+      }
+
+      .footer-container {
+        padding: 0 20px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .email-input {
+        border-radius: 8px;
+        border-right: 1px solid #d1d5db;
+      }
+
+      .subscribe-btn {
+        border-radius: 8px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .newsletter-title {
+        font-size: 24px;
+        margin: 20px 0;
+      }
+    }
+
+    /* Mobile (480px and below) */
+    @media (max-width: 480px) {
+      header {
+        padding: 8px 10px;
+      }
+
+      .logo a img {
+        max-width: 150px;
+      }
+
+      .hamburger-menu {
+        font-size: 20px;
+      }
+
+      .sidebar-logo img {
+        max-width: 150px;
+      }
+
+      .sidebar .dropdown a {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+
+      .newsletter-title {
+        font-size: 20px;
+        margin: 15px 0;
+      }
+
+      .email-input,
+      .subscribe-btn {
+        font-size: 12px;
+        padding: 10px 15px;
+      }
+
+      .footer-container {
+        padding: 0 15px;
+      }
+
+      .footer-content {
+        gap: 20px;
+      }
+
+      .footer-title {
+        font-size: 14px;
+      }
+
+      .footer-link {
+        font-size: 12px;
+      }
+
+      .copyright {
+        font-size: 12px;
+      }
+    }
+
+
     @media screen and (max-width: 768px) {
       .category-dropdown {
         min-width: 100%;
@@ -607,12 +1109,71 @@
       .category-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .card-body {
+        padding: 5px 7px;
+      }
+
+      .tegsDiv span {
+        font-size: 12px !important;
+      }
+
+      .card-title {
+        font-size: 15px !important;
+      }
+
+      .card-text {
+        font-size: 12px !important;
+        margin-bottom: 3px !important;
+      }
+
+      .tegSpan {
+        display: none !important;
+      }
+
+      .right-div {
+        display: none;
+      }
+
+      .breadcrumb {
+        display: none;
+      }
+
+      .tab {
+        padding: 4px 10px !important;
+      }
+
+      .eventBtn {
+        padding: 8px 25px;
+        background: #655de6;
+        margin-left: auto;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 18px;
+        font-weight: 600;
+        font-size: 12px;
+      }
+          .logo a img {
+        width: 70% !important;
+        max-width: unset;
+    }
+    .footer-link{
+      font-size: 14px !important;
+    }
+
     }
 
     @media screen and (max-width: 480px) {
       .category-grid {
         grid-template-columns: 1fr;
       }
+    }
+
+    .truncate-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
     }
   </style>
 </head>
@@ -664,10 +1225,10 @@
                     <h2 class="card-title truncate-text" style="font-size: 19px;">
                       <%=result.title%>
                     </h2>
-                    <p class="card-text" style="color: #575757;"><%-result.shortDescription%></p>
-                    <div>
+                    <p class="card-text truncate-text" style="color: #575757;"><%-result.shortDescription%></p>
+                    <div class="tegsDiv">
                       <% result.tags.slice(0, 3).forEach((result2,index)=>{ %>
-                        <span style="padding: 4px 12px;
+                        <span class="tegSpan" style="padding: 4px 12px;
     background: #e7e5e5;
     text-align: center;
     border-radius: 10px;color: #575757;margin-left: 5px;">
@@ -684,7 +1245,7 @@
               </a>
               <% })%>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 right-div">
 
             <% newsData.forEach((result,index)=>{ %>
               <a href="/news/<%=result.slug%>"
@@ -697,7 +1258,7 @@
                     <h2 class="card-title" style="font-size: 19px;">
                       <%=result.title%>
                     </h2>
-                    
+
                   </div>
                 </div>
               </a>
@@ -757,38 +1318,38 @@
 
 
 
+    <%- include("../../partials/frountFooter.ejs")%>
 
 
 
 
 
-
-    <script>
-      function toggleMenu() {
-        const nav = document.getElementById('nav');
-        nav.classList.toggle('show');
-      }
-    </script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"></script>
-
-    <script>
-      // Hamburger Menu Toggle (for opening and closing the nav)
-      // Hamburger menu click (for opening the sidebar)
-      document.getElementById('hamburger-menu').addEventListener('click', function () {
-        document.getElementById('sidebar').classList.add('active');
-      });
-
-      // Close button click (for closing the sidebar)
-      document.getElementById('close-btn').addEventListener('click', function () {
-        document.getElementById('sidebar').classList.remove('active');
-      });
+      <script>
+        function toggleMenu() {
+          const nav = document.getElementById('nav');
+          nav.classList.toggle('show');
+        }
+      </script>
 
 
-    </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+      <script>
+        // Hamburger Menu Toggle (for opening and closing the nav)
+        // Hamburger menu click (for opening the sidebar)
+        document.getElementById('hamburger-menu').addEventListener('click', function () {
+          document.getElementById('sidebar').classList.add('active');
+        });
+
+        // Close button click (for closing the sidebar)
+        document.getElementById('close-btn').addEventListener('click', function () {
+          document.getElementById('sidebar').classList.remove('active');
+        });
+
+
+      </script>
 
 </body>
 

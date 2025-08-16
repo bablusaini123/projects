@@ -442,7 +442,7 @@ module.exports.IcoListing = async (req, res) => {
     const icoSliderData = await IcoListing.find()
   .sort({ createdAt: -1 }) // Get latest entries first
   .limit(20);
-  console.log(icoSliderData[0])
+//  console.log(icoSliderData[0])
     res.render("frountend/icoListing.ejs", {
       formattedIcoListingData,
       current: page,
@@ -993,7 +993,7 @@ module.exports.createAirdropSubmit = async (req, res) => {
 module.exports.influencers = async (req, res) => {
   try {
     const influencerData = (await Influencer.find()).reverse()
-    console.log(influencerData)
+//    console.log(influencerData)
     res.render("frountend/influencer.ejs", { influencerData: influencerData })
   } catch (error) {
     res.status(500).json({
@@ -1084,18 +1084,19 @@ module.exports.allNews = async (req, res) => {
     // Filter by category if not "all"
     if (selectedCategory !== 'all') {
       selectedCategory = selectedCategory.replace(/-/g, ' ');
-      console.log(selectedCategory)
+    
+    //  console.log(selectedCategory)
       filter.category = { $in: [selectedCategory] }; // Match array field
     }
 
-    console.log(filter)
+  //  console.log(filter)
 
     // Get total count
     const totalCount = await News.countDocuments(filter);
 
     // Get paginated and sorted data
     const newsData = await News.find(filter)
-      .sort({ createdAt: -1 }) // Latest first
+      .sort({ publishDate: -1 }) // Latest first
       .skip((page - 1) * perPage)
       .limit(perPage);
 
@@ -1107,7 +1108,7 @@ module.exports.allNews = async (req, res) => {
       };
     });
 
-    console.log(formattednewsData)
+  //  console.log(formattednewsData)
 
     // Render to frontend
     res.render("frountend/news.ejs", {
@@ -1221,7 +1222,7 @@ module.exports.DetailIco = async (req, res) => {
   try {
     const slug = req.params.slug
     const icoData = await IcoListing.find({ slug: slug })
-    console.log("-----", icoData)
+  //  console.log("-----", icoData)
     const startDate = new Date(icoData[0].startDate); // aapki db se aayi date
     const formattedStartDate = new Intl.DateTimeFormat('en-GB', {
       day: '2-digit',
