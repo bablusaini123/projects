@@ -30,7 +30,7 @@ module.exports.getSitemap = async (req, res) => {
 
     // Prepare sitemap URLs from slugs
     const eventUrls = eventSlugs.map(slug => {
-      return `<url><loc>https://kryptodesk.com/event/${escapeXML(slug.slug)}</loc></url>`;
+      return `<url><loc>https://kryptodesk.com/events/${escapeXML(slug.slug)}</loc></url>`;
     }).join('');
 
     const icoUrls = icoSlugs.map(slug => {
