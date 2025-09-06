@@ -208,7 +208,7 @@ exports.purchaseCourse = async (req, res) => {
     // // ✅ Razorpay Signature Verification
     const body = razorpay_order_id + '|' + razorpay_payment_id;
     const expectedSignature = crypto
-      .createHmac('sha256', process.env.RAZORPAY_SCERET)
+      .createHmac('sha256', process.env.RAZORPAY_SECRET)
       .update(body.toString())
       .digest('hex');
 
@@ -257,7 +257,7 @@ exports.purchaseCourse = async (req, res) => {
       const level2Wallet = isNaN(Number(level2.userWallet)) ? 0 : Number(level2.userWallet);
       level2.userWallet = level2Wallet + level2Commission;
       await level2.save();
-      
+
     }
 
 

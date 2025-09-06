@@ -19,7 +19,7 @@ app.use(cors())
 
 module.exports.razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEYID,
-  key_secret: process.env.RAZORPAY_SCERET,
+  key_secret: process.env.RAZORPAY_SECRET,
 });
 
 
