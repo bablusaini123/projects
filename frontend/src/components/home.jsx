@@ -461,6 +461,7 @@ const EarnscopLanding = () => {
         resolve();
         return;
       }
+      
       const script = document.createElement('script');
       script.src = 'https://checkout.razorpay.com/v1/checkout.js';
       script.onload = () => resolve();
@@ -493,7 +494,7 @@ const EarnscopLanding = () => {
 
         const currentUser = getCurrentUser();
         const options = {
-          key: 'rzp_test_yGCAXsBibCoK0y',
+          key: 'rzp_test_REGUFDJyyOgnc8',
           amount,
           currency,
           name: 'Earnscop',

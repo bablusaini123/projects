@@ -39,7 +39,7 @@ app.use(express.static("public"));
 
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE, () => {
-  console.log("Earnscope   database have connected to your project");
+  console.log("Earnscope database have connected to your project");
 });
 
 app.use(express.json());
