@@ -158,25 +158,20 @@ exports.loginUser = async (req, res) => {
 
 
 exports.createOrder = async (req, res) => {
+  const razorpay = app.razorpay
+  const { amount } = req.body;
+
+  const options = {
+    amount: amount * 100, // Razorpay uses paisa
+    currency: "INR",
+    receipt: "order_rcptid_11"
+  };
 
   try {
-
-    console.log("1==========", process.env.RAZORPAY_KEYID)
-    console.log("2=========", process.env.RAZORPAY_SECRET)
-    // const razorpay = app.razorpay
-    // const { amount } = req.body;
-
-    // const options = {
-    //   amount: amount * 100, // Razorpay uses paisa
-    //   currency: "INR",
-    //   receipt: "order_rcptid_11"
-    // };
-    // const order = await razorpay.orders.create(options);
-    // res.status(200).json({ success: true, order });
+    const order = await razorpay.orders.create(options);
+    res.status(200).json({ success: true, order });
   } catch (err) {
-    console.log("hiiiiiiiiiiiiiiiii")
-
-    console.error("Razorpay r:", err);
+    console.error("Razorpay Error:", err);
     res.status(500).json({ success: false, error: err.message });
   }
 
