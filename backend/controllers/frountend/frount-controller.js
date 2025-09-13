@@ -176,7 +176,7 @@ exports.createOrder = async (req, res) => {
   } catch (err) {
     console.log("hiiiiiiiiiiiiiiiii")
 
-    console.error("Razorpay Error:", err);
+    console.error("Razorpay r:", err);
     res.status(500).json({ success: false, error: err.message });
   }
 
