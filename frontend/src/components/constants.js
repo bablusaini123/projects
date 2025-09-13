@@ -1,44 +1,50 @@
+import insta from '../../public/insta.jpg'
+import seo from '../../public/seo2.png'
+import freelancer from '../../public/freelancer.png'
+import moneyai from '../../public/moneyai.png'
+
+
 export const COURSES = [
-  {
-    id: 1,
-    title: 'Digital Marketing Mastery',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=200&fit=crop',
-    price: '799',
-    commisionPercent: 60,
-    rating: 4.8,
-    students: 1250,
-  },
+  // {
+  //   id: 1,
+  //   title: 'SEO Secrets 2025 Rank In Days, Not Months',
+  //   image: seo,
+  //   price: '799',
+  //   commisionPercent: 60,
+  //   rating: 4.8,
+  //   students: 1250,
+  // },
   {
     id: 2,
-    title: 'Web Development Bootcamp',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&h=200&fit=crop',
-    price: '1499',
+    title: 'How To Grow Instagram In 21 Days 2025',
+    image: insta,
+    price: '999',
     commisionPercent: 65,
     rating: 4.9,
     students: 980,
   },
   {
-    id: 3,
-    title: 'Social Media Marketing',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=300&h=200&fit=crop',
-    price: '2399',
+    id: 4,
+    title: 'How to earn money from AI 2025',
+    image: moneyai,
+    price: '2999',
     commisionPercent: 70,
     rating: 4.7,
     students: 1500,
   },
   {
-    id: 4,
-    title: 'Graphic Design Essentials',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=300&h=200&fit=crop',
-    price: '2999',
+    id: 3,
+    title: 'Get High-Paying Clients Fast – 2025 Freelancer System',
+    image: freelancer,
+    price: '2399',
     commisionPercent: 75,
     rating: 4.7,
     students: 1500,
   },
   {
     id: 5,
-    title: 'Advanced SEO Strategies',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=300&h=200&fit=crop',
+    title: 'SEO Secrets 2025 Rank In Days, Not Months',
+    image: seo,
     price: '3499',
     commisionPercent: 80,
     rating: 4.7,

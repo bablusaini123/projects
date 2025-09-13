@@ -10,10 +10,10 @@ import { createOrder, purchaseCourse } from './api';
 import { isAuthenticated, getCurrentUser } from './auth';
 import '../App.css';
 import { Button } from './ui/button';
-// testing
- 
-
-
+import Slide1 from '../../public/slide1.jpeg';
+import Slide2 from '../../public/slide2.jpeg';
+import Slide3 from '../../public/slide3.jpeg';
+import Slide4 from '../../public/slide4.jpeg';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -45,21 +45,17 @@ const DotsAnimation = () => {
         const dot = document.createElement('div');
         dot.className = 'floating-dot';
 
-        // Random color
         const colorClass = this.colors[Math.floor(Math.random() * this.colors.length)];
         dot.classList.add(colorClass);
 
-        // Random size
         const sizeClass = this.sizes[Math.floor(Math.random() * this.sizes.length)];
         dot.classList.add(sizeClass);
 
-        // Random movement type
         const movementType = this.movements[Math.floor(Math.random() * this.movements.length)];
         if (movementType !== 'floatDiagonal') {
           dot.classList.add(movementType);
         }
 
-        // Random special effects
         if (Math.random() > 0.7) {
           dot.classList.add('glow');
         }
@@ -68,7 +64,6 @@ const DotsAnimation = () => {
           dot.classList.add('pulse');
         }
 
-        // Random starting position based on movement type
         if (movementType === 'horizontal-dot') {
           dot.style.left = '-10px';
           dot.style.top = Math.random() * window.innerHeight + 'px';
@@ -76,24 +71,17 @@ const DotsAnimation = () => {
           dot.style.left = Math.random() * window.innerWidth + 'px';
           dot.style.bottom = '-10px';
         } else {
-          // Diagonal and zigzag start from bottom-left area
           dot.style.left = Math.random() * (window.innerWidth * 0.3) + 'px';
           dot.style.bottom = '-10px';
         }
 
-        // Random animation duration
-        const duration = Math.random() * 4 + 6; // 6-10 seconds for faster animations
+        const duration = Math.random() * 4 + 6;
         dot.style.animationDuration = duration + 's';
-
-        // Random delay
         dot.style.animationDelay = Math.random() * 1.5 + 's';
-
-        // Add unique ID
         dot.id = 'dot-' + (++this.dotCount);
 
         this.container.appendChild(dot);
 
-        // Remove dot after animation
         setTimeout(() => {
           if (dot && dot.parentNode) {
             dot.remove();
@@ -102,22 +90,19 @@ const DotsAnimation = () => {
       }
 
       createMultipleDots() {
-        const count = Math.random() * 5 + 4; // 4-9 dots at once to increase quantity
+        const count = Math.random() * 5 + 4;
         for (let i = 0; i < count; i++) {
-          setTimeout(() => this.createDot(), i * 80); // Faster spawning
+          setTimeout(() => this.createDot(), i * 80);
         }
       }
 
       startAnimation() {
-        // Create initial burst of dots
-        for (let i = 0; i < 20; i++) { // Increased initial burst
+        for (let i = 0; i < 20; i++) {
           setTimeout(() => this.createDot(), i * 150);
         }
-
-        // Continue creating dots
         this.animationInterval = setInterval(() => {
           this.createMultipleDots();
-        }, 600); // New batch every 0.6 seconds for more dots
+        }, 600);
       }
 
       stopAnimation() {
@@ -144,7 +129,7 @@ const DotsAnimation = () => {
         });
       }
 
-      createDotBurst(count = 20) { // Increased burst count
+      createDotBurst(count = 20) {
         for (let i = 0; i < count; i++) {
           setTimeout(() => this.createDot(), i * 40);
         }
@@ -154,13 +139,11 @@ const DotsAnimation = () => {
     const dotsAnimation = new DotsAnimation();
     window.dotsAnimation = dotsAnimation;
 
-    // Create dot burst on click
     const handleClick = (e) => {
-      dotsAnimation.createDotBurst(12); // Increased burst on click
+      dotsAnimation.createDotBurst(12);
     };
     document.body.addEventListener('click', handleClick);
 
-    // Performance monitoring
     let frameCount = 0;
     let lastTime = performance.now();
 
@@ -188,7 +171,6 @@ const DotsAnimation = () => {
 
     requestAnimationFrame(monitorPerformance);
 
-    // Cleanup
     return () => {
       document.body.removeEventListener('click', handleClick);
       if (window.dotsAnimation) {
@@ -202,7 +184,6 @@ const DotsAnimation = () => {
   );
 };
 
-// Floating Dollar Coins Component
 const FloatingCoins = ({ count = 20 }) => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -251,7 +232,6 @@ const FloatingCoins = ({ count = 20 }) => {
   );
 };
 
-// Floating Dollar Particles Component
 const FloatingDollarParticles = ({ count = 40 }) => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -300,7 +280,6 @@ const FloatingDollarParticles = ({ count = 40 }) => {
   );
 };
 
-// Particle Burst Component
 const ParticleBurst = ({ trigger, children }) => {
   const [isTriggered, setIsTriggered] = useState(false);
 
@@ -350,6 +329,21 @@ const EarnscopLanding = () => {
   const navigate = useNavigate();
   const hasFetchedData = useRef(false);
   const abortControllerRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    { image: Slide1, alt: 'Slide 1' },
+    { image: Slide2, alt: 'Slide 2' },
+    { image: Slide3, alt: 'Slide 3' },
+    { image: Slide4, alt: 'Slide 4' },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // Change slide every 5 seconds
+    return () => clearInterval(interval);
+  }, [slides.length]);
 
   const toggleFaq = useCallback((index) => {
     setOpenFaq((prev) => (prev === index ? null : index));
@@ -371,13 +365,6 @@ const EarnscopLanding = () => {
       if (!response.ok) {
         throw new Error('Failed to fetch dashboard info');
       }
-
-      // const data = await response.json();
-      // localStorage.setItem('landingDashboardData', JSON.stringify({
-      //   data,
-      //   timestamp: new Date().toISOString(),
-      // }));
-      // return data;
     } catch (error) {
       if (!abortControllerRef.current?.signal.aborted) {
         console.error('API Error:', {
@@ -391,10 +378,9 @@ const EarnscopLanding = () => {
     }
   }, []);
 
-  // Fetch dashboard info with caching
   useEffect(() => {
     if (!isAuthenticated()) {
-      return; // Skip API call if user is not authenticated
+      return;
     }
 
     const fetchData = async () => {
@@ -406,7 +392,7 @@ const EarnscopLanding = () => {
         try {
           const { data, timestamp } = JSON.parse(cachedData);
           const cacheAge = new Date().getTime() - new Date(timestamp).getTime();
-          const cacheValidDuration = 60 * 60 * 1000; // 1 hour
+          const cacheValidDuration = 60 * 60 * 1000;
           if (cacheAge < cacheValidDuration) {
             hasFetchedData.current = true;
             setPurchaseHistory(data.purchaseHistory || []);
@@ -441,9 +427,6 @@ const EarnscopLanding = () => {
       } catch (error) {
         if (!abortControllerRef.current?.signal.aborted) {
           console.error('Fetch Data Error:', error.message);
-          // toast.error(`Error fetching dashboard info: ${error.message}`, {
-          //   style: { background: '#fee2e2', color: '#b91c1c', border: '1px solid #b91c1c' },
-          // });
           setPurchaseHistory([]);
         }
       }
@@ -465,7 +448,7 @@ const EarnscopLanding = () => {
         resolve();
         return;
       }
-      
+
       const script = document.createElement('script');
       script.src = 'https://checkout.razorpay.com/v1/checkout.js';
       script.onload = () => resolve();
@@ -514,12 +497,10 @@ const EarnscopLanding = () => {
                 razorpay_signature: response.razorpay_signature,
               });
               toast.success('Payment successful!');
-              // Update purchase history after successful purchase
               setPurchaseHistory((prev) => [
                 ...prev,
                 { courseTitle: course.title, price: course.price, date: new Date().toISOString().split('T')[0] },
               ]);
-              // Update local storage with new purchase history
               const cachedData = localStorage.getItem('dashboardData');
               if (cachedData) {
                 try {
@@ -541,7 +522,7 @@ const EarnscopLanding = () => {
               navigate('/success', {
                 state: {
                   course,
-                  amount: amount / 100, // Convert paise to rupees
+                  amount: amount / 100,
                 },
               });
             } catch (error) {
@@ -613,7 +594,6 @@ const EarnscopLanding = () => {
     });
   };
 
-  // Check if a course is purchased
   const isCoursePurchased = (courseTitle) => {
     return purchaseHistory.some((purchase) => purchase.courseTitle === courseTitle);
   };
@@ -730,17 +710,16 @@ const EarnscopLanding = () => {
             }
           }
 
-          /* Adjusted colors for white/light background */
-          .color-1 { background: linear-gradient(45deg, #e53e3e, #f56565); } /* Red */
-          .color-2 { background: linear-gradient(45deg, #38a169, #68d391); } /* Green */
-          .color-3 { background: linear-gradient(45deg, #3182ce, #63b3ed); } /* Blue */
-          .color-4 { background: linear-gradient(45deg, #d53f8c, #ed64a6); } /* Pink */
-          .color-5 { background: linear-gradient(45deg, #dd6b20, #f6ad55); } /* Orange */
-          .color-6 { background: linear-gradient(45deg, #805ad5, #9f7aea); } /* Purple */
-          .color-7 { background: linear-gradient(45deg, #319795, #4fd1c5); } /* Teal */
-          .color-8 { background: linear-gradient(45deg, #d69e2e, #ecc94b); } /* Yellow */
-          .color-9 { background: linear-gradient(45deg, #ed64a6, #f687b3); } /* Light Pink */
-          .color-10 { background: linear-gradient(45deg, #4a5568, #718096); } /* Gray */
+          .color-1 { background: linear-gradient(45deg, #e53e3e, #f56565); }
+          .color-2 { background: linear-gradient(45deg, #38a169, #68d391); }
+          .color-3 { background: linear-gradient(45deg, #3182ce, #63b3ed); }
+          .color-4 { background: linear-gradient(45deg, #d53f8c, #ed64a6); }
+          .color-5 { background: linear-gradient(45deg, #dd6b20, #f6ad55); }
+          .color-6 { background: linear-gradient(45deg, #805ad5, #9f7aea); }
+          .color-7 { background: linear-gradient(45deg, #319795, #4fd1c5); }
+          .color-8 { background: linear-gradient(45deg, #d69e2e, #ecc94b); }
+          .color-9 { background: linear-gradient(45deg, #ed64a6, #f687b3); }
+          .color-10 { background: linear-gradient(45deg, #4a5568, #718096); }
 
           .size-xs { width: 4px; height: 4px; }
           .size-sm { width: 6px; height: 6px; }
@@ -768,11 +747,112 @@ const EarnscopLanding = () => {
               animation-duration: 12s !important;
             }
           }
+
+          .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 1rem;
+          }
+
+          .slider-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 1rem;
+          }
+
+          @media (min-width: 640px) {
+            .slider-image {
+              height: 400px;
+            }
+          }
+
+          @media (min-width: 1024px) {
+            .slider-image {
+              height: 500px;
+            }
+          }
+
+          .slider-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+          }
+
+          .slider-dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          }
+
+          .slider-dot.active {
+            background-color: #ffffff;
+          }
         `}
       </style>
       <DotsAnimation />
       <FloatingDollarParticles />
       <FloatingCoins />
+      {/* Slider Section */}
+      <section className="py-0 sm:py-0 bg-gradient-to-br from-blue-50 to-red-50">
+        <div className="max-w-8xl mx-auto sm:px-6 lg:px-0">
+          {/* Header */}
+
+          {/* Slider Container */}
+          <div className="relative w-full">
+            {/* Main Slider */}
+            <Link to='/dashboard' className='cursor-pointer'>
+              <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-white">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentSlide}
+                    src={slides[currentSlide].image}
+                    alt={slides[currentSlide].alt}
+                    className="absolute inset-0 max-w-8xl mx-auto h-[100%] object-cover sm:object-contain"
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    loading="lazy"
+                  />
+                </AnimatePresence>
+
+                {/* Overlay for better text visibility if needed */}
+                <div className="absolute inset-0 bg-black/10"></div>
+              </div>
+            </Link>
+
+            {/* Navigation Arrows */}
+
+
+            {/* Slide Indicators/Dots */}
+            <div className="flex justify-center space-x-3 my-3">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
+                    ? 'bg-blue-600 scale-125'
+                    : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                  onClick={() => setCurrentSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+
+        </div>
+      </section>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-50 py-6 sm:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -801,7 +881,7 @@ const EarnscopLanding = () => {
                   Your learning journey starts here!
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+              {/* <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <Link to="/signup">
                   <button
                     className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-red-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300"
@@ -822,7 +902,7 @@ const EarnscopLanding = () => {
                     Browse Courses
                   </button>
                 </motion.a>
-              </div>
+              </div> */}
               <div className="flex flex-col sm:flex-row items-center sm:space-x-6 text-sm text-gray-600 justify-center lg:justify-start">
                 <motion.div
                   className="flex items-center space-x-2"
@@ -970,6 +1050,8 @@ const EarnscopLanding = () => {
         </div>
       </section>
 
+
+
       {/* Top Trending Courses */}
       <section id="courses" className="py-6 sm:py-10 bg-gradient-to-br from-blue-50 to-red-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -997,7 +1079,7 @@ const EarnscopLanding = () => {
                   <motion.img
                     src={course.image}
                     alt={course.title}
-                    className="w-full h-40 sm:h-48 object-cover"
+                    className="w-full h-full sm:w-full object-cover"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                     loading="lazy"
@@ -1362,9 +1444,6 @@ const EarnscopLanding = () => {
               </motion.div>
             ))}
           </div>
-          <Link to="/signup">
-          
-          </Link>
           <motion.div
             className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center sm:space-x-6 text-xs sm:text-sm"
             initial={{ opacity: 0, y: 20 }}
