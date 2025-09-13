@@ -55,6 +55,9 @@ const frountRouter = require("./router/frountend/frountRouter");
 app.use("/admin",adminRouter);
 app.use(frountRouter);
 
+console.log("3==========", process.env.RAZORPAY_KEYID)
+    console.log("4=========", process.env.RAZORPAY_SECRET)
+
 
 server.listen(process.env.PORT, (req, res) => {
   console.log(`Server in running on port ${process.env.PORT}`);
