@@ -158,8 +158,8 @@ exports.loginUser = async (req, res) => {
 
 
 exports.createOrder = async (req, res) => {
-  console.log(process.env.RAZORPAY_KEYID)
-  console.log(process.env.RAZORPAY_SECRET)
+  console.log("1==========",process.env.RAZORPAY_KEYID)
+  console.log("2=========",process.env.RAZORPAY_SECRET)
   const razorpay = app.razorpay
   const { amount } = req.body;
 
