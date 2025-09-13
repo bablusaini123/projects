@@ -10,7 +10,7 @@ dotenv.config();
 const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
-const Razorpay = require("razorpay");
+const Razorpay = require("razorpay")
 
 app.use(cors())
 
