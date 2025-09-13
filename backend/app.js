@@ -10,11 +10,16 @@ dotenv.config();
 const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
-let a = "bablu"
+const Razorpay = require("razorpay");
 
 app.use(cors())
 
+// Initialize Razorpay
 
+module.exports.razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEYID,
+  key_secret: process.env.RAZORPAY_SECRET,
+});
 
 
 const cookieParser = require("cookie-parser");
@@ -25,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static("public"));
-
+ 
 
 
 
@@ -45,14 +50,10 @@ app.use(express.json());
 
 const adminRouter = require("./router/backend/adminRouter");
 const frountRouter = require("./router/frountend/frountRouter");
-app.use("/admin", adminRouter);
+app.use("/admin",adminRouter);
 app.use(frountRouter);
 
 
-
-
 server.listen(process.env.PORT, (req, res) => {
-  console.log("3==========", process.env.RAZORPAY_KEYID)
-console.log("4=========", process.env.RAZORPAY_SECRET)
   console.log(`Server in running on port ${process.env.PORT}`);
 });
