@@ -11,7 +11,7 @@ const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const Razorpay = require("razorpay");
-let a ="bablu"
+let a = "bablu"
 
 app.use(cors())
 
@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static("public"));
- 
+
 
 
 
@@ -52,11 +52,11 @@ app.use(express.json());
 
 const adminRouter = require("./router/backend/adminRouter");
 const frountRouter = require("./router/frountend/frountRouter");
-app.use("/admin",adminRouter);
+app.use("/admin", adminRouter);
 app.use(frountRouter);
 
 console.log("3==========", process.env.RAZORPAY_KEYID)
-    console.log("4=========", process.env.RAZORPAY_SECRET)
+console.log("4=========", process.env.RAZORPAY_SECRET)
 
 
 server.listen(process.env.PORT, (req, res) => {

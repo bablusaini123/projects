@@ -161,7 +161,6 @@ exports.createOrder = async (req, res) => {
 
   try {
 
-    console.log("hiiiiiiiiiiiiiiiii")
     console.log("1==========", process.env.RAZORPAY_KEYID)
     console.log("2=========", process.env.RAZORPAY_SECRET)
     // const razorpay = app.razorpay
@@ -175,6 +174,8 @@ exports.createOrder = async (req, res) => {
     // const order = await razorpay.orders.create(options);
     // res.status(200).json({ success: true, order });
   } catch (err) {
+    console.log("hiiiiiiiiiiiiiiiii")
+
     console.error("Razorpay Error:", err);
     res.status(500).json({ success: false, error: err.message });
   }
