@@ -10,7 +10,11 @@ import { createOrder, purchaseCourse } from './api';
 import { isAuthenticated, getCurrentUser } from './auth';
 import '../App.css';
 import { Button } from './ui/button';
-// testing 
+// testing
+ 
+
+
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const DotsAnimation = () => {
