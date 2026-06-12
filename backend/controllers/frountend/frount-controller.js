@@ -236,14 +236,14 @@ exports.purchaseCourse = async (req, res) => {
     }
 
     // ✅ Check level 2 only if level1 exists and has joinCode
-    if (level1 && level1.joinCode) {
-      level2 = await User.findOne({ referCode: level1.joinCode });
-      // console.log("l222222222", level2)
+    // if (level1 && level1.joinCode) {
+    //   level2 = await User.findOne({ referCode: level1.joinCode });
+    //   // console.log("l222222222", level2)
 
-      if (level2) {
-        level2Commission = parseInt((price * 5)) / 100;
-      }
-    }
+    //   if (level2) {
+    //     level2Commission = parseInt((price * 5)) / 100;
+    //   }
+    // }
 
     // ✅ Update wallets safely
     if (level1) {
