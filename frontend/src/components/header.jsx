@@ -4,6 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { LogOut } from 'lucide-react';
 import { HashLink } from 'react-router-hash-link';
 
+
 export default function Header() {
     // Get user data from localStorage
     const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
@@ -20,7 +21,7 @@ export default function Header() {
                     <div className="flex items-center">
                         <Link to="/">
                             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">
-                                EarnScop
+                                EarningPay
                             </h1>
                         </Link>
                     </div>
