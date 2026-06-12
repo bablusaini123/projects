@@ -432,7 +432,7 @@ const LoginPage = () => {
               </span>
             </Link>
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent mb-2">
-              earnscop
+              EarningPay
             </h1>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back!</h2>
             <p className="text-gray-600 mb-8">Sign in to continue your learning journey</p>

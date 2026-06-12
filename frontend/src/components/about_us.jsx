@@ -21,7 +21,7 @@ const About = () => {
               <section>
                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">Who We Are</h2>
                 <p className="text-gray-600 leading-relaxed">
-                  Welcome to EarnScop, India’s No. 1 Learn & Earn course platform—launched in 2025 by Anirban Bhattacharjee, Bablu Saini, and Aman Gouri. In a world where digital capability defines opportunity, we exist to help people acquire market-ready skills and convert knowledge into income. We currently offer 100+ expert-crafted digital courses and have already crossed 1,000+ sales—an early validation of our learner-driven, affiliate-powered growth model.
+                  Welcome to EarningPay, India’s No. 1 Learn & Earn course platform—launched in 2025 by Anirban Bhattacharjee, Bablu Saini, and Aman Gouri. In a world where digital capability defines opportunity, we exist to help people acquire market-ready skills and convert knowledge into income. We currently offer 100+ expert-crafted digital courses and have already crossed 1,000+ sales—an early validation of our learner-driven, affiliate-powered growth model.
                 </p>
               </section>
 
@@ -29,7 +29,7 @@ const About = () => {
               <section>
                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
                 <p className="text-gray-600 leading-relaxed">
-                  Millions of people in India still struggle with limited job options or stagnant income. EarnScop’s mission is to unlock financial independence by making high-quality, actionable digital education accessible through a smartphone—and pairing it with an elevated affiliate earning structure (up to 80% commission on select courses).
+                  Millions of people in India still struggle with limited job options or stagnant income. EarningPay’s mission is to unlock financial independence by making high-quality, actionable digital education accessible through a smartphone—and pairing it with an elevated affiliate earning structure (up to 80% commission on select courses).
                 </p>
               </section>
 
@@ -59,19 +59,13 @@ const About = () => {
                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">Founding Team</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-lg font-medium text-gray-700">Anirban Bhattacharjee – Founder & CEO</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Entrepreneur & digital strategist with deep expertise in SEO, cybersecurity, enterprise web development, PHP architecture, WordPress engineering & ethical hacking. Focused on building scalable systems that accelerate learner outcomes.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-gray-700">Bablu Saini – Founder & COO</h3>
+                    <h3 className="text-lg font-medium text-gray-700">Bablu Saini – Founder & CEO</h3>
                     <p className="text-gray-600 leading-relaxed">
                       Operations & growth specialist with a passion for scaling communities and optimizing user experiences. Oversees platform operations, partner relations, and affiliate network expansion.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-gray-700">Aman Gouri – Founder & CPO</h3>
+                    <h3 className="text-lg font-medium text-gray-700">Utkarsh Saini – Founder & CPO</h3>
                     <p className="text-gray-600 leading-relaxed">
                       Product innovator focused on curriculum strategy and learning experience design. Drives the creation of engaging, practical courses that align with market demands and learner goals.
                     </p>
@@ -81,7 +75,7 @@ const About = () => {
 
               {/* 6. How EarnScop Works */}
               <section>
-                <h2 className="text-2xl font-semibold text-gray-800 mb-4">How EarnScop Works</h2>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-4">How EarningPay Works</h2>
                 <ol className="list-decimal pl-5 mt-2 text-gray-600 leading-relaxed">
                   <li><strong>Discover & Learn:</strong> Browse courses across technology, marketing, business, creative, finance & productivity.</li>
                   <li><strong>Acquire Skills:</strong> Consume structured lessons, complete tasks, pass assessments.</li>
@@ -168,7 +162,7 @@ const About = () => {
 
               {/* 10. Start Your EarnScop Journey */}
               <section>
-                <h2 className="text-2xl font-semibold text-gray-800 mb-4">Start Your EarnScop Journey</h2>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-4">Start Your EarningPay Journey</h2>
                 <p className="text-gray-600 leading-relaxed">
                   If you want to build skills, create impact, and earn respectfully, you’re in the right place. Invest in a course today, activate your affiliate link, and help others access the same opportunity—while you grow.
                 </p>
@@ -177,7 +171,7 @@ const About = () => {
                     to="/"
                     className="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition"
                   >
-                    Join EarnScop & Unlock Your Potential
+                    Join EarningPay & Unlock Your Potential
                   </Link>
                 </div>
               </section>

@@ -23,7 +23,7 @@ const Questions = () => {
                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">1. Getting Started</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-lg font-medium text-gray-700">Q1. How do I start learning & earning on EarnScop?</h3>
+                    <h3 className="text-lg font-medium text-gray-700">Q1. How do I start learning & earning on EarningPay?</h3>
                     <p className="text-gray-600 leading-relaxed">
                       Click “Join Free” and create your account with your name, email, mobile number, and a secure password. Browse courses, enroll in at least one to understand the platform, then activate your Affiliate / Referral Dashboard to start sharing your unique referral links. When someone buys a course using your link, you earn a commission.
                     </p>
@@ -128,7 +128,7 @@ const Questions = () => {
                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">4. Courses & Access</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-lg font-medium text-gray-700">Q15. What kinds of courses does EarnScop offer?</h3>
+                    <h3 className="text-lg font-medium text-gray-700">Q15. What kinds of courses does EarningPay offer?</h3>
                     <p className="text-gray-600 leading-relaxed">
                       Digital Marketing, SEO, Copywriting, Social Media Growth, Performance Ads, Technology (Web Dev, Automation, WordPress), Cybersecurity Basics, Business Growth, Design, Finance Literacy, AI Tools Productivity, Creator Monetization & more—expanding monthly.
                     </p>
@@ -142,7 +142,7 @@ const Questions = () => {
                   <div>
                     <h3 className="text-lg font-medium text-gray-700">Q17. Do you provide certificates?</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Selected courses include EarnScop Certificates after you complete mandatory modules and pass quizzes/projects. These are shareable on LinkedIn or resumes.
+                      Selected courses include EarningPay Certificates after you complete mandatory modules and pass quizzes/projects. These are shareable on LinkedIn or resumes.
                     </p>
                   </div>
                   <div>
@@ -192,7 +192,7 @@ const Questions = () => {
                   <div>
                     <h3 className="text-lg font-medium text-gray-700">Q23. Can I run paid ads with my affiliate links?</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Allowed only if you follow brand bidding rules. No direct trademark bidding (e.g., bidding on “EarnScop official”) unless explicitly permitted. Cloaking, misleading claims, and spam traffic are prohibited.
+                      Allowed only if you follow brand bidding rules. No direct trademark bidding (e.g., bidding on “EarningPay official”) unless explicitly permitted. Cloaking, misleading claims, and spam traffic are prohibited.
                     </p>
                   </div>
                   <div>
@@ -223,7 +223,7 @@ const Questions = () => {
                   <div>
                     <h3 className="text-lg font-medium text-gray-700">Q27. How do I contact support?</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Use Support → Create Ticket inside the dashboard or email <a href="mailto:support@earnscop.com" className="text-blue-600 hover:underline">support@earnscop.com</a>. Response target: within 24–48 business hours (Mon–Fri, 10:00–18:00 IST). Priority tickets (payment / access issues) are reviewed faster.
+                      Use Support → Create Ticket inside the dashboard or email <a href="mailto:earningpay.in1@gmail.com" className="text-blue-600 hover:underline">earningpay.in1@gmail.com</a>. Response target: within 24–48 business hours (Mon–Fri, 10:00–18:00 IST). Priority tickets (payment / access issues) are reviewed faster.
                     </p>
                   </div>
                   <div>
@@ -304,7 +304,7 @@ const Questions = () => {
                   <div>
                     <h3 className="text-lg font-medium text-gray-700">Q37. What disclosures should I add when promoting?</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Include a simple statement like: “I may earn a commission if you purchase through my EarnScop link at no extra cost to you.” This builds trust and aligns with emerging transparency standards.
+                      Include a simple statement like: “I may earn a commission if you purchase through my EarningPay link at no extra cost to you.” This builds trust and aligns with emerging transparency standards.
                     </p>
                   </div>
                   <div>
@@ -380,7 +380,7 @@ const Questions = () => {
               <section>
                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">13. Need More Help?</h2>
                 <p className="text-gray-600 leading-relaxed">
-                  Couldn’t find your answer? Reach out via <a href="mailto:support@earnscop.com" className="text-blue-600 hover:underline">support@earnscop.com</a> or open a live ticket inside the dashboard. We’re here to help you learn better and earn smarter.
+                  Couldn’t find your answer? Reach out via <a href="mailto:earningpay.in1@gmail.com" className="text-blue-600 hover:underline">earningpay.in1@gmail.com</a> or open a live ticket inside the dashboard. We’re here to help you learn better and earn smarter.
                 </p>
               </section>
 

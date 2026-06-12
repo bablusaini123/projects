@@ -5,21 +5,21 @@ import moneyai from '../../public/moneyai.png'
 
 
 export const COURSES = [
-  // {
-  //   id: 1,
-  //   title: 'SEO Secrets 2025 Rank In Days, Not Months',
-  //   image: seo,
-  //   price: '799',
-  //   commisionPercent: 60,
-  //   rating: 4.8,
-  //   students: 1250,
-  // },
+  {
+    id: 1,
+    title: 'SEO Secrets 2025 Rank In Days, Not Months',
+    image: seo,
+    price: '699',
+    commisionPercent: 65,
+    rating: 4.8,
+    students: 1250,
+  },
   {
     id: 2,
     title: 'How To Grow Instagram In 21 Days 2025',
     image: insta,
-    price: '999',
-    commisionPercent: 65,
+    price: '1299',
+    commisionPercent: 70,
     rating: 4.9,
     students: 980,
   },
@@ -27,8 +27,8 @@ export const COURSES = [
     id: 4,
     title: 'How to earn money from AI 2025',
     image: moneyai,
-    price: '2999',
-    commisionPercent: 70,
+    price: '2399',
+    commisionPercent: 75,
     rating: 4.7,
     students: 1500,
   },
@@ -36,8 +36,8 @@ export const COURSES = [
     id: 3,
     title: 'Get High-Paying Clients Fast – 2025 Freelancer System',
     image: freelancer,
-    price: '2399',
-    commisionPercent: 75,
+    price: '3499',
+    commisionPercent: 80,
     rating: 4.7,
     students: 1500,
   },
@@ -45,8 +45,8 @@ export const COURSES = [
     id: 5,
     title: 'SEO Secrets 2025 Rank In Days, Not Months',
     image: seo,
-    price: '3499',
-    commisionPercent: 80,
+    price: '4999',
+    commisionPercent: 85,
     rating: 4.7,
     students: 1500,
   },
@@ -75,7 +75,7 @@ export const TESTIMONIALS = [
 
 export const FAQS = [
   {
-    question: ' How do I start learning & earning on EarnScop?',
+    question: ' How do I start learning & earning on EarningPay?',
     answer: 'Click “Join Free” and create your account with your name, email, mobile number and a secure password. Browse courses, enroll in at least one to understand the platform, then activate your Affiliate / Referral Dashboard to start sharing your unique referral links. When someone buys a course using your link, you earn commission',
   },
   {

@@ -1203,7 +1203,7 @@ const EarnscopLanding = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Why Choose Earnscop?</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Why Choose EarningPay?</h2>
             <p className="text-lg sm:text-xl text-gray-600">Join thousands of successful learners and earners</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -1264,7 +1264,7 @@ const EarnscopLanding = () => {
               Meet Our Influencers
             </h2>
             <p className="text-lg sm:text-xl text-gray-600">
-              Discover the creators promoting Earnscop and inspiring thousands!
+              Discover the creators promoting EarningPay and inspiring thousands!
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -1337,7 +1337,7 @@ const EarnscopLanding = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg sm:text-xl text-gray-600">Everything you need to know about Earnscop</p>
+            <p className="text-lg sm:text-xl text-gray-600">Everything you need to know about EarningPay</p>
           </motion.div>
           <div className="space-y-4">
             {FAQS.map((faq, index) => (
@@ -1410,22 +1410,18 @@ const EarnscopLanding = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            The visionaries behind EarnScop, driving innovation and empowerment
+            The visionaries behind EarningPay, driving innovation and empowerment
           </motion.p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8">
             {[
-              {
-                name: 'Anirban Bhattacharjee',
-                role: 'Founder & CEO',
-                bio: 'Entrepreneur & digital strategist with expertise in SEO, cybersecurity, and web development. Focused on building scalable systems for learner success.',
-              },
+             
               {
                 name: 'Bablu Saini',
-                role: 'Founder & COO',
+                role: 'Founder & CEO',
                 bio: 'Operations & growth specialist passionate about scaling communities and optimizing user experiences. Oversees platform operations and affiliate networks.',
               },
               {
-                name: 'Aman Gouri',
+                name: 'Utkarsh Saini',
                 role: 'Founder & CPO',
                 bio: 'Product innovator focused on curriculum strategy and learning experience design. Drives creation of market-aligned, engaging courses.',
               },

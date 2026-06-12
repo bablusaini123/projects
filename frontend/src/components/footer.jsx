@@ -10,7 +10,7 @@ export default function Footer() {
                 <div className="grid md:grid-cols-4 gap-8">
                     <div>
                         <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent mb-4">
-                            EarnScop
+                            EarningPay
                         </h3>
                         <p className="text-gray-400 mb-4">
                             Learn new skills and earn money by sharing knowledge with others.
@@ -48,14 +48,14 @@ export default function Footer() {
                     <div>
                         <h4 className="font-bold mb-4">Contact</h4>
                         <div className="text-gray-400 space-y-2">
-                            <p>support@earnscop.com</p>
-                            <p>+91 6350086242</p>
-                            <p>Mon-Fri: 9AM-6PM IST</p>
+                            <p>earningpay.in1@gmail.com</p>
+                            <p> +819056050721</p>
+                            <p>Telegram  @EarningPayService_bot</p>
                         </div>
                     </div>
                 </div>
                 <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                    <p>&copy; 2025 Earnscop. All rights reserved.</p>
+                    <p>&copy; 2026 EarningPay. All rights reserved.</p>
                 </div>
             </div>
       </footer >
