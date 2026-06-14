@@ -54,6 +54,10 @@ totalPurchaseAmount: {
   type: Number,
   default: 0
 },
+userCommisionPersent: {
+  type: Number,
+  default: 0
+},
 }, { timestamps: true });
 
 

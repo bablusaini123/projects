@@ -190,6 +190,7 @@ exports.purchaseCourse = async (req, res) => {
 
     const price = parseFloat(course.price);
 
+
     // ✅ Save to payment history
     const savePaymentHistory = await PaymentHistory.create({
       userId: buyerId,
@@ -224,10 +225,14 @@ exports.purchaseCourse = async (req, res) => {
     // Current purchase amount add karo
     buyer.totalPurchaseAmount =
       (Number(buyer.totalPurchaseAmount) || 0) + Number(price);
+    // check % for user %
+    const courseCommissionPercent = Number(course.commisionPercent) || 0;
+    const currentUserCommissionPercent = Number(buyer.userCommisionPersent) || 0;
+
+    if (courseCommissionPercent > currentUserCommissionPercent) {
+      buyer.userCommisionPersent = courseCommissionPercent;
+    }
     await buyer.save();
-    const commissionPercent = parseFloat(course.commisionPercent);
-    const level1Commission = (parseInt(price) * parseInt(commissionPercent)) / 100;
-    let level2Commission = 0;
 
     let level1 = null;
     let level2 = null;
@@ -237,6 +242,10 @@ exports.purchaseCourse = async (req, res) => {
       level1 = await User.findOne({ referCode: buyer.joinCode });
       // console.log("1111111111", level1)
     }
+     const commissionPercent = Number(level1?.userCommisionPersent || 0);
+      const level1Commission =
+        (Number(price) * commissionPercent) / 100;
+      let level2Commission = 0;
 
     // ✅ Check level 2 only if level1 exists and has joinCode
     if (level1 && level1.joinCode) {
