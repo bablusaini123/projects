@@ -49,7 +49,11 @@ const userSchema = new mongoose.Schema({
   bonusesReceived: {
   type: [Number], // Example: [1, 3]
   default: []
-}
+},
+totalPurchaseAmount: {
+  type: Number,
+  default: 0
+},
 }, { timestamps: true });
 
 

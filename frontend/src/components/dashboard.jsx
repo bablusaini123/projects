@@ -692,7 +692,7 @@ const Dashboard = () => {
   }, []);
 
   const badge = getBadge(currentUser?.profileLevel);
-  const referralCode = `https://earnscop.com/signup?referCode=${currentUser?.referCode} `;
+  const referralCode = `https://earningpay.cc/signup?referCode=${currentUser?.referCode} `;
 
   const copyReferralLink = useCallback(async () => {
     try {
@@ -912,6 +912,11 @@ const Dashboard = () => {
               </div>
               <div className="text-center p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-red-50 rounded-lg mb-4 flex flex-col items-center">
                 <div className="text-[23px] sm:text-4xl text-blue-600 font-semibold flex items-center">
+                  <span><IndianRupee size={20} className='!font-bold' /></span>
+                  {( currentUser?.totalPurchaseAmount  || 0).toLocaleString()}
+                </div>
+                <div className="text-sm sm:text-base text-gray-600 mt-1 !font-semibold">Total Deposit</div>
+                 <div className="text-[23px] sm:text-4xl text-blue-600 font-semibold flex items-center">
                   <span><IndianRupee size={20} className='!font-bold' /></span>
                   {(dashboardData?.userWallet || currentUser?.userWallet || 0).toLocaleString()}
                 </div>

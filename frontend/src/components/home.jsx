@@ -481,10 +481,10 @@ const EarnscopLanding = () => {
 
         const currentUser = getCurrentUser();
         const options = {
-          key: 'rzp_test_SxSp0sWNFbv8Rz',
+          key: 'rzp_live_T1Z39qGRtdLpUE',
           amount,
           currency,
-          name: 'Earnscop',
+          name: 'EarningPay',
           description: `Purchase: ${course.title}`,
           order_id: orderId,
           handler: async (response) => {
@@ -810,26 +810,24 @@ const EarnscopLanding = () => {
           {/* Slider Container */}
           <div className="relative w-full">
             {/* Main Slider */}
-            <Link to='/dashboard' className='cursor-pointer'>
-              <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-white">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={currentSlide}
-                    src={slides[currentSlide].image}
-                    alt={slides[currentSlide].alt}
-                    className="absolute inset-0 max-w-8xl mx-auto h-[100%] object-cover sm:object-contain"
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    loading="lazy"
-                  />
-                </AnimatePresence>
+            <Link to="/dashboard" className="cursor-pointer">
+  <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl bg-white">
+    <AnimatePresence mode="wait">
+      <motion.img
+        key={currentSlide}
+        src={slides[currentSlide].image}
+        alt={slides[currentSlide].alt}
+        className="absolute inset-0 w-full h-full object-contain"
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -100 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      />
+    </AnimatePresence>
 
-                {/* Overlay for better text visibility if needed */}
-                <div className="absolute inset-0 bg-black/10"></div>
-              </div>
-            </Link>
+    <div className="absolute inset-0 bg-black/10"></div>
+  </div>
+</Link>
 
             {/* Navigation Arrows */}
 
@@ -962,24 +960,24 @@ const EarnscopLanding = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center">
                       <div>
                         <div className="text-xl sm:text-2xl font-bold shimmer">
-                          ₹<CountUp end={referrals * 1679} duration={1} separator="," />
+                          ₹<CountUp end={referrals * 4249} duration={1} separator="," />
                         </div>
                         <div className="text-white/80 text-sm">Monthly Earnings</div>
                       </div>
                       <div>
                         <div className="text-xl sm:text-2xl font-bold shimmer">
-                          ₹<CountUp end={referrals * 1679 * 12} duration={1.5} separator="," />
+                          ₹<CountUp end={referrals * 4249 * 12} duration={1.5} separator="," />
                         </div>
                         <div className="text-white/80 text-sm">Yearly Earnings</div>
                       </div>
                       <div>
-                        <div className="text-xl sm:text-2xl font-bold">80%</div>
+                        <div className="text-xl sm:text-2xl font-bold">85%</div>
                         <div className="text-white/80 text-sm">Max Commission Rate</div>
                       </div>
                     </div>
                   </motion.div>
                   <p className="text-white sm:text-xl opacity-90">
-                    Based on average course price of ₹2399 with up to 80% commission
+                    Based on average course price of ₹2399 with up to 85% commission
                   </p>
                 </div>
               </section>

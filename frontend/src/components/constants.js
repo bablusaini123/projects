@@ -13,6 +13,7 @@ export const COURSES = [
     commisionPercent: 65,
     rating: 4.8,
     students: 1250,
+    url:"https://earningpay.cc/assets/seo-2026.pdf"
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ export const COURSES = [
     commisionPercent: 70,
     rating: 4.9,
     students: 980,
+     url:"https://earningpay.cc/assets/grow-insta.pdf"
   },
   {
     id: 4,
@@ -31,6 +33,7 @@ export const COURSES = [
     commisionPercent: 75,
     rating: 4.7,
     students: 1500,
+     url:"https://earningpay.cc/assets/earn-money.pdf"
   },
   {
     id: 3,
@@ -40,6 +43,7 @@ export const COURSES = [
     commisionPercent: 80,
     rating: 4.7,
     students: 1500,
+     url:"https://earningpay.cc/assets/high-paying.pdf"
   },
   {
     id: 5,
@@ -49,6 +53,7 @@ export const COURSES = [
     commisionPercent: 85,
     rating: 4.7,
     students: 1500,
+     url:"https://earningpay.cc/assets/seo-2026.pdf"
   },
 ];
 

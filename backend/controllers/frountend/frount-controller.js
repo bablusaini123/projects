@@ -221,6 +221,9 @@ exports.purchaseCourse = async (req, res) => {
 
     // 🔓 Activate Account
     buyer.accountActivationKey = true;
+    // Current purchase amount add karo
+    buyer.totalPurchaseAmount =
+      (Number(buyer.totalPurchaseAmount) || 0) + Number(price);
     await buyer.save();
     const commissionPercent = parseFloat(course.commisionPercent);
     const level1Commission = (parseInt(price) * parseInt(commissionPercent)) / 100;
@@ -236,14 +239,14 @@ exports.purchaseCourse = async (req, res) => {
     }
 
     // ✅ Check level 2 only if level1 exists and has joinCode
-    // if (level1 && level1.joinCode) {
-    //   level2 = await User.findOne({ referCode: level1.joinCode });
-    //   // console.log("l222222222", level2)
+    if (level1 && level1.joinCode) {
+      level2 = await User.findOne({ referCode: level1.joinCode });
+      // console.log("l222222222", level2)
 
-    //   if (level2) {
-    //     level2Commission = parseInt((price * 5)) / 100;
-    //   }
-    // }
+      if (level2) {
+        level2Commission = parseInt((price * 5)) / 100;
+      }
+    }
 
     // ✅ Update wallets safely
     if (level1) {
@@ -305,25 +308,17 @@ exports.purchaseCourse = async (req, res) => {
         
         <!-- Access Button -->
         <div style="text-align: center; margin: 20px 0;">
-            <a href="[COURSE_ACCESS_LINK]" style="background-color: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-size: 16px; font-weight: bold; display: inline-block;">
+            <a href='${course.url}' style="background-color: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-size: 16px; font-weight: bold; display: inline-block;">
                 🚀 Access Course
             </a>
         </div>
         
         <!-- Referral Section -->
         <div style="background-color: #fff3cd; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
-            <h3 style="color: #856404; margin: 0 0 10px 0; font-size: 16px;">💰 Earn 80% Commission!</h3>
-            <p style="margin: 0 0 10px 0; color: #856404; font-size: 14px;">Share & earn 80% on every sale!</p>
-            
-            <div style="background-color: #ffffff; padding: 10px; border-radius: 4px; margin: 10px 0;">
-                <p style="margin: 0 0 5px 0; color: #856404; font-weight: bold; font-size: 14px;">Your Referral Link:</p>
-                <div style="background-color: #f8f9fa; padding: 8px; border-radius: 4px; word-break: break-all; font-size: 12px; color: #2c3e50; border: 1px dashed #ffc107;">
-                    [YOUR_REFERRAL_LINK]
-                </div>
-            </div>
-            
+            <h3 style="color: #856404; margin: 0 0 10px 0; font-size: 16px;">💰 Earn 85% Commission!</h3>
+            <p style="margin: 0 0 10px 0; color: #856404; font-size: 14px;">Share & earn 85% on every sale!</p> 
             <div style="text-align: center; margin-top: 10px;">
-                <a href="[REFERRAL_DASHBOARD_LINK]" style="background-color: #ffc107; color: #856404; padding: 8px 15px; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block; font-size: 14px;">
+                <a href="https://earningpay.cc/dashboard" style="background-color: #ffc107; color: #856404; padding: 8px 15px; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block; font-size: 14px;">
                     📊 View Dashboard
                 </a>
             </div>
@@ -336,7 +331,7 @@ exports.purchaseCourse = async (req, res) => {
                 <li style="margin: 5px 0;">Access your course above</li>
                 <li style="margin: 5px 0;">Start learning</li>
                 <li style="margin: 5px 0;">Share referral link</li>
-                <li style="margin: 5px 0;">Earn 80% commission</li>
+                <li style="margin: 5px 0;">Earn 85% commission</li>
             </ol>
         </div>
         
@@ -344,8 +339,7 @@ exports.purchaseCourse = async (req, res) => {
         <div style="background-color: #e3f2fd; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
             <h3 style="color: #1976d2; margin: 0 0 8px 0; font-size: 16px;">💬 Need Help?</h3>
             <p style="margin: 0; color: #1976d2; font-size: 14px;">
-                Email: <a href="mailto:support@yoursite.com" style="color: #2196f3;">support@yoursite.com</a><br>
-                FAQ: <a href="[FAQ_LINK]" style="color: #2196f3;">Help Center</a>
+                Email: <a href="mailto:earningpay.in1@gmail.com" style="color: #2196f3;">earningpay.in1@gmail.com</a><br>
             </p>
         </div>
         
@@ -353,8 +347,7 @@ exports.purchaseCourse = async (req, res) => {
         <div style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee;">
             <p style="color: #7f8c8d; margin: 0 0 8px 0; font-size: 12px;">Thanks for choosing us!</p>
             <p style="color: #bdc3c7; margin: 0; font-size: 11px;">
-                © 2024 [YOUR_WEBSITE_NAME]<br>
-                Sent to [USER_EMAIL]
+                © 2026 earningpay.cc<br>
             </p>
         </div>
         
@@ -376,7 +369,7 @@ exports.purchaseCourse = async (req, res) => {
     let mailOptions = {
       from: 'earnscop.com@gmail.com',   // Sender address
       to: buyer.email,  // List of recipients
-      subject: 'Test Email from NodeMailer',  // Subject line
+      subject: 'Thanks For Purchasing',  // Subject line
       html: mailTemp  // Plain text body
     };
 
