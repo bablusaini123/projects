@@ -478,6 +478,7 @@ const EarnscopLanding = () => {
         const orderResponse = await createOrder(amountInPaise);
         console.log('Order response:', orderResponse);
         const { id: orderId, amount, currency } = orderResponse.order;
+        
 
         const currentUser = getCurrentUser();
         const options = {
