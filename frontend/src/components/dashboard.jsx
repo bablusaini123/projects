@@ -919,9 +919,7 @@ const Dashboard = () => {
                  <div className="text-[23px] sm:text-4xl text-blue-600 font-semibold flex items-center">
                   <span><IndianRupee size={20} className='!font-bold' /></span>
                   {(dashboardData?.userWallet || currentUser?.userWallet || 0).toLocaleString()}
-                </div>
-                <div className="text-sm sm:text-base text-gray-600 mt-1 !font-semibold">Total Earnings</div>
-              </div>
+                </div>Wallet              </div>
               <p className="text-sm sm:text-base text-gray-600 mb-4">
                 This wallet shows your earnings from referrals. Withdraw funds after reaching the minimum limit.
               </p>
