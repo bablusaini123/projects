@@ -349,3 +349,5 @@ if (cachedData) {
   const handleWithdraw = useCallback(() => {
     toast.success('Withdrawal request submitted! Check your email for details.');
   }, []);
+
+}
