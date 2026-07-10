@@ -482,7 +482,7 @@ const EarnscopLanding = () => {
 
         const currentUser = getCurrentUser();
         const options = {
-          key: 'rzp_live_T1Z39qGRtdLpUE',
+          key: 'rzp_test_SxSp0sWNFbv8Rz',
           amount,
           currency,
           name: 'EarningPay',
