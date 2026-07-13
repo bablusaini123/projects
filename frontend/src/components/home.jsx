@@ -1415,12 +1415,12 @@ const EarnscopLanding = () => {
             {[
              
               {
-                name: 'Bablu Saini',
+                name: 'Sinner',
                 role: 'Founder & CEO',
                 bio: 'Operations & growth specialist passionate about scaling communities and optimizing user experiences. Oversees platform operations and affiliate networks.',
               },
               {
-                name: 'Utkarsh Saini',
+                name: 'Henery',
                 role: 'Founder & CPO',
                 bio: 'Product innovator focused on curriculum strategy and learning experience design. Drives creation of market-aligned, engaging courses.',
               },
